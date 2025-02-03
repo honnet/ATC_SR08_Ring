@@ -1,0 +1,52 @@
+.. _register_acc:
+
+================
+Registers Access
+================
+
+.. note::
+
+	This tool applies to DA1469x, DA1470x and DA1459x family devices.
+
+
+This tool can be used to read and write device registers. The set of registers available per device depend on the family and are read from family specific xml files. 
+When Register Access is opened, an extra tab named *RF Master* is added to the ribbon which contains useful utilities. More info here: :ref:`RF_Master_Ribbon`.
+
+
+.. _registers:
+.. figure:: images/registers.png
+   :align: center
+   
+   Reading/Writing CLK_REF_SEL_REG
+
+The user has to first select a register in order to enable read, write, refresh, dump actions which apply on the selected register. The user can select a register from the registers' tree by selecting a peripheral first and then a register of this peripheral. To easily find a register, the user can filter the tree by entering part or the exact name of the peripheral or register and part or full address of a register. 
+
+.. _registerSelection:
+.. figure:: images/registersFiltering.png
+   :align: center
+   
+   Filtering registers' tree by entering part of their name in the search text field
+
+When a register is selected the register name and address is indicated in the blue label above the register bit fields table and the bit fields of the register are presented in a table. 
+Read column indicates the value read for this bit field and Burn column can be used to change the value of the bit field. The actions available on each register are analyzed next:
+
+* **Read:** Reads the register's value and updates the Read column with the value of each bit field. 
+
+* **Write:** Creates the value to write from the register's bit field values on the Write column and writes it to the register. 
+  When a bit field cell value on the Write column is left empty, value 0x00 is assumed for the field. 
+  Note that some bit fields are read only which is indicated by *RO* in the type column. The value of these bit fields cannot change so the respective cell in the Write column is non editable.
+  During write action for RO fields the value read from the bit field is set in the respective bit field range in order to create the value to write to the register.
+  Also note that not all bit fields are consecutive and span the 32 bit range of a register. In such a case the bit ranges not present in the table are filled with 0x00 in order to create the value to write to the register.
+
+* **Refresh:** Reads again the register's value and clears all the values in the table's Write column.
+
+* **Dump:** Dumps register info to the log. The button is enabled when the register's value is read for the first time.
+ 
+  *Sample log output:*
+
+  .. _da1469xRegsLog:
+  .. figure:: images/dumpReg.png
+     :align: center
+   
+     Dumping info of CLK_REF_SEL_REG to the log
+ 

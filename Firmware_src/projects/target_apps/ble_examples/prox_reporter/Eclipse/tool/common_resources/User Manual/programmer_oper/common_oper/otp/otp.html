@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html class="writer-html4" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>3.2. OTP &mdash; UM-B-083</title><link rel="stylesheet" href="../../../_static/css/lpc_cs_theme.css" type="text/css" />
+    <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/css/custom.css" type="text/css" /><link rel="shortcut icon" href="../../../_static/favicon.ico"/>
+  <!--[if lt IE 9]>
+    <script src="../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  <script id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../../../_static/jquery.js"></script>
+        <script type="text/javascript" src="../../../_static/underscore.js"></script>
+        <script type="text/javascript" src="../../../_static/doctools.js"></script>
+        <script type="text/javascript" src="../../../_static/language_data.js"></script>
+    <script src="../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+    <link rel="next" title="3.3. RAM" href="../ram/ram.html" />
+    <link rel="prev" title="3.1. Flash Code" href="../flash_code/flash_code.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../../../index.html"><img src="../../../_static/V-Reverse.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../../inst_guide/inst_guide.html">1. Installation Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../getting_started/getting_started.html">2. Getting Started</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../../index.html">3. Programmer Operations</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../flash_code/flash_code.html">3.1. Flash Code</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">3.2. OTP</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#editing-otp-fields">3.2.1. Editing OTP fields</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#burning-otp-memory">3.2.2. Burning OTP memory</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#burn-application-flags-for-da14585-6-and-da1453x-families">3.2.2.1. Burn application flags for DA14585/6 and DA1453x families</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#configuration-script-cs-in-otp">3.2.3. Configuration Script (CS) in OTP</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#configuration-script-cs-filtering">3.2.3.1. Configuration Script (CS) Filtering</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#otp-nvds">3.2.4. OTP NVDS</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../ram/ram.html">3.3. RAM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../flash_data/flash_data.html">3.4. Flash Data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../device_oper/suota/suota.html">3.5. SUOTA</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../device_oper/qspi_part_table/qspi_part_table.html">3.6. QSPI Partition Table</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../device_oper/eeprom/eeprom.html">3.7. EEPROM Programmer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../device_oper/proprietary_header_prog/proprietary_header_prog.html">3.8. Proprietary Header Programmer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../device_oper/ota_services/ota_services.html">3.9. OTA Services (over the air services)</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../estimator/index.html">4. Estimator Operations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../manager_oper/index.html">5. Manager Operations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../monitor_oper/index.html">6. Monitor Operations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../configurator/index.html">7. Configurator Operations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../cli/command_line_if.html">8. CLI implementation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../app_help/index.html">9. Application Help</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../troubleshooting/troubleshooting.html">10. Troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../appendices/index.html">11. Appendices</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../disclaimers_contact.html">12. Disclaimers &amp; Contact info</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">UM-B-083</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="../../index.html">3. Programmer Operations</a> &raquo;</li>
+      <li>3.2. OTP</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <div class="section" id="otp">
+<span id="otp-tool"></span><h1>3.2. OTP<a class="headerlink" href="#otp" title="Permalink to this headline">¶</a></h1>
+<p>The tool allows programming the OTP memory. The tool allows programming the OTP memory either by configuring the fields of individual OTP sections or as a whole by importing data from files.</p>
+<div class="figure align-center" id="id1">
+<span id="otp-da1469x"></span><img alt="../../../_images/otp_da1469x.png" src="../../../_images/otp_da1469x.png" />
+<p class="caption"><span class="caption-number">Figure 15 </span><span class="caption-text">OTP tool for DA1469x family</span></p>
+</div>
+<div class="figure align-center" id="id2">
+<span id="otp-da1453x"></span><img alt="../../../_images/otp_da1453x.png" src="../../../_images/otp_da1453x.png" />
+<p class="caption"><span class="caption-number">Figure 16 </span><span class="caption-text">OTP tool for DA1453x family</span></p>
+</div>
+<p>The available OTP sections, which differ per family, are presented on the top left of the tool. The first option is always <em>Raw OTP Memory Data</em>, which provides access to the whole OTP memory and presents the memory contents in address - value format. User can import data from a file in order to program OTP when <em>Raw OTP Memory Data</em> has been selected. The rest of the options represent the OTP memory sections. By selecting a section, the user can program each section field individually by setting values to be programmed in <em>Content to Burn</em> table and taking advantage of special dialogs that help the user create valid values for specific fields (e.g. Configuration Script). OTP tool provides the following actions to the user:</p>
+<ul class="simple">
+<li><strong>Connect:</strong> Establishes connection to the target device by initializing communication interface and downloading appropriate FW required for the communication to the target.</li>
+<li><strong>Read:</strong> Reads the selected OTP memory section and updates <em>Content Read</em> table. If <em>Raw OTP Memory Data</em> has been selected, reads 32 KB from OTP starting from <em>Start Address</em> and updates <em>Content Read</em> table.</li>
+<li><strong>Burn:</strong> Burns <em>Content to Burn</em> table to OTP memory at Start Address. Light red rows in <em>Content to Burn</em> table indicate the fields which will change in OTP memory with the burn action. After burn a OTP memory is read to refresh <em>Content Read</em> table.</li>
+<li><strong>Import from file:</strong> By pressing this button the user can load data from a file into <em>Content to Burn</em> table. If a section is selected and the size of the selected file is greater than the section size, only the file bytes fitting in the section will be loaded.</li>
+<li><strong>Export to file:</strong> Exports the contents of <em>Content Read</em> or <em>Content to Burn</em> table to a file.</li>
+</ul>
+<p>Note that for DA1458x family NVDS section is also available for advanced users. The section can be activated by selection OTP NVDS section under Settings &gt; Advanced Settings menu.</p>
+<div class="section" id="editing-otp-fields">
+<h2>3.2.1. Editing OTP fields<a class="headerlink" href="#editing-otp-fields" title="Permalink to this headline">¶</a></h2>
+<p>The user can edit OTP memory fields one by one by selecting a section other than <em>Raw OTP Memory Data</em>.
+Note that some fields are read-only; double-clicking on them has no effect.
+Editing is performed by choosing a value from the dropdown menu or by double-clicking and setting the desired value in the input field.</p>
+<p>Furthermore, some fields marked with <img alt="yellow-mark-header" src="../../../_images/warning13x111.png" /> are fields that user should not change their value or else there is great risk of destroying the chip.
+The application will warn user if he is going to change the value of such fields.</p>
+<div class="figure align-center" id="id3">
+<span id="readonly-fields-warning"></span><img alt="../../../_images/readOnly_fields_warning.png" src="../../../_images/readOnly_fields_warning.png" />
+<p class="caption"><span class="caption-number">Figure 17 </span><span class="caption-text">Warning popup when user tries to burn read only field.</span></p>
+</div>
+<p>While addresses marked with <img alt="red-mark-header" src="../../../_images/attention13x13.png" /> are special addresses where the value is stored twice in each original and complement value, alternatively word by word.</p>
+<p>The values are hexadecimal values with size equal to the one shown at the ‘Size (words)’ column of the table.</p>
+<p>For fields with more complex configuration logic involved, a <img alt="edit_cell_icon" src="../../../_images/edit.png" /> icon is displayed when mouse hovers them. When the user clicks on this icon a suitable interface
+pops up to edit the configuration.</p>
+<p>Some examples of multivalued fields are:</p>
+<p><strong>Cache Architecture Settings on address 0x7F8EA28 of DA1468x devices:</strong></p>
+<div class="figure align-center" id="id4">
+<span id="cache-architecture-680"></span><img alt="../../../_images/cache_architecture_680.png" src="../../../_images/cache_architecture_680.png" />
+<p class="caption"><span class="caption-number">Figure 18 </span><span class="caption-text">Cache Architecture Settings</span></p>
+</div>
+<p><strong>Serial Configuration Mapping on address 0x7F8EA30 of DA1468x family devices:</strong></p>
+<div class="figure align-center" id="id5">
+<span id="serial-configuration-mapping-680"></span><img alt="../../../_images/serial_configuration_mapping_680.png" src="../../../_images/serial_configuration_mapping_680.png" />
+<p class="caption"><span class="caption-number">Figure 19 </span><span class="caption-text">Serial Configuration Mapping</span></p>
+</div>
+<p><strong>Type of fields for DA14580/581/583 device family:</strong></p>
+<p>For DA14580/581/583 family devices there are two types of fields:</p>
+<ol class="arabic simple">
+<li>‘Integer’: field is treated as an integer, which means that if the user enters fewer hex values than expected according to field size the value is patched with leading zeroes before burning it to the OTP memory (e.g. ‘14580’ becomes ‘00014580’ for a 1-word field). For ‘integer’-type fields, the least significant byte of a word is stored in the smallest address (little-endian). E.g. if a user types 0A0B0C0D for field ‘DMA Length’, 0x0A will be written at 0x47FFB and 0x0D will be written at 0x47FF8.</li>
+<li>‘String’: field is treated as a string, which means that if the user enters fewer hex values than expected according to field size the value is patched with trailing zeroes before burning it to the OTP memory (e.g. ‘14580’ becomes ‘14580000’ for a 1-word field). For ‘string’-type fields, the most significant (left-most) byte of a word is stored in the smallest address (big-endian). E.g. if a user types 0A0B0C0D for field ‘Device Unique ID’, 0x0A will be written at 0x47FD4 and 0x0D will be written at 0x47FD7.</li>
+</ol>
+<p>Most of the fields that contain combo boxes cannot be programmed more than once. For example if ‘RC32KHz’ (hex value 0xAA) has been burned as the 32KHz source, it is not allowed to overwrite it with the ‘XTAL32KHz’ value (hex value 0x00). In such a case, the combo boxes are disabled to avoid confusion.</p>
+<p><strong>Type of fields for the rest of the device families:</strong></p>
+<ol class="arabic simple">
+<li>‘Integer’: The same as for DA14580/581/583 devices. Integer fields are treated as little endian, meaning that they are reversed when burned to OTP memory and also that the value read to OTP memory is reversed and then presented to the OTP header table.</li>
+<li>‘String’: The same as DA14580/581/583 devices. String fields are treated as big endian, meaning that a value is burned to the OTP memory exactly as it is presented in the OTP Header.</li>
+<li>‘Flag’: Fields of type ‘Flag’ are represented as dropdown lists where the user selects the desired value.</li>
+<li>‘Protected’: Only DA1468x header contains protected fields. There are two fields that are of type ‘Protected’ in DA1468x header, <em>Trim and calibration values (read-only)</em> and <em>ECC image length (writable)</em>.  These fields are treated as integers. From the 8 bytes of ‘ECC Image Length’ 4 bytes contain the value and the other 4 bytes contain the reverse value.  This is for security reasons. Each time value is read it is checked with the reverse value of the rest of the field to see that the value read match. In write, the reverse value is produced and stored with the real value. The other field ‘Trim and calibration values’ which is read-only consists of 384 bytes. These bytes are split in 8 bytes each of which consists of 4 byte value and  4 byte reverse value as it explained above. These bytes store the ‘trim or calibration’ address and its value next to it. You can see this table clicking on the <img alt="edit_cell_icon" src="../../../_images/edit.png" />. When user edits a ‘protected’ field it enters only the value part. That’s why ‘ECC image length’ for example asks for 8 byte and not 16 byte value. The reverse of the user entered value is produced automatically and stored on the other 8 bytes of the field.</li>
+</ol>
+</div>
+<div class="section" id="burning-otp-memory">
+<h2>3.2.2. Burning OTP memory<a class="headerlink" href="#burning-otp-memory" title="Permalink to this headline">¶</a></h2>
+<p>Before performing the actual burn action the following check is made for DA1468x, DA14585/6, DA1453x, DA1469x, DA1470x and DA1459x family devices.
+SmartSnippets™ Toolbox checks if the memory segment the user is attempting to burn already contains data.
+The check is performed on a word level. For DA1468x and DA14585/6 family devices, a word has 8 bytes length and contains
+data when its value is different than 0x00 while for DA1469x, DA1453x, DA1470x and DA1459x family devices a word has 4 bytes length and contains
+data when is value is different than 0xFFFFFFFF. There are three cases during OTP burn when comparing each one of the
+words we are trying to burn with the respective words already written in OTP memory (described for DA1468x and DA14585/6 family devices for which zeroes is the empty value):</p>
+<ol class="arabic simple">
+<li>The word we are trying to burn to OTP memory includes zeroes and the respective word in OTP memory is non-zero: No action is taken.</li>
+<li>The word we are trying to burn to OTP memory includes non-zeroes and the respective word in OTP memory is non-zero and the contents of the two words do not match. The word is replaced with zero and a warning shows up in log window. If addresses of the words that are replaced with zero are too many a file called ‘not_written_words.txt’ is created in settings file’s directory or under ‘Command_Line_Logs’ in case of CLI. This file contains all the addresses that cannot be written.</li>
+<li>The word we are trying to burn to OTP memory includes non-zeroes and the respective word in OTP memory is non-zero and the contents of the two words are the same.Word is replaced with zero silently.</li>
+</ol>
+<p>For DA1469x, DA1453x, DA1470x and DA1459x family devices the same checks are performed with the difference that the empty value and the value with with which OTP words are replaced, if required, is 0xFFFFFFFF.</p>
+<div class="figure align-center" id="id6">
+<span id="otp-not-written-warning"></span><img alt="../../../_images/otp_not_written_warning.png" src="../../../_images/otp_not_written_warning.png" />
+<p class="caption"><span class="caption-number">Figure 20 </span><span class="caption-text">Warning when writing zeroes on non-zero memory location</span></p>
+</div>
+<p>Note that for DA1468x-00 devices, burn action is by default disabled, unless “ENABLE_OTP_BURN_68xAD” property is set to true in properties file. When a DA14583-00 chip is selected, the user has the option to automatically burn “Advanced Bootloader Offset and Length” Header field with the offset and length of the custom bootloader burned in OTP in <em>Raw OTP Memory Data</em> section.
+A popup dialog requests for permission to burn the respective OTP Header fields:</p>
+<div class="figure align-center" id="id7">
+<span id="da14583otpimage"></span><img alt="../../../_images/da14583OtpImage.png" src="../../../_images/da14583OtpImage.png" />
+<p class="caption"><span class="caption-number">Figure 21 </span><span class="caption-text">Request permission to burn the header fields</span></p>
+</div>
+<p>Burn action also checks if part of OTP Header will be written. If true then the following warning pops up:</p>
+<div class="figure align-center" id="id8">
+<span id="otp-write-part-header"></span><img alt="../../../_images/otp_write_part_header.png" src="../../../_images/otp_write_part_header.png" />
+<p class="caption"><span class="caption-number">Figure 22 </span><span class="caption-text">Proceed write OTP Header</span></p>
+</div>
+<p>Before performing the burn action, a set of validation tests is executed in order to ensure the correctness of each header field.
+The following image is an example of the messages printed to the log during the OTP Header validation tests for DA14580/581/583 devices.</p>
+<div class="figure align-center" id="id9">
+<span id="otp-header-580-log"></span><img alt="../../../_images/otp_header_580_log.png" src="../../../_images/otp_header_580_log.png" />
+<p class="caption"><span class="caption-number">Figure 23 </span><span class="caption-text">DA14580/581/583 Header validation tests</span></p>
+</div>
+<p>When a validation test fails or the user is about to make an important change to the header contents, a popup dialog notifies the user accordingly. For each dialog, the user has the option to either stop the burning process or ignore it and continue with the validation checks. The following validation tests are currently performed for DA14580/581/583 OTP Header:</p>
+<ol class="arabic simple">
+<li>Last burn validation: The existence of ‘header_log.txt’ file is checked. If found, a message informs the user when the memory was burned for the last time.</li>
+<li>DMA length validation: ‘DMA length’ value should always be smaller than 32768 bytes. It is automatically set to the maximum-allowed value if it is greater or equal to 32768 bytes and the user ignores the DMA length check popup dialog. Moreover, if a file has been loaded on OTP Image, it is checked that the DMA length is higher than the number of data bytes in that file.</li>
+<li>Remapping flag selection: Displays an informative message if the ‘remapping flag’ value has changed to 0.</li>
+<li>Customer Code Signature validation: If the ‘signature algorithm’ field has been set and a file has been selected for downloading to the OTP Image, it calculates a hash of the image file code. The calculated value should match to the value of the field Customer Code Signature.</li>
+<li>Trim values validation: The fields at addresses 0x47f7C to 0x47f90 are validated against the latest trim values provided by Renesas. The latest trim values are included in file ‘trimValues.txt’ located under the ‘resources’ folder of SmartSnippets™ Toolbox workspace. The file also includes a timestamp indicating the last time the trim values were updated. If the value entered by the user at a trim value field does not match the respective trim value at trimValues.txt file, the user is notified accordingly.</li>
+<li>Calibration flag validation: The ‘calibration flag’ should be in accordance with the trim values that have been set. The description field of the calibration flag indicates which bit corresponds to which trim value. If a trim value has been set and the corresponding bit of the calibration flag has not been set or vice versa, the user will be notified accordingly.</li>
+<li>32KHz source selection: Displays a message informing the user about the selected 32KHz source.</li>
+<li>Package selection: Displays a message informing the user about the selected package.</li>
+<li>Header written already validation: Before performing the actual burn action, SmartSnippets™ Toolbox checks if the memory segment the user is attempting to burn already contains data and notifies the user accordingly; it is up to the user to decide whether to proceed with the burning or not.</li>
+</ol>
+<div class="section" id="burn-application-flags-for-da14585-6-and-da1453x-families">
+<h3>3.2.2.1. Burn application flags for DA14585/6 and DA1453x families<a class="headerlink" href="#burn-application-flags-for-da14585-6-and-da1453x-families" title="Permalink to this headline">¶</a></h3>
+<p>To boot from OTP, user need to program the two applications flags (see <a class="reference internal" href="#otp-header-burn-flag"><span class="std std-numref">Figure 24</span></a>) by putting them to YES instead of NO.
+Booter decides whether the device is in Development or Normal mode by reading the two words indicated as
+application flags in the OTP then the OTP image is copied into RAM.</p>
+<div class="figure align-center" id="id10">
+<span id="otp-header-burn-flag"></span><img alt="../../../_images/application_programmed_flag.png" src="../../../_images/application_programmed_flag.png" />
+<p class="caption"><span class="caption-number">Figure 24 </span><span class="caption-text">Application programmed flag</span></p>
+</div>
+</div>
+</div>
+<div class="section" id="configuration-script-cs-in-otp">
+<span id="label-of-csinotp"></span><h2>3.2.3. Configuration Script (CS) in OTP<a class="headerlink" href="#configuration-script-cs-in-otp" title="Permalink to this headline">¶</a></h2>
+<p>OTP Header of DA1469x, DA1453x, DA1470x and DA1459x family devices includes the “Configuration Script” field.
+If the user presses the button that is visible on the value column of the table when user mouses
+over the Configuration Script row, the configuration script value is parsed and the commands it
+contains are presented in the following popup dialog (<a class="reference internal" href="#csinotp531"><span class="std std-numref">Figure 26</span></a>):</p>
+<div class="figure align-center" id="id11">
+<span id="csinotp"></span><img alt="../../../_images/csInOtp.png" src="../../../_images/csInOtp.png" />
+<p class="caption"><span class="caption-number">Figure 25 </span><span class="caption-text">Manage Configuration Script dialog for DA1469x family</span></p>
+</div>
+<div class="figure align-center" id="id12">
+<span id="csinotp531"></span><img alt="../../../_images/csInOtp531.png" src="../../../_images/csInOtp531.png" />
+<p class="caption"><span class="caption-number">Figure 26 </span><span class="caption-text">Manage Configuration Script dialog for DA1453x family</span></p>
+</div>
+<p>The user can append commands after the last CS command that has been read from the OTP memory, if the STOP command has not been added to the end of the CS. The commands that have been burned to the OTP memory are highlighted in light yellow color. The highlighted commands cannot be modified. Note that a valid CS should start with the Start command (0xA5A5A5A5). Each CS command consists of one or more words. The CMD number is the command identifier. Rows with the same CMD number belong to the same command. The 2nd column indicates the address of the command word and the 3rd column indicates the value of each command word. By looking at the 4th column, user can see the type and a small description of the command.
+In order to add a new command, the user has to select the type of the command and where this command should be placed in the CS and press the <em>Add</em> button. By default a new command is added at the end of the CS commands’ table. Available command types are: <em>Start</em>, <em>Stop</em>, <em>Register Configuration</em>, <em>Trim/Calibration</em>, <em>Booter value</em>, <em>Development Mode Disable</em> and <em>Uart STX timeout</em>. In order to delete a command, the user has to select the number of the command for deletion and press the <em>Delete</em> button. The CS is validated when the <em>Manage Configuration Script</em> dialog opens and when the OK button is pressed. Individual commands are validated before being added to the CS commands’ table. Validation errors are shown on the top of the window. User can disable validations when the OK button is pressed, by selecting the <em>Ignore Configuration Script validation errors</em> checkbox.
+Below individual command types are presented:</p>
+<ol class="arabic simple">
+<li><strong>Start:</strong> Indicates a valid CS. It is always added at the beginning of the CS commands’ table and has the value 0xA5A5A5A5.</li>
+<li><strong>Stop:</strong> Indicates the end of the CS. It is always added at the end of the CS commands’ table and  and has the value 0x00000000.</li>
+<li><strong>Register Configuration:</strong> Consists of two 32-bit words, the first of which contains the address of an existing register and the second contains the data value of the register. These are always in pairs. When the user selects to add a <em>Register Configuration</em> command to the CS, a popup presenting the available registers grouped in a tree-like structure, is presented. The user can use the search box to search for specific registers or group of registers that contain the text entered in the search box. The names and the addresses of the available registers for the selected device are read from the registers’ xml file specified in the support pack.</li>
+</ol>
+<div class="figure align-center" id="id13">
+<span id="csregisterconf"></span><img alt="../../../_images/csRegisterConf.png" src="../../../_images/csRegisterConf.png" />
+<p class="caption"><span class="caption-number">Figure 27 </span><span class="caption-text">Register Configuration in CS for DA1469x family</span></p>
+</div>
+<div class="figure align-center" id="id14">
+<span id="csregisterconf531"></span><img alt="../../../_images/csRegisterConf531.png" src="../../../_images/csRegisterConf531.png" />
+<p class="caption"><span class="caption-number">Figure 28 </span><span class="caption-text">Register selection in CS whose name contain ‘time’ for DA1453x family</span></p>
+</div>
+<ol class="arabic simple" start="4">
+<li><strong>Trim/Calibration:</strong> Consists of one 32-bit word which is equal to 0x9000YYXX and indicates that the following word(s) are not to be stored to registers but will be used by the SDK SW and YY words which represent the value of the command. XX indicates the TCS group of the command.  In order to add a Trim/Callibration command, the user has to first specify the number of the words (YY) and the TCS group (XX). When the number of the words is specified, one row per word is added to the table where the user can fill up the value of each word.</li>
+</ol>
+<div class="figure align-center" id="id15">
+<span id="cstrimcalib"></span><img alt="../../../_images/csTrimCalib.png" src="../../../_images/csTrimCalib.png" />
+<p class="caption"><span class="caption-number">Figure 29 </span><span class="caption-text">Trim/Callibration values in CS</span></p>
+</div>
+<p>For DA1470x family devices <strong>Trim/Calibration</strong> command starts with 0xE900YYXX (where YY and XX are used as descibed above). The user depending on the type of the selected CS group can add either raw data or register address-data pairs:</p>
+<div class="figure align-center" id="id16">
+<span id="cstrimcalib-da1470x"></span><img alt="../../../_images/csTrimCalib_DA1470x.png" src="../../../_images/csTrimCalib_DA1470x.png" />
+<p class="caption"><span class="caption-number">Figure 30 </span><span class="caption-text">Trim/Callibration values in CS for DA1470x family</span></p>
+</div>
+<ol class="arabic simple" start="5">
+<li><strong>Booter value:</strong> Consists of one 32-bit word which is equal to 0x6XXXXXXX indicating this is a value pointing to the Flash product header in flash at address 0xXXXXXXX.</li>
+</ol>
+<div class="figure align-center" id="id17">
+<span id="csbooterval"></span><img alt="../../../_images/csBooterVal.png" src="../../../_images/csBooterVal.png" />
+<p class="caption"><span class="caption-number">Figure 31 </span><span class="caption-text">Booter value in CS</span></p>
+</div>
+<p>For DA1470x family devices <strong>Booter value</strong> command consists of 2 words, the first of which is equal to 0xE6000000 and the second one is the address of the product header in flash.</p>
+<ol class="arabic simple" start="6">
+<li><strong>Development Mode Disable:</strong> Consists of one 32-bit word which is equal to 0x70000000 (0xE7000000 for DA1470x family), disabling the development mode. Development Mode is enabled by default at the initialization phase of the booter. The user’s confirmation is required in order to add the disable development mode command to the CS.</li>
+</ol>
+<div class="figure align-center" id="id18">
+<span id="csdeveldisable"></span><img alt="../../../_images/csDevelDisable.png" src="../../../_images/csDevelDisable.png" />
+<p class="caption"><span class="caption-number">Figure 32 </span><span class="caption-text">Disabling development mode in CS</span></p>
+</div>
+<ol class="arabic simple" start="7">
+<li><strong>Uart STX timeout:</strong> Consists of One 32 bit word which is equal to 0x8XXXXXXX. The XXXXXXX is used to program the selected STX timeout in multiples of 100uS. So i.e. 0x80000040 is 40x100uS = 4mS.</li>
+</ol>
+<div class="figure align-center" id="id19">
+<span id="csstxtimeout"></span><img alt="../../../_images/csStxTimeout.png" src="../../../_images/csStxTimeout.png" />
+<p class="caption"><span class="caption-number">Figure 33 </span><span class="caption-text">Specifying Uart STX timeout in CS</span></p>
+</div>
+<p>For DA1470x family devices <strong>Uart STX timeout</strong> command is equal to 0xE8YXXXXX where Y is the uart baudrate and XXXXX the STX timeout in multiples of 100uS.</p>
+<p>DA1470x family devices also support the following commands:</p>
+<ol class="arabic simple" start="8">
+<li><strong>XTAL settling value</strong>: Consists of one 32 bit word equal to 0xEAYXXXXX which is used to program the selected XTAL32M settling time in multiples of 100uS.</li>
+</ol>
+<div class="figure align-center" id="id20">
+<span id="csxtalsettle"></span><img alt="../../../_images/csXtalSettle.png" src="../../../_images/csXtalSettle.png" />
+<p class="caption"><span class="caption-number">Figure 34 </span><span class="caption-text">Specifying Xtal settling time in CS</span></p>
+</div>
+<ol class="arabic simple" start="9">
+<li><strong>Minimum FW version</strong>: Consists of two 32-bit words, the first of which is equal to 0xEB000000, indicating that the next entry holds a minimum FW version that the booter should accept. Minimum FW version command can be added even after the STOP command in CS.</li>
+</ol>
+<div class="figure align-center" id="id21">
+<span id="csminfwversion"></span><img alt="../../../_images/csMinFwVersion.png" src="../../../_images/csMinFwVersion.png" />
+<p class="caption"><span class="caption-number">Figure 35 </span><span class="caption-text">Specifying minimum FW version in CS</span></p>
+</div>
+<div class="section" id="configuration-script-cs-filtering">
+<h3>3.2.3.1. Configuration Script (CS) Filtering<a class="headerlink" href="#configuration-script-cs-filtering" title="Permalink to this headline">¶</a></h3>
+<p>CS section contents can be filtered by the following criteria (<a class="reference internal" href="#csfilters"><span class="std std-numref">Figure 36</span></a>):</p>
+<div class="figure align-center" id="id22">
+<span id="csfilters"></span><img alt="../../../_images/csFilters.png" src="../../../_images/csFilters.png" />
+<p class="caption"><span class="caption-number">Figure 36 </span><span class="caption-text">Available filters for CS section</span></p>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">The same filters for CS are available for every tool which contains CS section in Flash or OTP memory.</p>
+</div>
+<ol class="arabic simple">
+<li><strong>CS group</strong>: User selects, from a dropdown menu, one of the CS groups found in OTP. Contents of this CS group is presented on the table.</li>
+<li><strong>Register name</strong>: User starts typing a register name. All registers match the input entered are shown on the table. Both register address-pair is shown.</li>
+<li><strong>Bitfield name</strong>: User starts typing a bitfield name. All registers that contain a bitfield that match the input entered, are shown on the table. Both register address-pair is shown.</li>
+<li><strong>CS Registers</strong>: This button shows all the CS registers sorted by name in alphabetical order.</li>
+<li><strong>Reset</strong>: Reset all filters.</li>
+</ol>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Only one filter can be applied at a time.</p>
+</div>
+<p>Pressing the info icon (<a class="reference internal" href="#bitfieldinfoicon"><span class="std std-numref">Figure 37</span></a>) a popup window presents the bitfield information for this register (<a class="reference internal" href="#csbitfieldpopup"><span class="std std-numref">Figure 38</span></a>):</p>
+<div class="figure align-center" id="id23">
+<span id="bitfieldinfoicon"></span><img alt="../../../_images/bitFieldInfoIcon.png" src="../../../_images/bitFieldInfoIcon.png" />
+<p class="caption"><span class="caption-number">Figure 37 </span><span class="caption-text">Info icon available on CS registers</span></p>
+</div>
+<div class="figure align-center" id="id24">
+<span id="csbitfieldpopup"></span><img alt="../../../_images/csBitFieldPopUp.png" src="../../../_images/csBitFieldPopUp.png" />
+<p class="caption"><span class="caption-number">Figure 38 </span><span class="caption-text">Bitfield information for a CS register</span></p>
+</div>
+<p><strong>Value (dec)</strong> column shows the decimal value of the respected bitfield range, extracted from the register value.
+If an enumeration is available for this decimal value, this info is presented on column <strong>Value description</strong></p>
+</div>
+</div>
+<div class="section" id="otp-nvds">
+<h2>3.2.4. OTP NVDS<a class="headerlink" href="#otp-nvds" title="Permalink to this headline">¶</a></h2>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">This section applies to DA14580/581/583 device family. Enable section from menu <em>Settings -&gt; Advanced Settings</em>.</p>
+</div>
+<p>The functionality of OTP NVDS section is very similar to the functionality of any OTP section containing fields and allows the user to read and write the NVDS memory block. By editing the <em>Start Address</em> text field, the user can change the address at which a burn and a read operation will be performed. The user is advised to select an address between 0x40000 and 0x48000 (Before the start address of System Parameters section). Especially for burn operations, the address should be such so that the address where the last NVDS data byte will be written is smaller than the address where OTP header starts.</p>
+<p>An example of the OTP NVDS tab is shown below:</p>
+<div class="figure align-center" id="id25">
+<span id="otp-nvds-580-read-from-memory"></span><img alt="../../../_images/otp_nvds_580_read_from_memory.png" src="../../../_images/otp_nvds_580_read_from_memory.png" />
+<p class="caption"><span class="caption-number">Figure 39 </span><span class="caption-text">OTP NVDS</span></p>
+</div>
+<p>When the burn button is pressed, it is validated that the length of parameters NVDS_TAG_APP_BLE_ADV_DATA, NVDS_TAG_APP_BLE_SCAN_RESP_DATA and NVDS_TAG_DEVICE_NAME is equal to the value indicated by parameters ADV_DATA_TAG_LEN, SCAN_RESP_DATA_TAG_LEN and DEVICE_NAME_TAG_LEN respectively. The user is notified if the validation test fails, and has the option to proceed with the burn action or cancel it.
+Similar to OTP Header, there are integer-type and string-type fields. For OTP NVDS, the following fields are treated as strings:</p>
+<ul class="simple">
+<li>NVDS_TAG_APP_BLE_ADV_DATA</li>
+<li>NVDS_TAG_APP_BLE_SCAN_RESP_DATA</li>
+<li>NVDS_TAG_DEVICE_NAME</li>
+<li>NVDS_TAG_BD_ADDRESS</li>
+</ul>
+</div>
+</div>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="../flash_code/flash_code.html" class="btn btn-neutral float-left" title="3.1. Flash Code" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../ram/ram.html" class="btn btn-neutral float-right" title="3.3. RAM" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023, Renesas Electronics Corporation.</p>
+  </div>
+
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+    <!-- Theme Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-ZXND4SB7CL"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-ZXND4SB7CL', {
+          'anonymize_ip': false,
+      });
+    </script> 
+
+</body>
+</html>

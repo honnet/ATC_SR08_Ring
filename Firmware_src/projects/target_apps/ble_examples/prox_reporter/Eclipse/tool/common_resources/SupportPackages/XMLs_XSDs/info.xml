@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<supportPacks>
+	<supportPack>
+		<family>DA1453x</family>
+		<timestamp>2022-11-02T15:45:00</timestamp>
+	</supportPack>
+	<supportPack>
+		<family>DA1458x</family>
+		<timestamp>2022-11-02T15:45:00</timestamp>
+	</supportPack>
+	<supportPack>
+		<family>DA1459x</family>
+		<timestamp>2023-10-31T15:45:00</timestamp>
+	</supportPack>	
+	<supportPack>
+		<family>DA1468x</family>
+		<timestamp>2022-11-02T15:45:00</timestamp>
+	</supportPack>
+	<supportPack>
+		<family>DA1469x</family>
+		<timestamp>2022-11-02T15:45:00</timestamp>
+	</supportPack>
+	<supportPack>
+		<family>DA14585-586</family>
+		<timestamp>2022-11-02T15:45:00</timestamp>
+	</supportPack>
+	<supportPack>
+		<family>DA1470x</family>
+		<timestamp>2022-11-02T15:45:00</timestamp>
+	</supportPack>
+</supportPacks>

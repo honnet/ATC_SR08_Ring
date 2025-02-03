@@ -1,0 +1,518 @@
+.. include:: <isonum.txt>
+
+==============
+User interface
+==============
+
+.. # define a hard line break for HTML
+.. |br| raw:: html
+
+   <br />
+   
+
+
+
+The ribbon menu
+---------------
+
+From version 4.7 SmartSnippets\ |trade| Toolbox introduces ribbon menu to access its tools and functions. Tools are grouped under 5 categories for easy access: Programmer, Manager, Configurator, Monitor and Estimator. The tools under each group and the set of available groups depend on the selected device: different toolset is available per device family.
+SmartSnippets\ |trade| Toolbox even allows for creating custom layouts with the tools of interest for faster and accurate access.
+
+.. _main-ribbon-menu:
+.. figure:: images/main_ribbon_menu.png
+   :align: center
+
+   SmartSnippets\ |trade| Toolbox ribbon menu
+
+   
+The following sections introduces the tools available under each ribbon group. Only a brief description of each tool is presented in the following section. Please refer to the left side menu for full tool presentation. 
+Note that some of the groups are not available for all families. For example Configurator group is not available for DA1468x, DA1469x, DA1470x and DA1459x families and Estimator group is not available for DA1468x and DA1469x families. 
+Each tool under a group is accessible through a dedicated button. By clicking on a button, the corresponding window becomes visible and takes focus.
+Moving the mouse over the button will provide a small description of each SmartSnippets\ |trade| Toolbox tool.
+
+
+
+Group *View*
+------------
+
+This group contains buttons that help user to organize the application view layout. User can load the default or last saved view layout for this family, 
+create new or delete a previously created view layout. 
+
+.. _workspaceGroup:
+.. figure:: images/workspaceGroup.png
+   :align: center
+
+   View ribbon group
+
+
+.. |llate| image:: images/latestUserSpecified.png
+
+.. |ldefa| image:: images/loadDefault.png
+
+.. |lcrea| image:: images/save-layout.png
+
+.. |lload| image:: images/loadLayout.png
+
+.. |ldele| image:: images/deleteLayout.png
+
+
+.. _view_group_buttons:
+.. table:: View group buttons
+   :name: View group buttons
+
+   +----------+-----------------------------------------------------------------+
+   |Icon      |Description                                                      |
+   +==========+=================================================================+
+   | |llate|  |Previous user specified view layout is the latest layout that has|
+   |          |been saved for each board family. Latest view layout is saved    |
+   |          |when user changes family or when user exits Toolbox              |
+   +----------+-----------------------------------------------------------------+
+   | |ldefa|  |Load default view layout which includes Power Profiler tool and  |
+   |          |some Estimator group tools available only for certain families.  |
+   +----------+-----------------------------------------------------------------+
+   | |lcrea|  |Save new custom view layout will save the locations and sizes of |
+   |          |all currently opened tools                                       |
+   +----------+-----------------------------------------------------------------+
+   | |lload|  |Load custom view layout                                          |
+   +----------+-----------------------------------------------------------------+
+   | |ldele|  |Delete custom view layout                                        |
+   +----------+-----------------------------------------------------------------+
+
+
+
+
+Group *Programmer*
+------------------
+
+Programmer group contains all the tools needed to program any memory resource available on the DK as well as the SOC such as OTP, external or embedded FLASH for code, external FLASH or EEPROM for data etc.
+
+
+.. _programmerGroupDA1453x:
+.. figure:: images/Programmer/programmerGroupDA1453x.png
+   :align: center
+
+   Programmer ribbon group for DA1453x family
+   
+   
+.. _programmerGroupDA1469x:
+.. figure:: images/Programmer/programmerGroupDA1469x.png
+   :align: center
+
+   Programmer ribbon group for DA1469x family
+   
+   
+This group contains the following tools:   
+
+.. |eepromProg| image:: images/Programmer/eeprom.png
+
+.. |flashData| image:: images/Programmer/flashCodeData.png
+
+.. |flashCode| image:: images/Programmer/flashCodeData.png
+
+.. |otaServices| image:: images/Programmer/ota-services.png
+
+.. |otp| image:: images/Programmer/otp.png
+
+.. |propHeader| image:: images/Programmer/proprietaryHeaderProgrammer.png
+
+.. |qspiPartTable| image:: images/Programmer/qspiPartTable.png
+
+.. |ram| image:: images/Programmer/ram.png
+
+.. |suota| image:: images/Programmer/ota-services.png
+
+
+.. _programmer_group_tools:
+.. table:: Programmer group tools
+   :name: Programmer group tools
+   :class: tools-table
+
+   +-------------------------+---------------------------------------------------------------+
+   |Icon                     |Description                                                    |
+   +=========================+===============================================================+
+   | |otp| |br|              |Program OTP Memory (Reloaded version of OTP Programmer tools)  |
+   | OTP                     |                                                               |
+   +-------------------------+---------------------------------------------------------------+
+   | |eepromProg| |br|       |Download image file to EEPROM                                  |
+   | EEPROM |br|             |                                                               |
+   | Programmer              |                                                               |
+   +-------------------------+---------------------------------------------------------------+
+   | |propHeader| |br|       |Burn header or NVDS to EEPROM or SPI flash memory              |
+   | Proprietary Header |br| |                                                               |
+   | Programmer              |                                                               |
+   +-------------------------+---------------------------------------------------------------+
+   | |qspiPartTable| |br|    |Manage QSPI Flash partitions                                   |
+   | QSPI Partition |br|     |                                                               |
+   | Table                   |                                                               |
+   +-------------------------+---------------------------------------------------------------+
+   | |flashCode| |br|        |Program the part of the Flash that contains executable code    |
+   | Flash |br| Code         |                                                               |
+   +-------------------------+---------------------------------------------------------------+
+   | |flashData| |br|        |Program the Flash                                              |
+   | Flash |br| Data         |                                                               |
+   +-------------------------+---------------------------------------------------------------+
+   | |ram| |br|              |Program the System RAM                                         |
+   | RAM                     |                                                               |
+   +-------------------------+---------------------------------------------------------------+
+   | |otaServices| |br|      |Software patching and firmware download over the air           |
+   | OTA |br| Services       |                                                               |
+   +-------------------------+---------------------------------------------------------------+
+   | |suota| |br|            |Software update over the air                                   |
+   | SUOTA                   |                                                               |
+   +-------------------------+---------------------------------------------------------------+
+
+   
+   
+Group *Manager*
+---------------
+
+Manager groups contains all the tools used for setting the SOC into predefined states for monitoring or testing real-time.
+
+
+.. _managerGroupDA1453x:
+.. figure:: images/Manager/managerGroupDA1453x.png
+   :align: center
+
+   Manager ribbon group for DA1453x family
+   
+   
+.. _managerGroupDA1469x:
+.. figure:: images/Manager/managerGroupDA1469x.png
+   :align: center
+
+   Manager ribbon group for DA1469x family
+   
+   
+This group contains the following tools:   
+
+.. |rfMaster| image:: images/Manager/rfMaster.png
+
+.. |xtalManager| image:: images/Manager/rfMaster.png
+
+.. |ioManager| image:: images/Manager/rfMaster.png
+
+.. |registerAccess| image:: images/Manager/rfMaster.png
+
+.. |terminal| image:: images/Manager/terminal.png
+
+.. |terminalScripting| image:: images/Manager/terminalScripting.png
+
+.. _manager_group_tools:
+.. table:: Manager group tools
+   :name: Manager group tools
+   :class: tools-table
+   
+   +--------------------------+----------------------------------------------------------------+
+   |Icon                      |Description                                                     |
+   +==========================+================================================================+
+   | |rfMaster| |br|          |RF Master tests                                                 |
+   | RF Master                |                                                                |
+   +--------------------------+----------------------------------------------------------------+
+   | |xtalManager| |br|       |XTAL configuration                                              |
+   | XTAL |br| Manager        |                                                                |
+   +--------------------------+----------------------------------------------------------------+
+   | |ioManager| |br|         |GPIO configuration                                              |
+   | IO |br| Manager          |                                                                |
+   +--------------------------+----------------------------------------------------------------+
+   | |registerAccess| |br|    |Registers' configuration                                        |
+   | Registers |br| Access    |                                                                |
+   +--------------------------+----------------------------------------------------------------+
+   | |terminal| |br|          |UART Terminal, available only when connection is over UART      |
+   | Terminal                 |                                                                |
+   +--------------------------+----------------------------------------------------------------+
+   | |terminalScripting| |br| |Terminal Scripting                                              |
+   | Terminal |br| Scripting  |                                                                |
+   +--------------------------+----------------------------------------------------------------+
+
+
+Group *Configurator*
+--------------------
+
+The Configurator Group tools help in defining certain states of the SoC during the actual application. The output of these group’s tools shall be structures that are natively supported by the SDK.
+
+
+.. _configuratorGroupDA1453x:
+.. figure:: images/Configurator/configuratorGroupDA1453x.png
+   :align: center
+
+   Configurator ribbon group for DA1453x family
+   
+   
+This group contains the following tools:   
+
+.. |boardSetup| image:: images/Configurator/boardSetup.png
+
+.. _configurator_group_tools:
+.. table:: Configurator group tools
+   :name: Configurator group tools
+   :class: tools-table
+   
+   +---------------------+----------------------------------------------------------------+
+   |Icon                 |Description                                                     |
+   +=====================+================================================================+
+   | |boardSetup| |br|   |Manage communication with the chip                              |
+   | Board |br| Setup    |                                                                |
+   +---------------------+----------------------------------------------------------------+
+  
+
+Group *Monitor*
+---------------
+
+This group of tools contains important monitoring applications that are of interest to a developer on Renesas’s DK and SDK. While some of these applications are passively printing values coming from a hardware-based measuring circuitry (Power Profiler), others need certain, code images to be downloaded so that they can display the required data.
+
+
+.. _monitorGroupDA1458x:
+.. figure:: images/Monitor/monitorGroupDA1458x.png
+   :align: center
+
+   Monitor ribbon group for DA1458x family
+   
+   
+This group contains the following tools:   
+
+.. |log| image:: images/Monitor/log.png
+
+.. |powerProfiler| image:: images/Monitor/powerProfiler.png
+
+.. |dataRate| image:: images/Monitor/dataRate.png
+   :alt: Data Rate Monitor
+
+.. _monitor_group_tools:
+.. table:: Monitor group tools
+   :name: Monitor group tools
+   :class: tools-table
+   
+   +------------------------+--------------------------------------------------------------+
+   |Icon                    |Description                                                   |
+   +========================+==============================================================+
+   | |log| |br|             |Log messages from all tools                                   |
+   | Log                    |                                                              |
+   +------------------------+--------------------------------------------------------------+
+   | |powerProfiler| |br|   |Plot the current drawn by the chip's battery                  |
+   | Power |br| Profiler    |                                                              |
+   +------------------------+--------------------------------------------------------------+
+   | |dataRate| |br|        |Monitors the overall receive and transmit rate over Bluetooth |
+   | Data Rate |br| Monitor |                                                              |
+   +------------------------+--------------------------------------------------------------+
+
+
+Group *Estimator*
+-----------------
+
+Estimator group contains tools that allow the user to estimate various chip specific metrics by testing various usage scenarios.
+
+
+.. _estimatorGroupDA1458x:
+.. figure:: images/Estimator/estimatorGroupDA1458x.png
+   :align: center
+
+   Estimator ribbon group for DA1458x family
+   
+   
+.. _estimatorGroupDA1470x:
+.. figure:: images/Estimator/estimatorGroupDA1470x.png
+   :align: center
+
+   Estimator ribbon group for DA1470x family   
+   
+   
+This group contains the following tools:   
+
+.. |ble| image:: images/Estimator/ble.png
+
+.. |sleepModeAdv| image:: images/Estimator/sleep-mode-advisor.png
+
+.. |gfx| image:: images/Estimator/gfx.png
+
+
+.. _estimator_group_tools:
+.. table:: Estimator group tools
+   :name: Estimator group tools
+   :class: tools-table
+   
+   +-----------------------+---------------------------------------------------------+
+   |Icon                   |Description                                              |
+   +=======================+=========================================================+
+   | |ble| |br|            |Estimate battery lifetime for the selected device family |
+   | Battery Lifetime |br| |                                                         |
+   | Estimator             |                                                         |
+   +-----------------------+---------------------------------------------------------+
+   | |sleepModeAdv| |br|   |Analyze power consumption for target application         |
+   | Sleep Mode |br|       |                                                         |
+   | Advisor               |                                                         |
+   +-----------------------+---------------------------------------------------------+
+   | |gfx| |br|            |Estimate the typically and maximum achievable frame rate |
+   | Graphics FPS |br|     |                                                         |
+   | Estimator             |                                                         |
+   +-----------------------+---------------------------------------------------------+
+
+
+
+Tool specific groups
+--------------------
+
+Apart from the groups mentioned above SmartSnippets\ |trade| Toolbox provides two ribbon groups / toolbars containing tool specific utilities that are activated when certain tools are selected:
+
+#. **Power Profiler**: is activated when the respective tool is selected and is hidden once the respective tool is closed. The functionality of this toolbar is described under Power Profiler section. 
+
+#. **RF Master**: is activated when RF Master, XTAL Manger, Register Access or IO Manager tools are selected and hidden if none of these tools are open. The functionality of this toolbar is described under RF Master section.
+
+
+
+Ribbon Menus
+------------
+
+SmartSnippets\ |trade| Toolbox provides four menus that help the users, among others, manage their projects, 
+configure connected device(s) and select communication interfaces, download and install application and Support Packs updates.
+
+
+Project Menu
+------------
+
+Project menu provides the following options:
+
+* **New**: Creates a new project. User has to provide the project name and the location to save the new project. A new folder is created with the user provided project name at the location that the user has indicated. The project folder contains the project.sms file where various user configurations across different tools are saved and loaded again the next time the same project is selected. After creating the new project the application will automatically load it, in which case a popup may appear asking to save the previous project that was being used.
+
+* **Open**: Opens a SmartSnippets\ |trade| Toolbox project. The user has to navigate to a folder containing the project.sms file of an existing project.
+
+* **Open Recent**: Application remembers recent projects. The user can load a recent project by selecting its name from a list. The user has the options to clear the list of recent projects, in which case the application will start keeping track of recent projects from scratch after the Clear button is pressed.
+
+* **Save**: Saves current project in the default location which is in <user_home>/SmartSnippetsToolbox/Projects.
+
+* **Save As**: Saves current project in the user specified location with a name of the user's choice.
+
+* **Info**: Shows basic project info such as its name, location and description.
+
+* **Exit**: Exits the application.
+
+
+Board Menu
+----------
+
+This menu can be used to configure the connected device(s) and manage the Support Pack.
+
+* **Device:** (:numref:`boardMenuDevices`) User can select from the list the device name that matches the connected device.
+  In case the connected device is detected, the device is automatically selected.
+* **UART:** (:numref:`boardMenuUart`) User can select from the list the UART port of the connected device.
+  In case the connected device is detected, the UART port is automatically selected. 
+  Unchecking the UART checkbox indicates that the user doesn't want UART interface to be used for communication with the device. 
+  If an alternative interface has been configured (e.g. JTAG) certain tools that can use either of the two interfaces will still be 
+  functional and use the alternative interface instead. Tools that require UART interface to communicate with the device will have buttons 
+  that depend on communication over UART disabled until the UART interface is configured.
+* **Power Profiler:** User can select from the list the Power Profiler port of the connected device. 
+  In case the connected device is detected, the Power Profiler port is automatically selected. 
+  Unchecking the Power Profiler checkbox indicates that the user doesn't want to communicate with the device over the Power Profiler port. 
+  This means that if no Power Profiler port is selected or the Power Profiler checkbox is unchecked, the user will not be able to 
+  use the Power Profiler tool.
+* **JTAG:** (:numref:`boardMenuJtag`) User can select from the list the JTAG serial of the connected device. 
+  In case the connected device is detected, the JTAG serial is automatically selected. 
+  Unchecking the UART checkbox indicates that the user doesn't want JTAG interface to be used for communication with the device. 
+  If UART interface has been configured this will be used instead in that case. If both JTAG and UART interfaces have been configured, 
+  JTAG interface will be used which is faster than UART.
+* **Close Debug Session:** Applies to JTAG interface. Terminates the communication with the debugger.
+* **Cannot See my Board:** Help message that informs the user on what can be done in order for the application to identify the connected device(s).
+* **Support Pack Info:** (:numref:`boardMenuSpInfo`) Provides information about the used Support Pack: Its type (bundled or custom or online resource), 
+  its location, the devices it supports e.t.c.. 
+* **Check Online for Updates:** Checks for Support Packs updates for the selected device.
+* **Device Info:** (:numref:`boardMenuDeviceInfo`) Provides info of the connected device once it has been detected. 
+  Info includes the device core ID, its family and name and its interfaces. *Refresh* button on Device Info dialog triggers again the detection logic. 
+  *JTAG Info* button reads device info over JTAG interface.    
+* **Detect Device:** (:numref:`boardMenuDetect`) Detects connected device(s). Note that the user may have to press the hardware reset button 
+  in order for the device detection firmware to be downloaded over UART to the device. A message prompting the user to press the HW reset button 
+  will be added to the Log in that case. In case a single device is detected, when the user presses OK on the device detection dialog, the device 
+  type, UART, JTAG and SPI interfaces will be automatically selected under the Board menu. If more than one devices are detected, the user will be 
+  asked to select with which device the application should work with. Once the user selects one of the detected devices the entries under the 
+  Board menu regarding device name, UART, JTAG and SPI interface will be automatically selected. 
+
+
+
+.. _board_menu:
+.. table:: Board Menu
+   :name: Board Menu 
+   
+   +------------------------------------------------+------------------------------------------------+------------------------------------------------+
+   |                                                |                                                |                                                |        
+   +------------------------------------------------+------------------------------------------------+------------------------------------------------+
+   | .. _boardMenuDevices:                          | .. _boardMenuUart:                             | .. _boardMenuJtag:                             |
+   | .. figure:: images/BoardMenu/devices.png       | .. figure:: images/BoardMenu/uart.png          | .. figure:: images/BoardMenu/jtag.png          |
+   |    :align: center                              |    :align: center                              |    :align: center                              |
+   |                                                |                                                |                                                |
+   |    Devices Menu                                |    UART Menu                                   |    JTAG Menu                                   |
+   |                                                |                                                |                                                |
+   +------------------------------------------------+------------------------------------------------+------------------------------------------------+
+   |                                                                                                                                                  |        
+   +--------------------------------------------------------------------------------------------------------------------------------------------------+
+   | .. _boardMenuSpInfo:                                                                                                                             |
+   | .. figure:: images/BoardMenu/spInfo.png                                                                                                          |       
+   |    :align: center                                                                                                                                |
+   |                                                                                                                                                  |                                                                                                                                                  
+   |    SP Info Menu                                                                                                                                  |                                
+   |                                                                                                                                                  |                                                                                                                                             
+   +--------------------------------------------------------------------------------------------------------------------------------------------------+
+   |                                                                                                                                                  |       
+   +--------------------------------------------------------------------------------------------------------------------------------------------------+
+   | .. _boardMenuDeviceInfo:                                                                                                                         |   
+   | .. figure:: images/BoardMenu/deviceInfo.png                                                                                                      |
+   |    :align: center                                                                                                                                |
+   |                                                                                                                                                  | 
+   |    Device Info                                                                                                                                   |
+   |                                                                                                                                                  |
+   +--------------------------------------------------------------------------------------------------------------------------------------------------+
+   |                                                                                                                                                  |       
+   +--------------------------------------------------------------------------------------------------------------------------------------------------+
+   | .. _boardMenuDetect:                                                                                                                             |
+   | .. figure:: images/BoardMenu/detect.png                                                                                                          |
+   |    :align: center                                                                                                                                |
+   |                                                                                                                                                  | 
+   |    Device Detection Results                                                                                                                      |
+   |                                                                                                                                                  |
+   +--------------------------------------------------------------------------------------------------------------------------------------------------+
+
+  
+
+Settings Menu
+-------------
+
+This menu can be used to configure device and application parameters.
+
+* **Advanced Settings:** (:numref:`settingsMenuAdvancedSettings`) Advanced users can select from a list the visible tools and memory sections in tools. 
+  Non advanced users will be able to see only the default set of the tools. Note that some tools are only available for certain device families. 
+  These tools cannot be activated from the advanced settings menu if the selected device is not a member of the family for which the tool is available.
+* **Device Settings:** (:numref:`settingsMenuDeviceSettings`) User can specify the size of the Flash attached to the device that is being currently used. 
+  The menu popup dialog initially indicates the default Flash size for the selected device. 
+  The user can change this value in case a non default flash is being used. 
+  Flash size value is saved and will be used again for the same device family in subsequent SmartSnippets\ |trade| Toolbox sessions.
+
+.. _settings_menu:
+.. table:: Settings Menu
+   :name: Settings Menu 
+   
+   +--------------------------------------------------------+-------------------------------------------------------+
+   |                                                        |                                                       |        
+   +--------------------------------------------------------+-------------------------------------------------------+
+   | .. _settingsMenuAdvancedSettings:                      | .. _settingsMenuDeviceSettings:                       |
+   | .. figure:: images/SettingsMenu/advancedSettings.png   | .. figure:: images/SettingsMenu/deviceSettings.png    |
+   |    :align: center                                      |    :align: center                                     |
+   |                                                        |                                                       | 
+   |    Advanced Settings Menu                              |    Device Settings Menu                               |
+   |                                                        |                                                       |
+   +--------------------------------------------------------+-------------------------------------------------------+
+
+
+Help Menu
+---------
+
+User can access via this menu application documents and update the application, if updates are available.
+
+* **User Guide (html):** Opens this User Manual.
+
+* **License Info:** Opens the license document.
+
+* **Release Notes:** Opens the Release Notes document.
+
+* **Feedback:** Opens a URL at Renesas portal to provide feedback for the application.
+
+* **About:** Application information. 
+
+* **Check for Updates:** Checks for application updates. More info on :ref:`app_updates` section.
+

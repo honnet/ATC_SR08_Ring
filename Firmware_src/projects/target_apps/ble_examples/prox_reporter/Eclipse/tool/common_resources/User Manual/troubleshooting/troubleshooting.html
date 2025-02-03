@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html class="writer-html4" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>10. Troubleshooting &mdash; UM-B-083</title><link rel="stylesheet" href="../_static/css/lpc_cs_theme.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/custom.css" type="text/css" /><link rel="shortcut icon" href="../_static/favicon.ico"/>
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+        <script type="text/javascript" src="../_static/language_data.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="11. Appendices" href="../appendices/index.html" />
+    <link rel="prev" title="9.8. Working with multiple projects" href="../app_help/multiple_projects.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../index.html"><img src="../_static/V-Reverse.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../inst_guide/inst_guide.html">1. Installation Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../getting_started/getting_started.html">2. Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../programmer_oper/index.html">3. Programmer Operations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../estimator/index.html">4. Estimator Operations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../manager_oper/index.html">5. Manager Operations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../monitor_oper/index.html">6. Monitor Operations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../configurator/index.html">7. Configurator Operations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../cli/command_line_if.html">8. CLI implementation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../app_help/index.html">9. Application Help</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">10. Troubleshooting</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#error-2nd-stage-bootloader-rejected-105-on-connect-or-booter">10.1. Error “2nd stage bootloader rejected (-105)” on Connect or Booter</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#error-message-on-not-supporting-armv8-m-architecture">10.2. Error message on not supporting ARMv8-M architecture</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#warning-on-cli-interface-running-from-windows-warning-could-not-open-create-prefs-root-node-software-javasoft-prefs-at-root-0x80000002-windows-regcreatekeyex">10.3. Warning on CLI interface running from windows: WARNING: Could not open/create prefs root node Software\JavaSoft\Prefs at root 0x80000002. Windows RegCreateKeyEx…</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#firmware-file-in-hex-format-does-not-start-running-when-downloading-to-the-board">10.4. Firmware file in Hex format does not start running when downloading to the board</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#error-message-during-verification-after-erase-or-burn">10.5. Error message during verification after erase or burn</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#timeout-error-when-working-with-large-flash-memory-on-jtag">10.6. Timeout error when working with large flash memory on JTAG</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#flash-code-flash-data-content-read-is-0x00">10.7. Flash Code / Flash Data : Content read is 0x00</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../appendices/index.html">11. Appendices</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../disclaimers_contact.html">12. Disclaimers &amp; Contact info</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">UM-B-083</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+      <li>10. Troubleshooting</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <div class="section" id="troubleshooting">
+<h1>10. Troubleshooting<a class="headerlink" href="#troubleshooting" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="error-2nd-stage-bootloader-rejected-105-on-connect-or-booter">
+<h2>10.1. Error “2nd stage bootloader rejected (-105)” on Connect or Booter<a class="headerlink" href="#error-2nd-stage-bootloader-rejected-105-on-connect-or-booter" title="Permalink to this headline">¶</a></h2>
+<p>Should the following messages <code class="docutils literal notranslate"><span class="pre">Could</span> <span class="pre">not</span> <span class="pre">connect</span> <span class="pre">to</span> <span class="pre">device.</span> <span class="pre">read</span> <span class="pre">from</span> <span class="pre">QSPI</span> <span class="pre">failed:</span> <span class="pre">2nd</span>
+<span class="pre">stage</span> <span class="pre">bootloader</span> <span class="pre">rejected</span> <span class="pre">(-105)</span></code> been noticed while executing SmartSnippets Toolbox
+commands, using the UART interface on a Basic DK, please follow the next steps to resolve the
+issue.</p>
+<p><strong>Step 1</strong> : Install SEGGER Jlink v6.12i or later and Run JLink Configurator</p>
+<p><strong>Step 2</strong> : Right click on the Jlink product detected and update firmware (if needed) Right click on the Jlink product detected and select “Configure”. In the pop up window select “Enable” in the Virtual Com Port options</p>
+<p><strong>Step 3</strong> : Start J-Link Commander –&gt; Confirm the firmware update Enter “wconf 0x8E 0xFB” in order to change the TX drive behavior Power-Cycle the hardware in order to apply the change</p>
+</div>
+<div class="section" id="error-message-on-not-supporting-armv8-m-architecture">
+<h2>10.2. Error message on not supporting ARMv8-M architecture<a class="headerlink" href="#error-message-on-not-supporting-armv8-m-architecture" title="Permalink to this headline">¶</a></h2>
+<p>This appeared on DA1469x but may appear on other families too.
+User tries to open a connection with JTAG and the following message occur:</p>
+<div class="figure align-center" id="id2">
+<span id="jlink-error-armv8-m"></span><img alt="../_images/jlink_error_armv8-m.png" src="../_images/jlink_error_armv8-m.png" />
+<p class="caption"><span class="caption-number">Figure 159 </span><span class="caption-text">Error connecting with JTAG</span></p>
+</div>
+<p>If user press OK Toolbox opens with errors reading specific addresses.</p>
+<ul class="simple">
+<li>Close SmartSnippets Toolbox application</li>
+<li>From command prompt move into JLink installation folder and run JLink executable (JLink.exe for windows)</li>
+<li>A popup message requesting firmware update should occur.</li>
+<li>Press yes to proceed with firmware upgrade</li>
+<li>Close command prompt and try to connect with Toolbox again.</li>
+</ul>
+</div>
+<div class="section" id="warning-on-cli-interface-running-from-windows-warning-could-not-open-create-prefs-root-node-software-javasoft-prefs-at-root-0x80000002-windows-regcreatekeyex">
+<h2>10.3. Warning on CLI interface running from windows: WARNING: Could not open/create prefs root node Software\JavaSoft\Prefs at root 0x80000002. Windows RegCreateKeyEx…<a class="headerlink" href="#warning-on-cli-interface-running-from-windows-warning-could-not-open-create-prefs-root-node-software-javasoft-prefs-at-root-0x80000002-windows-regcreatekeyex" title="Permalink to this headline">¶</a></h2>
+<p>This is a known Java issue <a class="reference external" href="https://bugs.java.com/bugdatabase/view_bug.do?bug_id=6790382">https://bugs.java.com/bugdatabase/view_bug.do?bug_id=6790382</a></p>
+<p>It does not affect the SmartSnippets™ Toolbox functionality.</p>
+<p>However, to get rid of this warning the user can follow these steps:</p>
+<ul class="simple">
+<li>From Start Menu type regedit into the run search field.</li>
+<li>Navigate to path HKEY_LOCAL_MACHINE\Software\JavaSoft (on Windows 10 the path seems to be here: HKEY_LOCAL_MACHINE\Software\WOW6432Node\JavaSoft)</li>
+<li>Right click on the JavaSoft folder and click on New -&gt; Key</li>
+<li>Name the new Key Prefs</li>
+</ul>
+</div>
+<div class="section" id="firmware-file-in-hex-format-does-not-start-running-when-downloading-to-the-board">
+<h2>10.4. Firmware file in Hex format does not start running when downloading to the board<a class="headerlink" href="#firmware-file-in-hex-format-does-not-start-running-when-downloading-to-the-board" title="Permalink to this headline">¶</a></h2>
+<p>SmartSnippets™ Toolbox has its own hex file parser to convert .hex files into binaries before download then to the board.</p>
+<p>If this fails try to download the .bin version of the firmware or convert .hex to .bin with the hex2bin utility available
+in installation folder e.g. <em>C:\DiaSemi\SmartSnippetsStudio2.0.11\Toolbox\common_resources\firmware_upload\hex2bin.exe</em> or
+<em>C:\Program Files (x86)\SmartSnippetsToolbox\SmartSnippetsToolbox5.0.10\common_resources\firmware_upload\hex2bin.exe</em></p>
+</div>
+<div class="section" id="error-message-during-verification-after-erase-or-burn">
+<h2>10.5. Error message during verification after erase or burn<a class="headerlink" href="#error-message-during-verification-after-erase-or-burn" title="Permalink to this headline">¶</a></h2>
+<p>Check that <em>end address</em> do not exceed real physical memory length.</p>
+</div>
+<div class="section" id="timeout-error-when-working-with-large-flash-memory-on-jtag">
+<h2>10.6. Timeout error when working with large flash memory on JTAG<a class="headerlink" href="#timeout-error-when-working-with-large-flash-memory-on-jtag" title="Permalink to this headline">¶</a></h2>
+<p>Tool uses a default timeout value of 10000ms when waiting for a response from the board on JTAG communication.
+This value is enough for e.g. a 8Mbit flash size. When working with larger flash increase timeout by editing
+file <code class="docutils literal notranslate"><span class="pre">C:\Users\&lt;user&gt;\SmartSnippetsToolbox\properties.txt</span></code>.</p>
+<p>Add the following lines.</p>
+<blockquote>
+<div><div class="literal-block-wrapper docutils container" id="id1">
+<span id="change-jtag-communication-timeout"></span><div class="code-block-caption"><span class="caption-number">Code 5 </span><span class="caption-text">Change JTAG communication timeout</span><a class="headerlink" href="#id1" title="Permalink to this code">¶</a></div>
+<div class="highlight-properties notranslate"><div class="highlight"><pre><span></span><span class="na">JTAG_READ_TIMEOUT</span> <span class="o">=</span> <span class="s">50000</span>
+<span class="na">JTAG_WRITE_TIMEOUT</span> <span class="o">=</span> <span class="s">50000</span>
+</pre></div>
+</div>
+</div>
+</div></blockquote>
+<p>A value of 50000 should be enough for a 32Mbit flash size. After changes, restart application.</p>
+</div>
+<div class="section" id="flash-code-flash-data-content-read-is-0x00">
+<h2>10.7. Flash Code / Flash Data : Content read is 0x00<a class="headerlink" href="#flash-code-flash-data-content-read-is-0x00" title="Permalink to this headline">¶</a></h2>
+<p>If Flash Code tool or Flash Data tool returns 0x00 instead 0xFF (empty memory on most devices) or user data try the following:</p>
+<ol class="arabic">
+<li><p class="first">Open <em>Board Setup</em> tool and check <em>SPI Flash pin configuration</em></p>
+</li>
+<li><p class="first">From the main menu select Board → Reset Device. This command will reset the device using JTAG interface. Afterwards press the connect button again.</p>
+<div class="figure align-center" id="id3">
+<span id="content-read-0"></span><img alt="../_images/content_read_0.png" src="../_images/content_read_0.png" />
+<p class="caption"><span class="caption-number">Figure 160 </span><span class="caption-text">Reset device</span></p>
+</div>
+</li>
+<li><p class="first">Power cycle the board. Remove the board’s USB cable from host and plug in again.</p>
+</li>
+</ol>
+</div>
+</div>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="../app_help/multiple_projects.html" class="btn btn-neutral float-left" title="9.8. Working with multiple projects" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../appendices/index.html" class="btn btn-neutral float-right" title="11. Appendices" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023, Renesas Electronics Corporation.</p>
+  </div>
+
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+    <!-- Theme Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-ZXND4SB7CL"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-ZXND4SB7CL', {
+          'anonymize_ip': false,
+      });
+    </script> 
+
+</body>
+</html>

@@ -1,0 +1,49 @@
+.. _graph_fps_est:
+
+======================
+Graphics FPS Estimator
+======================
+
+.. note::
+
+	This tool applies to DA1470x chip family.
+
+This is considered as an advanced tool. Enable it from menu *Settings -> Advanced Settings*.
+
+Graphics FPS Estimator allows user to estimate the typically and maximum achievable frame rate (frames/second) for updating a display based on a number of parameters the user controls as well as taking into consideration the internal architectural constraints and overheads of each SoC. The tool is available for DA1470x family devices.
+
+
+.. _gfxFps:
+.. figure:: images/gfxFps.png
+   :align: center
+   
+   Graphics FPS Estimator
+
+The tool uses an xml file, containing available GUI options, default values and accepted value ranges, to populate the GUI. The xml file is family specific. The GUI allows the user to configure the following parameters:
+
+**System Clock Frequency**: The user is able to select the clock frequency from a list of available frequencies.
+
+**Graphics Processing Unit**: The user can configure the frame buffers that are actively manipulated by the GPU and specify the memory where the graphics resources will be stored. 
+Furthermore the user can select from a list of available graphics scenarios the one that will be used for the calculation. 
+The scenario configures calculation parameters such as overdraw factors for GPU and graphics resources objects, percentage of bus conflicts e.t.c.
+
+**Display Controller**: The user can specify the number of layers that the display controller is supporting and configure the memory used as a storage for each layer. Available options are 1 or 2 layers. 
+The first layer will always be the active one, namely a frame buffer which the GPU is manipulating, while the second one will be static icons or even background images which the display controller is blending on top of the actual frame buffer prepared by the GPU. 
+Note that for devices that support both Quad SPI PSRAM and Octa SPI PSRAM only one of them (Quad or Octa) can be selected in the fields under Graphics Processing Unit section or Display Controller section.
+
+**Display Interface**: The user is able to select the actual physical interface that connects to the external display among a list of available interfaces. 
+The user can also configure the interface frequency and in case of MIPI DSI the number of available DSI lanes.
+
+**Display Resolution**: The user can specify the display resolution in terms of x and y pixels and also the internal and the external color depth. 
+Note that the internal color depth should always be greater or equal to the external color depth.
+
+**Bus Arbitration**: The user can specify the priorities of the GPU DMA and the LCDC DMA in the DMA bus, with 1 being the highest priority. 
+Note that both priorities cannot have the same value.
+
+
+The tool calculates the typically achievable frames per second, taking all overheads into consideration, and the maximum achievable frames per second, assuming an ideal configuration. The calculation is triggered automatically when the user updates any of the UI components. 
+The tool buttons provide the following options to the user:
+
+* **Clear**: Resets all GUI components to their default value. The default values are read from the xml file used by the tool.
+* **Save Estimation Scenario**: Saves user selections and values in the GUI to an xml file.
+* **Open Estimation Scenario**: Loads a previously saved scenario, updates the GUI with the user selections and values and runs the calculation logic.

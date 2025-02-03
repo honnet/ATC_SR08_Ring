@@ -1,0 +1,10 @@
+
+.tools-table tr td:first-child{
+   font-weight: bolder;
+   text-align: center;
+}
+
+.com-dev-oper{
+   font-weight: bolder;
+   font-style: italic;
+}

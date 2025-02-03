@@ -1,0 +1,27 @@
+.. _io_manager:
+
+==========
+IO Manager
+==========
+
+.. note::
+
+	This tool applies to DA1469x, DA1470x and DA1459x family devices.
+
+
+This tool allows the user to configure GPIO pins. The available pins differ per family and IO Manager tool reads family specific xml files to retrieve the list of pins.
+When IO Manager is opened, an extra tab named *RF Master* is added to the ribbon which contains useful utilities. More info here: :ref:`RF_Master_Ribbon`.
+
+
+.. _ioManager:
+.. figure:: images/ioManager.png
+   :align: center
+   
+   IO Manager tool
+   
+
+.. _da1469xReadGpioLog:
+.. figure:: images/da1469xReadGpioLog.png
+   :align: center
+   
+   Sample log output for read gpio command for GPIO P0_04

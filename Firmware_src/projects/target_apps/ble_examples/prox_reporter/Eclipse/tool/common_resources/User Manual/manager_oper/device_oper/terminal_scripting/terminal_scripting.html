@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html class="writer-html4" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>5.5. Terminal Scripting &mdash; UM-B-083</title><link rel="stylesheet" href="../../../_static/css/lpc_cs_theme.css" type="text/css" />
+    <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/css/custom.css" type="text/css" /><link rel="shortcut icon" href="../../../_static/favicon.ico"/>
+  <!--[if lt IE 9]>
+    <script src="../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  <script id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../../../_static/jquery.js"></script>
+        <script type="text/javascript" src="../../../_static/underscore.js"></script>
+        <script type="text/javascript" src="../../../_static/doctools.js"></script>
+        <script type="text/javascript" src="../../../_static/language_data.js"></script>
+    <script src="../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+    <link rel="next" title="5.6. UART Terminal" href="../uart_terminal/uart_terminal.html" />
+    <link rel="prev" title="5.4. Registers Access" href="../register_access/register_access.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../../../index.html"><img src="../../../_static/V-Reverse.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../../inst_guide/inst_guide.html">1. Installation Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../getting_started/getting_started.html">2. Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../programmer_oper/index.html">3. Programmer Operations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../estimator/index.html">4. Estimator Operations</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../../index.html">5. Manager Operations</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../../common_oper/rf_master/rf_master.html">5.1. RF Master</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../common_oper/xtal_manager/xtal_manager.html">5.2. XTAL Manager</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../io_manager/io_manager.html">5.3. IO Manager</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../register_access/register_access.html">5.4. Registers Access</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">5.5. Terminal Scripting</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#terminal-window-and-command-prompt">5.5.1. Terminal Window and Command Prompt</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#firmware-download">5.5.2. Firmware download</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#load-batch-file">5.5.3. Load batch file</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#formatter">5.5.4. Formatter</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#console-settings">5.5.5. Console Settings</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#uart-connection">5.5.6. UART Connection</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#batch-file-structure">5.5.7. Batch File Structure</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#csv-formatting-file-structure">5.5.8. CSV Formatting File Structure</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#more-information">5.5.9. More Information</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../uart_terminal/uart_terminal.html">5.6. UART Terminal</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../monitor_oper/index.html">6. Monitor Operations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../configurator/index.html">7. Configurator Operations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../cli/command_line_if.html">8. CLI implementation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../app_help/index.html">9. Application Help</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../troubleshooting/troubleshooting.html">10. Troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../appendices/index.html">11. Appendices</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../disclaimers_contact.html">12. Disclaimers &amp; Contact info</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">UM-B-083</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="../../index.html">5. Manager Operations</a> &raquo;</li>
+      <li>5.5. Terminal Scripting</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <div class="section" id="terminal-scripting">
+<span id="term-script"></span><h1>5.5. Terminal Scripting<a class="headerlink" href="#terminal-scripting" title="Permalink to this headline">¶</a></h1>
+<p>This is considered as an advanced tool. Enable it from menu <em>Settings -&gt; Advanced Settings</em>.</p>
+<p>Terminal Scripting tool is a Terminal Emulation tool bundled with SmartSnippents Toolbox that
+enables users download a firmware and interact with a target device in real time.</p>
+<p>There are two different modes that this tool can be used.</p>
+<ul class="simple">
+<li>Standard execution mode, that enables users transmit commands to be executed on target device one by one and receive the response of each of these commands.</li>
+<li>Auto-execution mode, that enables users specify a “batch-file” to hold a list of commands and properties that will be executed automatically by the tool as a batch. In this case there is a set of meta-tag properties that a user can specify to be used with that file.</li>
+</ul>
+<p>Terminal scripting is implemented in a command-agnostic way. Nevertheless, as an example, there is reference firmware
+provided by Renesas that is using a specific set of commands known as “Codeless AT Commands”. All transmitted commands
+should comply with the ASCII format.</p>
+<p>Communication for downloading the firmware is happening over JTAG or UART interface, while for interacting with
+the target in terms of transmitting commands &amp; receiving responses, a serial UART interface in being used.</p>
+<p>User can access Terminal Scripting by selecting the respective tool/icon found under the Tools tab of the
+ribbon menu.</p>
+<div class="figure align-center" id="id1">
+<span id="ts1"></span><img alt="../../../_images/Terminal_Scripting.png" src="../../../_images/Terminal_Scripting.png" />
+<p class="caption"><span class="caption-number">Figure 114 </span><span class="caption-text">Default Terminal Scripting menu</span></p>
+</div>
+<div class="section" id="terminal-window-and-command-prompt">
+<h2>5.5.1. Terminal Window and Command Prompt<a class="headerlink" href="#terminal-window-and-command-prompt" title="Permalink to this headline">¶</a></h2>
+<p>The Terminal Window shows the queue of commands sent to the device along with the received responses,
+while diskette icon found on the upper right corner of the view enables the user to export the collected
+information to a flat text file. Further to that, users can choose to clear information depicted in
+terminal window by clicking on the ‘Clear History’ button located next to the “save-as”/diskette icon.</p>
+<p>User can type in commands in the text input filed and either press Enter to send them or just click the
+‘Send’ button.</p>
+<div class="figure align-center" id="id2">
+<span id="ts-tw-cmd"></span><img alt="../../../_images/Terminal_Scripting_Window.png" src="../../../_images/Terminal_Scripting_Window.png" />
+<p class="caption"><span class="caption-number">Figure 115 </span><span class="caption-text">Terminal Window and Command Prompt</span></p>
+</div>
+</div>
+<div class="section" id="firmware-download">
+<h2>5.5.2. Firmware download<a class="headerlink" href="#firmware-download" title="Permalink to this headline">¶</a></h2>
+<p>To download and run a firmware file in SysRAM, press the ‘Browse’ button to select the appropriate
+.hex, .ihex or .bin file to download. After selecting a file, press the ‘Download to SysRAM’ button
+for the actual downloading process to start.</p>
+<p>The user can also run the firmware in flash: downloading and launching a file in flash may be a more
+complicated task, so user is welcome to use the dedicated flash programming tools before starting
+the Terminal Scripting tool. In this case, there is no need to press the ‘Browse’ or Download to SysRAM’ buttons</p>
+<div class="figure align-center" id="id3">
+<span id="fw-download"></span><img alt="../../../_images/Terminal_Scripting_Dowload.png" src="../../../_images/Terminal_Scripting_Dowload.png" />
+<p class="caption"><span class="caption-number">Figure 116 </span><span class="caption-text">Firmware download</span></p>
+</div>
+</div>
+<div class="section" id="load-batch-file">
+<h2>5.5.3. Load batch file<a class="headerlink" href="#load-batch-file" title="Permalink to this headline">¶</a></h2>
+<p>By pressing the ‘Browse’ button, the user is presented with a file browser to select a batch file
+of commands to execute on target.</p>
+<p>User can specify a global fixed delay for the tool to wait once a command is being transmitted
+and before proceeding with the next one found in the file. Default value is predefined at 500 mSec.</p>
+<p>User can start batch job execution by clicking the ‘Run’ button. In case that provided file is not
+in expected format, batch job will immediately abort and a pop up window will explain
+in more detail the issue found. If no issue is found, execution will continue normally by respecting
+the provided ‘Global fixed delay’, while the ‘Run’ button will remain disabled until all commands in
+the batch-file get transmitted.</p>
+<p>User can abort batch job execution by clicking the ‘Abort’ button any time. Also users can track the
+flow of execution by selecting ‘Debug Batch Execution’ option. When this option is active messages will
+appear on the Log panel providing information about the state of execution. During a debug execution, a
+20 mile seconds overhead is added to the delay time between transmuted commands for every metatag
+found before the next command is send.</p>
+<div class="figure align-center" id="id4">
+<span id="bf-loader"></span><img alt="../../../_images/Terminal_Scripting_LBF.png" src="../../../_images/Terminal_Scripting_LBF.png" />
+<p class="caption"><span class="caption-number">Figure 117 </span><span class="caption-text">Batch file loader</span></p>
+</div>
+</div>
+<div class="section" id="formatter">
+<h2>5.5.4. Formatter<a class="headerlink" href="#formatter" title="Permalink to this headline">¶</a></h2>
+<p>User can customize how messages are displayed on the Terminal Window by provides a simply .csv file
+holding rules about color of the messages and the replacement of specify text. These rules are all
+gathered on one single file. The order of rule appearance is taken into a count when the replacement
+and the coloring is applied. First all replace rules are applied top to bottom and then the coloring
+rules are applied, again top to bottom.</p>
+<p>For the formatter to take effect and manipulate the received message a ‘new line’ (\n) character must
+get received at the end of every message. Then and only then formatter will take effect and only on the
+last received message. Messages are spited by the formatter by ‘\n’. Previously formatted data will not
+get changed if a new formatter is provided.</p>
+<div class="figure align-center" id="id5">
+<span id="ts-formatter"></span><img alt="../../../_images/Terminal_Scripting_Formatter.png" src="../../../_images/Terminal_Scripting_Formatter.png" />
+<p class="caption"><span class="caption-number">Figure 118 </span><span class="caption-text">CSV file formatter</span></p>
+</div>
+</div>
+<div class="section" id="console-settings">
+<h2>5.5.5. Console Settings<a class="headerlink" href="#console-settings" title="Permalink to this headline">¶</a></h2>
+<p>Users can customize the way messages appear on Terminal Window throw Console Settings.</p>
+<p>When the ‘Display timestamp’ option found selected, every transmitted message will display
+the time that it was received by the Terminal Spiting. The timestamp has the following form
+<code class="docutils literal notranslate"><span class="pre">Year.Month.Day.Minute.Second.MileSecond</span></code>.</p>
+<p>When the ‘Local echo’ option found selected, commands that get transmitted will appear instantly
+within the Terminal Window, accompanied by the ‘–&gt;’ marker.</p>
+<p>When the ‘Apply text replacement’ option found selected, every text found matching any rule
+from the .csv file it will get replaced by the corresponding text.</p>
+<p>Similar to the above when the ‘Apply coloring’ option found selected, every text matching
+any rule it will get the appropriate color</p>
+<div class="figure align-center" id="id6">
+<span id="ts-console-settings"></span><img alt="../../../_images/Terminal_Scripting_Console_Settings.png" src="../../../_images/Terminal_Scripting_Console_Settings.png" />
+<p class="caption"><span class="caption-number">Figure 119 </span><span class="caption-text">Console Settings</span></p>
+</div>
+</div>
+<div class="section" id="uart-connection">
+<span id="uartconnection"></span><h2>5.5.6. UART Connection<a class="headerlink" href="#uart-connection" title="Permalink to this headline">¶</a></h2>
+<p>User can define UART connection settings for the terminal, specific to the application that is
+currently running on target device.</p>
+<div class="figure align-center" id="id7">
+<span id="ts-uart-connection"></span><img alt="../../../_images/Terminal_Scripting_UART_Connection.png" src="../../../_images/Terminal_Scripting_UART_Connection.png" />
+<p class="caption"><span class="caption-number">Figure 120 </span><span class="caption-text">UART connection</span></p>
+</div>
+<p>The ‘Connect’ button allow the user to manually allocate the UART port. The ‘Connect’
+button is disable when a connection is already established. When the user downloads a firmware to the
+target or sends a command to the target or tries to run a batch file the Terminal Scripting tool auto-connects
+to the UART port. Since Terminal Scripting tool is working interactively and keeps the UART port open,
+a ‘Release’ button is provided to allow users easily release the UART port so that it is available for
+all tools and applications. The ‘Release’ is enable when there is an established connection.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">If the user unplugs the target and then re-plugs it, while there is an established connection,
+the user won’t be able to communicate with the target. If this happens the user should release
+UART port and after that should re-connect to the target.</p>
+</div>
+<p>If no UART port is provided for the communication (see <a class="reference internal" href="../../../appendices/detailed_interface.html#boardmenuuart"><span class="std std-ref">UART Menu</span></a>), then Terminal Scripting will find all available UART
+ports and it will ask users to select one. If only one it was found, then it will automatically connect to
+that one. In either case info regarding the connection will be provided to users.</p>
+<p>Users can customize/configure the current communication with the UART port throw ‘Settings’ button. For
+the changes to be applied to the communication channel users should press the ‘OK’ button.</p>
+<div class="figure align-center" id="id8">
+<span id="ts-uart-settings"></span><img alt="../../../_images/Terminal_Scripting_UART_Settings.png" src="../../../_images/Terminal_Scripting_UART_Settings.png" />
+<p class="caption"><span class="caption-number">Figure 121 </span><span class="caption-text">Settings for Terminal Scripting</span></p>
+</div>
+</div>
+<div class="section" id="batch-file-structure">
+<h2>5.5.7. Batch File Structure<a class="headerlink" href="#batch-file-structure" title="Permalink to this headline">¶</a></h2>
+<p>Batch file must follow a specific structure defined by the following rules:</p>
+<ol class="arabic">
+<li><p class="first">Every line in the batch file should be terminated with a proper line termination combination, for the file to be considered as valid (win -&gt; \r\n).</p>
+</li>
+<li><p class="first">A Batch file is holding lines of data that can be recognized either as a &lt;metadata block&gt;, a &lt;command block&gt; or an independent command to be transmitted as is.</p>
+</li>
+<li><p class="first">Tool is transmitting messages to the target in a commands-agnostic way, for that reason only well-known &lt;metadata blocks/tags&gt; can be recognized. Everything else will be handled automatically as a msg/command and will be forwarded to the target in an as-is basis.</p>
+</li>
+<li><p class="first">A &lt;metadata block&gt; can hold one or more &lt;metadata tags&gt; only, accompanied by their values. Should start directly with a ‘\’ (backslash) character, indicating the existence of at least one &lt;metadata tag&gt;.</p>
+</li>
+<li><p class="first">A &lt;metadata Tag&gt; is a descriptor provided with a list of ‘ ‘ (space) separated values as argument. Should always start with a single ‘\’ (backslash) character and is being terminated either from another &lt;metadata tag&gt; or once the end of line reached. &lt;metadata Tags&gt; can be found in a form one after the other, while &lt;metadata Tags&gt; and accompanied values should be followed always by a ‘ ‘ (space character) and this rule is applied till the end of line/end of block reached.</p>
+</li>
+<li><p class="first">&lt;metadata tags&gt; can get split to two different categories.</p>
+<ul class="simple">
+<li>Command-Specific Property metatags. This type of metatags gives unique properties to the next command that will get transmitted. If two or more metatags set the same property, the latest is used.</li>
+<li>Action specific metatags. This type of metatags are independent from commands. When an action metatag is encountered then the indicated action is taken. These metatags start ‘\&gt;’ and can not be at the same line with a command.</li>
+</ul>
+</li>
+<li><p class="first">&lt;metadata tags&gt; taken account for a command to be transmitted can be found in multiple lines before a command, in form of &lt;metadata blocks&gt; and/or after a command (within the same line), forming a &lt;command block&gt;.</p>
+</li>
+<li><p class="first">&lt;metadata tags&gt; provided in separate lines before a &lt;command block&gt; or independent command, will be consumed with the first appearance of a command to be transmitted (&lt;command block&gt; or independent command).</p>
+</li>
+<li><p class="first">A &lt;command block&gt; is starting with a command found in the beginning of the line, followed by a ‘ ‘ (space character) and a &lt;metadata block&gt;. After the first ‘\’ (backslash) character found, only &lt;metadata tags&gt; can be specified and till the end of lineblock reached.</p>
+</li>
+<li><p class="first">A ‘command’ can hold any alphanumeric string, but never the ‘\’ (backslash) character. If there is a ‘command’ that explicitly contains a ‘\’ character, then for this ‘command’ a special format should be followed and for that reason every ‘\’ character within the provided ‘command’ should be replaced with a double back slash combination one ‘\\’.</p>
+</li>
+<li><p class="first">Valid &lt;metadata Tags&gt; are summarized to the following:</p>
+<dl class="docutils">
+<dt>Property metatags:</dt>
+<dd><ul class="first last simple">
+<li>\delay [time in mSec]: If provided, and once the current command transmitted successfully, it will introduce a delay before the next command to be able to get transmitted to the target. This &lt;metadata Tags&gt; (if provided) will overcome global delay and prevail all other timing rules even if used in combination with other Tags. <code class="docutils literal notranslate"><span class="pre">\delay</span> <span class="pre">&lt;space</span> <span class="pre">character&gt;</span> <span class="pre">&lt;arithmetic</span> <span class="pre">value</span> <span class="pre">in</span> <span class="pre">mSec&gt;</span> <span class="pre">&lt;line</span> <span class="pre">termination</span> <span class="pre">sequence&gt;</span></code></li>
+<li>\comment [description text]: It can be provided only in a single&lt;metadata tag&gt; &lt;metadata block&gt; (one &lt;metadata bock&gt; per line with only one &lt;metadata tag&gt;). <code class="docutils literal notranslate"><span class="pre">\comment</span> <span class="pre">&lt;space</span> <span class="pre">character&gt;</span> <span class="pre">&lt;any</span> <span class="pre">alphanumeric</span> <span class="pre">string</span> <span class="pre">without</span> <span class="pre">a</span> <span class="pre">'\'</span> <span class="pre">character&gt;</span> <span class="pre">&lt;line</span> <span class="pre">termination</span> <span class="pre">sequence&gt;</span></code></li>
+</ul>
+</dd>
+<dt>Action metatags:</dt>
+<dd><ul class="first last simple">
+<li>\&gt;echo [description text]: If provided, it will inform tool that the provided description text needs to be displayed in a new line of the Terminal window. <code class="docutils literal notranslate"><span class="pre">\&gt;echo</span> <span class="pre">&lt;space</span> <span class="pre">character&gt;</span> <span class="pre">&lt;any</span> <span class="pre">alpha-arithmetic</span> <span class="pre">string</span> <span class="pre">without</span> <span class="pre">a</span> <span class="pre">'\'</span> <span class="pre">character&gt;</span> <span class="pre">&lt;line</span> <span class="pre">termination&gt;</span></code></li>
+<li>\&gt;label [name]: If this action meta-tag provided, it will not introduce any significant action than just to mark the targeted line with a label_name, in order for the \branch, \check metatag operation to properly use. <code class="docutils literal notranslate"><span class="pre">\&gt;label</span> <span class="pre">&lt;space</span> <span class="pre">character&gt;</span> <span class="pre">&lt;any</span> <span class="pre">alpha-arithmetic</span> <span class="pre">string</span> <span class="pre">without</span> <span class="pre">'\'</span> <span class="pre">-</span> <span class="pre">backslash</span> <span class="pre">or</span> <span class="pre">space</span> <span class="pre">character&gt;</span> <span class="pre">&lt;line</span> <span class="pre">termination&gt;</span></code></li>
+<li>\&gt;branch [labelName]: If this action meta-tag provided and label name exists in the batch file, then tool will record the current line location for this branch command and then It will jump to the location that the referenced labelName indicates (goto equivalent). Maximum number of branches that can be executed in real time is 10000. <code class="docutils literal notranslate"><span class="pre">\&gt;branch</span> <span class="pre">&lt;space</span> <span class="pre">character&gt;</span> <span class="pre">&lt;any</span> <span class="pre">alpha-arithmetic</span> <span class="pre">string</span> <span class="pre">without</span> <span class="pre">'\'</span> <span class="pre">-</span> <span class="pre">backslash</span> <span class="pre">or</span> <span class="pre">space</span> <span class="pre">character&gt;</span> <span class="pre">&lt;line</span> <span class="pre">termination&gt;</span></code></li>
+<li>\&gt;check [labelName] [respSubString]: If this action meta-tag provided, it will try to check if the provided sub-string is part of the last received line-terminated response and if there is a match, it will execute a \branch operation to the provided label Name. For \check action meta-tag, no nested branches are being supported. String comparison will happen over the originally received message – prior to any textual replacement. <code class="docutils literal notranslate"><span class="pre">\&gt;check</span> <span class="pre">&lt;space</span> <span class="pre">character&gt;</span> <span class="pre">&lt;any</span> <span class="pre">alpha-arithmetic</span> <span class="pre">string</span> <span class="pre">without</span> <span class="pre">'\'</span> <span class="pre">-</span> <span class="pre">backslash</span> <span class="pre">or</span> <span class="pre">space</span> <span class="pre">character&gt;</span> <span class="pre">&lt;space</span> <span class="pre">character&gt;</span> <span class="pre">&lt;any</span> <span class="pre">alpha-arithmetic</span> <span class="pre">string</span> <span class="pre">without</span> <span class="pre">a</span> <span class="pre">'\'</span> <span class="pre">character&gt;</span> <span class="pre">&lt;line</span> <span class="pre">termination&gt;</span></code></li>
+<li>\&gt;return: If this action meta-tag provided, it will try to revert execution pointer to the last processed \branch, \check action meta-tag, and it will continue execution from there. Maximum number of return action meta-tags that can be executed in real time, are directly related to the number of branch action meta-tags currently used. Maximum execution is restricted to 10000. <code class="docutils literal notranslate"><span class="pre">\&gt;return</span> <span class="pre">&lt;line</span> <span class="pre">termination&gt;</span></code></li>
+</ul>
+</dd>
+</dl>
+</li>
+</ol>
+</div>
+<div class="section" id="csv-formatting-file-structure">
+<h2>5.5.8. CSV Formatting File Structure<a class="headerlink" href="#csv-formatting-file-structure" title="Permalink to this headline">¶</a></h2>
+<p>CSV file must follow a specific structure defined by the following rules:</p>
+<ol class="arabic simple">
+<li>Needs to have exactly three columns.</li>
+<li>The first column indicates the type of rule that the line represents.<ul>
+<li>The keyword “replace” indicates that the line should be formatted to express values for textual replacement.</li>
+<li>The keyword “color” indicates that the line should be formatted to express values for textual coloring.</li>
+</ul>
+</li>
+<li>The second one holds a regular expression (regex) that matches the textual rule we need to search for in the received message.</li>
+<li>The last one, holds different value type per case:<ul>
+<li>In case of a replacement rule should hold a replacement string.</li>
+<li>In case of a coloring rule it should hold the color name as a string to be applied.</li>
+</ul>
+</li>
+</ol>
+<p>The following list of colors is supported (standard web color):</p>
+<ol class="arabic simple">
+<li>white</li>
+<li>silver</li>
+<li>gray</li>
+<li>red</li>
+<li>maroon</li>
+<li>yellow</li>
+<li>olive</li>
+<li>lime</li>
+<li>green</li>
+<li>aqua</li>
+<li>teal</li>
+<li>blue</li>
+<li>navy</li>
+<li>fuchsia</li>
+<li>purple</li>
+<li>black</li>
+</ol>
+</div>
+<div class="section" id="more-information">
+<h2>5.5.9. More Information<a class="headerlink" href="#more-information" title="Permalink to this headline">¶</a></h2>
+<p>For more information refer to <a href="https://www.renesas.com/us/en/software-tool/smartbond-codeless-commands" target="_blank">SmartBond&trade; - CodeLess&trade; AT Commands</a></p>
+</div>
+</div>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="../register_access/register_access.html" class="btn btn-neutral float-left" title="5.4. Registers Access" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../uart_terminal/uart_terminal.html" class="btn btn-neutral float-right" title="5.6. UART Terminal" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023, Renesas Electronics Corporation.</p>
+  </div>
+
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+    <!-- Theme Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-ZXND4SB7CL"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-ZXND4SB7CL', {
+          'anonymize_ip': false,
+      });
+    </script> 
+
+</body>
+</html>

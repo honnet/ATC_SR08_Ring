@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html class="writer-html4" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>3.8. Proprietary Header Programmer &mdash; UM-B-083</title><link rel="stylesheet" href="../../../_static/css/lpc_cs_theme.css" type="text/css" />
+    <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/css/custom.css" type="text/css" /><link rel="shortcut icon" href="../../../_static/favicon.ico"/>
+  <!--[if lt IE 9]>
+    <script src="../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  <script id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../../../_static/jquery.js"></script>
+        <script type="text/javascript" src="../../../_static/underscore.js"></script>
+        <script type="text/javascript" src="../../../_static/doctools.js"></script>
+        <script type="text/javascript" src="../../../_static/language_data.js"></script>
+    <script src="../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+    <link rel="next" title="3.9. OTA Services (over the air services)" href="../ota_services/ota_services.html" />
+    <link rel="prev" title="3.7. EEPROM Programmer" href="../eeprom/eeprom.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../../../index.html"><img src="../../../_static/V-Reverse.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../../inst_guide/inst_guide.html">1. Installation Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../getting_started/getting_started.html">2. Getting Started</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../../index.html">3. Programmer Operations</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../../common_oper/flash_code/flash_code.html">3.1. Flash Code</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../common_oper/otp/otp.html">3.2. OTP</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../common_oper/ram/ram.html">3.3. RAM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../common_oper/flash_data/flash_data.html">3.4. Flash Data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../suota/suota.html">3.5. SUOTA</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../qspi_part_table/qspi_part_table.html">3.6. QSPI Partition Table</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../eeprom/eeprom.html">3.7. EEPROM Programmer</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">3.8. Proprietary Header Programmer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ota_services/ota_services.html">3.9. OTA Services (over the air services)</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../estimator/index.html">4. Estimator Operations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../manager_oper/index.html">5. Manager Operations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../monitor_oper/index.html">6. Monitor Operations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../configurator/index.html">7. Configurator Operations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../cli/command_line_if.html">8. CLI implementation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../app_help/index.html">9. Application Help</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../troubleshooting/troubleshooting.html">10. Troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../appendices/index.html">11. Appendices</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../disclaimers_contact.html">12. Disclaimers &amp; Contact info</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">UM-B-083</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="../../index.html">3. Programmer Operations</a> &raquo;</li>
+      <li>3.8. Proprietary Header Programmer</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <div class="section" id="proprietary-header-programmer">
+<span id="prop-head-prog"></span><h1>3.8. Proprietary Header Programmer<a class="headerlink" href="#proprietary-header-programmer" title="Permalink to this headline">¶</a></h1>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">This tool applies to DA14580/581/583, DA14585/6 and DA1453x chip family.</p>
+</div>
+<p>This is considered as an advanced tool. Enable it from menu <em>Settings -&gt; Advanced Settings</em></p>
+<p>Proprietary Header Programmer is used for burning custom header or NVDS to EEPROM or SPI Flash Memory.</p>
+<div class="figure align-center" id="id1">
+<span id="header-nvds-programmer"></span><img alt="../../../_images/header_nvds_programmer.png" src="../../../_images/header_nvds_programmer.png" />
+<p class="caption"><span class="caption-number">Figure 51 </span><span class="caption-text">Proprietary Header Programmer</span></p>
+</div>
+<p>The user first has to select the header model file. This is a txt file of the following format: &lt;number of bytes&gt; \t &lt;Parameter_type&gt; \t &lt;Parameter name&gt; \t &lt;Parameter description&gt;, where parameter type is “String” or “Integer” e.g.:</p>
+<div class="figure align-center" id="id2">
+<span id="modelformat"></span><img alt="../../../_images/modelFormat.png" src="../../../_images/modelFormat.png" />
+<p class="caption"><span class="caption-number">Figure 52 </span><span class="caption-text">Header model format</span></p>
+</div>
+<p>String parameters are patched with leading zeros, if their size is smaller than the number of bytes indicated by the 2nd column of the table shown above. Integer parameters are patched with trailing zeros.</p>
+<p>The selected model file and offset are saved to the project.sms file. The user can store a different model file and offset per memory type. Once a valid connection has been established and a valid model file has been loaded, the user will also be able to read / burn from / to the selected memory.</p>
+<ul>
+<li><p class="first"><strong>Connect</strong>: Special firmware is downloaded to the chip to allow the user interact with the selected memory. This is a mandatory step before enabling the other actions.</p>
+</li>
+<li><p class="first"><strong>Read</strong>: The sum of bytes mentioned at the ‘Size (bytes)’ column of the table shown above are read from the selected memory, starting from the specified offset. This offset cannot be greater than the maximum EEPROM/SPI Flash Memory size.</p>
+</li>
+<li><p class="first"><strong>Burn</strong>: Sector containing the selected memory offset is erased. Bytes at value column are burned to EEPROM/SPI Flash Memory at the selected memory offset.</p>
+</li>
+<li><p class="first"><strong>Update</strong>: <em>Update</em> button is used in order to update an SPI Flash sector with input data provided by the user. The following actions are performed when this button is pressed:</p>
+<blockquote>
+<div><ol class="arabic simple">
+<li>The contents of the SPI Flash sector containing the input offset are read and stored in byte array in RAM. Each sector’s size is 4KB (4096 bytes).</li>
+<li>Bytes starting at input offset inside the sector contents byte array are replaced with the byte array created by parsing the value columns of the table shown above.</li>
+<li>The byte array representing the updated sector data is burned at SPI Flash Memory at the sector starting address.</li>
+</ol>
+</div></blockquote>
+</li>
+<li><p class="first"><strong>Import</strong>: User can import the data to burn to the selected memory by pressing the <em>Import</em> button. User is advised to import a file that has been exported using the <em>Export</em> button of the Memory Header/NVDS Programmer tool. When a .hex or .ihex file is imported, it is checked that the total number of parameters and the number of bytes per parameter match the custom model that has been loaded. If they do not match, user cannot import the selected file. When a .bin file is imported, if the size of the file in bytes exceeds the sum of the bytes of the custom model, the extra bytes are ignored. When the size of the file is smaller than the expected number of bytes, according to the loaded custom model, bytes with the default value 0x00 are added to the end of the file bytes.</p>
+</li>
+<li><p class="first"><strong>Export</strong>: User can export the bytes shown at the <em>Value</em> column to a .bin,.ihex or .hex file.</p>
+</li>
+</ul>
+</div>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="../eeprom/eeprom.html" class="btn btn-neutral float-left" title="3.7. EEPROM Programmer" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../ota_services/ota_services.html" class="btn btn-neutral float-right" title="3.9. OTA Services (over the air services)" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023, Renesas Electronics Corporation.</p>
+  </div>
+
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+    <!-- Theme Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-ZXND4SB7CL"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-ZXND4SB7CL', {
+          'anonymize_ip': false,
+      });
+    </script> 
+
+</body>
+</html>

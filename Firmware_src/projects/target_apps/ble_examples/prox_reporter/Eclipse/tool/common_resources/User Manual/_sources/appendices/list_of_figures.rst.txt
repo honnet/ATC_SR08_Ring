@@ -1,0 +1,430 @@
+===============
+List of Figures
+===============
+
+:numref:`jssc-error` - :ref:`jssc-error`
+
+:numref:`basicFlow` - :ref:`basicFlow`
+
+:numref:`targetSelection` - :ref:`targetSelection`
+
+:numref:`advanced-com-settings` - :ref:`advanced-com-settings`.
+
+:numref:`flashXiP_69x_70x` - :ref:`flashXiP_69x_70x`.
+
+:numref:`fxip_prepareImage` - :ref:`fxip_prepareImage`.
+
+:numref:`bypassmode531` - :ref:`bypassmode531`.
+
+:numref:`qspi-nvparams-0` - :ref:`qspi-nvparams-0`.
+
+:numref:`mkImage_intro` - :ref:`mkImage_intro`.
+
+:numref:`mkImage_workflow` - :ref:`mkImage_workflow`.
+
+:numref:`mkImage_encryption` - :ref:`mkImage_encryption`.
+
+:numref:`mkImage_multi` - :ref:`mkImage_multi`.
+
+:numref:`mkImage_bootloader` - :ref:`mkImage_bootloader`.
+
+:numref:`mkImage_offsets` - :ref:`mkImage_offsets`.
+
+:numref:`otp_da1469x` - :ref:`otp_da1469x`.
+
+:numref:`otp_da1453x` - :ref:`otp_da1453x`.
+
+:numref:`readOnly-fields-warning` - :ref:`readOnly-fields-warning`.
+
+:numref:`cache-architecture-680` - :ref:`cache-architecture-680`.
+
+:numref:`serial-configuration-mapping-680` - :ref:`serial-configuration-mapping-680`.
+
+:numref:`otp-not-written-warning` - :ref:`otp-not-written-warning`.
+
+:numref:`da14583OtpImage` - :ref:`da14583OtpImage`.
+
+:numref:`otp-write-part-header` - :ref:`otp-write-part-header`.
+
+:numref:`otp-header-580-log` - :ref:`otp-header-580-log`.
+
+:numref:`otp-header-burn-flag` - :ref:`otp-header-burn-flag`.
+
+:numref:`csInOtp` - :ref:`csInOtp`.
+
+:numref:`csInOtp531` - :ref:`csInOtp531`.
+
+:numref:`csRegisterConf` - :ref:`csRegisterConf`.
+
+:numref:`csRegisterConf531` - :ref:`csRegisterConf531`.
+
+:numref:`csTrimCalib` - :ref:`csTrimCalib`.
+
+:numref:`csTrimCalib_DA1470x` - :ref:`csTrimCalib_DA1470x`.
+
+:numref:`csBooterVal` - :ref:`csBooterVal`.
+
+:numref:`csDevelDisable` - :ref:`csDevelDisable`.
+
+:numref:`csStxTimeout` - :ref:`csStxTimeout`.
+
+:numref:`csXtalSettle` - :ref:`csXtalSettle`.
+
+:numref:`csMinFwVersion` - :ref:`csMinFwVersion`.
+
+:numref:`csFilters` - :ref:`csFilters`.
+
+:numref:`bitFieldInfoIcon` - :ref:`bitFieldInfoIcon`.
+
+:numref:`csBitFieldPopUp` - :ref:`csBitFieldPopUp`.
+
+:numref:`otp-nvds-580-read-from-memory` - :ref:`otp-nvds-580-read-from-memory`.
+
+:numref:`ram_6xx` - :ref:`ram_6xx`.
+
+:numref:`ram_5xx` - :ref:`ram_5xx`.
+
+:numref:`580-jtag-options` - :ref:`580-jtag-options`.
+
+:numref:`flashData` - :ref:`flashData`.
+
+:numref:`SUOTA69x` - :ref:`SUOTA69x`.
+
+:numref:`SUOTAaddMAC` - :ref:`SUOTAaddMAC`.
+
+:numref:`SUOTAinfoSUTA` - :ref:`SUOTAinfoSUTA`.
+
+:numref:`updatingSUOTA` - :ref:`updatingSUOTA`.
+
+:numref:`partition` - :ref:`partition`.
+
+:numref:`eepromProgrammer` - :ref:`eepromProgrammer`.
+
+:numref:`saveToFile-eeprom` - :ref:`saveToFile-eeprom`.
+
+:numref:`header-nvds-programmer` - :ref:`header-nvds-programmer`.
+
+:numref:`modelFormat` - :ref:`modelFormat`.
+
+:numref:`spota` - :ref:`spota`.
+
+:numref:`spota-emulator-selection` - :ref:`spota-emulator-selection`.
+
+:numref:`spota-i2c-download` - :ref:`spota-i2c-download`.
+
+:numref:`spota-spi-download` - :ref:`spota-spi-download`.
+
+:numref:`spota-success` - :ref:`spota-success`.
+
+:numref:`suota` - :ref:`suota`.
+
+:numref:`suota-success` - :ref:`suota-success`.
+
+:numref:`sameImageError` - :ref:`sameImageError`.
+
+:numref:`gfxFps` - :ref:`gfxFps`.
+
+:numref:`batteryLifeEstimator` - :ref:`batteryLifeEstimator`.
+
+:numref:`batteryLifeEstimator_da1453x` - :ref:`batteryLifeEstimator_da1453x`.
+
+:numref:`invalidRangeError` - :ref:`invalidRangeError`.
+
+:numref:`sleep_mode_advisor` - :ref:`sleep_mode_advisor`.
+
+:numref:`rf-master` - :ref:`rf-master`.
+
+:numref:`RF_Master_Ribbon` - :ref:`RF_Master_Ribbon`.
+
+:numref:`le-transmitter` - :ref:`le-transmitter`.
+
+:numref:`leTxPktLog` - :ref:`leTxPktLog`.
+
+:numref:`le-receiver` - :ref:`le-receiver`.
+
+:numref:`leRxStatsLog` - :ref:`leRxStatsLog`.
+
+:numref:`continuousTx` - :ref:`continuousTx`.
+
+:numref:`continuousTxStart` - :ref:`continuousTxStart`.
+
+:numref:`continuousTxStop` - :ref:`continuousTxStop`.
+
+:numref:`unmodulatedTx` - :ref:`unmodulatedTx`.
+
+:numref:`unmodulatedTxStart` - :ref:`unmodulatedTxStart`.
+
+:numref:`unmodulatedRxStart` - :ref:`unmodulatedRxStart`.
+
+:numref:`unmodulatedTxStop` - :ref:`unmodulatedTxStop`.
+
+:numref:`sleep` - :ref:`sleep`.
+
+:numref:`sleepLog` - :ref:`sleepLog`.
+
+:numref:`enhancedLeTx` - :ref:`enhancedLeTx`.
+
+:numref:`enhancedLeTxLog` - :ref:`enhancedLeTxLog`.
+
+:numref:`enhancedLeRx` - :ref:`enhancedLeRx`.
+
+:numref:`enhancedLeRxLog` - :ref:`enhancedLeRxLog`.
+
+:numref:`enhancedLeRxStopRfStats` - :ref:`enhancedLeRxStopRfStats`.
+
+:numref:`da1469xCntTx` - :ref:`da1469xCntTx`.
+
+:numref:`da1469xCntTxLog` - :ref:`da1469xCntTxLog`.
+
+:numref:`da1469xCntRx` - :ref:`da1469xCntRx`.
+
+:numref:`da1469xCntRxLog` - :ref:`da1469xCntRxLog`.
+
+:numref:`da1469xOtp` - :ref:`da1469xOtp`.
+
+:numref:`da1469xOtpLog` - :ref:`da1469xOtpLog`.
+
+:numref:`da1469xMisc` - :ref:`da1469xMisc`.
+
+:numref:`da1469xMiscFwVersionLog` - :ref:`da1469xMiscFwVersionLog`.
+
+:numref:`da1469xMiscReadAdcLog` - :ref:`da1469xMiscReadAdcLog`.
+
+:numref:`da1469xMiscUartLoopLog` - :ref:`da1469xMiscUartLoopLog`.
+
+:numref:`da1469xMiscSensorActionReadLog` - :ref:`da1469xMiscSensorActionReadLog`.
+
+:numref:`da1469xMiscCustomAction` - :ref:`da1469xMiscCustomAction`.
+
+:numref:`da1469xMiscCustomActionLog` - :ref:`da1469xMiscCustomActionLog`.
+
+:numref:`da1469xTxPowerSetTM` - :ref:`da1469xTxPowerSetTM`.
+
+:numref:`da1469xTxPowerSetTMLog` - :ref:`da1469xTxPowerSetTMLog`.
+
+:numref:`da1469xTxPowerSetNM` - :ref:`da1469xTxPowerSetNM`.
+
+:numref:`da1469xTxPowerSetNMLog` - :ref:`da1469xTxPowerSetNMLog`.
+
+:numref:`da1469xRfCalib` - :ref:`da1469xRfCalib`.
+
+:numref:`da1469xRfCalibLog` - :ref:`da1469xRfCalibLog`.
+
+:numref:`xtal_5xx_68x` - :ref:`xtal_5xx_68x`.
+
+:numref:`xtal_69x_70x` - :ref:`xtal_69x_70x`.
+
+:numref:`xtalread` - :ref:`xtalread`.
+
+:numref:`da1469xXtalAutoCalibLog` - :ref:`da1469xXtalAutoCalibLog`.
+
+:numref:`ioManager` - :ref:`ioManager`.
+
+:numref:`da1469xReadGpioLog` - :ref:`da1469xReadGpioLog`.
+
+:numref:`registers` - :ref:`registers`.
+
+:numref:`registerSelection` - :ref:`registerSelection`.
+
+:numref:`da1469xRegsLog` - :ref:`da1469xRegsLog`.
+
+:numref:`TS1` - :ref:`TS1`.
+
+:numref:`TS_TW_cmd` - :ref:`TS_TW_cmd`.
+
+:numref:`FW_download` - :ref:`FW_download`.
+
+:numref:`BF_loader` - :ref:`BF_loader`.
+
+:numref:`TS_Formatter` - :ref:`TS_Formatter`.
+
+:numref:`TS_Console_Settings` - :ref:`TS_Console_Settings`.
+
+:numref:`TS_UART_Connection` - :ref:`TS_UART_Connection`.
+
+:numref:`TS_UART_Settings` - :ref:`TS_UART_Settings`.
+
+:numref:`terminal-uart` - :ref:`terminal-uart`.
+
+:numref:`dataRate1` - :ref:`dataRate1`.
+
+:numref:`dataRate2` - :ref:`dataRate2`.
+
+:numref:`profiler` - :ref:`profiler`.
+
+:numref:`pp_capturing_data` - :ref:`pp_capturing_data`.
+
+:numref:`pp_capturing_data_zoomed` - :ref:`pp_capturing_data_zoomed`.
+
+:numref:`ppCursor` - :ref:`ppCursor`.
+
+:numref:`power-profiler-conf-dialog-hw-settings` - :ref:`power-profiler-conf-dialog-hw-settings`.
+
+:numref:`power-profiler-configuration2` - :ref:`power-profiler-configuration2`.
+
+:numref:`start_trigger_func` - :ref:`start_trigger_func`.
+
+:numref:`single_trigger_func` - :ref:`single_trigger_func`.
+
+:numref:`comb_trigger_func` - :ref:`comb_trigger_func`.
+
+:numref:`start_trigger_chart` - :ref:`start_trigger_chart`.
+
+:numref:`start_trigger_log` - :ref:`start_trigger_log`.
+
+:numref:`single_trigger_chart` - :ref:`single_trigger_chart`.
+
+:numref:`single_trigger_log_message` - :ref:`single_trigger_log_message`.
+
+:numref:`comb_trigger_chart` - :ref:`comb_trigger_chart`.
+
+:numref:`comb_trigger_log_message` - :ref:`comb_trigger_log_message`.
+
+:numref:`power-profiler-pp_calibration_after_stop` - :ref:`power-profiler-pp_calibration_after_stop`.
+
+:numref:`power-profiler-pp_calibration_config_after` - :ref:`power-profiler-pp_calibration_config_after`.
+
+:numref:`power-profiler-pp_calibration_after_stop_PMM2` - :ref:`power-profiler-pp_calibration_after_stop_PMM2`.
+
+:numref:`power-profiler-pp_calibration_config_after_PMM2` - :ref:`power-profiler-pp_calibration_config_after_PMM2`.
+
+:numref:`log1` - :ref:`log1`.
+
+:numref:`log2` - :ref:`log2`.
+
+:numref:`boardSetup` - :ref:`boardSetup`.
+
+:numref:`enable_single_uart` - :ref:`enable_single_uart`.
+
+
+
+
+
+
+
+
+
+
+
+:numref:`app_update` - :ref:`app_update`.
+
+:numref:`app_update_download` - :ref:`app_update_download`.
+
+:numref:`app_update_install` - :ref:`app_update_install`.
+
+:numref:`app_update_uninstall_previous` - :ref:`app_update_uninstall_previous`.
+
+:numref:`SP_workflow` - :ref:`SP_workflow`.
+
+:numref:`configure_sdk` - :ref:`configure_sdk`.
+
+:numref:`SP_structure` - :ref:`SP_structure`.
+
+:numref:`sp_locations_info` - :ref:`sp_locations_info`.
+
+:numref:`sdk_validation_failed` - :ref:`sdk_validation_failed`.
+
+:numref:`sp_updater` - :ref:`sp_updater`.
+
+:numref:`spUpdatesCustomSP` - :ref:`spUpdatesCustomSP`.
+
+:numref:`jlink_error_armv8-m` - :ref:`jlink_error_armv8-m`.
+
+:numref:`content_read_0` - :ref:`content_read_0`.
+
+:numref:`main-ribbon-menu` - :ref:`main-ribbon-menu`
+
+:numref:`workspaceGroup` - :ref:`workspaceGroup`
+
+:numref:`programmerGroupDA1453x` - :ref:`programmerGroupDA1453x`
+
+:numref:`programmerGroupDA1469x` - :ref:`programmerGroupDA1469x`
+
+:numref:`managerGroupDA1453x` - :ref:`managerGroupDA1453x`
+
+:numref:`managerGroupDA1469x` - :ref:`managerGroupDA1469x`
+
+:numref:`configuratorGroupDA1453x` - :ref:`configuratorGroupDA1453x`
+
+:numref:`monitorGroupDA1458x` - :ref:`monitorGroupDA1458x`
+
+:numref:`estimatorGroupDA1458x` - :ref:`estimatorGroupDA1458x`
+
+:numref:`estimatorGroupDA1470x` - :ref:`estimatorGroupDA1470x`
+
+:numref:`boardMenuDevices` - :ref:`boardMenuDevices`
+
+:numref:`boardMenuUart` - :ref:`boardMenuUart`
+
+:numref:`boardMenuJtag` - :ref:`boardMenuJtag`
+
+:numref:`boardMenuSpInfo` - :ref:`boardMenuSpInfo`
+
+:numref:`boardMenuDeviceInfo` - :ref:`boardMenuDeviceInfo`
+
+:numref:`boardMenuDetect` - :ref:`boardMenuDetect`
+
+:numref:`settingsMenuAdvancedSettings` - :ref:`settingsMenuAdvancedSettings`
+
+:numref:`settingsMenuDeviceSettings` - :ref:`settingsMenuDeviceSettings`
+
+:numref:`board_detect_device` - :ref:`board_detect_device`
+
+:numref:`detection_process` - :ref:`detection_process`
+
+:numref:`log_window_action` - :ref:`log_window_action`
+
+:numref:`detection_result` - :ref:`detection_result`
+
+:numref:`flash_code_initial_screen` - :ref:`flash_code_initial_screen`
+
+:numref:`flash_code_if_selection` - :ref:`flash_code_if_selection`
+
+:numref:`board_setup_single_uart_531` - :ref:`board_setup_single_uart_531`
+
+:numref:`board_setup_uart_585` - :ref:`board_setup_uart_585`
+
+:numref:`board_setup_uart_583_01` - :ref:`board_setup_uart_583_01`
+
+:numref:`flash_code_connect` - :ref:`flash_code_connect`
+
+:numref:`empty_flash` - :ref:`empty_flash`
+
+:numref:`flash_code_import_wizard_step_1` - :ref:`flash_code_import_wizard_step_1`
+
+:numref:`flash_code_import_wizard_step_2` - :ref:`flash_code_import_wizard_step_2`
+
+:numref:`content_to_burn` - :ref:`content_to_burn`
+
+:numref:`flash_code_burn_result` - :ref:`flash_code_burn_result`
+
+:numref:`flash_code_import_68x` - :ref:`flash_code_import_68x`
+
+:numref:`flash_code_prepare_code_image` - :ref:`flash_code_prepare_code_image`
+
+:numref:`flash_code_prepare_code_image_2` - :ref:`flash_code_prepare_code_image_2`
+
+:numref:`power_profiler_ribbon_options` - :ref:`power_profiler_ribbon_options`
+
+:numref:`power_profiler_initialize` - :ref:`power_profiler_initialize`
+
+:numref:`power_profiler_right_click` - :ref:`power_profiler_right_click`
+
+:numref:`power_profiler_tools` - :ref:`power_profiler_tools`
+
+:numref:`appendix_a_select_sdk_as_workspace` - :ref:`appendix_a_select_sdk_as_workspace`.
+
+:numref:`appendix_a_sdk_tools_wizard` - :ref:`appendix_a_sdk_tools_wizard`.
+
+:numref:`appendix_a_browse_for_plt_fw` - :ref:`appendix_a_browse_for_plt_fw`.
+
+:numref:`appendix_a_import_projects_plt_fw` - :ref:`appendix_a_import_projects_plt_fw`.
+
+:numref:`appendix_a_build_project` - :ref:`appendix_a_build_project`.
+
+:numref:`appendix_a_plt_fw_location` - :ref:`appendix_a_plt_fw_location`.
+
+:numref:`appendix_a_keil_load_prod_test` - :ref:`appendix_a_keil_load_prod_test`.
+
+:numref:`appendix_a_keil_prod_test_location` - :ref:`appendix_a_keil_prod_test_location`.
+

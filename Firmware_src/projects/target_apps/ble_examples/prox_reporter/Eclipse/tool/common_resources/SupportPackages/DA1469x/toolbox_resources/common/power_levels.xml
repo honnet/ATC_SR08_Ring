@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--Table 65: Radio BLE 1M - AC Characteristics DA1469x Datasheet 3v2 -->																	 
+<power_levels>
+	
+	<power_level>
+		<name>PO_ULP</name>
+		<index>0</index>
+		<value>-50</value>
+		<unit>dBm</unit>
+	</power_level>
+
+	<power_level>
+		<name>PO_01</name>
+		<index>1</index>
+		<value>-18</value>
+		<unit>dBm</unit>
+	</power_level>
+	
+	<power_level>
+		<name>PO_02</name>
+		<index>2</index>
+		<value>-12</value>
+		<unit>dBm</unit>
+	</power_level>
+	
+	<power_level>
+		<name>PO_03</name>
+		<index>3</index>
+		<value>-8</value>
+		<unit>dBm</unit>
+	</power_level>
+	
+	<power_level>
+		<name>PO_04</name>
+		<index>4</index>
+		<value>-6</value>
+		<unit>dBm</unit>
+	</power_level>
+	
+	<power_level>
+		<name>PO_05</name>
+		<index>5</index>
+		<value>-3</value>
+		<unit>dBm</unit>
+	</power_level>
+	
+	<power_level>
+		<name>PO_06</name>
+		<index>6</index>
+		<value>-2</value>
+		<unit>dBm</unit>
+	</power_level>
+	
+	<power_level>
+		<name>PO_07</name>
+		<index>7</index>
+		<value>-1</value>
+		<unit>dBm</unit>
+	</power_level>
+	
+	<power_level>
+		<name>PO_08</name>
+		<index>8</index>
+		<value>0</value>
+		<unit>dBm</unit>
+	</power_level>
+	
+	<power_level>
+		<name>PO_09</name>
+		<index>9</index>
+		<value>1.5</value>
+		<unit>dBm</unit>
+	</power_level>
+	
+	<power_level>
+		<name>PO_10</name>
+		<index>10</index>
+		<value>2</value>
+		<unit>dBm</unit>
+	</power_level>
+	
+	<power_level>
+		<name>PO_11</name>
+		<index>11</index>
+		<value>3</value>
+		<unit>dBm</unit>
+	</power_level>
+	
+	<power_level>
+		<name>PO_12</name>
+		<index>12</index>
+		<value>4</value>
+		<unit>dBm</unit>
+	</power_level>
+	
+	<power_level>
+		<name>PO_13</name>
+		<index>13</index>
+		<value>4.5</value>
+		<unit>dBm</unit>
+	</power_level>
+	
+	<power_level>
+		<name>PO_14</name>
+		<index>14</index>
+		<value>5</value>
+		<unit>dBm</unit>
+	</power_level>
+	
+	<power_level>
+		<name>PO_15</name>
+		<index>15</index>
+		<value>6</value>
+		<unit>dBm</unit>
+	</power_level>
+	
+</power_levels>

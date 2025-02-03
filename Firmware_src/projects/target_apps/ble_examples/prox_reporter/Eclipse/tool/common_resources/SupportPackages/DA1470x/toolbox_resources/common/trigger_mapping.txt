@@ -1,0 +1,8 @@
+PMM2_Trigger_0_Custom_Name=TRIG0
+PMM2_Trigger_1_Custom_Name=TRIG1
+PMM2_Trigger_2_Custom_Name=TRIG2
+PMM2_Trigger_3_Custom_Name=TRIG3
+PMM2_Trigger_4_Custom_Name=TRIG4
+PMM2_Trigger_5_Custom_Name=TRIG5
+PMM2_Trigger_6_Custom_Name=TRIG6
+PMM2_Trigger_7_Custom_Name=TRIG7

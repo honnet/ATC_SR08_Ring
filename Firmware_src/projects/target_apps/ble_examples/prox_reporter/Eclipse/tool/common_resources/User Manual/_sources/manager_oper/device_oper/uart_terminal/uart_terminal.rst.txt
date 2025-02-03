@@ -1,0 +1,24 @@
+.. _uart_terminal:
+
+=============
+UART Terminal
+=============
+
+This is considered as an advanced tool. Enable it from menu *Settings -> Advanced Settings*.
+
+UART Terminal is available only for connection over UART.
+After successfully downloading the selected file to the chip, the 'Start Terminal' 
+button is activated and the user can press it in order to receive data from UART. 
+While the connection to the UART is open, the user cannot open a second UART connection 
+and for this reason the 'Connect' buttons of other tool pages are disabled. The 
+user has to press the 'Stop Terminal' button in order to close the UART connection. 
+At any point, the user can press the 'Settings' or 'Clear' buttons. Trough the 
+'Settings' button users can configure UART port settings, for more information 
+please see :ref:`UARTConnection`. To clean up the area where data 
+received from the UART is displayed, users can press on *Clear* button.
+
+.. _terminal-uart:
+.. figure:: images/terminal_uart.png
+   :align: center
+   
+   UART Terminal

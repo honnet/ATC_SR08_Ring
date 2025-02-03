@@ -1,0 +1,71 @@
+.. _xtal_manager:
+
+============
+XTAL Manager
+============
+
+The set of commands included in this tool are used to configure the XTAL trimming register.
+When XTAL Manager is opened, an extra tab named *RF Master* is added to the ribbon which contains useful utilities. More info here: :ref:`RF_Master_Ribbon`.
+
+
+-----------
+XTAL Output
+-----------
+
+This command is used to enable or disable XTAL16M or XTAL32M output on a specific GPIO (P0_5 or P1_2). Note that some devices may use P0_5 for UART communication. In such a case communication with the device over UART will be lost if XTAL output on P0_5 is enabled.
+
+.. _xtal_5xx_68x:
+.. figure:: images/xtal_5xx_68x.png
+   :align: center
+
+   XTAL Manager for DA1458x, DA1453x, DA14585/586 and DA1468x family devices
+
+
+.. _xtal_69x_70x:
+.. figure:: images/xtal_69x_70x.png
+   :align: center
+
+   XTAL Manager for DA1469x, DA1470x and DA1459x family devices
+
+
+This command also enables or disables:
+
+1. XTAL32K output on GPIO P0_6
+
+2. RC16M output on P0_7
+
+3. RC32K output on P1_0
+
+After sending enable or disable command, firmware responds with an event message. Not receiving the event message, indicates a problematic state. User is advised to press the Reset button from the horizontal toolbar and, if the problem persists, to download the firmware again to the target.
+
+-------------
+XTAL Trimming
+-------------
+
+With the set of commands included in XTAL Trimming section, user can read and write the value of XTAL16M or XTAL32M register. This is a decimal value and it is written to the device register and not stored in Flash. When the Write button is pressed, first the write command is called and then the read command, in order to read again the trim value and verify its change.
+
+*Sample log output:*
+
+.. _xtalread:
+.. figure:: images/xtalRead.png
+   :align: center
+   
+   Sample log output for XTAL read command
+
+User is sending an XTAL read command and firmware responds with an event, containing the trim value (:numref:`xtalread`). Firmware responds with an event to both read and write commands. Not receiving an event after sending the command, indicates a problematic state.
+
+
+----------------
+XTAL Calibration
+----------------
+
+With this set of commands the user can run calibration tests on specific GPIOs.
+   
+*Sample log output:*
+
+.. _da1469xXtalAutoCalibLog:
+.. figure:: images/da1469xXtalAutoCalibLog.png
+   :align: center
+   
+   Sample log output for Xtal auto calibration command on P1_05
+ 

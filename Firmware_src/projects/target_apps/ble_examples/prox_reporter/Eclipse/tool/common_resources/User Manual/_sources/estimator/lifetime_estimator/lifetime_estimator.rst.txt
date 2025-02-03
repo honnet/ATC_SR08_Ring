@@ -1,0 +1,31 @@
+.. _bat_life_est:
+
+==========================
+Battery Lifetime Estimator
+==========================
+
+Battery Lifetime Estimator tool is available for DA14580/581/583, DA14585/6 and DA1453x families. The tool can be loaded by selecting the  the *Battery Lifetime Estimator* button under Estimator ribbon group.
+
+.. _batteryLifeEstimator:
+.. figure:: images/batteryLifeEstimator.png
+   :align: center
+   
+   Battery Lifetime Estimator for DA14580/581/583 and DA14585/6 families
+   
+   
+Battery Lifetime Estimator for DA1453x shares some common input fields with DA14580/581/583 and DA14585/6 families and includes some extra fields too.
+ 
+.. _batteryLifeEstimator_da1453x:
+.. figure:: images/batteryLifeEstimator_da1453x.png
+   :align: center
+   
+   Battery Lifetime Estimator for DA1453x family
+   
+   
+The user can specify the input values for the lifetime estimation. The tool is loaded with the default input values. At the bottom we can see the estimated lifetime in days and a table with results, such as advertising and connection current and charge. The calculations are repeated every time an input value changes. When the validation of an input value fails, a respective message appears and user is expected to correct the value in order to proceed with the lifetime estimation. Advertising interval accepts only specific values, according to the iOS BLE advertising and connection parameters described here: https://developer.apple.com/library/archive/qa/qa1931/_index.html . Advertising/Connection intervals are validated with respect to the calculated advertising/connection active times only for DA14580/581/583 and DA14585/6 family chips. 
+
+.. _invalidRangeError:
+.. figure:: images/invalidRangeError.png
+   :align: center
+   
+   Connection and Advertising Interval validation

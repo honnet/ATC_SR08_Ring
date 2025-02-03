@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html class="writer-html4" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>5.4. Registers Access &mdash; UM-B-083</title><link rel="stylesheet" href="../../../_static/css/lpc_cs_theme.css" type="text/css" />
+    <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/css/custom.css" type="text/css" /><link rel="shortcut icon" href="../../../_static/favicon.ico"/>
+  <!--[if lt IE 9]>
+    <script src="../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  <script id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../../../_static/jquery.js"></script>
+        <script type="text/javascript" src="../../../_static/underscore.js"></script>
+        <script type="text/javascript" src="../../../_static/doctools.js"></script>
+        <script type="text/javascript" src="../../../_static/language_data.js"></script>
+    <script src="../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+    <link rel="next" title="5.5. Terminal Scripting" href="../terminal_scripting/terminal_scripting.html" />
+    <link rel="prev" title="5.3. IO Manager" href="../io_manager/io_manager.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../../../index.html"><img src="../../../_static/V-Reverse.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../../inst_guide/inst_guide.html">1. Installation Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../getting_started/getting_started.html">2. Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../programmer_oper/index.html">3. Programmer Operations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../estimator/index.html">4. Estimator Operations</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../../index.html">5. Manager Operations</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../../common_oper/rf_master/rf_master.html">5.1. RF Master</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../common_oper/xtal_manager/xtal_manager.html">5.2. XTAL Manager</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../io_manager/io_manager.html">5.3. IO Manager</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">5.4. Registers Access</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../terminal_scripting/terminal_scripting.html">5.5. Terminal Scripting</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../uart_terminal/uart_terminal.html">5.6. UART Terminal</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../monitor_oper/index.html">6. Monitor Operations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../configurator/index.html">7. Configurator Operations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../cli/command_line_if.html">8. CLI implementation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../app_help/index.html">9. Application Help</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../troubleshooting/troubleshooting.html">10. Troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../appendices/index.html">11. Appendices</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../disclaimers_contact.html">12. Disclaimers &amp; Contact info</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">UM-B-083</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="../../index.html">5. Manager Operations</a> &raquo;</li>
+      <li>5.4. Registers Access</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <div class="section" id="registers-access">
+<span id="register-acc"></span><h1>5.4. Registers Access<a class="headerlink" href="#registers-access" title="Permalink to this headline">¶</a></h1>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">This tool applies to DA1469x, DA1470x and DA1459x family devices.</p>
+</div>
+<p>This tool can be used to read and write device registers. The set of registers available per device depend on the family and are read from family specific xml files.
+When Register Access is opened, an extra tab named <em>RF Master</em> is added to the ribbon which contains useful utilities. More info here: <a class="reference internal" href="../../common_oper/rf_master/rf_master.html#rf-master-ribbon"><span class="std std-ref">RF Master’s Ribbon</span></a>.</p>
+<div class="figure align-center" id="id1">
+<span id="registers"></span><img alt="../../../_images/registers.png" src="../../../_images/registers.png" />
+<p class="caption"><span class="caption-number">Figure 111 </span><span class="caption-text">Reading/Writing CLK_REF_SEL_REG</span></p>
+</div>
+<p>The user has to first select a register in order to enable read, write, refresh, dump actions which apply on the selected register. The user can select a register from the registers’ tree by selecting a peripheral first and then a register of this peripheral. To easily find a register, the user can filter the tree by entering part or the exact name of the peripheral or register and part or full address of a register.</p>
+<div class="figure align-center" id="id2">
+<span id="registerselection"></span><img alt="../../../_images/registersFiltering.png" src="../../../_images/registersFiltering.png" />
+<p class="caption"><span class="caption-number">Figure 112 </span><span class="caption-text">Filtering registers’ tree by entering part of their name in the search text field</span></p>
+</div>
+<p>When a register is selected the register name and address is indicated in the blue label above the register bit fields table and the bit fields of the register are presented in a table.
+Read column indicates the value read for this bit field and Burn column can be used to change the value of the bit field. The actions available on each register are analyzed next:</p>
+<ul>
+<li><p class="first"><strong>Read:</strong> Reads the register’s value and updates the Read column with the value of each bit field.</p>
+</li>
+<li><p class="first"><strong>Write:</strong> Creates the value to write from the register’s bit field values on the Write column and writes it to the register.
+When a bit field cell value on the Write column is left empty, value 0x00 is assumed for the field.
+Note that some bit fields are read only which is indicated by <em>RO</em> in the type column. The value of these bit fields cannot change so the respective cell in the Write column is non editable.
+During write action for RO fields the value read from the bit field is set in the respective bit field range in order to create the value to write to the register.
+Also note that not all bit fields are consecutive and span the 32 bit range of a register. In such a case the bit ranges not present in the table are filled with 0x00 in order to create the value to write to the register.</p>
+</li>
+<li><p class="first"><strong>Refresh:</strong> Reads again the register’s value and clears all the values in the table’s Write column.</p>
+</li>
+<li><p class="first"><strong>Dump:</strong> Dumps register info to the log. The button is enabled when the register’s value is read for the first time.</p>
+<p><em>Sample log output:</em></p>
+<div class="figure align-center" id="id3">
+<span id="da1469xregslog"></span><img alt="../../../_images/dumpReg.png" src="../../../_images/dumpReg.png" />
+<p class="caption"><span class="caption-number">Figure 113 </span><span class="caption-text">Dumping info of CLK_REF_SEL_REG to the log</span></p>
+</div>
+</li>
+</ul>
+</div>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="../io_manager/io_manager.html" class="btn btn-neutral float-left" title="5.3. IO Manager" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../terminal_scripting/terminal_scripting.html" class="btn btn-neutral float-right" title="5.5. Terminal Scripting" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023, Renesas Electronics Corporation.</p>
+  </div>
+
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+    <!-- Theme Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-ZXND4SB7CL"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-ZXND4SB7CL', {
+          'anonymize_ip': false,
+      });
+    </script> 
+
+</body>
+</html>

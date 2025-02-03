@@ -1,0 +1,110 @@
+.. include:: <isonum.txt>
+
+.. _burn_binary_to_flash_5xx:
+
+Burn binary to flash for DA1458x, DA1453x and DA14585-586
+=========================================================
+
+#. From **Programmer** menu select the Flash Code tool
+
+   .. _flash_code_initial_screen:
+   .. figure:: images/flash_code_initial_screen.png
+      :align: center
+      :scale: 50%
+     
+      Flash Code initial screen
+
+#. From Board menu select a UART or JTAG interface. If UART interface is selected also select the correct pins from *Board Setup* tool.
+   User should also verify that the correct flash pins have been selected.
+
+   .. _flash_code_if_selection:
+   .. figure:: images/flash_code_if_selection.png
+      :align: center
+      :scale: 100%
+     
+      Interface selection
+
+   .. _board_setup_single_uart_531:
+   .. figure:: images/board_setup_single_uart_531.png
+      :align: center
+      :scale: 100%
+     
+      Default pin selection from Board Setup tool for DA14531
+
+   .. _board_setup_uart_585:
+   .. figure:: images/board_setup_uart_585.png
+      :align: center
+      :scale: 100%
+     
+      Default pin selection from Board Setup tool for DA14585
+
+   .. _board_setup_uart_583_01:
+   .. figure:: images/board_setup_uart_583_01.png
+      :align: center
+      :scale: 100%
+     
+      Default pin selection from Board Setup tool for DA14583-01
+
+#. Press the **Connect** button on the bottom of the tool.
+
+   .. _flash_code_connect:
+   .. figure:: images/flash_code_connect.png
+      :align: center
+      :scale: 100%
+     
+      Flash Code connect button
+
+   The connect process will download the appropriate firmware in chip RAM to support the burn process.
+   If the UART interface is selected the RESET button on the board may need to be pressed. Please check the log window for any requesting the user's interaction.
+  
+#. Press the **Read** button to read the contents of the flash. The contents are presented on the left table named "Content Read*.
+   Verify that the flash is empty.
+
+   .. _empty_flash:
+   .. figure:: images/empty_flash.png
+      :align: center
+      :scale: 100%
+   
+      Empty Flash
+
+#. Press the **Import from File** button and the import wizard appears
+
+   .. _flash_code_import_wizard_step_1:
+   .. figure:: images/flash_code_import_wizard_step_1.png
+      :align: center
+      :scale: 100%
+   
+      Import wizard step 1
+
+#. Select the application file to burn in bin or .hex format. If option *do not modify* is selected, the file should contain an image.
+   Image may become bootable by clicking the respective checkbox.
+   Please refer to :ref:`flash_code` for *single* and *multi* image options. Press **Next**
+
+   .. _flash_code_import_wizard_step_2:
+   .. figure:: images/flash_code_import_wizard_step_2.png
+      :align: center
+      :scale: 100%
+   
+      Import wizard step 2
+
+#. Press **Finish** and the *Content to Burn* table is populated with the data to burn.
+
+   .. _content_to_burn:
+   .. figure:: images/content_to_burn.png
+      :align: center
+      :scale: 40%
+   
+      Content to burn table
+
+#. Check that the start address to burn the application is 0x00 (:numref:`content_to_burn`) and press the **Burn** button.
+
+#. After successful burn the "Content Read" table is updated, the **RESET** command is sent to the chip and the application starts running.
+
+   .. _flash_code_burn_result:
+   .. figure:: images/flash_code_burn_result.png
+      :align: center
+      :scale: 40%
+     
+      Memory contents after flash burn
+
+For full documentation of the Flash Code tool refer to :ref:`flash_code`

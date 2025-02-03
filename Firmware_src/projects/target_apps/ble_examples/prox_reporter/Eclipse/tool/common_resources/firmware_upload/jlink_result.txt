@@ -1,0 +1,70 @@
+SEGGER J-Link Commander V7.22b (Compiled Jun 17 2021 17:23:58)
+DLL version V7.22b, compiled Jun 17 2021 17:22:49
+
+
+J-Link Command File read successfully.
+Processing script file...
+
+Unknown command. '?' for help.
+
+J-Link connection not established yet but required for command.
+Connecting to J-Link via USB...O.K.
+Firmware: J-Link OB-SAM3U128 V3 compiled Apr 11 2024 17:43:56
+Hardware version: V3.00
+S/N: 483057454
+VTref=3.300V
+Target connection not established yet but required for command.
+Device "CORTEX-M0" selected.
+
+
+Connecting to target via SWD
+Found SW-DP with ID 0x0BB11477
+DPIDR: 0x0BB11477
+Scanning AP map to find all available APs
+AP[1]: Stopped AP scan as end of AP map has been reached
+AP[0]: AHB-AP (IDR: 0x04770021)
+Iterating through AP map to find AHB-AP to use
+AP[0]: Core found
+AP[0]: AHB-AP ROM base: 0xE00FF000
+CPUID register: 0x410CC200. Implementer code: 0x41 (ARM)
+Found Cortex-M0 r0p0, Little endian.
+FPUnit: 4 code (BP) slots and 0 literal slots
+CoreSight components:
+ROMTbl[0] @ E00FF000
+ROMTbl[0][0]: E000E000, CID: B105E00D, PID: 000BB008 SCS
+ROMTbl[0][1]: E0001000, CID: B105E00D, PID: 000BB00A DWT
+ROMTbl[0][2]: E0002000, CID: B105E00D, PID: 000BB00B FPB
+Cortex-M0 identified.
+Reset delay: 0 ms
+Reset type NORMAL: Resets core & peripherals via SYSRESETREQ & VECTRESET bit.
+Reset: Halt core after reset via DEMCR.VC_CORERESET.
+Reset: Reset device via AIRCR.SYSRESETREQ.
+
+PC = 07FC0514, CycleCnt = 00000000
+R0 = FFFFFFFF, R1 = FFFFFFFF, R2 = FFFFFFFF, R3 = FFFFFFFF
+R4 = FFFFFFFF, R5 = FFFFFFFF, R6 = FFFFFFFF, R7 = FFFFFFFF
+R8 = FFFFFFFF, R9 = FFFFFFFF, R10= FFFFFFFF, R11= FFFFFFFF
+R12= FFFFFFFF
+SP(R13)= 07FD476C, MSP= 07FD476C, PSP= FFFFFFFC, R14(LR) = FFFFFFFF
+XPSR = C1000000: APSR = NZcvq, EPSR = 01000000, IPSR = 000 (NoException)
+CFBP = 00000000, CONTROL = 00, FAULTMASK = 00, BASEPRI = 00, PRIMASK = 00
+FPU regs: FPU not enabled / not implemented on connected CPU.
+
+50003200 = 35 38 35 
+
+50003200 = 00003835 00002041 00000000 00000000 
+
+Could not read memory.
+
+Could not read memory.
+
+Could not read memory.
+
+Mis-aligned memory read: Address: 0x50000012, NumBytes: 4, Alignment: 4 (Word-aligned)
+50000012 = 00E50082 
+
+50000024 = 00001CB0 
+
+
+Script processing completed.
+

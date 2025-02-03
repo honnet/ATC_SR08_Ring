@@ -1,0 +1,206 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<gfx_fps>
+   <family>DA1470x</family>
+   <!-- All available devices for this family. abflag is AB chip version  -->
+   <devices>
+      <device id="DA14701" ab_chip_version="1"/>
+      <device id="DA14705" ab_chip_version="1"/>
+      <device id="DA14706" ab_chip_version="1"/>
+      <device id="DA14708" ab_chip_version="1"/>
+   </devices>   
+   <gui_options>
+      <memories>
+         <memory value="SRAM" id="SRAM">
+            <!--Indicates for which devices this memory is available-->
+            <devices>
+               <device id="DA14701" />
+               <device id="DA14705" />
+               <device id="DA14706" />
+               <device id="DA14708" />
+            </devices>
+         </memory>
+         <memory value="Ext. Quad-SPI PSRAM" id="QUAD_SPI_PSRAM">
+            <devices>
+               <device id="DA14701" />
+               <device id="DA14705" />
+               <device id="DA14706" />
+               <device id="DA14708" />
+            </devices>
+         </memory>
+         <memory value="Ext. Octa-SPI PSRAM" id="OCTA_SPI_PSRAM">
+            <devices>
+               <device id="DA14701" />
+            </devices>
+         </memory>
+         <memory value="Ext. Quad-SPI FLASH" id="QUAD_SPI_FLASH">
+            <devices>
+               <device id="DA14701" />
+               <device id="DA14705" />
+               <device id="DA14706" />
+               <device id="DA14708" />
+            </devices>
+         </memory>
+      </memories>
+      <sys_clk_frequencies>
+         <frequency value="32" />
+         <frequency value="64" />
+         <frequency value="96" />
+         <frequency value="160" default="true"/>
+      </sys_clk_frequencies>
+      <GPU>
+         <sram_size value="1.5" unit="MB" />
+         <frame_buffers_num max="2" default="1" />
+         <frame_buffers_storage>
+            <memory refid="SRAM" default="true" />
+            <memory refid="QUAD_SPI_PSRAM" />
+            <memory refid="OCTA_SPI_PSRAM" />
+         </frame_buffers_storage>
+         <graphic_resources_storage>
+            <memory refid="QUAD_SPI_PSRAM" />
+            <memory refid="OCTA_SPI_PSRAM" />
+            <memory refid="QUAD_SPI_FLASH" default="true" />
+         </graphic_resources_storage>
+         <graphics_scenarios>
+            <scenario value="Simple scenario" default="true">
+               <!--Overdraw factor for GPU generated objects (how many times the GPU will read/modify/write these objects from FB mem)-->
+               <fill_overdraw value="0.05" />
+               <!--Overdraw factor for graphic resources objects (how many times the GPU will read/modify/write these objects from FB mem)-->
+               <gfx_overdraw value="0.05" />
+               <!--Percentage of the FB that it will be overdraw by filling operations (no read required)-->
+               <fill_overdraw_partial value="0.65" />
+               <!--Percentage of the FB that it will be overdraw by GFX resources operations (read/modify/write)-->
+               <gfx_overdraw_partial value="0.35" />
+               <!--Average cc per px for the filling operations in the GPU-->
+               <fill_gpu_proc value="1.1" />
+               <!--Average cc per px for the gfx operations in the GPU-->
+               <gfx_gpu_proc value="1.2" />
+               <!--Percentage of bus conflicts when GPU is accessing memories (other master will get the bus first)-->
+               <gpu_bus_conflict_pos value="0.02" />
+            </scenario>
+            <scenario value="Normal scenario">
+               <fill_overdraw value="0.05" />
+               <gfx_overdraw value="0.05" />
+               <fill_overdraw_partial value="0.65" />
+               <gfx_overdraw_partial value="0.35" />
+               <fill_gpu_proc value="1.1" />
+               <gfx_gpu_proc value="1.2" />
+               <gpu_bus_conflict_pos value="0.02" />
+            </scenario>
+            <scenario value="Complex scenario">
+               <fill_overdraw value="0.05" />
+               <gfx_overdraw value="0.05" />
+               <fill_overdraw_partial value="0.65" />
+               <gfx_overdraw_partial value="0.35" />
+               <fill_gpu_proc value="1.1" />
+               <gfx_gpu_proc value="1.2" />
+               <gpu_bus_conflict_pos value="0.02" />
+            </scenario>
+         </graphics_scenarios>
+      </GPU>
+      <display_controller>
+         <layers_num max="2" default="2" />
+         <active_layer_storage>
+            <memory refid="SRAM" default="true" />
+            <memory refid="QUAD_SPI_PSRAM" />
+            <memory refid="OCTA_SPI_PSRAM" />
+         </active_layer_storage>
+         <static_layer_storage>
+            <memory refid="SRAM" default="true" />
+            <memory refid="QUAD_SPI_PSRAM" />
+            <memory refid="OCTA_SPI_PSRAM" />
+            <memory refid="QUAD_SPI_FLASH" />
+         </static_layer_storage>
+      </display_controller>
+      <display_interfaces>
+         <interface name="Single SPI" id="SINGLE_SPI">
+            <!--Calculate the available options by dividing selected sys clock frequency with available divisor values-->
+            <divisors>
+               <divisor value="2" />
+               <divisor value="4" />
+            </divisors>
+            <!--Indicates for which devices each interface is available-->
+            <devices>
+               <device id="DA14701" />
+               <device id="DA14705" />
+               <device id="DA14706" />
+               <device id="DA14708" />
+            </devices>
+         </interface>
+         <interface name="Dual SPI" id="DUAL_SPI">
+            <divisors>
+               <divisor value="2" />
+               <divisor value="4" />
+            </divisors>
+            <devices>
+               <device id="DA14701" />
+               <device id="DA14705" />
+               <device id="DA14706" />
+               <device id="DA14708" />
+            </devices>
+         </interface>
+         <interface name="Quad SPI" id="QUAD_SPI">
+            <divisors>
+               <divisor value="2" />
+               <divisor value="4" />
+            </divisors>
+            <devices>
+               <device id="DA14701" />
+               <device id="DA14705" />
+               <device id="DA14706" />
+               <device id="DA14708" />
+            </devices>
+         </interface>
+         <interface name="MIPI DSI" id="MIPI_DSI" default="true">
+            <lanes_num max="2" default="2" />
+            <frequencies>
+               <frequency value="50" />
+               <frequency value="75" />
+               <frequency value="100" />
+               <frequency value="125" />
+               <frequency value="150" default="true" />
+               <frequency value="200" />
+               <frequency value="250" />
+            </frequencies>
+            <devices>
+               <device id="DA14701" />
+            </devices>
+         </interface>
+      </display_interfaces>
+      <display_resolution>
+         <x_resolution min="64" max="1024" default="480" />
+         <y_resolution min="64" max="1024" default="480" />
+         <internal_color_bits>
+            <color_bits value="8"  />
+            <color_bits value="16" default="true"/>
+            <color_bits value="32" />
+         </internal_color_bits>
+         <external_color_bits>
+            <color_bits value="8"  />
+            <color_bits value="16" default="true"/>
+            <color_bits value="24" />
+         </external_color_bits>
+      </display_resolution>
+      <bus_arbitration>
+         <lcdc_dma_priority max="7" default="1" />
+         <gpu_dma_priority max="7" default="2" />
+      </bus_arbitration>
+   </gui_options>
+   <calculation_constants>
+      <!--Fixed extra delay per LCDC burst16 transaction due to issues in the LCDC DMA of the AA version of Cobalt-->
+      <lcdc_extra_delay value="125" />
+      <!--Arbitration delay for the bus to change master-->
+      <arb_delay value="4" />
+      <!--CC for read/write transaction (8beat) from/to SRAM-->
+      <sram_8beat_trans value="12" />
+	  <!--CC for read/write transaction (16beat) from/to SRAM-->
+      <sram_16beat_trans value="22" />
+      <!--spi CC for read/write transaction (8beat) from/to PSRAM (QSPI)-->
+      <qspi_psram_8beat_trans value="79" />
+      <!--spi CC for read/write transaction (16beat) from/to PSRAM (QSPI)-->
+      <qspi_psram_16beat_trans value="143" />
+      <!--spi CC for read/write transaction (8beat) from/to PSRAM (OSPI)-->
+      <ospi_psram_8beat_trans value="38" />
+      <!--spi CC for read/write transaction (16beat) from/to PSRAM (OSPI)-->
+      <ospi_psram_16beat_trans value="54" />
+   </calculation_constants>
+</gfx_fps>

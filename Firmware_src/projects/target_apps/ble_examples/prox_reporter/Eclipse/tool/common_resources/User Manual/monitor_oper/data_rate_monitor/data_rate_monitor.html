@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html class="writer-html4" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>6.1. Data Rate Monitor &mdash; UM-B-083</title><link rel="stylesheet" href="../../_static/css/lpc_cs_theme.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/css/custom.css" type="text/css" /><link rel="shortcut icon" href="../../_static/favicon.ico"/>
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  <script id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../../_static/jquery.js"></script>
+        <script type="text/javascript" src="../../_static/underscore.js"></script>
+        <script type="text/javascript" src="../../_static/doctools.js"></script>
+        <script type="text/javascript" src="../../_static/language_data.js"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="6.2. Power Profiler" href="../power_profiler/power_profiler.html" />
+    <link rel="prev" title="6. Monitor Operations" href="../index.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../../index.html"><img src="../../_static/V-Reverse.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../inst_guide/inst_guide.html">1. Installation Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../getting_started/getting_started.html">2. Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../programmer_oper/index.html">3. Programmer Operations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../estimator/index.html">4. Estimator Operations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../manager_oper/index.html">5. Manager Operations</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">6. Monitor Operations</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">6.1. Data Rate Monitor</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../power_profiler/power_profiler.html">6.2. Power Profiler</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../log/log.html">6.3. Log</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../configurator/index.html">7. Configurator Operations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../cli/command_line_if.html">8. CLI implementation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../app_help/index.html">9. Application Help</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../troubleshooting/troubleshooting.html">10. Troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../appendices/index.html">11. Appendices</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../disclaimers_contact.html">12. Disclaimers &amp; Contact info</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">UM-B-083</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="../index.html">6. Monitor Operations</a> &raquo;</li>
+      <li>6.1. Data Rate Monitor</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <div class="section" id="data-rate-monitor">
+<span id="data-rate-mon"></span><h1>6.1. Data Rate Monitor<a class="headerlink" href="#data-rate-monitor" title="Permalink to this headline">¶</a></h1>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">This tool applies to DA14580/581/583 chip family.</p>
+</div>
+<p>Data Rate Monitor is used to monitor the overall receive and transmit rate over Bluetooth.</p>
+<div class="figure align-center" id="id1">
+<span id="datarate1"></span><img alt="../../_images/dataRate1.png" src="../../_images/dataRate1.png" />
+<p class="caption"><span class="caption-number">Figure 123 </span><span class="caption-text">Data Rate Monitor connection successful</span></p>
+</div>
+<p>In order to use the Max Data Rate monitor tool, the user needs two DA14580/581/583 DKs connected via usb and two SmartSnippets™ Toolbox instances. The one DK will play the <strong>Central</strong> role and the other DK will play the <strong>Peripheral</strong> role. The central device can initiate a scan and send connect request to the peripheral device, while the peripheral device can start advertising and accept incoming connection requests. Supposing we have two DKs, <em>DK_central</em> and <em>DK_peripheral</em>, and two SmartSnippets™ Toolbox instances, <em>central_app</em> and <em>peripheral_app</em>, these steps have to be followed:</p>
+<ol class="arabic">
+<li><p class="first"><strong>Firmware Download</strong></p>
+<blockquote>
+<div><ul class="simple">
+<li>User selects the firmware download method from the radio selection. In “DK” the firmware is downloaded through UART Port and on “JLink” through JTAG.</li>
+<li>User starts SmartSnippets™ Toolbox <em>peripheral_app</em> and selects the ports/port in UART/SPI mode or UART mode that correspond to one of the DKs. From now on this will be referred as <em>DK_peripheral</em>. Selects Max Data Rate Monitor tool and presses the Start Peripheral button. Follows the instructions at the log in order to download the firmware.</li>
+<li>User starts <em>central_app</em> and selects the ports/port in UART/SPI mode or UART mode that correspond to the second DK, which will be <em>DK_central</em>. Selects Max Data Rate Monitor tool and presses the Start Central button.</li>
+</ul>
+</div></blockquote>
+</li>
+<li><p class="first"><strong>Scan</strong></p>
+<blockquote>
+<div><ul class="simple">
+<li>From <em>central_app</em>, user presses the Scan button and waits for the discovered devices to be listed and for the scanning process to complete.</li>
+</ul>
+</div></blockquote>
+</li>
+<li><p class="first"><strong>Connect</strong></p>
+<blockquote>
+<div><ul>
+<li><p class="first">User enters connection interval in millisecond as a multiple of 1.25 at <em>central_app</em>. If no value entered the default value 7.5 is used. User presses the Connect button. If the connection to <em>DK_peripheral</em> succeeds, connection status panel will be updated with the respective information. Once connected, the stats table will be continuously updated with data, indicating the following:</p>
+<blockquote>
+<div><ul class="simple">
+<li>Timestamp: Actual time when the packet was received</li>
+<li>Time span: Duration of the connection event</li>
+<li>Packets Tx: Transmitted packets</li>
+<li>Bytes Tx: Transmitted bytes</li>
+<li>Packets Rx: Received packets</li>
+<li>Bytes Rx:     Received bytes</li>
+<li>Errors: Packet errors, including both packets that have been erroneously received and packets for which an acknowledgment has not been received.</li>
+</ul>
+<p>Counters at Control Panel will also be updated while the two devices are connected. Note that most of the counter values and the values at the stats table are <em>zero</em> at this point (no <em>Start</em> transmission pressed yet).</p>
+</div></blockquote>
+</li>
+</ul>
+</div></blockquote>
+</li>
+<li><p class="first"><strong>Start</strong></p>
+<blockquote>
+<div><ul class="simple">
+<li>By pressing the Start Transmission button from <em>central_app</em>, <em>DK_central</em> starts sending packets to <em>DK_peripheral</em>. Note that Packets Tx and Bytes Tx are now greater than zero at <em>central_app</em> while Packets Rx and Bytes Rx are greater than zero at <em>peripheral_app</em>. The opposite can be observed if the Start Transmission button is pressed from the <em>peripheral_app</em>.</li>
+</ul>
+</div></blockquote>
+</li>
+</ol>
+<div class="figure align-center" id="id2">
+<span id="datarate2"></span><img alt="../../_images/dataRate2.png" src="../../_images/dataRate2.png" />
+<p class="caption"><span class="caption-number">Figure 124 </span><span class="caption-text">Data Rate Monitor - Start Transmission</span></p>
+</div>
+<ol class="arabic" start="5">
+<li><p class="first"><strong>Stop</strong></p>
+<blockquote>
+<div><ul class="simple">
+<li>This button stops the transmission from the one device to the other.</li>
+</ul>
+</div></blockquote>
+</li>
+<li><p class="first"><strong>Disconnect</strong></p>
+<blockquote>
+<div><ul class="simple">
+<li>By pressing the Disconnect button the connection between the two devices closes.</li>
+</ul>
+</div></blockquote>
+</li>
+<li><p class="first"><strong>Stop Data Rate Monitor</strong></p>
+<blockquote>
+<div><ul class="simple">
+<li>This button initially tries to close the connection between the two devices, if not already closed via the Disconnect button. Then closes the port that listens for incoming messages from the other DK. This is necessary in order to use another tool with the same COM port, like the Booter or the OTP Programmer.</li>
+</ul>
+</div></blockquote>
+</li>
+</ol>
+<p>User has the option to reset the counters of the aggregated statistics by pressing the Reset counters button. Moreover, stats table can be cleared by pressing the Clear Stats button. Finally, stats table data can be exported to csv format by pressing the Export Stats button.</p>
+</div>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="../index.html" class="btn btn-neutral float-left" title="6. Monitor Operations" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../power_profiler/power_profiler.html" class="btn btn-neutral float-right" title="6.2. Power Profiler" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023, Renesas Electronics Corporation.</p>
+  </div>
+
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+    <!-- Theme Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-ZXND4SB7CL"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-ZXND4SB7CL', {
+          'anonymize_ip': false,
+      });
+    </script> 
+
+</body>
+</html>

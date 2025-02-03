@@ -1,0 +1,8 @@
+Configurator Operations
+=======================
+
+.. toctree::
+   :maxdepth: 1
+   
+   board_setup/board_setup.rst
+

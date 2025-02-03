@@ -1,0 +1,27 @@
+=============
+List of Codes
+=============
+
+:numref:`defining-the-POWER-PROFILER-TRANSFER-SIZE-property` - :ref:`defining-the-POWER-PROFILER-TRANSFER-SIZE-property`
+
+:numref:`defining-the-USE-PV-C-BOARD-property` - :ref:`defining-the-USE-PV-C-BOARD-property`
+
+:numref:`cli-bundle-example` - :ref:`cli-bundle-example`
+
+:numref:`cli-part-index-example` - :ref:`cli-part-index-example`
+
+:numref:`change-jtag-communication-timeout` - :ref:`change-jtag-communication-timeout`
+
+:numref:`Battery-Lifetime-Estimator-CLI-sample-input-for-DA14580-581-583-family` - :ref:`Battery-Lifetime-Estimator-CLI-sample-input-for-DA14580-581-583-family`
+
+:numref:`Battery-Lifetime-Estimator-CLI-sample-input-for-DA14585-6-family` - :ref:`Battery-Lifetime-Estimator-CLI-sample-input-for-DA14585-6-family`
+
+:numref:`Battery-Lifetime-Estimator-CLI-sample-input-for-DA1453x-family` - :ref:`Battery-Lifetime-Estimator-CLI-sample-input-for-DA1453x-family`
+
+:numref:`Battery-Lifetime-Estimator-DA14580-581-583-family-defaults` - :ref:`Battery-Lifetime-Estimator-DA14580-581-583-family-defaults`
+
+:numref:`Battery-Lifetime-Estimator-DA14585-6-family-defaults` - :ref:`Battery-Lifetime-Estimator-DA14585-6-family-defaults`
+
+:numref:`Battery-Lifetime-Estimator-DA1453x-defaults-operation-mode-buck` - :ref:`Battery-Lifetime-Estimator-DA1453x-defaults-operation-mode-buck`
+
+:numref:`Battery-Lifetime-Estimator-DA1453x-family-defaults-for-operation-mode-boost` - :ref:`Battery-Lifetime-Estimator-DA1453x-family-defaults-for-operation-mode-boost`

@@ -1,0 +1,9 @@
+----------
+References
+----------
+
+.. include:: <isonum.txt>
+
+
+Renesas, Product Selection Table, https://www.renesas.com/eu/en/products/interface-connectivity/wireless-communications/bluetooth-low-energy#success_stories 
+

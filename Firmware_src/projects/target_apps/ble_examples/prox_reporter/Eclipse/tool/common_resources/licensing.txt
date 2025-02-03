@@ -1,0 +1,101 @@
+LICENSES
+
+NAME                    LICENSE FILE PATH                                            LICENSE TYPE                   COPYRIGHT                            COMMENTS
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+SmartSnippets                                                                        Renesas Electronics            Renesas Electronics                  Licensed under the relevant
+Application                                                                          proprietary                                                         Renesas Electronics SLA
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Docking Frames 1.1.1    https://www.gnu.org/licenses/old-licenses/lgpl-2.1.html      GNU LESSER GENERAL PUBLIC      Janni Kovacs, Ivan Seidl,   
+                                                                                     LICENSE Version 2.1,           Parag Shah, Thomas Hilbert,          
+                                                                                     February 1999                  Steffen Kux, Herve Guillaume         
+                                                                                                                    et al.                               
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+jCommon 1.0.18          https://www.gnu.org/licenses/old-licenses/lgpl-2.1.html      GNU LESSER GENERAL PUBLIC      (C)opyright, 2000-2012, by Object 
+                                                                                     LICENSE Version 2.1,           Refinery Limited and Contributors.                              
+                                                                                     February 1999                                                       
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+jFreeChart 1.0.14       https://www.gnu.org/licenses/old-licenses/lgpl-2.1.html      GNU LESSER GENERAL PUBLIC      (C)opyright 2000-2011, by Object 
+                                                                                     LICENSE Version 2.1,           Refinery Limited and Contributors.
+                                                                                     February 1999                               
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+JSSC 2.9.1              https://www.gnu.org/licenses/lgpl.html                       GNU LESSER GENERAL PUBLIC 
+                                                                                     LICENSE Version 3, 
+                                                                                     29 June 2007
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+JNA 5.5.0               https://www.gnu.org/licenses/old-licenses/lgpl-2.1.html      GNU LESSER GENERAL PUBLIC
+                                                                                     LICENSE Version 2.1,
+                                                                                     February 1999
+                                                                                     
+                        http://www.apache.org/licenses/LICENSE-2.0                   Apache License 
+                                                                                     Version 2.0, January 2004 
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+JavaFTD2XX 0.2.6        https://opensource.org/licenses/MIT                          The MIT License                Copyright 2011 Peter Kocsis 
+                                                                                                                    <p. kocsis. 2. 7182 at gmail.com>.
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+launch4j 3.12           https://opensource.org/licenses/BSD-3-Clause                 The BSD 3-Clause License,      Copyright (c) 2004, 2011 Grzegorz Kowal
+                        https://opensource.org/licenses/mit-license.html             The MIT License (MIT)
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+proguard 6.2.2          https://www.gnu.org/licenses/old-licenses/gpl-2.0.html       GNU GENERAL PUBLIC LICENSE     Copyright © 2002-2019 Guardsquare NV
+                                                                                     Version 2, June 1991
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+SmartScroller           https://github.com/tips4java/tips4java/blob/main/LICENSE     MIT License                    Copyright (c) 2023 Rob Camick
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+MigLayout               http://www.migcalendar.com/miglayout/versions/               BSD                            Copyright (c) 2004, Mikael Grev, 
+                        4.0/license.txt                                                                             MiG InfoCom AB. (miglayout (at) 
+                                                                                                                    miginfocom (dot) com) 
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Usb4Java 1.2.0          http://www.gnu.org/licenses/lgpl-3.0.html                    GNU LESSER GENERAL PUBLIC      Copyright 2014 usb4java Team <http://usb4java.org/>
+                                                                                     LICENSE Version 3, 
+                                                                                     29 June 2007                                                                
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Flamingo 7.3            https://opensource.org/licenses/bsd-license.php              The 2-Clause BSD License       Copyright (c) 2005-2008 Flamingo, 
+                                                                                                                    Kirill Grouchnikov.
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+SwingX 1.6.4            http://www.gnu.org/licenses/lgpl-3.0.html                    GNU LESSER GENERAL PUBLIC
+                                                                                     LICENSE Version 3,
+                                                                                     29 June 2007
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Trident 7.3             https://opensource.org/licenses/bsd-license.php              The 2-Clause BSD License
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+SEGGER software pack    http://www.segger.com/terms-of-use.html                      proprietary                    SEGGER Microcontroller GmbH & Co. KG
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+JLink                                                                                proprietary                    (c) 2004-2014 SEGGER Microcontroller GmbH & Co. KG
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+cjwizard                http://www.apache.org/licenses/LICENSE-2.0                   Apache License
+                                                                                     Version 2.0, January 2004
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+(Linux only)
+net-tools               https://www.gnu.org/licenses/old-licenses/gpl-2.0.html       GNU GENERAL PUBLIC LICENSE     (c) MicroWalt Corporation, Bernd Eckenfels, Andi Kleen,      
+1.60+git20180626.                                                                    Version 2, June 1991           Donald Becker, Luk Claes, Mart�n Ferrari, Anthony Towns,
+aebd88e-1ubuntu1_amd64                                                                                              Sergio Durigan Junior
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+SLF4J-nop 1.7.9         https://en.wikipedia.org/wiki/MIT_License                    MIT License                    Copyright (c) 2004-2017 QOS.ch      
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+ff4j 1.8.11             http://www.apache.org/licenses/LICENSE-2.0                   Apache License 
+                                                                                     Version 2.0, January 2004
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+FlatLaf 0.46            https://github.com/JFormDesigner/FlatLaf/blob/main/LICENSE   Apache License 
+                                                                                     Version 2.0, January 2004
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+(windows only)
+FTDI D2XX Drivers      https://ftdichip.com/driver-licence-terms/                    proprietary                    Copyright (c) 2022 Future Technology Devices International Limited
+2.12.36.4                 
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+(Linux and macOS only)                                                               Apache License           
+Izpack 5.1.3            https://github.com/izpack/izpack/blob/izpack-5.1.3/LICENSE   Version 2.0, January 2004
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+(windows only)                                                                       GNU LGPL + unRAR restriction   Copyright (C) 1999-2023 Igor Pavlov.
+7-Zip                   https://www.7-zip.org/license.txt                            BSD 3-clause License           
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+
+This software includes both proprietary and open source components. The proprietary components may only be used after execution of the
+relevant Renesas Electronics Licensing Agreement. If you have not executed such an agreement you are not authorised to use this software.
+All open source components constitute a separate delivery and are licensed according to the applicable terms of their respective open source
+licenses. All open source software is delivered "AS IS" with no warranties. While Renesas Electronics seeks to provide complete and
+accurate licensing information with regard to each open source package, Renesas Electronics does not warrant or represent that the
+licensing information is complete or error-free. Certain open source licenses,require that source code is made available under certain conditions. 
+Please contact DLG-bluetooth.support@dm.renesas.com for any source code requests, as well as for any licensing inquiries with respect to the proprietary components.
+
+Release Version: v1.5 17 Jan 2024

@@ -1,0 +1,22 @@
+Address	Value Size	Type	RW or RO	Parameter	Description	Default Group	Default	Number of options
+40000	4	Integer	RW	NVDS_VALIDATION_FLAG	<html></html>	Main group
+40004	4	Integer	RW	NVDS_TAG_UART_BAUDRATE	<html>UART baudrate</html>	Main group
+40008	4	Integer	RW	NVDS_TAG_DIAG_SW	<html></html>	Main group
+4000C	4	Integer	RW	NVDS_TAG_DIAG_BLE_HW	<html></html>	Main group
+40010	2	Integer	RW	NVDS_TAG_NEB_ID	<html>Neb Session ID<html>	Main group
+40012	2	Integer	RW	NVDS_TAG_LPCLK_DRIFT	<html>Radio Drift</html>	Main group
+40014	1	Integer	RW	NVDS_TAG_SLEEP_ENABLE	<html>Enable sleep mode</html>	Main group
+40015	1	Integer	RW	NVDS_TAG_EXT_WAKEUP_ENABLE	<html>Enable External Wakeup</html>	Main group
+40016	1	Integer	RW	NVDS_TAG_SECURITY_ENABLE	<html></html>	Main group
+40017	1	Integer	RW	ADV_DATA_TAG_LEN	<html>Length of NVDS_TAG_APP_BLE_ADV_DATA</html>	Main group
+40018	1	Integer	RW	SCAN_RESP_DATA_TAG_LEN	<html>Length of NVDS_TAG_APP_BLE_SCAN_RESP_DATA</html>	Main group
+40019	1	Integer	RW	DEVICE_NAME_TAG_LEN	<html>Length of NVDS_TAG_DEVICE_NAME</html>	Main group
+4001A	32	String	RW	NVDS_TAG_APP_BLE_ADV_DATA	<html>BLE Application Advertising data (written as a string of bytes, i.e. left-most byte will be burned at lowest address)</html>	Main group
+4003A	32	String	RW	NVDS_TAG_APP_BLE_SCAN_RESP_DATA	<html>BLE Application Scan response data (written as a string of bytes, i.e. left-most byte will be burned at lowest address)</html>	Main group
+4005A	62	String	RW	NVDS_TAG_DEVICE_NAME	<html>Device Name (written as a string of bytes, i.e. left-most byte will be burned at lowest address)</html>	Main group
+40098	6	String	RO	NVDS_TAG_BD_ADDRESS	<html>Local Bd Address (written as a string of bytes, i.e. left-most byte will be burned at lowest address)</html>	Main group
+4009E	2	Integer	RW	NVDS_TAG_BLE_CA_TIMER_DUR	<html>Default Channel Assessment Timer duration (20s - Multiple of 10ms)</html>	Main group
+400A0	1	Integer	RW	NVDS_TAG_BLE_CRA_TIMER_DUR	<html>Default Channel Reassessment Timer duration (Multiple of Channel Assessment Timer duration)</html>	Main group
+400A1	1	Integer	RW	NVDS_TAG_BLE_CA_MIN_RSSI	<html>Default Minimal RSSI Threshold - -48dBm</html>	Main group
+400A2	1	Integer	RW	NVDS_TAG_BLE_CA_NB_PKT	<html>Default number of packets to receive for statistics</html>	Main group
+400A3	1	Integer	RW	NVDS_TAG_BLE_CA_NB_BAD_PKT	<html>Default number of bad packets needed to remove a channel</html>	Main group

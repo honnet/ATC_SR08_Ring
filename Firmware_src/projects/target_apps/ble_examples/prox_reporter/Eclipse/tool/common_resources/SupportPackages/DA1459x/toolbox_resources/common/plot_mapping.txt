@@ -1,0 +1,16 @@
+CH3_000=C_5x
+# CH3_001=<Not applied for this chip>
+# CH3_010=<Not applied for this chip>
+CH3_011=VDDIO
+CH3_100=Vdcdc
+CH3_101=VDD
+# CH3_110=<Not applied for this chip>
+CH3_111=C_3x
+CH4_000=C_5x
+# CH4_001=<Not applied for this chip>
+# CH4_010=<Not applied for this chip>
+CH4_011=VDDIO
+CH4_100=RSTn
+CH4_101=V3x
+# CH4_110=<Not applied for this chip>
+CH4_111=AIN

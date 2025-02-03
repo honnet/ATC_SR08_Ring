@@ -1,0 +1,16 @@
+==========
+Appendices
+==========
+
+.. toctree::
+   :maxdepth: 1
+   
+   detailed_interface.rst
+   quick_start/index.rst
+   list_of_figures.rst
+   list_of_tables.rst
+   list_of_codes.rst
+   Appendix_A.rst
+   Appendix_B.rst
+   
+   

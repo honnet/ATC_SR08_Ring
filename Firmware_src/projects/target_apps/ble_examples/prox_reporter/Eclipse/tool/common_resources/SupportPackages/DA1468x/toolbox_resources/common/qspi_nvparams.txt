@@ -1,0 +1,14 @@
+Address	Value Size	Type	RW or RO	Parameter	Description	Default Group	Default	Number of options
+80000	6	String	RW	TAG_BLE_PLATFORM_BD_ADDRESS	Local Bd Address	group	010080CAEA80
+80007	2	Flag	RW	TAG_BLE_PLATFORM_LPCLK_DRIFT	Radio Drift	group	500	8	500	500	250	250	150	150	100	100	75	75	50	50	30	30	20	20
+8000A	2	Integer	RW	TAG_BLE_PLATFORM_EXT_WAKEUP_TIME	External wake-up time	group	5000
+8000D	2	Integer	RW	TAG_BLE_PLATFORM_OSC_WAKEUP_TIME	Oscillator wake-up time	group	5000
+80010	2	Integer	RW	TAG_BLE_PLATFORM_RM_WAKEUP_TIME	Radio wake-up time	group	625
+80013	1	Flag	RW	TAG_BLE_PLATFORM_SLEEP_ENABLE	Enable sleep mode	group	1	2	0x1	True	0	False
+80015	1	Flag	RW	TAG_BLE_PLATFORM_EXT_WAKEUP_ENABLE	Enable External Wakeup	group	1	2	0x1	True	0	False
+80017	2	Integer	RW	TAG_BLE_PLATFORM_BLE_CA_TIMER_DUR	Channel Assessment - Timer Duration	group	500
+8001A	1	Integer	RW	TAG_BLE_PLATFORM_BLE_CRA_TIMER_DUR	Channel Reassessment - Timer Duration	group	8
+8001C	1	Signed_Integer	RW	TAG_BLE_PLATFORM_BLE_CA_MIN_RSSI	Channel Assessment - Minimal RSSI Threshold	group	-60
+8001E	2	Integer	RW	TAG_BLE_PLATFORM_BLE_CA_NB_PKT	Channel Assessment - Number of packets to study	group	20
+80021	2	Integer	RW	TAG_BLE_PLATFORM_BLE_CA_NB_BAD_PKT	Channel Assessment - Number of bad packets needed to remove a channel	group	10
+80024	16	String	RW	TAG_BLE_PLATFORM_IRK	Local IRK	group	EFCDAB8967452301EFCDAB8967452301

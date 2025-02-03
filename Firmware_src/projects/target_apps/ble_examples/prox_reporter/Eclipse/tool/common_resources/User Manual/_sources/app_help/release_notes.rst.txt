@@ -1,0 +1,7 @@
+----------------
+Release Notes
+----------------
+
+You can view the Release Notes file by clicking here RELEASE-NOTES_
+
+.. _RELEASE-NOTES: file:../SmartSnippets_Toolbox_Release_Notes.pdf

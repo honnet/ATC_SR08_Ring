@@ -1,0 +1,40 @@
+.. _board_setup:
+
+
+Board Setup Configurator
+========================
+
+.. note::
+
+	This tool is available for DA14580/581/583, DA14585/6 and DA1453x chip family. 
+
+The 'Board Setup' tool is used for establishing communication with the DK during the boot sequence and therefore should be used before any other tool. The boot procedure is described in board's datasheet and application note.
+
+#. The first list is used for selecting the UART port (Tx-Rx pair) connecting the FTDI with the DA14580/581/583 chip. The default option is the third one (P0_4, P0_5) and is preselected. The selected port is saved to the 'project.sms' file. The UART port selection also determines the baud rate, which is shown next to the Rx-Tx pair of the UART port.
+#. The second list is used for selecting the GPIO pin that controls the transistor enabling high voltage for OTP programming. The default value is P1_2. Similarly to the UART port selection, the selected GPIO pin is saved to the 'project.sms' file and is preselected the next time the user opens the same settings file. Note that the GPIO pin selection list is available only for the DA14580/581/583 family.
+#. The SPI Flash Pin Configuration section is used for configuring the gpio of SPI Flash. **Please note** that for devices with embedded flash the SPI port pins are fixed and should not be modified by the user.
+#. The I2C EEPROM Pin Configuration section is used for configuring the gpio of EEPROM.
+
+.. _boardSetup:
+.. figure:: images/board_setup.png
+   :align: center
+   
+   Board setup screen
+   
+
+DA14531 chips support single wire UART communication. When user selects a Tx-Rx pair of the same number e.g. P0_5, P0_5, 
+single wire UART communication is enabled and a green label will appear.
+
+.. _enable_single_uart:
+.. figure:: images/enable_single_uart.png
+   :align: center
+   
+   Single UART communication
+
+User can modify the number of bytes send in single wire communication before application try to read back the echoed bytes. 
+It is defined in *preferences.xml* file located in *C:\\Users\\<username>\\SmartSnippetsToolbox\\preferences.xml* entry name 
+**SINGLE_UART_DATA_CHUNK**. 
+
+DA14531 pro DK boards have been tested to work with 0x2000 and 0x1000. USB DK need at most 0x1000 to 
+work. If not set, the default value of 0x1000 is used.
+

@@ -1,0 +1,1054 @@
+<!DOCTYPE html>
+<html class="writer-html4" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>8. CLI implementation &mdash; UM-B-083</title><link rel="stylesheet" href="../_static/css/lpc_cs_theme.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/custom.css" type="text/css" /><link rel="shortcut icon" href="../_static/favicon.ico"/>
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+        <script type="text/javascript" src="../_static/language_data.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="9. Application Help" href="../app_help/index.html" />
+    <link rel="prev" title="7.1. Board Setup Configurator" href="../configurator/board_setup/board_setup.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../index.html"><img src="../_static/V-Reverse.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../inst_guide/inst_guide.html">1. Installation Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../getting_started/getting_started.html">2. Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../programmer_oper/index.html">3. Programmer Operations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../estimator/index.html">4. Estimator Operations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../manager_oper/index.html">5. Manager Operations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../monitor_oper/index.html">6. Monitor Operations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../configurator/index.html">7. Configurator Operations</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">8. CLI implementation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#introduction">8.1. Introduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#common-cli-commands-for-all-chip-families">8.2. Common CLI commands for all chip families</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#cli-for-da14580-581-583-da14585-6-and-da1453x-family-chips">8.3. CLI for DA14580/581/583, DA14585/6 and DA1453x family chips</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#cli-for-da1468x-da1469x-da1470x-and-da1459x-family-chips">8.4. CLI for DA1468x, DA1469x, DA1470x and DA1459x family chips</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#cli-options-table">8.5. CLI options table</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../app_help/index.html">9. Application Help</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../troubleshooting/troubleshooting.html">10. Troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../appendices/index.html">11. Appendices</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../disclaimers_contact.html">12. Disclaimers &amp; Contact info</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">UM-B-083</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+      <li>8. CLI implementation</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <div class="section" id="cli-implementation">
+<h1>8. CLI implementation<a class="headerlink" href="#cli-implementation" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="introduction">
+<h2>8.1. Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">¶</a></h2>
+<p>SmartSnippets™ Toolbox also provides a command line implementation of its functionality.
+In order to run the command-line version of SmartSnippets™ Toolbox, the user has to open the command prompt,
+change folder to SmartSnippets™ Toolbox installation folder under SmartSnippetsStudio/Toolbox and execute one of the available commands listed below.
+The commands are slightly different depending on the chip family.</p>
+<p>In what follows, by <em>Executable</em> we refer to the SmartSnippets™ Toolbox executable. On windows use the full path to the SmartSnippetsToolbox.exe (e.g. C:\DiaSemi\SmartSnippetsStudio&lt;version&gt;\Toolbox\SmartSnippetsToolbox.exe. On Linux use <code class="docutils literal notranslate"><span class="pre">java</span> <span class="pre">-jar</span> <span class="pre">&lt;path_to_SmartSnippetsToolbox.jar&gt;</span></code> . You may find a bundled java under SmartSnippetsStudio\jre folder</p>
+<p>Options enclosed in square bracket are optional.
+For commands with type power COM port is mandatory and is used for data capturing. If also jtag serial number is specified, jtag interface will be used for firmware download.
+A special note on <strong>-firmware</strong> option. If no present, it is assumed that the appropriate firmware has been downloaded and running previously e.g. with <strong>booter</strong> command.
+If no firmware has been downloaded then use the <strong>-firmware</strong> option. This option will first download the firmware and then execute the command.
+Usually the firmware for all commands except <em>power</em> is <em>uartboot.bin</em> for DA1468x, DA1469x, DA1470x and DA1459x family devices or <em>flash_programmer.bin</em> (UART communication) and <em>jtag_programmer.bin</em> (JTAG communication) for the rest families.</p>
+</div>
+<div class="section" id="common-cli-commands-for-all-chip-families">
+<h2>8.2. Common CLI commands for all chip families<a class="headerlink" href="#common-cli-commands-for-all-chip-families" title="Permalink to this headline">¶</a></h2>
+<ol class="arabic">
+<li><p class="first"><span class="bolditalic">Executable</span> <strong>-help -chip chip_version</strong></p>
+<p>Displays the available commands and examples.</p>
+</li>
+<li><p class="first"><span class="bolditalic">Executable</span> <strong>-bundle commands_file</strong></p>
+<div class="line-block">
+<div class="line">Executes bundle of commands from input txt file. This would save time when executing multiple commands. For example the following bundle commands burn a bootable image on SPI for DA14531.</div>
+<div class="line">Example:</div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">SmartSnippetsToolbox.exe</span> <span class="pre">-bundle</span> <span class="pre">input.txt</span></code></div>
+<div class="line">Where the contents of <cite>input.txt</cite> are shown on <a class="reference internal" href="#cli-bundle-example-burn-a-bootable-image-on-da14531-spi"><span class="std std-numref">Code 3</span></a></div>
+</div>
+<div class="literal-block-wrapper docutils container" id="cli-bundle-example-burn-a-bootable-image-on-da14531-spi">
+<span id="cli-bundle-example"></span><div class="code-block-caption"><span class="caption-number">Code 3 </span><span class="caption-text">CLI bundle example. Burn a bootable image on DA14531 SPI</span><a class="headerlink" href="#cli-bundle-example-burn-a-bootable-image-on-da14531-spi" title="Permalink to this code">¶</a></div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="o">-</span><span class="nb">type</span> <span class="n">booter</span> <span class="o">-</span><span class="n">chip</span> <span class="n">DA14531</span> <span class="o">-</span><span class="n">com_port</span> <span class="mi">13</span> <span class="o">-</span><span class="n">file</span> <span class="s2">&quot;C:\DA145xx_SDK</span><span class="se">\6</span><span class="s2">.0.14.1114\config</span><span class="se">\t</span><span class="s2">oolbox_resources\DA1453x\common</span><span class="se">\f</span><span class="s2">lash_programmer.bin&quot;</span> <span class="o">-</span><span class="n">uart</span> <span class="n">P0_5</span>
+<span class="o">-</span><span class="nb">type</span> <span class="n">spi</span> <span class="o">-</span><span class="n">chip</span> <span class="n">DA14531</span> <span class="o">-</span><span class="n">com_port</span> <span class="mi">13</span> <span class="o">-</span><span class="n">cmd</span> <span class="n">erase</span> <span class="o">-</span><span class="n">uart</span> <span class="n">P0_5</span>
+<span class="o">-</span><span class="nb">type</span> <span class="n">spi</span> <span class="o">-</span><span class="n">chip</span> <span class="n">DA14531</span> <span class="o">-</span><span class="n">com_port</span> <span class="mi">13</span> <span class="o">-</span><span class="n">cmd</span> <span class="n">write</span> <span class="o">-</span><span class="n">file</span> <span class="s2">&quot;C:\DA145xx_SDK</span><span class="se">\6</span><span class="s2">.0.14.1114\projects</span><span class="se">\t</span><span class="s2">arget_apps\peripheral_examples</span><span class="se">\b</span><span class="s2">linky\Keil_5\out_DA14531\Objects</span><span class="se">\b</span><span class="s2">linky_531.bin&quot;</span> <span class="o">-</span><span class="n">uart</span> <span class="n">P0_5</span> <span class="o">-</span><span class="n">bootable</span>
+</pre></div>
+</div>
+</div>
+</li>
+</ol>
+</div>
+<div class="section" id="cli-for-da14580-581-583-da14585-6-and-da1453x-family-chips">
+<h2>8.3. CLI for DA14580/581/583, DA14585/6 and DA1453x family chips<a class="headerlink" href="#cli-for-da14580-581-583-da14585-6-and-da1453x-family-chips" title="Permalink to this headline">¶</a></h2>
+<ol class="arabic">
+<li><p class="first"><span class="bolditalic">Executable</span> <strong>[-sdk sdk_path] -type booter -chip chip_version [-jtag jtag_serialNumber | -com_port portNumber] [-sys_ctrl_reg b1] [-gp_ctrl_reg b2] [-close] [-gpio pinId] [-uart TxId] -file filename [-y] [-nomessages messageFilter]</strong></p>
+<div class="line-block">
+<div class="line">Downloads file to the chip using UART Booter tool. If a <em>CRC does not match</em> shows up, please run the command again and then press the hardware reset button on the board to restart the download process.</div>
+<div class="line">Example:</div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">SmartSnippetsToolbox.exe</span> <span class="pre">-type</span> <span class="pre">booter</span> <span class="pre">-chip</span> <span class="pre">DA14531</span> <span class="pre">-com_port</span> <span class="pre">13</span> <span class="pre">-uart</span> <span class="pre">P0_5</span> <span class="pre">-file</span> <span class="pre">&quot;C:\DA145xx_SDK\6.0.14.1114\config\toolbox_resources\DA1453x\common\flash_programmer.bin&quot;</span></code></div>
+<div class="line"><strong>Note</strong>: Option “-uart P0_5” is used to define 1-wire communication over P0_5, P0_5.</div>
+</div>
+</li>
+<li><p class="first"><span class="bolditalic">Executable</span> <strong>[-sdk sdk_path] -type otp -chip chip_version [-jtag jtag_serialNumber | -com_port portNumber] [-baudrate rate] [-gpio pinId] [-uart TxId] [-firmware firmware_file] -cmd write_header -file filename [-writeReadOnlyOTPHeaderFields] [-y] [-nomessages messageFilter]</strong></p>
+<div class="line-block">
+<div class="line">Burns file to OTP Header. Makes the assumption that a valid firmware file has already been downloaded (e.g. through use of the booter command above). In order to disable validations that stop the header writing process waiting for user confirmation, the following line should be added to the “&lt;user home directory&gt;\properties.txt” file: DISABLEVALIDATIONS = true.</div>
+<div class="line">Example 1:</div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">SmartSnippetsToolbox.exe</span> <span class="pre">-type</span> <span class="pre">otp</span> <span class="pre">-chip</span> <span class="pre">DA14531</span> <span class="pre">-com_port</span> <span class="pre">13</span> <span class="pre">-uart</span> <span class="pre">P0_5</span> <span class="pre">-cmd</span> <span class="pre">write_header</span> <span class="pre">-file</span> <span class="pre">531_header.hex</span></code></div>
+<div class="line"><br /></div>
+<div class="line">Example 2 (configuration script):</div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">SmartSnippetsToolbox.exe</span> <span class="pre">-type</span> <span class="pre">otp</span> <span class="pre">-chip</span> <span class="pre">DA14531</span> <span class="pre">-com_port</span> <span class="pre">13</span> <span class="pre">-uart</span> <span class="pre">P0_5</span> <span class="pre">-cmd</span> <span class="pre">write_header</span> <span class="pre">-file</span> <span class="pre">531_header_with_updated_conf_script.bin</span></code></div>
+<div class="line">User can edit the configuration script from GUI OTP Header tab, export contents (button export) to “531_header_with_updated_conf_script.bin” and burn the updated header file with the above command.</div>
+</div>
+</li>
+<li><p class="first"><span class="bolditalic">Executable</span> <strong>[-sdk sdk_path] -type otp -chip chip_version [-jtag jtag_serialNumber | -com_port portNumber] [-baudrate rate] [-gpio pinId] [-uart TxId] [-firmware firmware_file] -cmd write_nvds -file filename [-offset ofst] [-y] [-nomessages messageFilter]</strong></p>
+<p>Burns file to OTP NVDS. Makes the assumption that a valid firmware file has already been downloaded (e.g. through use of the booter command above). <strong>Not applicable for DA14585/6 and DA1453x</strong></p>
+</li>
+<li><p class="first"><span class="bolditalic">Executable</span> <strong>[-sdk sdk_path] -type otp -chip chip_version [-jtag jtag_serialNumber | -com_port portNumber] [-baudrate rate] [-gpio pinId] [-uart TxId] [-firmware firmware_file] -cmd write_custom_code -file filename [-offset ofst] [-writeReadOnlyOTPHeaderFields] [-y] [-nomessages messageFilter]</strong></p>
+<div class="line-block">
+<div class="line">Burns file to OTP memory. Makes the assumption that a valid firmware file has already been downloaded (e.g. through use of the booter command above). On DA14583-01 chip asks for confirmation even with option ‘-y’</div>
+<div class="line">Example 1</div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">SmartSnippetsToolbox.exe</span> <span class="pre">-type</span> <span class="pre">otp</span> <span class="pre">-chip</span> <span class="pre">DA14531</span> <span class="pre">-com_port</span> <span class="pre">13</span> <span class="pre">-uart</span> <span class="pre">P0_5</span> <span class="pre">-cmd</span> <span class="pre">write_custom_code</span> <span class="pre">-file</span>&#160; <span class="pre">files\code.bin</span> <span class="pre">-offset</span> <span class="pre">0x200</span> <span class="pre">-firmware</span> <span class="pre">C:\DA145xx_SDK\6.0.14.1114\config\toolbox_resources\DA1453x\common\flash_programmer.bin</span></code></div>
+<div class="line"><br /></div>
+<div class="line">Example 2 (configuration script):</div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">SmartSnippetsToolbox.exe</span> <span class="pre">-type</span> <span class="pre">otp</span> <span class="pre">-chip</span> <span class="pre">DA14531</span> <span class="pre">-com_port</span> <span class="pre">13</span> <span class="pre">-uart</span> <span class="pre">P0_5</span> <span class="pre">-cmd</span> <span class="pre">write_custom_code</span> <span class="pre">-file</span>&#160; <span class="pre">files\configuration_script.bin</span> <span class="pre">-offset</span> <span class="pre">0x7ED0</span> <span class="pre">-firmware</span> <span class="pre">&quot;C:\DA145xx_SDK\6.0.14.1114\config\toolbox_resources\DA1453x\common\flash_programmer.bin&quot;</span></code></div>
+<div class="line">Offset 0x7ED0 indicates the start of configuration script. configuration_script.bin contains the data of the configuration script (240 bytes for DA14531).</div>
+</div>
+</li>
+<li><p class="first"><span class="bolditalic">Executable</span> <strong>[-sdk sdk_path] -type otp -chip chip_version [-jtag jtag_serialNumber | -com_port portNumber] [-baudrate rate] [-gpio pinId] [-uart TxId] [-firmware firmware_file] -cmd read_header -file filename [-y] [-nomessages messageFilter]</strong></p>
+<div class="line-block">
+<div class="line">Reads OTP Header and writes its contents to a file. Makes the assumption that a valid firmware file has already been downloaded (e.g. through use of the booter command above).</div>
+<div class="line">Example:</div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">SmartSnippetsToolbox.exe</span> <span class="pre">-type</span> <span class="pre">otp</span> <span class="pre">-chip</span> <span class="pre">DA14585-00</span> <span class="pre">-com_port</span> <span class="pre">43</span> <span class="pre">-cmd</span> <span class="pre">read_header</span> <span class="pre">-file</span> <span class="pre">header_out.hex</span></code></div>
+</div>
+</li>
+<li><p class="first"><span class="bolditalic">Executable</span> <strong>[-sdk sdk_path] -type otp -chip chip_version [-jtag jtag_serialNumber | -com_port portNumber] [-baudrate rate] [-gpio pinId] [-uart TxId] [-firmware firmware_file] -cmd read_nvds -file filename [-offset ofst] [-y] [-nomessages messageFilter]</strong></p>
+<div class="line-block">
+<div class="line">Reads OTP NVDS and writes its contents to a file. Makes the assumption that a valid firmware file has already been downloaded (e.g. through use of the booter command above). <strong>Not applicable for DA14585-00, DA14586-00 and DA1453x</strong></div>
+<div class="line">Example:</div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">SmartSnippetsToolbox.exe</span> <span class="pre">-type</span> <span class="pre">otp</span> <span class="pre">-chip</span> <span class="pre">DA14583-01</span> <span class="pre">-com_port</span> <span class="pre">45</span> <span class="pre">-cmd</span> <span class="pre">read_nvds</span> <span class="pre">-file</span> <span class="pre">otp_out.hex</span></code></div>
+</div>
+</li>
+<li><p class="first"><span class="bolditalic">Executable</span> <strong>[-sdk sdk_path] -type otp -chip chip_version [-jtag jtag_serialNumber | -com_port portNumber] [-baudrate rate] [-gpio pinId] [-uart TxId] [-firmware firmware_file] -cmd read_custom_code -file filename [-offset ofst] [-length byteLength] [-y] [-nomessages messageFilter]</strong></p>
+<div class="line-block">
+<div class="line">Reads OTP memory contents and writes its contents to a file. Makes the assumption that a valid firmware file has already been downloaded (e.g. through use of the booter command above). If <cite>length</cite> not specified it takes the value of OTP size.</div>
+<div class="line">Example:</div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">SmartSnippetsToolbox.exe</span> <span class="pre">-type</span> <span class="pre">otp</span> <span class="pre">-chip</span> <span class="pre">DA14531</span> <span class="pre">-com_port</span> <span class="pre">45</span> <span class="pre">-cmd</span> <span class="pre">read_custom_code</span> <span class="pre">-uart</span> <span class="pre">P0_5</span> <span class="pre">-file</span> <span class="pre">otp_out.hex</span> <span class="pre">-offset</span> <span class="pre">0x10</span> <span class="pre">-length</span> <span class="pre">0x100</span></code></div>
+</div>
+</li>
+<li><p class="first"><span class="bolditalic">Executable</span> <strong>[-sdk sdk_path] -type otp -chip chip_version [-jtag jtag_serialNumber | -com_port portNumber] [-baudrate rate] [-gpio pinId] [-uart TxId] [-firmware firmware_file] -cmd write_field [-offset ofst] -data dataInHex [-nvds_address_offset nvdsAddrOfst] [-writeReadOnlyOTPHeaderFields] [-y] [-nomessages messageFilter]</strong></p>
+<div class="line-block">
+<div class="line">Burns dataInHex to OTP starting from address 0x40000 + ofst.</div>
+<div class="line">Example:</div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">SmartSnippetsToolbox.exe</span> <span class="pre">-type</span> <span class="pre">otp</span> <span class="pre">-chip</span> <span class="pre">DA14531</span> <span class="pre">-jtag</span> <span class="pre">480071025</span> <span class="pre">-cmd</span>&#160; <span class="pre">write_field</span>&#160; <span class="pre">-data</span> <span class="pre">12345678</span> <span class="pre">-offset</span> <span class="pre">0x100</span> <span class="pre">-firmware</span> <span class="pre">&quot;C:\DA145xx_SDK\6.0.14.1114\config\toolbox_resources\DA1453x\common\jtag_programmer.bin&quot;</span></code></div>
+</div>
+</li>
+<li><p class="first"><span class="bolditalic">Executable</span> <strong>[-sdk sdk_path] -type power -chip chip_version -com_port portNumber [-gpio pinId] [-uart TxId] [-jtag jtag_serialNumber] [-firmware firmware_file] -cmd capture_data -duration durationInmSecs [-time_offset time_offset] [-calibration_offset offset] [-threshold threshold] [-zero_samples_for_sw_cursor samples] [-sw_cursor_tolerance tolerance] [-sw_cursors_to_stop cursors_to_stop] -data_file data_file -stat_file stat_file [-y] [-nomessages messageFilter]</strong></p>
+<div class="line-block">
+<div class="line">Captures Current data measured by Power Profiler for Power Measurement Module v1 (PMM1) devices, writes them to a file and exports final statistics. This command applies only to devices with SPI interface.</div>
+<div class="line">Example:</div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">SmartSnippetsToolbox.exe</span> <span class="pre">-type</span> <span class="pre">power</span> <span class="pre">-chip</span> <span class="pre">DA14531</span> <span class="pre">-com_port</span> <span class="pre">13</span> <span class="pre">-uart</span> <span class="pre">P0_5</span> <span class="pre">-cmd</span> <span class="pre">capture_data</span> <span class="pre">-duration</span> <span class="pre">6000</span> <span class="pre">-data_file</span> <span class="pre">data_file.csv</span> <span class="pre">-stat_file</span> <span class="pre">stat_file.csv</span> <span class="pre">-firmware</span> <span class="pre">&quot;C:\DA145xx_SDK\6.0.14.1114\projects\target_apps\ble_examples\ble_app_barebone\Keil_5\out_DA14531\Objects\ble_app_barebone_531.hex&quot;</span></code></div>
+</div>
+</li>
+<li><p class="first"><span class="bolditalic">Executable</span> <strong>[-sdk sdk_path] -type power -pmm2 -chip chip_version -com_port portNumber [-jtag jtag_serialNumber] [-firmware firmware_file] -cmd capture_data -duration durationInmSecs [-time_offset time_offset] [-threshold threshold] [-ch3_input in] [-ch4_input in] [-digital] [-hibernation_mode] [-low_pass_filter] -data_folder data_folder -stat_file stat_file [-ch1_calibration_offset ch1_offset] [-ch2_calibration_offset ch2_offset] [-y] [-nomessages messageFilter]</strong></p>
+<div class="line-block">
+<div class="line"><strong>Note: Only for DA14535-00 and DA14533-00 chips</strong>. Captures data from one or more inputs for Power Measurement Module v2 (PMM2) devices, writes them to csv files in the path specified by -data_folder and exports statistics.</div>
+<div class="line">If none of -ch3_input, -ch4_input or -digital is specified, only the CH1/CH2 current is measured.</div>
+<div class="line">This command applies only to devices with SPI interface. The default sample rate for PMM2 is 128k.</div>
+<div class="line">Example:</div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">SmartSnippetsToolbox.exe</span> <span class="pre">-type</span> <span class="pre">power</span> <span class="pre">-pmm2</span> <span class="pre">-com_port</span> <span class="pre">20</span> <span class="pre">-chip</span> <span class="pre">DA14535-00</span> <span class="pre">-cmd</span> <span class="pre">capture_data</span> <span class="pre">-duration</span> <span class="pre">1000</span> <span class="pre">-ch3_input</span> <span class="pre">C_5x</span> <span class="pre">-ch4_input</span> <span class="pre">C_5x</span> <span class="pre">-digital</span> <span class="pre">-ch1_calibration_offset</span> <span class="pre">0.0000175</span> <span class="pre">-ch2_calibration_offset</span> <span class="pre">-0.0002622</span> <span class="pre">-data_folder</span> <span class="pre">&quot;C:\Users\user\data&quot;</span> <span class="pre">-stat_file</span> <span class="pre">&quot;C:\Users\user\stats.csv&quot;</span></code></div>
+</div>
+</li>
+<li><p class="first"><span class="bolditalic">Executable</span> <strong>[-sdk sdk_path] -type power -chip chip_version -com_port portNumber [-gpio pinId] [-uart TxId] [-jtag jtag_serialNumber] [-firmware firmware_file] -cmd export_stats -duration durationInSecs -sampling_interval sampling_interval [-calibration_offset offset] -stat_file stat_file [-y] [-nomessages messageFilter]</strong></p>
+<div class="line-block">
+<div class="line">Captures statistics for a period of time and exports to a file statistic samples every sampling interval. Makes the assumption that a valid firmware file has already been downloaded (e.g. through use of the booter command above). This command applies only to devices with SPI interface.</div>
+<div class="line">Example:</div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">SmartSnippetsToolbox.exe</span> <span class="pre">-type</span> <span class="pre">power</span> <span class="pre">-chip</span> <span class="pre">DA14531</span> <span class="pre">-com_port</span> <span class="pre">13</span> <span class="pre">-uart</span> <span class="pre">P0_5</span> <span class="pre">-cmd</span> <span class="pre">export_stats</span> <span class="pre">-duration</span> <span class="pre">6</span> <span class="pre">-stat_file</span> <span class="pre">stats.csv</span> <span class="pre">-sampling_interval</span> <span class="pre">1</span></code></div>
+<div class="line">Assumes that firmware has been already downloaded.</div>
+</div>
+</li>
+<li><p class="first"><span class="bolditalic">Executable</span> <strong>[-sdk sdk_path] -type power -pmm2 -chip chip_version -com_port portNumber [-jtag jtag_serialNumber] [-firmware firmware_file] -cmd export_stats -duration durationInSecs -sampling_interval sampling_interval -stat_file stat_file [-ch1_calibration_offset ch1_offset] [-ch2_calibration_offset ch2_offset] [-y] [-nomessages messageFilter]</strong></p>
+<div class="line-block">
+<div class="line"><strong>Note: Only for DA14535-00 and DA14533-00 chips</strong>. Captures statistics for a period of time for Power Measurement Module v2 (PMM2) devices and exports to a file statistic samples every sampling interval. Makes the assumption that a valid firmware file has already been downloaded (e.g. through use of the booter command above).</div>
+<div class="line">Alternatively use the optional arguments <cite>-jtag</cite> and <cite>-firmware</cite> to download the firmware. The default sample rate for PMM2 is 128k. Statistics for CH1/CH2 only are captured.</div>
+<div class="line">Example:</div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">SmartSnippetsToolbox.exe</span> <span class="pre">-type</span> <span class="pre">power</span> <span class="pre">-pmm2</span> <span class="pre">-chip</span> <span class="pre">DA14535-00</span> <span class="pre">-com_port</span> <span class="pre">13</span> <span class="pre">-cmd</span> <span class="pre">export_stats</span> <span class="pre">-duration</span> <span class="pre">6</span> <span class="pre">-ch1_calibration_offset</span> <span class="pre">0.0000175</span> <span class="pre">-ch2_calibration_offset</span> <span class="pre">-0.0002622</span> <span class="pre">-sampling_interval</span> <span class="pre">1</span> <span class="pre">-stat_file</span> <span class="pre">stats.csv</span></code></div>
+</div>
+</li>
+<li><p class="first"><span class="bolditalic">Executable</span> <strong>[-sdk sdk_path] -type power -chip chip_version -com_port portNumber -cmd calibrate [-y] [-nomessages messageFilter]</strong></p>
+<div class="line-block">
+<div class="line">Calibrates the chip and outputs the offset value.</div>
+<div class="line">Example:</div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">SmartSnippetsToolbox.exe</span> <span class="pre">-type</span> <span class="pre">power</span> <span class="pre">-chip</span> <span class="pre">DA14531</span> <span class="pre">-com_port</span> <span class="pre">3</span> <span class="pre">-cmd</span> <span class="pre">calibrate</span></code></div>
+</div>
+</li>
+<li><p class="first"><span class="bolditalic">Executable</span> <strong>[-sdk sdk_path] -type spi -chip chip_version [-clk clk] [-cs cs] [-miso miso] [-mosi mosi] [-jtag jtag_serialNumber | -com_port portNumber] [-baudrate rate] [-gpio pinId] [-uart TxId] [-firmware firmware_file] -cmd read -file filename [-offset ofst] [-length byteLength] [-max size] [-y] [-nomessages messageFilter]</strong></p>
+<div class="line-block">
+<div class="line">Reads SPI FLASH memory contents and writes them to a file.</div>
+<div class="line">Example:</div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">SmartSnippetsToolbox.exe</span> <span class="pre">-type</span> <span class="pre">spi</span> <span class="pre">-chip</span> <span class="pre">DA14531-01</span> <span class="pre">-jtag</span> <span class="pre">480072295</span> <span class="pre">-cmd</span> <span class="pre">read</span> <span class="pre">-file</span> <span class="pre">spi_out.bin</span></code></div>
+</div>
+</li>
+<li><p class="first"><span class="bolditalic">Executable</span> <strong>[-sdk sdk_path] -type spi -chip chip_version [-clk clk] [-cs cs] [-miso miso] [-mosi mosi] [-jtag jtag_serialNumber | -com_port portNumber] [-baudrate rate] [-gpio pinId] [-uart TxId] [-firmware firmware_file] -cmd write -file filename [-offset ofst] [-max size] [-verify] [-bootable] [-y] [-nomessages messageFilter]</strong></p>
+<div class="line-block">
+<div class="line">Burns file to SPI FLASH memory.</div>
+<div class="line">Example:</div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">SmartSnippetsToolbox.exe</span> <span class="pre">-type</span> <span class="pre">spi</span> <span class="pre">-chip</span> <span class="pre">DA14531</span> <span class="pre">-com_port</span> <span class="pre">13</span> <span class="pre">-uart</span> <span class="pre">P0_5</span> <span class="pre">-cmd</span> <span class="pre">write</span> <span class="pre">-offset</span> <span class="pre">0x0100</span> <span class="pre">-file</span> <span class="pre">files\prox_reporter.bin</span> <span class="pre">-max</span> <span class="pre">0x400000</span> <span class="pre">-firmware</span> <span class="pre">&quot;C:\\DA145xx_SDK\\6.0.14.1114\\config\\toolbox_resources\\DA1453x\\common\\flash_programmer.bin&quot;</span></code></div>
+</div>
+</li>
+<li><p class="first"><span class="bolditalic">Executable</span> <strong>[-sdk sdk_path] -type spi -chip chip_version [-clk clk] [-cs cs] [-miso miso] [-mosi mosi] [-jtag jtag_serialNumber | -com_port portNumber] [-baudrate rate] [-gpio pinId] [-uart TxId] [-firmware firmware_file] -cmd erase [-verify] [-offset ofst] [-max size] [-sectors num] [-end address] [-y] [-nomessages messageFilter]</strong></p>
+<div class="line-block">
+<div class="line">Erases all the SPI FLASH memory when -offset, -sectors and -end have not been specified. User can erase specific sectors by either using -sectors or -end. In the first case the specified number of sectors is erased. In the second case the sectors included between offset and end address are erased. If offset is specified without -end or -sectors, only the sector that includes the offset is erased. Sector size is 4KB.</div>
+<div class="line">Example:</div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">SmartSnippetsToolbox.exe</span> <span class="pre">-type</span> <span class="pre">spi</span> <span class="pre">-chip</span> <span class="pre">DA14531-01</span> <span class="pre">-jtag</span> <span class="pre">480072295</span> <span class="pre">-cmd</span> <span class="pre">erase</span> <span class="pre">-verify</span></code></div>
+</div>
+</li>
+<li><p class="first"><span class="bolditalic">Executable</span> <strong>[-sdk sdk_path] -type spi -chip chip_version [-clk clk] [-cs cs] [-miso miso] [-mosi mosi] [-jtag jtag_serialNumber | -com_port portNumber] [-baudrate rate] [-gpio pinId] [-uart TxId] [-firmware firmware_file] -cmd write_field [-offset ofst] -data dataInHex [-max size] [-y] [-nomessages messageFilter]</strong></p>
+<div class="line-block">
+<div class="line">Burns dataInHex to SPI FLASH starting from address ofst.</div>
+<div class="line">Example:</div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">SmartSnippetsToolbox.exe</span> <span class="pre">-type</span> <span class="pre">spi</span> <span class="pre">-chip</span> <span class="pre">DA14531</span> <span class="pre">-com_port</span> <span class="pre">13</span> <span class="pre">-cmd</span> <span class="pre">write_field</span> <span class="pre">-offset</span> <span class="pre">0x1000</span> <span class="pre">-data</span> <span class="pre">01234567890123456789</span> <span class="pre">&quot;C:\DA145xx_SDK\6.0.14.1114\config\toolbox_resources\DA1453x\common\flash_programmer.bin&quot;</span></code></div>
+</div>
+</li>
+<li><p class="first"><span class="bolditalic">Executable</span> <strong>[-sdk sdk_path] -type eeprom -chip chip_version [-scl scl] [-sda sda] [-jtag jtag_serialNumber | -com_port portNumber] [-baudrate rate] [-gpio pinId] [-uart TxId] [-firmware firmware_file] -cmd read -file filename [-offset ofst] [-length byteLength] [-max size] [-y] [-nomessages messageFilter]</strong></p>
+<p>Reads EEPROM memory contents and writes them to a file.</p>
+</li>
+<li><p class="first"><span class="bolditalic">Executable</span> <strong>[-sdk sdk_path] -type eeprom -chip chip_version [-scl scl] [-sda sda] [-jtag jtag_serialNumber | -com_port portNumber] [-baudrate rate] [-gpio pinId] [-uart TxId] [-firmware firmware_file] -cmd write -file filename [-offset ofst] [-max size] [-verify] [-bootable] [-y] [-nomessages messageFilter]</strong></p>
+<p>Burns file to EEPROM memory.</p>
+</li>
+<li><p class="first"><span class="bolditalic">Executable</span> <strong>[-sdk sdk_path] -type eeprom -chip chip_version [-scl scl] [-sda sda] [-jtag jtag_serialNumber | -com_port portNumber] [-baudrate rate] [-gpio pinId] [-uart TxId] [-firmware firmware_file] -cmd erase [-bit_value val] [-verify] [-max size] [-y] [-nomessages messageFilter]</strong></p>
+<p>Erases EEPROM memory by writing the bit value to every bit of memory. Default value is 0.</p>
+</li>
+<li><p class="first"><span class="bolditalic">Executable</span> <strong>[-sdk sdk_path] -type eeprom -chip chip_version [-scl scl] [-sda sda] [-jtag jtag_serialNumber | -com_port portNumber] [-baudrate rate] [-gpio pinId] [-uart TxId] [-firmware firmware_file] -cmd write_field [-offset ofst] -data dataInHex [-max size] [-y] [-nomessages messageFilter]</strong></p>
+<p>Burns dataInHex to EEPROM starting from address ofst.</p>
+</li>
+<li><p class="first"><span class="bolditalic">Executable</span> <strong>[-sdk sdk_path] -type suota -chip chip_version -initiator portNumber -receiver ble_addr -file img_file [-memtype memoryType] [-bank bank_num] [-i2c_addr addr] [-block_size b_size] [-scl scl] [-sda sda] [-miso miso] [-mosi mosi] [-cs cs] [-sck sck] [-y] [-nomessages messageFilter]</strong></p>
+<p>SUOTA (Software Update Over the Air). Applicable only for DA14580-01.</p>
+</li>
+<li><p class="first"><span class="bolditalic">Executable</span> <strong>[-sdk sdk_path] -type spota -chip chip_version -initiator portNumber -receiver ble_addr -file img_file [-memtype memoryType] [-base_addr addr ] [-i2c_addr addr] [-scl scl] [-sda sda] [-miso miso] [-mosi mosi] [-cs cs] [-sck sck] [-y] [-nomessages messageFilter]</strong></p>
+<p>SPOTA (Software Patch Over the Air). Applicable only for DA14580-01.</p>
+</li>
+<li><p class="first"><span class="bolditalic">Executable</span> <strong>[-sdk sdk_path] -type battery_life -chip chip_version -input input_file [-params params_file]</strong></p>
+<div class="line-block">
+<div class="line">Battery Lifetime Estimation. input_file contains the input values to be used for the calculations. Optionally, params_file can be used to override the default values per chip family that are used in the calculations.</div>
+<div class="line">Example:</div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">SmartSnippetsToolbox.exe</span> <span class="pre">-type</span> <span class="pre">battery_life</span> <span class="pre">-chip</span> <span class="pre">DA14531</span> <span class="pre">-input</span> <span class="pre">&quot;C:\DiaSemi\SmartSnippetsStudio2.0.14\Toolbox\common_resources\SupportPackages\DA1453x\toolbox_resources\common\lifetimeEstimator_defaults_Boost.txt&quot;</span></code></div>
+</div>
+</li>
+</ol>
+<p><a class="reference internal" href="#id1"><span class="std std-numref">Table 6</span></a> provides a description for above options.</p>
+</div>
+<div class="section" id="cli-for-da1468x-da1469x-da1470x-and-da1459x-family-chips">
+<h2>8.4. CLI for DA1468x, DA1469x, DA1470x and DA1459x family chips<a class="headerlink" href="#cli-for-da1468x-da1469x-da1470x-and-da1459x-family-chips" title="Permalink to this headline">¶</a></h2>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Communication with JTAG on Linux requires <cite>netstat</cite> utility for DA1468x, DA1469x, DA1470x and DA1459x family devices.</p>
+</div>
+<p>Before run <code class="docutils literal notranslate"><span class="pre">java</span> <span class="pre">-jar</span> <span class="pre">&lt;path_to_SmartSnippetsToolbox.jar&gt;</span></code> check that utility exists in PATH. If not, either install with system’s package manager
+e.g. <code class="docutils literal notranslate"><span class="pre">sudo</span> <span class="pre">apt-get</span> <span class="pre">install</span> <span class="pre">net-tools</span></code> or use the net-tools included on SmartSnippets Toolbox installation:
+<code class="docutils literal notranslate"><span class="pre">export</span> <span class="pre">PATH=$PATH:&lt;toolbox_installation_folder&gt;/net-tools-1.60/bin</span></code></p>
+<ol class="arabic">
+<li><p class="first"><span class="bolditalic">Executable</span> <strong>[-sdk sdk_path] -type booter -chip chip_version [-jtag jtag_serialNumber | -com_port portNumber] -file filename [-close] [-y] [-nomessages messageFilter]</strong></p>
+<div class="line-block">
+<div class="line">Downloads file to the chip using UART Booter tool.</div>
+<div class="line">Example:</div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">SmartSnippetsToolbox.exe</span> <span class="pre">-type</span> <span class="pre">booter</span> <span class="pre">-chip</span> <span class="pre">DA1469x-00</span> <span class="pre">-jtag</span> <span class="pre">483060192</span> <span class="pre">-file</span> <span class="pre">&quot;C:\SDK_10.0.8.105\binaries\uartboot.bin&quot;</span></code></div>
+</div>
+</li>
+<li><p class="first"><span class="bolditalic">Executable</span> <strong>[-sdk sdk_path] -type otp -chip chip_version [-jtag jtag_serialNumber | -com_port portNumber] [-firmware firmware_file] -cmd write_header -file filename [-writeReadOnlyOTPHeaderFields] [-y] [-nomessages messageFilter]</strong></p>
+<div class="line-block">
+<div class="line">Burns file to OTP Header.</div>
+<div class="line">Example:</div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">SmartSnippetsToolbox.exe</span> <span class="pre">-type</span> <span class="pre">otp</span> <span class="pre">-chip</span> <span class="pre">DA1469x-00</span> <span class="pre">-com_port</span> <span class="pre">13</span> <span class="pre">-cmd</span> <span class="pre">write_header</span> <span class="pre">-file</span> <span class="pre">690_header.bin</span></code></div>
+<div class="line"><strong>Note</strong>: No -firmware option present, presumes firmware already download before.</div>
+</div>
+</li>
+<li><p class="first"><span class="bolditalic">Executable</span> <strong>[-sdk sdk_path] -type otp -chip chip_version [-jtag jtag_serialNumber | -com_port portNumber] [-firmware firmware_file] -cmd write_custom_code -file filename [-offset ofst] [-writeReadOnlyOTPHeaderFields] [-y] [-nomessages messageFilter]</strong></p>
+<div class="line-block">
+<div class="line">Burns file to OTP memory.</div>
+<div class="line">Example:</div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">SmartSnippetsToolbox.exe</span> <span class="pre">-type</span> <span class="pre">otp</span> <span class="pre">-chip</span> <span class="pre">DA1469x-00</span> <span class="pre">-com_port</span> <span class="pre">13</span> <span class="pre">-cmd</span>&#160; <span class="pre">write_custom_code</span> <span class="pre">-file</span> <span class="pre">custom.bin</span> <span class="pre">-firmware</span> <span class="pre">&quot;C:\SDK_10.0.8.105\binaries\uartboot.bin&quot;</span></code></div>
+<div class="line"><strong>Note</strong>: -firmware option instructs to download firmware before run the command.</div>
+</div>
+</li>
+<li><p class="first"><span class="bolditalic">Executable</span> <strong>[-sdk sdk_path] -type otp -chip chip_version [-jtag jtag_serialNumber | -com_port portNumber] [-firmware firmware_file] -cmd read_header -file filename [-y] [-nomessages messageFilter]</strong></p>
+<div class="line-block">
+<div class="line">Reads OTP Header and writes its contents to a file.</div>
+<div class="line">Example:</div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">SmartSnippetsToolbox.exe</span> <span class="pre">-type</span> <span class="pre">otp</span> <span class="pre">-chip</span> <span class="pre">DA1469x-00</span> <span class="pre">-com_port</span> <span class="pre">13</span> <span class="pre">-cmd</span> <span class="pre">read_header</span> <span class="pre">-file</span> <span class="pre">690_header.bin</span> <span class="pre">-firmware</span> <span class="pre">&quot;C:\SDK_10.0.8.105\binaries\uartboot.bin&quot;</span></code></div>
+</div>
+</li>
+<li><p class="first"><span class="bolditalic">Executable</span> <strong>[-sdk sdk_path] -type otp -chip chip_version [-jtag jtag_serialNumber | -com_port portNumber] [-firmware firmware_file] -cmd read_custom_code -file filename [-offset ofst] [-length byteLength] [-y] [-nomessages messageFilter]</strong></p>
+<div class="line-block">
+<div class="line">Reads OTP memory contents and writes its contents to a file. If <cite>length</cite> not specified it takes the value of OTP size.</div>
+<div class="line">Example:</div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">SmartSnippetsToolbox.exe</span> <span class="pre">-type</span> <span class="pre">otp</span> <span class="pre">-chip</span> <span class="pre">DA1469x-00</span> <span class="pre">-com_port</span> <span class="pre">13</span> <span class="pre">-cmd</span>&#160; <span class="pre">read_custom_code</span> <span class="pre">-file</span> <span class="pre">custom_code.hex</span> <span class="pre">-firmware</span> <span class="pre">&quot;C:\SDK_10.0.8.105\binaries\uartboot.bin&quot;</span></code></div>
+</div>
+</li>
+<li><p class="first"><span class="bolditalic">Executable</span> <strong>[-sdk sdk_path] -type otp -chip chip_version [-jtag jtag_serialNumber | -com_port portNumber] [-firmware firmware_file] -cmd write_field [-offset ofst] -data dataInHex [-writeReadOnlyOTPHeaderFields] [-y] [-nomessages messageFilter]</strong></p>
+<div class="line-block">
+<div class="line">Burns dataInHex to OTP starting from address 0x7F80000 + ofst.</div>
+<div class="line">Example:</div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">SmartSnippetsToolbox.exe</span> <span class="pre">-type</span> <span class="pre">otp</span> <span class="pre">-chip</span> <span class="pre">DA1469x-00</span> <span class="pre">-jtag</span> <span class="pre">483060192</span> <span class="pre">-cmd</span> <span class="pre">write_field</span> <span class="pre">-data</span> <span class="pre">0123456789ABCDEF</span> <span class="pre">-offset</span> <span class="pre">0x108</span></code></div>
+</div>
+</li>
+<li><p class="first"><span class="bolditalic">Executable</span> <strong>[-sdk sdk_path] -type power -chip chip_version -com_port portNumber [-jtag jtag_serialNumber] [-firmware firmware_file] -cmd capture_data -duration durationInmSecs [-time_offset time_offset] [-threshold threshold] [-calibration_offset offset] [-zero_samples_for_sw_cursor samples] [-sw_cursor_tolerance tolerance] [-sw_cursors_to_stop cursors_to_stop] -data_file data_file -stat_file stat_file [-y] [-nomessages messageFilter]</strong></p>
+<div class="line-block">
+<div class="line">Captures Current data measured by Power Profiler for Power Measurement Module v1 (PMM1) devices, writes them to a file and exports final statistics.  This command applies only to devices with SPI interface.</div>
+<div class="line">The default sample rate for PMM1 is 105k.</div>
+<div class="line">Example:</div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">SmartSnippetsToolbox.exe</span> <span class="pre">-type</span> <span class="pre">power</span> <span class="pre">-chip</span> <span class="pre">DA1469x-00</span> <span class="pre">-com_port</span> <span class="pre">13</span> <span class="pre">-cmd</span> <span class="pre">capture_data</span> <span class="pre">-duration</span> <span class="pre">1000</span> <span class="pre">-calibration_offset</span> <span class="pre">-0.01724</span> <span class="pre">-data_file</span> <span class="pre">data.csv</span> <span class="pre">-stat_file</span> <span class="pre">stat.csv</span></code></div>
+</div>
+</li>
+<li><p class="first"><span class="bolditalic">Executable</span> <strong>[-sdk sdk_path] -type power -pmm2 -chip chip_version -com_port portNumber [-jtag jtag_serialNumber] [-firmware firmware_file] -cmd capture_data -duration durationInmSecs [-time_offset time_offset] [-threshold threshold] [-ch3_input in] [-ch4_input in] [-digital] [-hibernation_mode] [-low_pass_filter] -data_folder data_folder -stat_file stat_file [-ch1_calibration_offset ch1_offset] [-ch2_calibration_offset ch2_offset] [-y] [-nomessages messageFilter]</strong></p>
+<div class="line-block">
+<div class="line">Captures data from one or more inputs for Power Measurement Module v2 (PMM2) devices, writes them to csv files in the path specified by -data_folder and exports statistics.</div>
+<div class="line">If none of -ch3_input, -ch4_input or -digital is specified, only the CH1/CH2 current is measured.</div>
+<div class="line">This command applies only to devices with SPI interface. The default sample rate for PMM2 is 128k.</div>
+<div class="line">Example:</div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">SmartSnippetsToolbox.exe</span> <span class="pre">-type</span> <span class="pre">power</span> <span class="pre">-pmm2</span> <span class="pre">-com_port</span> <span class="pre">20</span> <span class="pre">-chip</span> <span class="pre">DA14701</span> <span class="pre">-cmd</span> <span class="pre">capture_data</span> <span class="pre">-duration</span> <span class="pre">1000</span> <span class="pre">-ch3_input</span> <span class="pre">VBUS_CC</span> <span class="pre">-ch4_input</span> <span class="pre">V30</span> <span class="pre">-digital</span> <span class="pre">-ch1_calibration_offset</span> <span class="pre">0.0000175</span> <span class="pre">-ch2_calibration_offset</span> <span class="pre">-0.0002622</span> <span class="pre">-data_folder</span> <span class="pre">&quot;C:\Users\user\data&quot;</span> <span class="pre">-stat_file</span> <span class="pre">&quot;C:\Users\user\stats.csv&quot;</span></code></div>
+</div>
+</li>
+<li><p class="first"><span class="bolditalic">Executable</span> <strong>[-sdk sdk_path] -type power -chip chip_version -com_port portNumber [-jtag jtag_serialNumber] [-firmware firmware_file] -cmd export_stats -duration durationInSecs -sampling_interval sampling_interval -stat_file stat_file [-calibration_offset offset] [-y] [-nomessages messageFilter]</strong></p>
+<div class="line-block">
+<div class="line">Captures statistics for a period of time for Power Measurement Module v1 (PMM1) devices and exports to a file statistic samples every sampling interval. Makes the assumption that a valid firmware file has already been downloaded (e.g. through use of the booter command above).</div>
+<div class="line">Alternatively use the optional arguments <cite>-jtag</cite> and <cite>-firmware</cite> to download the firmware. The default sample rate for PMM1 is 105k.</div>
+<div class="line">Example:</div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">SmartSnippetsToolbox.exe</span> <span class="pre">-type</span> <span class="pre">power</span> <span class="pre">-chip</span> <span class="pre">DA1469x-00</span> <span class="pre">-com_port</span> <span class="pre">13</span> <span class="pre">-cmd</span> <span class="pre">export_stats</span> <span class="pre">-duration</span> <span class="pre">6</span> <span class="pre">-calibration_offset</span> <span class="pre">-0.01724</span> <span class="pre">-sampling_interval</span> <span class="pre">1</span> <span class="pre">-stat_file</span> <span class="pre">stats.csv</span></code></div>
+</div>
+</li>
+<li><p class="first"><span class="bolditalic">Executable</span> <strong>[-sdk sdk_path] -type power -pmm2 -chip chip_version -com_port portNumber [-jtag jtag_serialNumber] [-firmware firmware_file] -cmd export_stats -duration durationInSecs -sampling_interval sampling_interval -stat_file stat_file [-ch1_calibration_offset ch1_offset] [-ch2_calibration_offset ch2_offset] [-y] [-nomessages messageFilter]</strong></p>
+<div class="line-block">
+<div class="line">Captures statistics for a period of time for Power Measurement Module v2 (PMM2) devices and exports to a file statistic samples every sampling interval. Makes the assumption that a valid firmware file has already been downloaded (e.g. through use of the booter command above).</div>
+<div class="line">Alternatively use the optional arguments <cite>-jtag</cite> and <cite>-firmware</cite> to download the firmware. The default sample rate for PMM2 is 128k. Statistics for CH1/CH2 only are captured.</div>
+<div class="line">Example:</div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">SmartSnippetsToolbox.exe</span> <span class="pre">-type</span> <span class="pre">power</span> <span class="pre">-pmm2</span> <span class="pre">-chip</span> <span class="pre">DA14701</span> <span class="pre">-com_port</span> <span class="pre">13</span> <span class="pre">-cmd</span> <span class="pre">export_stats</span> <span class="pre">-duration</span> <span class="pre">6</span> <span class="pre">-ch1_calibration_offset</span> <span class="pre">0.0000175</span> <span class="pre">-ch2_calibration_offset</span> <span class="pre">-0.0002622</span> <span class="pre">-sampling_interval</span> <span class="pre">1</span> <span class="pre">-stat_file</span> <span class="pre">stats.csv</span></code></div>
+</div>
+</li>
+<li><p class="first"><span class="bolditalic">Executable</span> <strong>[-sdk sdk_path] -type power -chip chip_version -com_port portNumber -cmd calibrate [-y] [-nomessages messageFilter]</strong></p>
+<div class="line-block">
+<div class="line">Calibrates the chip and outputs the offset value for PMM1 or CH1 and CH2 offset values for PMM2.</div>
+<div class="line">Example:</div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">SmartSnippetsToolbox.exe</span> <span class="pre">-type</span> <span class="pre">power</span> <span class="pre">-chip</span> <span class="pre">DA14701</span> <span class="pre">-com_port</span> <span class="pre">3</span> <span class="pre">-cmd</span> <span class="pre">calibrate</span></code></div>
+</div>
+</li>
+<li><p class="first"><span class="bolditalic">Executable</span> <strong>[-sdk sdk_path] -type qspi -chip chip_version [-jtag jtag_serialNumber | -com_port portNumber] [-firmware firmware_file] -cmd read -file filename [-offset ofst] [-length byteLength] [-max size] [-y] [-nomessages messageFilter]</strong></p>
+<div class="line-block">
+<div class="line">Reads QSPI FLASH memory contents and writes them to a file. For DA1470x <em>offset</em> should contain the base address of flash memory to read (OQSPI, QSPIC, QSPIC2).</div>
+<div class="line">Example:</div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">SmartSnippetsToolbox.exe</span> <span class="pre">-type</span> <span class="pre">qspi</span> <span class="pre">-chip</span> <span class="pre">DA1469x-00</span> <span class="pre">-com_port</span> <span class="pre">13</span> <span class="pre">-cmd</span> <span class="pre">read</span> <span class="pre">-file</span> <span class="pre">qspi_data.bin</span> <span class="pre">-offset</span> <span class="pre">0x0</span> <span class="pre">-length</span> <span class="pre">0x1000</span> <span class="pre">-firmware</span> <span class="pre">&quot;C:\SDK_10.0.8.105\binaries\uartboot.bin&quot;</span></code></div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">SmartSnippetsToolbox.exe</span> <span class="pre">-type</span> <span class="pre">qspi</span> <span class="pre">-chip</span> <span class="pre">DA14706</span> <span class="pre">-com_port</span> <span class="pre">13</span> <span class="pre">-cmd</span> <span class="pre">read</span> <span class="pre">-file</span> <span class="pre">qspi_data.bin</span> <span class="pre">-offset</span> <span class="pre">0x18000000</span> <span class="pre">-length</span> <span class="pre">0x1000</span> <span class="pre">-firmware</span> <span class="pre">&quot;C:\SDK_10.0.8.105\binaries\uartboot.bin&quot;</span></code></div>
+</div>
+</li>
+<li><p class="first"><span class="bolditalic">Executable</span> <strong>[-sdk sdk_path] -type qspi -chip chip_version [-jtag jtag_serialNumber | -com_port portNumber] [-firmware firmware_file] -cmd write [-mode cached] -file filename [-offset ofst] [-max size] [-y] [-nomessages messageFilter]</strong></p>
+<div class="line-block">
+<div class="line">Burns file to QSPI FLASH memory. If -mode is specified, a header is added to make QSPI bootable. Option <em>-mode</em> is <strong>applicable for DA1468x only</strong>.</div>
+<div class="line">For DA1470x and DA1459x <em>offset</em> should contain the base address of flash memory (OQSPI/QSPIC/QSPIC2 for DA1470x and eFlash/QSPI for DA1459x).</div>
+<div class="line">Example:</div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">SmartSnippetsToolbox.exe</span> <span class="pre">-type</span> <span class="pre">qspi</span> <span class="pre">-chip</span> <span class="pre">DA1469x-00</span> <span class="pre">-com_port</span> <span class="pre">13</span> <span class="pre">-cmd</span> <span class="pre">write</span> <span class="pre">-file</span> <span class="pre">&quot;C:\SDK_10.0.8.105\projects\dk_apps\demos\pxp_reporter\DA1469x-00-Release_QSPI\pxp_reporter.bin&quot;</span> <span class="pre">-offset</span> <span class="pre">0x0</span> <span class="pre">-firmware</span> <span class="pre">&quot;C:\SDK_10.0.8.105\binaries\uartboot.bin&quot;</span></code></div>
+</div>
+</li>
+<li><p class="first"><span class="bolditalic">Executable</span> <strong>[-sdk sdk_path] -type qspi -chip chip_version [-jtag jtag_serialNumber | -com_port portNumber] [-firmware firmware_file] -cmd erase [-offset ofst] [-sectors num] [-max size] [-verify] [-y] [-nomessages messageFilter]</strong></p>
+<div class="line-block">
+<div class="line">Erases all the QSPI FLASH memory or part of it. Sector size is 4KB. For DA1470x and DA1459x <em>offset</em> should contain the base address of flash memory (OQSPI/QSPIC/QSPIC2 for DA1470x and eFlash/QSPI for DA1459x)</div>
+<div class="line">Example:</div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">SmartSnippetsToolbox.exe</span> <span class="pre">-type</span> <span class="pre">qspi</span> <span class="pre">-chip</span> <span class="pre">DA1469x-00</span> <span class="pre">-jtag</span> <span class="pre">483060192</span> <span class="pre">-cmd</span> <span class="pre">erase</span> <span class="pre">-sectors</span> <span class="pre">85</span></code></div>
+</div>
+</li>
+<li><p class="first"><span class="bolditalic">Executable</span> <strong>[-sdk sdk_path] -type qspi -chip chip_version [-jtag jtag_serialNumber | -com_port portNumber] [-firmware firmware_file] -cmd write_field [-offset ofst] -data dataInHex [-max size] [-y] [-nomessages messageFilter]</strong></p>
+<div class="line-block">
+<div class="line">Burns dataInHex to QSPI FLASH starting from address ofst. For DA1470x and DA1459x <em>offset</em> should contain the base address of flash memory (OQSPI/QSPIC/QSPIC2 for DA1470x and eFlash/QSPI for DA1459x)</div>
+<div class="line">Example:</div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">SmartSnippetsToolbox.exe</span> <span class="pre">-type</span> <span class="pre">qspi</span> <span class="pre">-chip</span> <span class="pre">DA1469x-00</span> <span class="pre">-com_port</span> <span class="pre">13</span> <span class="pre">-cmd</span> <span class="pre">write_field</span> <span class="pre">-offset</span> <span class="pre">0x0010</span> <span class="pre">-data</span> <span class="pre">01234567890123456789</span></code></div>
+</div>
+</li>
+<li><p class="first"><span class="bolditalic">Executable</span> <strong>[-sdk sdk_path] -type qspi -chip chip_version [-jtag jtag_serialNumber | -com_port portNumber] [-firmware firmware_file] -cmd write_nv -file filename [-offset ofst] [-max size] [-y] [-nomessages messageFilter]</strong></p>
+<div class="line-block">
+<div class="line">Burns nv params file to QSPI at offset. For DA1470x and DA1459x <em>offset</em> should contain the base address of flash memory (OQSPI/QSPIC/QSPIC2 for DA1470x and eFlash/QSPI for DA1459x). <em>-offset</em> is mandatory for DA1459x to specify NVPARAMS start address.</div>
+<div class="line">Example:</div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">SmartSnippetsToolbox.exe</span> <span class="pre">-type</span> <span class="pre">qspi</span> <span class="pre">-chip</span> <span class="pre">DA1469x-00</span> <span class="pre">-com_port</span> <span class="pre">13</span> <span class="pre">-cmd</span> <span class="pre">write_nv</span> <span class="pre">-file</span> <span class="pre">nv_data.hex</span> <span class="pre">-offset</span> <span class="pre">0x80000</span></code></div>
+</div>
+</li>
+<li><p class="first"><span class="bolditalic">Executable</span> <strong>[-sdk sdk_path] -type qspi -chip chip_version [-jtag jtag_serialNumber | -com_port portNumber] [-firmware firmware_file] -cmd read_nv  -file filename [-offset ofst] [-max size] [-y] [-nomessages messageFilter]</strong></p>
+<div class="line-block">
+<div class="line">Reads nv params from QSPI and writes its contents to a file. For DA1470x and DA1459x <em>offset</em> should contain the base address of flash memory (OQSPI/QSPIC/QSPIC2 for DA1470x and eFlash/QSPI for DA1459x). <em>-offset</em> is mandatory for DA1459x to specify NVPARAMS start address.</div>
+<div class="line">Example:</div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">SmartSnippetsToolbox.exe</span> <span class="pre">-type</span> <span class="pre">qspi</span> <span class="pre">-chip</span> <span class="pre">DA1469x-00</span> <span class="pre">-com_port</span> <span class="pre">13</span> <span class="pre">-cmd</span> <span class="pre">read_nv</span> <span class="pre">-file</span> <span class="pre">nv_params.bin</span></code></div>
+</div>
+</li>
+<li><p class="first"><span class="bolditalic">Executable</span> <strong>[-sdk sdk_path] -type qspi -chip chip_version [-jtag jtag_serialNumber | -com_port portNumber] [-firmware firmware_file] -cmd read_part_table  -file filename [-y] [-nomessages messageFilter]</strong></p>
+<div class="line-block">
+<div class="line">Reads Partition table from QSPI memory and saves it to a file. For DA1470x and DA1459x <em>offset</em> should contain the base address of flash memory (OQSPI/QSPIC/QSPIC2 for DA1470x and eFlash/QSPI for DA1459x)</div>
+<div class="line">Example:</div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">SmartSnippetsToolbox.exe</span> <span class="pre">-type</span> <span class="pre">qspi</span> <span class="pre">-chip</span> <span class="pre">DA1469x-00</span> <span class="pre">-com_port</span> <span class="pre">13</span> <span class="pre">-cmd</span> <span class="pre">read_part_table</span> <span class="pre">-file</span> <span class="pre">part.txt</span></code></div>
+</div>
+</li>
+<li><p class="first"><span class="bolditalic">Executable</span> <strong>[-sdk sdk_path] -type qspi -chip chip_version [-jtag jtag_serialNumber | -com_port portNumber] [-firmware firmware_file] -cmd read_partition -index partition_index [-offset ofst] [-length byteLength] -file filename [-y] [-nomessages messageFilter]</strong></p>
+<div class="line-block">
+<div class="line">Reads partition specified by the index of partition table and saves it to a file. Offset, if specified, should be relative to the partition start address. Length, if specified, can be used to read byteLength bytes instead of the whole partition.</div>
+<div class="line">Example:</div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">SmartSnippetsToolbox.exe</span> <span class="pre">-type</span> <span class="pre">qspi</span> <span class="pre">-chip</span> <span class="pre">DA1469x-00</span> <span class="pre">-com_port</span> <span class="pre">13</span> <span class="pre">-cmd</span> <span class="pre">read_partition</span> <span class="pre">-index</span> <span class="pre">6</span> <span class="pre">-offset</span> <span class="pre">0x200</span> <span class="pre">-length</span> <span class="pre">0x100</span> <span class="pre">-file</span> <span class="pre">partition_data.bin</span></code></div>
+<div class="line">Note: <em>index</em> refers to partition index. For example if partition table is as shown on <a class="reference internal" href="#cli-partition-index-example"><span class="std std-numref">Code 4</span></a> index=6 refers to NVMS_BIN_PART</div>
+<div class="line">To see the partition table run <em>read_part_table</em> command . For DA1470x and DA1459x <em>offset</em> should contain the base address of flash memory (OQSPI/QSPIC/QSPIC2 for DA1470x and eFlash/QSPI for DA1459x)</div>
+</div>
+<div class="literal-block-wrapper docutils container" id="cli-partition-index-example">
+<span id="cli-part-index-example"></span><div class="code-block-caption"><span class="caption-number">Code 4 </span><span class="caption-text">CLI partition index example.</span><a class="headerlink" href="#cli-partition-index-example" title="Permalink to this code">¶</a></div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">Name</span>                            <span class="n">Start</span> <span class="n">Address</span>   <span class="n">Sector</span> <span class="n">Count</span>    <span class="n">Type</span>
+<span class="n">NVMS_PRODUCT_HEADER_PART</span>        <span class="mh">0x00000000</span>      <span class="mi">2</span>               <span class="mi">19</span>
+<span class="n">NVMS_FIRMWARE_PART</span>              <span class="mh">0x00002000</span>      <span class="mi">126</span>             <span class="mi">1</span>
+<span class="n">NVMS_GENERIC_PART</span>               <span class="mh">0x000E0000</span>      <span class="mi">32</span>              <span class="mi">5</span>
+<span class="n">NVMS_PLATFORM_PARAMS_PART</span>       <span class="mh">0x00100000</span>      <span class="mi">255</span>             <span class="mi">15</span>
+<span class="n">NVMS_PARAM_PART</span>                 <span class="mh">0x001FF000</span>      <span class="mi">1</span>               <span class="mi">2</span>
+<span class="n">NVMS_LOG_PART</span>                   <span class="mh">0x00200000</span>      <span class="mi">256</span>             <span class="mi">4</span>
+<span class="n">NVMS_BIN_PART</span>                   <span class="mh">0x00300000</span>      <span class="mi">255</span>             <span class="mi">3</span>
+<span class="n">NVMS_PARTITION_TABLE</span>            <span class="mh">0x003FF000</span>      <span class="mi">1</span>               <span class="mi">16</span>
+</pre></div>
+</div>
+</div>
+</li>
+<li><p class="first"><span class="bolditalic">Executable</span> <strong>[-sdk sdk_path] -type qspi -chip chip_version [-jtag jtag_serialNumber | -com_port portNumber] [-firmware firmware_file] -cmd write_partition -index partition_index  [-verify] [-offset ofst] -file filename [-y] [-nomessages messageFilter]</strong></p>
+<div class="line-block">
+<div class="line">Writes file to the partition specified by the index of partition table. Offset, if specified, should be relative to the partition start address. For DA1470x and DA1459x <em>offset</em> should contain the base address of flash memory (OQSPI/QSPIC/QSPIC2 for DA1470x and eFlash/QSPI for DA1459x)</div>
+<div class="line">Example:</div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">SmartSnippetsToolbox.exe</span> <span class="pre">-type</span> <span class="pre">qspi</span> <span class="pre">-chip</span> <span class="pre">DA1469x-00</span> <span class="pre">-com_port</span> <span class="pre">13</span> <span class="pre">-cmd</span> <span class="pre">write_partition</span> <span class="pre">-file</span> <span class="pre">file.bin</span> <span class="pre">-index</span> <span class="pre">6</span></code></div>
+</div>
+</li>
+<li><p class="first"><span class="bolditalic">Executable</span> <strong>[-sdk sdk_path] -type qspi -chip chip_version [-jtag jtag_serialNumber | -com_port portNumber] [-firmware firmware_file] -cmd erase_partition -index partition_index  [-verify] [-y] [-nomessages messageFilter]</strong></p>
+<p>Erases the contents of the partition specified by the index of partition table. For DA1470x and DA1459x <em>offset</em> should contain the base address of flash memory (OQSPI/QSPIC/QSPIC2 for DA1470x and eFlash/QSPI for DA1459x)</p>
+</li>
+<li><p class="first"><span class="bolditalic">Executable</span> <strong>[-sdk sdk_path] -chip chip_version -make_image -in_file inputFile [-out_file outputImg] [-priv_key priv_key | -generate_priv_key] [-pub_key_index pub_key_index] [-sym_key sym_key | -generate_sym_key] [-sym_key_index sym_key_index] [-nonce nonce_hex] [-rev rev_cmd]</strong></p>
+<div class="line-block">
+<div class="line">Prepares DA1469x family image. If any of the security related options is used (-priv_key, -generate_priv_key, -pub_key_index, -sym_key, -generate_sym_key, -sym_key_index, -nonce) a secure image will be created. The keys and nonce will be generated by default if the respective options are missing. If -rev option is also used, a secure image with device administration section will be created.</div>
+<div class="line">Image produced is the same as the image when user press the “Prepare image” button in “Prepare QSPI Image” window.</div>
+<div class="line">Example:</div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">SmartSnippetsToolbox.exe</span> <span class="pre">-chip</span> <span class="pre">DA1469x-00</span> <span class="pre">-make_image</span> <span class="pre">-in_file</span> <span class="pre">files\prox_reporter.bin</span> <span class="pre">-out_file</span> <span class="pre">files\prox_reporter.out.bin</span>&#160; <span class="pre">-generate_priv_key</span> <span class="pre">-generate_sym_key</span></code></div>
+</div>
+</li>
+<li><p class="first"><span class="bolditalic">Executable</span> <strong>[-sdk sdk_path] -chip chip_version -make_image -in_file inputFile -fw_version fw_version [-out_file outputImg] [-priv_key priv_key | -generate_priv_key] [-pub_key_index pub_key_index] [-sym_key sym_key | -generate_sym_key] [-sym_key_index sym_key_index]  [-min_fw_version min_fw_version] [-nonce nonce_hex] [-rev rev_cmd]</strong></p>
+<div class="line-block">
+<div class="line">Prepares DA1470x family image. If any of the security related options is used (-priv_key, -generate_priv_key, -pub_key_index, -sym_key, -generate_sym_key, -sym_key_index, -nonce) a secure image will be created. The keys and nonce will be generated by default if the respective options are missing. If -rev option is also used, a secure image with device administration section will be created. If -min_fw_version is provided, the minimum firmware version will be set in device administration section. The image firmware version, set with -fw_version, should be greater or equal than the minimum firmware version in that case.</div>
+<div class="line">Image produced is the same as the image when user press the “Prepare image” button in “Prepare QSPI Image” window.</div>
+<div class="line">Example:</div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">SmartSnippetsToolbox.exe</span> <span class="pre">-chip</span> <span class="pre">DA14706</span> <span class="pre">-make_image</span> <span class="pre">-in_file</span> <span class="pre">files\prox_reporter.bin</span> <span class="pre">-fw_version</span> <span class="pre">2</span> <span class="pre">-out_file</span> <span class="pre">files\prox_reporter.out.bin</span>&#160; <span class="pre">-generate_priv_key</span> <span class="pre">-generate_sym_key</span> <span class="pre">-min_fw_version</span> <span class="pre">1</span> <span class="pre">-rev</span> <span class="pre">&quot;1</span> <span class="pre">2</span> <span class="pre">s1</span> <span class="pre">d2&quot;</span></code></div>
+</div>
+</li>
+</ol>
+<p><a class="reference internal" href="#id1"><span class="std std-numref">Table 6</span></a> provides a description for above options.</p>
+</div>
+<div class="section" id="cli-options-table">
+<h2>8.5. CLI options table<a class="headerlink" href="#cli-options-table" title="Permalink to this headline">¶</a></h2>
+<span id="cli-option-description"></span><table border="1" class="docutils" id="id1">
+<caption><span class="caption-number">Table 6 </span><span class="caption-text">CLI option description</span><a class="headerlink" href="#id1" title="Permalink to this table">¶</a></caption>
+<colgroup>
+<col width="31%" />
+<col width="69%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Option</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>-chip chip_version</td>
+<td>The version of the chip. Acceptable values are DA14580-01, DA14581-00, DA14583-01,
+DA14585-00, DA14586-00, DA14530, DA14531, DA14680-01, DA14681-01, DA14682-00,
+DA14683-00, DA1469x-00, DA14701, DA14705, DA14706, DA14708.
+Available values differ depending on the selected SDK.</td>
+</tr>
+<tr class="row-odd"><td>-bundle commands_file</td>
+<td>File that contains the bundle of commands to execute.</td>
+</tr>
+<tr class="row-even"><td>-sdk sdk_path</td>
+<td>Path to an SDK. Only devices and resources from the specified SDK are
+used. If the configuration xml of the SDK is invalid, the bundled support
+package matching the SDK’s family is used. When option is omitted, the
+bundled support package for the specified family is used.</td>
+</tr>
+<tr class="row-odd"><td>-type cli_type</td>
+<td><p class="first">Specifies the memory or tool to be used. Available options are:</p>
+<blockquote class="last">
+<div><ul class="simple">
+<li>booter - Download an application to the chip RAM,</li>
+<li>spi - Access SPI memory</li>
+<li>eeprom - Access EEPROM</li>
+<li>otp - Access OTP memory</li>
+<li>qspi - Access QSPI memory</li>
+<li>power - Power profile tool</li>
+<li>suota - SUOTA tool</li>
+<li>spota - SPOTA tool</li>
+<li>battery_life - Battery Lifetime Estimator</li>
+</ul>
+</div></blockquote>
+</td>
+</tr>
+<tr class="row-even"><td>-jtag jtag_serialNumber</td>
+<td>Use the jtag interface for communication with the chip.
+This option is mutually exclusive with the -com_port option.</td>
+</tr>
+<tr class="row-odd"><td>-com_port portNumber</td>
+<td>Windows: an integer number indicating the UART COM Port. For example <em>-com_port 3</em>
+for port COM3.
+Linux: the port as String, For example <em>-com_port /dev/ttyS0</em></td>
+</tr>
+<tr class="row-even"><td>-sys_ctrl_reg b1</td>
+<td><p class="first">Used only on JTAG communication. Byte value to write at System Control Register,
+e.g. A4 or 0xA4. Default values per family are:</p>
+<blockquote class="last">
+<div><ul class="simple">
+<li>DA14580/581/583: 0xA4</li>
+<li>DA14585/6: 0xA6</li>
+<li>DA1453x: 0x02</li>
+</ul>
+</div></blockquote>
+</td>
+</tr>
+<tr class="row-odd"><td>-gp_ctrl_reg b2</td>
+<td>Used only on JTAG communication. Byte value to write at General Purpose Control
+Register, e.g. E2 or 0xe2. Default value are 0x2E for DA14580/581/583.
+Not applicable for DA14585/6 and DA1453x</td>
+</tr>
+<tr class="row-even"><td>-close</td>
+<td>Close J-Link GDB Server after firmware download.</td>
+</tr>
+<tr class="row-odd"><td>-gpio pinId</td>
+<td>Only for DA14580/581/583. The GPIO pin which controls the transistor
+enabling high voltage. Format: Pi_j, where P is character ‘P’, i is an
+integer between 0 and 3 and j is an integer between 0 and 7.
+E.g.: P1_2. Default value is P1_2</td>
+</tr>
+<tr class="row-even"><td>-uart TxId</td>
+<td><p class="first">Only for COM port communication. The Tx part of the UART port
+Tx-Rx Pair connecting FTDI chip with the Bluetooth chip.</p>
+<p>Available values per family are:</p>
+<blockquote class="last">
+<div><ul class="simple">
+<li>DA14580/581/583: P0_0, P0_2, P0_4, P0_6</li>
+<li>DA14585/6: P0_0, P0_2, P0_4, P0_6</li>
+<li>DA1453x: P0_0, P0_3, P0_5</li>
+<li>Available values differ depending on the selected SDK.</li>
+<li>Default values per family are:</li>
+<li>DA14580/581/583: P0_4</li>
+<li>DA14585/6: P0_4</li>
+<li>DA1453x: P0_0</li>
+</ul>
+</div></blockquote>
+</td>
+</tr>
+<tr class="row-odd"><td>-file filename</td>
+<td>Input or output filename. For write commands it is an input bin or hex
+file, containing the data to be burned to the chip. For read commands it
+is an output text, hex or bin file, where data should be stored.</td>
+</tr>
+<tr class="row-even"><td>-y</td>
+<td>Accept default values. Do not ask user.</td>
+</tr>
+<tr class="row-odd"><td>-nomessages messageFilter</td>
+<td>Disables a message category. messageFilter is a string combined of ‘1’
+and ‘0’. The message categories are INFO, WARNING, ERROR, ACTION and
+ARGUMENT_PARSING. 00111 disables INFO and WARNING messages. 00111 is equal
+to 00, since by default all message categories are enabled.</td>
+</tr>
+<tr class="row-even"><td>-baudrate rate</td>
+<td><p class="first">Specifies the data transfer rate through UART in bps. Available baudrates are:
+57600, 9600, 115200. Default baudrates per family are:</p>
+<blockquote class="last">
+<div><ul class="simple">
+<li>DA14580/581/583: 57600</li>
+<li>DA14585/6: 57600</li>
+<li>DA1453x: 115200</li>
+</ul>
+</div></blockquote>
+</td>
+</tr>
+<tr class="row-odd"><td>-firmware firmware_file</td>
+<td>Firmware file that should be download to the chip before executing the
+command. Common values for DA14580/581/583, DA14585/6 and DA1453x is
+flash_programmer.bin or jtag_programmer.bin, depending on communication interface.
+Common values for DA1468x, DA1469x, DA1470x and DA1459x family chips is
+uartboot.bin. Except the power measurement commands (-type power) where a custom
+firmware should be loaded.</td>
+</tr>
+<tr class="row-even"><td>-cmd command</td>
+<td><p class="first">Available commands and types are:</p>
+<blockquote class="last">
+<div><ul class="simple">
+<li>read_custom_code- Read OTP. Use with -type otp</li>
+<li>read_header - Read OTP Header. Use with -type otp</li>
+<li>read_nvds - Read NVDS. Use with -type otp</li>
+<li>write_custom_code - Write OTP. Use with -type otp</li>
+<li>write_header - Write OTP header. Use with -type otp</li>
+<li>write_nvds - Write NVDS. Use with -type otp</li>
+<li>write_field - Write Address. Use with -type otp or spi or eeprom or qspi</li>
+<li>capture_data - Power Profiler tool. Use with -type power</li>
+<li>export_stats - Power Profiler tool. Use with -type power</li>
+<li>calibrate - Power Profiler tool. Use with -type power</li>
+<li>read - Read memory. Use with -type spi or eeprom or qspi</li>
+<li>write - Write memory. Use with -type spi or eeprom or qspi</li>
+<li>erase - Erase memory. Use with -type spi or eeprom or qspi</li>
+<li>write_nv - Write NVPARAMS block. Use with -type qspi</li>
+<li>read_nv - Read NVPARAMS block. Use with -type qspi</li>
+<li>read_part_table - Read partition table. Use with -type qspi</li>
+<li>read_partition - Read specific partition. Use with -type qspi</li>
+<li>write_partition - Write specific partition. Use with -type qspi</li>
+<li>erase_partition - Erase specific partition. Use with -type qspi</li>
+</ul>
+</div></blockquote>
+</td>
+</tr>
+<tr class="row-odd"><td>-writeReadOnlyOTPHeaderFields</td>
+<td>This applies to DA14585/6, DA1469x, DA1468x, DA1470x and DA1459x family devices
+OTP Header and OTP NVDS for addresses denoted as Read Only
+(icon <img alt="yellow-mark-header" src="../_images/warning13x11.png" />). By default RO addresses are replaced with empty value
+and only the rest of the space is written.
+When this option is present these addresses can be written, if not already written</td>
+</tr>
+<tr class="row-even"><td>-offset ofst</td>
+<td>The offset in memory, from which read or write operation should start. If ‘ofst’
+starts with ‘0x’ it is parsed  as hex, otherwise as decimal. Default value is 0x0.
+For DA1470x and DA1459x <em>offset</em> should contain the base address of flash memory
+(OQSPI/QSPIC/QSPIC2 for DA1470x and eFlash/QSPI for DA1459x)</td>
+</tr>
+<tr class="row-odd"><td>-length byteLength</td>
+<td><p class="first">The length in bytes to read from OTP, SPI, QSPI, QSPI partition or EEPROM memory.
+If not set by the user default values are:</p>
+<blockquote class="last">
+<div><ul class="simple">
+<li>Read from OTP: OTP size</li>
+<li>Read from SPI/EEPROM/QSPI: 0x8000</li>
+<li>QSPI Partition (used with -cmd read_partition): Partition size</li>
+</ul>
+</div></blockquote>
+</td>
+</tr>
+<tr class="row-even"><td>-data dataInHex</td>
+<td>Data in hex with no spaces to write in OTP, SPI Flash, EEPROM or QSPI
+E.g. 011234DE.</td>
+</tr>
+<tr class="row-odd"><td>-nvds_address_offset nvdsAddrOfs</td>
+<td>The starting offset of NVDS inside OTP memory, with respect to 0x40000.
+If ‘nvdsAddrOfst’ starts with ‘0x’ it is parsed as hex, otherwise as
+decimal. If -nvds_address_offset option has been specified,
+write_field command will write the input data at OTP NVDS.</td>
+</tr>
+<tr class="row-even"><td>-duration durationInmSecs</td>
+<td>Duration of data capturing (integer number of milliseconds). Used in
+‘capture_data’ Power Profiler command.</td>
+</tr>
+<tr class="row-odd"><td>-duration durationInSecs</td>
+<td>Duration of data capturing (integer number of seconds). Used in ‘export_stats’
+Power Profiler command.</td>
+</tr>
+<tr class="row-even"><td>-time_offset time_offset</td>
+<td>Pre-trigger sampling period (double number of milliseconds). Optional, default 0</td>
+</tr>
+<tr class="row-odd"><td>-calibration_offset offset</td>
+<td>Offset for current of PMM1, obtained after running calibration command (-cmd
+calibrate). Default value for DA1468x, DA1469x and DA1470x family chips is
+-0.01724. Default value for DA14580/581/583, DA14585/6 and DA1453x family chips is
+0.</td>
+</tr>
+<tr class="row-even"><td>-threshold threshold</td>
+<td>Threshold for considering active (in mA). If set, measured values are collected,
+exported and aggregated as statistics only if their value is &gt;= threshold.</td>
+</tr>
+<tr class="row-odd"><td>-zero_samples_for_sw_cursor samples</td>
+<td>Integer value representing the number of zero samples that mark a SW cursor.
+Applies to PMM1 devices only.</td>
+</tr>
+<tr class="row-even"><td>-sw_cursor_tolerance tolerance</td>
+<td>Decimal value (in uA) representing the upper threshold under which samples
+are considered to be equal to zero. Related to S/W cursors. Applies to PMM1
+devices only.</td>
+</tr>
+<tr class="row-odd"><td>-sw_cursors_to_stop cursors_to_stop</td>
+<td>Integer value representing the number of SW cursors to trigger a stop
+event for data capturing. Applies to PMM1 devices only.</td>
+</tr>
+<tr class="row-even"><td>-data_file data_filename</td>
+<td>Filename of .csv file with collected measurements. Applies to PMM1 only.</td>
+</tr>
+<tr class="row-odd"><td>-data_folder data_folder</td>
+<td>Path to folder where .csv files with collected measurements will be saved. Applies
+to PMM2 devices only.</td>
+</tr>
+<tr class="row-even"><td>-stat_file stat_filename</td>
+<td>Filename of .csv file with collected statistics (e.g. peak current,
+avg current, charge)</td>
+</tr>
+<tr class="row-odd"><td>-sampling_interval interval</td>
+<td>An integer number &gt; 0 indicating the number of seconds between the statistic
+samples</td>
+</tr>
+<tr class="row-even"><td>-pmm2</td>
+<td>Used in capture_data and export_stats commands to specify that we are catpuring
+data and calculating statistics for PMM2 devices.</td>
+</tr>
+<tr class="row-odd"><td>-ch3_input in</td>
+<td><p class="first">Enables data capturing for CH3 of PMM2 devices and specifies ADC CH3 input.</p>
+<p>Default values per family are:</p>
+<blockquote class="last">
+<div><ul>
+<li><div class="first line-block">
+<div class="line"><em>DA1470x</em>: VBUS_CC, V14, VSYS, V30, V18P, V18, V12, VBAT_CC.</div>
+<div class="line">First 2 inputs result in Current measurements while the rest in Voltage.</div>
+</div>
+</li>
+<li><div class="first line-block">
+<div class="line"><em>DA14535-00, DA14533-00</em>: C_5x, RESET, VLOW, VF, C_3x.</div>
+<div class="line">First input result in Current measurements while the rest in Voltage.</div>
+</div>
+</li>
+<li><div class="first line-block">
+<div class="line"><em>DA1459x</em>: C_5x, C_3x, VDDIO, Vdcdc, VDD.</div>
+<div class="line">First input result in Current measurements while the rest in Voltage.</div>
+</div>
+</li>
+</ul>
+</div></blockquote>
+</td>
+</tr>
+<tr class="row-even"><td>-ch4_input in</td>
+<td><p class="first">Enables data capturing for CH4 of PMM2 devices and specifies ADC CH4 input.</p>
+<p>Default values per family are:</p>
+<blockquote>
+<div><ul>
+<li><div class="first line-block">
+<div class="line"><em>DA1470x</em>: VBUS_CC, V14, VSYS, V30, V18F, VBATn, V12, AIN</div>
+</div>
+</li>
+<li><div class="first line-block">
+<div class="line"><em>DA14535-00, DA14533-00</em>: C_5x, RESET, V_FL, V3x, AIN</div>
+</div>
+</li>
+<li><div class="first line-block">
+<div class="line"><em>DA1459x</em>: C_5x, VDDIO, RSTn, V3x, AIN</div>
+</div>
+</li>
+</ul>
+</div></blockquote>
+<p class="last">First input results in Current measurements while the rest in Voltage.</p>
+</td>
+</tr>
+<tr class="row-odd"><td>-digital</td>
+<td>Enables data capturing for digital signals of PMM2 devices.</td>
+</tr>
+<tr class="row-even"><td>-hibernation_mode</td>
+<td>Enables the hibernation mode for Ch1/Ch2: only CH1 (low) current is measured.</td>
+</tr>
+<tr class="row-odd"><td>-low_pass_filter</td>
+<td>Applies a low pass filter when hibernation mode has been activated.</td>
+</tr>
+<tr class="row-even"><td>-ch1_calibration_offset ch1_offset</td>
+<td>Offset for CH1 current of PMM2, obtained after running calibration command (-cmd
+calibrate). A default value of 0.0000189 mA is used if this argument is missing.</td>
+</tr>
+<tr class="row-odd"><td>-ch2_calibration_offset ch2_offset</td>
+<td>Offset for current of PMM1, obtained after running calibration command (-cmd
+calibrate). A default value of -0.0005 is used if this argument is missing.</td>
+</tr>
+<tr class="row-even"><td>-clk clk</td>
+<td><p class="first">Specifies the CLK pin configuration for SPI Flash memory.
+Available values: [P0_0:P0_7], [P1_0:P1_3], [P2_0:P2_9], [P3_0:P3_7]</p>
+<p>Default values are:</p>
+<blockquote class="last">
+<div><ul class="simple">
+<li>DA14580/581/583: P2_0 for DA14583-01, P0_0 other</li>
+<li>DA14585/6: P2_0 for DA14586-00, P0_0 for DA14585-00</li>
+<li>DA1453x: P0_4</li>
+</ul>
+</div></blockquote>
+</td>
+</tr>
+<tr class="row-odd"><td>-cs cs</td>
+<td><p class="first">Specifies the CS pin configuration for SPI Flash memory.
+Available values:[P0_0:P0_7], [P1_0:P1_3], [P2_0:P2_9], [P3_0:P3_7]</p>
+<p>Default values are:</p>
+<blockquote class="last">
+<div><ul class="simple">
+<li>DA14580/581/583: P2_3 for DA14583-01, P0_3 other</li>
+<li>DA14585/6: P2_3 for DA14586-00, P0_3 for DA14585-00</li>
+<li>DA1453x: P0_1</li>
+</ul>
+</div></blockquote>
+</td>
+</tr>
+<tr class="row-even"><td>-miso miso</td>
+<td><p class="first">Specifies the MISO pin configuration for SPI Flash memory.
+Available values: [P0_0:P0_7], [P1_0:P1_3], [P2_0:P2_9], [P3_0:P3_7]</p>
+<p>Default values are:</p>
+<blockquote class="last">
+<div><ul class="simple">
+<li>DA14580/581/583: P2_4 for DA14583-01, P0_5 other</li>
+<li>DA14585/6: P2_4 for DA14586-00, P0_5 for DA14585-00</li>
+<li>DA1453x: P0_3</li>
+</ul>
+</div></blockquote>
+</td>
+</tr>
+<tr class="row-odd"><td>-mosi mosi:</td>
+<td><p class="first">Specifies the MOSI pin configuration for SPI Flash memory.
+Available values: [P0_0:P0_7], [P1_0:P1_3], [P2_0:P2_9], [P3_0:P3_7]</p>
+<p>Default values are:</p>
+<blockquote class="last">
+<div><ul class="simple">
+<li>DA14580/581/583: P2_9 for DA14583-01, P0_6 other</li>
+<li>DA14585/6: P2_9 for DA14586-00, P0_6 for DA14585-00</li>
+<li>DA1453x: P0_0</li>
+</ul>
+</div></blockquote>
+</td>
+</tr>
+<tr class="row-even"><td>-max size</td>
+<td>Specifies the size of SPI, EEPROM or QSPI memory. If ‘size’ starts with 0x, it
+will be parsed as hex number, otherwise as decimal.
+Default values are 0x200000 for DA1468x, 0x2000000 for DA1469x, 0x20000 for
+DA14580/581/583 and 0x40000 for DA14585/6 and 0x8000000 for DA1470x.</td>
+</tr>
+<tr class="row-odd"><td>-verify</td>
+<td>If enabled, SPI Flash or EEPROM memory contents will be verified, after write
+or erase action. Also verify QSPI contents after erase and partition contents
+after write and erase.</td>
+</tr>
+<tr class="row-even"><td>-bootable</td>
+<td>If specified, appropriate header is added to image file in order to make
+SPI Flash or EEPROM memory bootable. By default image is not bootable.</td>
+</tr>
+<tr class="row-odd"><td>-sectors num</td>
+<td>Specifies the number of sectors to be erased from SPI/QSPI Flash memory.
+If ‘num’ starts with ‘0x’ it is parsed as hex, otherwise as decimal.
+Sector size is 4KB. This option is mutually exclusive with the -end option.
+Default value is 1.</td>
+</tr>
+<tr class="row-even"><td>-end address</td>
+<td>Specifies where the region to be erased ends.The sector containing end address
+is the last sector to be erased.</td>
+</tr>
+<tr class="row-odd"><td>-scl scl</td>
+<td><p class="first">Specifies the SCL pin configuration for I2C EEPROM memory.</p>
+<p>Available values: [P0_0:P0_7], [P1_0:P1_3], [P2_0:P2_9], [P3_0:P3_7]</p>
+<p>Default values are:</p>
+<blockquote class="last">
+<div><ul class="simple">
+<li>DA14580/581/583: P0_2</li>
+<li>DA14585/6: P0_2</li>
+<li>DA1453x: P0_3</li>
+</ul>
+</div></blockquote>
+</td>
+</tr>
+<tr class="row-even"><td>-sda sda</td>
+<td><p class="first">Specifies the SDA pin configuration for I2C EEPROM memory.
+Available values: [P0_0:P0_7], [P1_0:P1_3], [P2_0:P2_9], [P3_0:P3_7]</p>
+<blockquote class="last">
+<div><ul class="simple">
+<li>Default values are:</li>
+<li>DA14580/581/583: P0_3</li>
+<li>DA14585/6: P0_3</li>
+<li>DA1453x: P0_4</li>
+</ul>
+</div></blockquote>
+</td>
+</tr>
+<tr class="row-odd"><td>-bit_value val</td>
+<td>Value to write to every bit of EEPROM memory during erase. Acceptable values are
+0 or 0x00 and 1 or 0x01.</td>
+</tr>
+<tr class="row-even"><td>-initiator portNumber</td>
+<td>The COM port number, in decimal, where the suota/spota initiator is
+connected. E.g. -initiator 28</td>
+</tr>
+<tr class="row-odd"><td>-receiver ble_addr</td>
+<td>The Bluetooth address of the SUOTA/SPOTA receiver.
+E.g. -receiver 78:56:34:12:CD:AB</td>
+</tr>
+<tr class="row-even"><td>-memtype memoryType</td>
+<td>Acceptable values: I2C (or i2c), SPI (or spi) for SUOTA. For SPOTA two
+extra values are accepted: SYSRAM (or sysram) and  RETRAM (or retram). Default
+value is SPI</td>
+</tr>
+<tr class="row-odd"><td>-bank bank_num</td>
+<td>Specifies where and which image file will be loaded. It accepts only 3
+values: 0, 1 or 2. Default value is 0</td>
+</tr>
+<tr class="row-even"><td>-i2c_addr addr</td>
+<td>Specifies the I2C device address used on SPOTA and SUOTA tools. Default value is
+0x50</td>
+</tr>
+<tr class="row-odd"><td>-block_size b_size</td>
+<td>Specifies the size of each block that will be transmitted, in bytes.
+Cannot be less than 20. Default value is 240</td>
+</tr>
+<tr class="row-even"><td>-sck sck</td>
+<td>Specifies the SCK pin configuration for SPI Flash memory in SUOTA/SPOTA.
+Available values: [P0_0:P0_7], [P1_0:P1_3], [P2_0:P2_9], [P3_0:P3_7]
+Default value: DA14580/581: P0_0. Not available for other families.</td>
+</tr>
+<tr class="row-odd"><td>-base_addr addr</td>
+<td>Specifies the base memory address used in SPOTA tool. Default value is 0x0</td>
+</tr>
+<tr class="row-even"><td>-input input_file</td>
+<td>Text file containing input values to be used in the battery lifetime
+calculations. Each input value is related with a specific id. A sample
+input file can be found at Appendix.</td>
+</tr>
+<tr class="row-odd"><td>-params params_file</td>
+<td>Text file containing values for parameters that are used in the battery
+lifetime calculations. Each parameter value is related with a specific id.
+If omitted, parameters are initialized with default values. A sample
+parameters’ file can be found at Appendix.</td>
+</tr>
+<tr class="row-even"><td>-mode cached</td>
+<td>Adds a suitable header to the file before burn in order to make qspi bootable in
+cached mode. By default no header added.
+This option is applicable for DA1468x only.</td>
+</tr>
+<tr class="row-odd"><td>-index partition_index</td>
+<td>Index of a specific partition in partition table. Starts from 0.</td>
+</tr>
+<tr class="row-even"><td>-make_image</td>
+<td>Generates DA1469x, DA1470x and DA1459x family device image from input file.</td>
+</tr>
+<tr class="row-odd"><td>-in_file inputFile</td>
+<td>Input file for the image creation with make_image cmd. Hex and bin files are
+accepted.</td>
+</tr>
+<tr class="row-even"><td>-out_file outputImg</td>
+<td>File where the image created with make_image cmd will be saved. Bin file is
+expected. If omitted a new file with the _image.bin suffix is created in the same
+folder as the input file.</td>
+</tr>
+<tr class="row-odd"><td>-priv_key</td>
+<td>Private key which will be used in Ed25519 to create the image signature.
+It must have 32 bytes in length. The key is expected in hex format, e.g.
+-priv_key 8E05FA7509F4D3B8F96B08DEFAA204A9BCEFF67AD28306B6D4A2DBAB3C238DCA</td>
+</tr>
+<tr class="row-even"><td>-generate_priv_key</td>
+<td>Instead of providing the private key with the -priv_key option, the key
+can be automatically generated. Its length will be 32 bytes.</td>
+</tr>
+<tr class="row-odd"><td>-pub_key_index</td>
+<td>Index of the key which should be used for signature validation. A number in
+decimal or hex format (starting with 0x) is expected. If omitted index=0 is
+assumed.</td>
+</tr>
+<tr class="row-even"><td>-sym_key</td>
+<td>Symmetric key which will be used in executable encryption (AES CTR mode).
+It must have 32 bytes in length. The key is expected in hex format, e.g.
+-sym_key 7CAE0D855049BF06FCBCE2F274CAB39EAFF53AF9F818F171311EBD764FE95ACB.</td>
+</tr>
+<tr class="row-odd"><td>-generate_sym_key</td>
+<td>Instead of providing the symmetric key with the -sym_key option, the key
+can be automatically generated. Its length will be 32 bytes.</td>
+</tr>
+<tr class="row-even"><td>-sym_key_index</td>
+<td>Index of the key which should be used for executable decryption by
+bootloader. A number in decimal or hex format (starting with 0x) is
+expected. If omitted index = 0 is assumed.</td>
+</tr>
+<tr class="row-odd"><td>-nonce</td>
+<td>String in hex format with length of 8 bytes which will be used as ‘NONCE’ in AES
+CTR encryption of the executable. If omitted a random nonce will be generated.</td>
+</tr>
+<tr class="row-even"><td>-rev</td>
+<td>Decryption keys revocation command: Contains type and indices of the keys in AES
+CTR encryption of the executable which should be revoked. If more than one key is
+passed, parameter should be given in quotation marks.
+If index is preceded with ‘s’ then it concerns user data symmetric key.
+If index is preceded with ‘d’ then it concerns executable decryption
+symmetric key. Index without prefix concerns public key. Examples:
+-rev “1 2 s1 d2”, -rev d1</td>
+</tr>
+<tr class="row-odd"><td>-min_fw_version</td>
+<td>Integer number indicating the minimum firmware version that can be accepted in an
+image. Applies to DA1470x family only.</td>
+</tr>
+<tr class="row-even"><td>-fw_version</td>
+<td>Integer number indicating the image firmware version. Applies to DA1470x family
+only.</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="../configurator/board_setup/board_setup.html" class="btn btn-neutral float-left" title="7.1. Board Setup Configurator" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../app_help/index.html" class="btn btn-neutral float-right" title="9. Application Help" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023, Renesas Electronics Corporation.</p>
+  </div>
+
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+    <!-- Theme Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-ZXND4SB7CL"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-ZXND4SB7CL', {
+          'anonymize_ip': false,
+      });
+    </script> 
+
+</body>
+</html>

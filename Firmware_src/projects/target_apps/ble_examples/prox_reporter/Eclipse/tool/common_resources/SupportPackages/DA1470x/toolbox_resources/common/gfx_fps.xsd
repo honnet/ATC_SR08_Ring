@@ -1,0 +1,549 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" attributeFormDefault="unqualified" elementFormDefault="qualified">
+  <xs:element name="gfx_fps">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element type="xs:string" name="family" />
+        <xs:element name="devices">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="device" maxOccurs="unbounded" minOccurs="1">
+                <xs:complexType>
+                  <xs:simpleContent>
+                    <xs:extension base="xs:string">
+                      <xs:attribute type="xs:string" name="id" use="required" />
+                      <xs:attribute type="xs:integer" name="ab_chip_version" use="required" />
+                    </xs:extension>
+                  </xs:simpleContent>
+                </xs:complexType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="gui_options">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="memories">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="memory" maxOccurs="unbounded" minOccurs="1">
+                      <xs:complexType>
+                        <xs:sequence>
+                          <xs:element name="devices" maxOccurs="1" minOccurs="1">
+                            <xs:annotation>
+                              <xs:documentation>Indicates for which devices this memory is available</xs:documentation>
+                            </xs:annotation>
+                            <xs:complexType>
+                              <xs:sequence>
+                                <xs:element name="device" maxOccurs="unbounded" minOccurs="1">
+                                  <xs:complexType>
+                                    <xs:simpleContent>
+                                      <xs:extension base="xs:string">
+                                        <xs:attribute type="xs:string" name="id" use="required" />
+                                      </xs:extension>
+                                    </xs:simpleContent>
+                                  </xs:complexType>
+                                </xs:element>
+                              </xs:sequence>
+                            </xs:complexType>
+                          </xs:element>
+                        </xs:sequence>
+                        <xs:attribute type="xs:string" name="value" use="required" />
+                        <xs:attribute type="xs:ID" name="id" use="required" />
+                      </xs:complexType>
+                    </xs:element>
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+              <xs:element name="sys_clk_frequencies">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="frequency" maxOccurs="unbounded" minOccurs="1">
+                      <xs:complexType>
+                        <xs:simpleContent>
+                          <xs:extension base="xs:string">
+                            <xs:attribute type="xs:integer" name="value" use="required" />
+                            <xs:attribute type="xs:boolean" name="default" use="optional" />
+                          </xs:extension>
+                        </xs:simpleContent>
+                      </xs:complexType>
+                    </xs:element>
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+              <xs:element name="GPU">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="sram_size">
+                      <xs:complexType>
+                        <xs:simpleContent>
+                          <xs:extension base="xs:string">
+                            <xs:attribute type="xs:float" name="value" use="required" />
+                            <xs:attribute type="xs:string" name="unit" use="optional" />
+                          </xs:extension>
+                        </xs:simpleContent>
+                      </xs:complexType>
+                    </xs:element>
+                    <xs:element name="frame_buffers_num">
+                      <xs:complexType>
+                        <xs:simpleContent>
+                          <xs:extension base="xs:string">
+                            <xs:attribute type="xs:unsignedInt" name="max" use="required" />
+                            <xs:attribute type="xs:unsignedInt" name="default" use="optional" />
+                          </xs:extension>
+                        </xs:simpleContent>
+                      </xs:complexType>
+                    </xs:element>
+                    <xs:element name="frame_buffers_storage">
+                      <xs:complexType>
+                        <xs:sequence>
+                          <xs:element name="memory" maxOccurs="unbounded" minOccurs="1">
+                            <xs:complexType>
+                              <xs:simpleContent>
+                                <xs:extension base="xs:string">
+                                  <xs:attribute type="xs:IDREF" name="refid" use="required" />
+                                  <xs:attribute type="xs:boolean" name="default" use="optional" />
+                                </xs:extension>
+                              </xs:simpleContent>
+                            </xs:complexType>
+                          </xs:element>
+                        </xs:sequence>
+                      </xs:complexType>
+                    </xs:element>
+                    <xs:element name="graphic_resources_storage">
+                      <xs:complexType>
+                        <xs:sequence>
+                          <xs:element name="memory" maxOccurs="unbounded" minOccurs="1">
+                            <xs:complexType>
+                              <xs:simpleContent>
+                                <xs:extension base="xs:string">
+                                  <xs:attribute type="xs:IDREF" name="refid" use="required" />
+                                  <xs:attribute type="xs:boolean" name="default" use="optional" />
+                                </xs:extension>
+                              </xs:simpleContent>
+                            </xs:complexType>
+                          </xs:element>
+                        </xs:sequence>
+                      </xs:complexType>
+                    </xs:element>
+                    <xs:element name="graphics_scenarios">
+                      <xs:complexType>
+                        <xs:sequence>
+                          <xs:element name="scenario" maxOccurs="unbounded" minOccurs="1">
+                            <xs:complexType>
+                              <xs:sequence>
+                                <xs:element name="fill_overdraw">
+                                  <xs:annotation>
+                                    <xs:documentation>Overdraw factor for GPU generated objects (how many times the GPU will read/modify/write these objects from FB mem)</xs:documentation>
+                                  </xs:annotation>
+                                  <xs:complexType>
+                                    <xs:simpleContent>
+                                      <xs:extension base="xs:string">
+                                        <xs:attribute type="xs:float" name="value" use="required" />
+                                      </xs:extension>
+                                    </xs:simpleContent>
+                                  </xs:complexType>
+                                </xs:element>
+                                <xs:element name="gfx_overdraw">
+                                  <xs:annotation>
+                                    <xs:documentation>Overdraw factor for graphic resources objects (how many times the GPU will read/modify/write these objects from FB mem)</xs:documentation>
+                                  </xs:annotation>
+                                  <xs:complexType>
+                                    <xs:simpleContent>
+                                      <xs:extension base="xs:string">
+                                        <xs:attribute type="xs:float" name="value" use="required" />
+                                      </xs:extension>
+                                    </xs:simpleContent>
+                                  </xs:complexType>
+                                </xs:element>
+                                <xs:element name="fill_overdraw_partial">
+                                  <xs:annotation>
+                                    <xs:documentation>Percentage of the FB that it will be overdraw by filling operations (no read required)</xs:documentation>
+                                  </xs:annotation>
+                                  <xs:complexType>
+                                    <xs:simpleContent>
+                                      <xs:extension base="xs:string">
+                                        <xs:attribute type="xs:float" name="value" use="required" />
+                                      </xs:extension>
+                                    </xs:simpleContent>
+                                  </xs:complexType>
+                                </xs:element>
+                                <xs:element name="gfx_overdraw_partial">
+                                  <xs:annotation>
+                                    <xs:documentation>Percentage of the FB that it will be overdraw by GFX resources operations (read/modify/write)</xs:documentation>
+                                  </xs:annotation>
+                                  <xs:complexType>
+                                    <xs:simpleContent>
+                                      <xs:extension base="xs:string">
+                                        <xs:attribute type="xs:float" name="value" use="required" />
+                                      </xs:extension>
+                                    </xs:simpleContent>
+                                  </xs:complexType>
+                                </xs:element>
+                                <xs:element name="fill_gpu_proc">
+                                  <xs:annotation>
+                                    <xs:documentation>Average cc per px for the filling operations in the GPU</xs:documentation>
+                                  </xs:annotation>
+                                  <xs:complexType>
+                                    <xs:simpleContent>
+                                      <xs:extension base="xs:string">
+                                        <xs:attribute type="xs:float" name="value" use="required" />
+                                      </xs:extension>
+                                    </xs:simpleContent>
+                                  </xs:complexType>
+                                </xs:element>
+                                <xs:element name="gfx_gpu_proc">
+                                  <xs:annotation>
+                                    <xs:documentation>Average cc per px for the gfx operations in the GPU</xs:documentation>
+                                  </xs:annotation>
+                                  <xs:complexType>
+                                    <xs:simpleContent>
+                                      <xs:extension base="xs:string">
+                                        <xs:attribute type="xs:float" name="value" use="required" />
+                                      </xs:extension>
+                                    </xs:simpleContent>
+                                  </xs:complexType>
+                                </xs:element>
+                                <xs:element name="gpu_bus_conflict_pos">
+                                  <xs:annotation>
+                                    <xs:documentation>Percentage of bus conflicts when GPU is accessing memories (other master will get the bus first)</xs:documentation>
+                                  </xs:annotation>
+                                  <xs:complexType>
+                                    <xs:simpleContent>
+                                      <xs:extension base="xs:string">
+                                        <xs:attribute type="xs:float" name="value" use="required" />
+                                      </xs:extension>
+                                    </xs:simpleContent>
+                                  </xs:complexType>
+                                </xs:element>
+                              </xs:sequence>
+                              <xs:attribute type="xs:string" name="value" use="required" />
+                              <xs:attribute type="xs:boolean" name="default" use="optional" />
+                            </xs:complexType>
+                          </xs:element>
+                        </xs:sequence>
+                      </xs:complexType>
+                    </xs:element>
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+              <xs:element name="display_controller">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="layers_num">
+                      <xs:complexType>
+                        <xs:simpleContent>
+                          <xs:extension base="xs:string">
+                            <xs:attribute type="xs:unsignedInt" name="max" use="required" />
+                            <xs:attribute type="xs:unsignedInt" name="default" use="optional" />
+                          </xs:extension>
+                        </xs:simpleContent>
+                      </xs:complexType>
+                    </xs:element>
+                    <xs:element name="active_layer_storage">
+                      <xs:complexType>
+                        <xs:sequence>
+                          <xs:element name="memory" maxOccurs="unbounded" minOccurs="1">
+                            <xs:complexType>
+                              <xs:simpleContent>
+                                <xs:extension base="xs:string">
+                                  <xs:attribute type="xs:IDREF" name="refid" use="required" />
+                                  <xs:attribute type="xs:boolean" name="default" use="optional" />
+                                </xs:extension>
+                              </xs:simpleContent>
+                            </xs:complexType>
+                          </xs:element>
+                        </xs:sequence>
+                      </xs:complexType>
+                    </xs:element>
+                    <xs:element name="static_layer_storage">
+                      <xs:complexType>
+                        <xs:sequence>
+                          <xs:element name="memory" maxOccurs="unbounded" minOccurs="1">
+                            <xs:complexType>
+                              <xs:simpleContent>
+                                <xs:extension base="xs:string">
+                                  <xs:attribute type="xs:IDREF" name="refid" use="required" />
+                                  <xs:attribute type="xs:boolean" name="default" use="optional" />
+                                </xs:extension>
+                              </xs:simpleContent>
+                            </xs:complexType>
+                          </xs:element>
+                        </xs:sequence>
+                      </xs:complexType>
+                    </xs:element>
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+              <xs:element name="display_interfaces">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="interface" maxOccurs="unbounded" minOccurs="1">
+                      <xs:complexType>
+                        <xs:sequence>
+                          <xs:element name="divisors" minOccurs="0">
+                            <xs:annotation>
+                              <xs:documentation>Calculate the available options by dividing selected sys clock frequency with available divisor values</xs:documentation>
+                            </xs:annotation>
+                            <xs:complexType>
+                              <xs:sequence>
+                                <xs:element name="divisor" maxOccurs="unbounded" minOccurs="1">
+                                  <xs:complexType>
+                                    <xs:simpleContent>
+                                      <xs:extension base="xs:string">
+                                        <xs:attribute type="xs:unsignedInt" name="value" use="required" />
+                                      </xs:extension>
+                                    </xs:simpleContent>
+                                  </xs:complexType>
+                                </xs:element>
+                              </xs:sequence>
+                            </xs:complexType>
+                          </xs:element>
+                          <xs:element name="lanes_num" minOccurs="0">
+                            <xs:complexType>
+                              <xs:simpleContent>
+                                <xs:extension base="xs:string">
+                                  <xs:attribute type="xs:unsignedInt" name="max" use="required" />
+                                  <xs:attribute type="xs:unsignedInt" name="default" use="optional" />
+                                </xs:extension>
+                              </xs:simpleContent>
+                            </xs:complexType>
+                          </xs:element>
+                          <xs:element name="frequencies" minOccurs="0">
+                            <xs:complexType>
+                              <xs:sequence>
+                                <xs:element name="frequency" maxOccurs="unbounded" minOccurs="1">
+                                  <xs:complexType>
+                                    <xs:simpleContent>
+                                      <xs:extension base="xs:string">
+                                        <xs:attribute type="xs:integer" name="value" use="required" />
+                                        <xs:attribute type="xs:boolean" name="default" use="optional" />
+                                      </xs:extension>
+                                    </xs:simpleContent>
+                                  </xs:complexType>
+                                </xs:element>
+                              </xs:sequence>
+                            </xs:complexType>
+                          </xs:element>
+                          <xs:element name="devices" maxOccurs="1" minOccurs="1">
+                            <xs:annotation>
+                              <xs:documentation>Indicates for which devices each interface is available</xs:documentation>
+                            </xs:annotation>
+                            <xs:complexType>
+                              <xs:sequence>
+                                <xs:element name="device" maxOccurs="unbounded" minOccurs="1">
+                                  <xs:complexType>
+                                    <xs:simpleContent>
+                                      <xs:extension base="xs:string">
+                                        <xs:attribute type="xs:string" name="id" use="required" />
+                                      </xs:extension>
+                                    </xs:simpleContent>
+                                  </xs:complexType>
+                                </xs:element>
+                              </xs:sequence>
+                            </xs:complexType>
+                          </xs:element>
+                        </xs:sequence>
+                        <xs:attribute type="xs:string" name="name" use="required" />
+                        <xs:attribute type="xs:ID" name="id" use="required" />
+						<xs:attribute type="xs:boolean" name="default" use="optional" />
+                      </xs:complexType>
+                    </xs:element>
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+              <xs:element name="display_resolution">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="x_resolution">
+                      <xs:complexType>
+                        <xs:simpleContent>
+                          <xs:extension base="xs:string">
+                            <xs:attribute type="xs:unsignedInt" name="min" />
+                            <xs:attribute type="xs:unsignedInt" name="max" />
+                            <xs:attribute type="xs:unsignedInt" name="default" />
+                          </xs:extension>
+                        </xs:simpleContent>
+                      </xs:complexType>
+                    </xs:element>
+                    <xs:element name="y_resolution">
+                      <xs:complexType>
+                        <xs:simpleContent>
+                          <xs:extension base="xs:string">
+                            <xs:attribute type="xs:unsignedInt" name="min" />
+                            <xs:attribute type="xs:unsignedInt" name="max" />
+                            <xs:attribute type="xs:unsignedInt" name="default" />
+                          </xs:extension>
+                        </xs:simpleContent>
+                      </xs:complexType>
+                    </xs:element>
+                    <xs:element name="internal_color_bits">
+                      <xs:complexType>
+                        <xs:sequence>
+                          <xs:element name="color_bits" maxOccurs="unbounded" minOccurs="1">
+                            <xs:complexType>
+                              <xs:simpleContent>
+                                <xs:extension base="xs:string">
+                                  <xs:attribute type="xs:unsignedInt" name="value" use="required" />
+                                  <xs:attribute type="xs:boolean" name="default" use="optional" />
+                                </xs:extension>
+                              </xs:simpleContent>
+                            </xs:complexType>
+                          </xs:element>
+                        </xs:sequence>
+                      </xs:complexType>
+                    </xs:element>
+                    <xs:element name="external_color_bits">
+                      <xs:complexType>
+                        <xs:sequence>
+                          <xs:element name="color_bits" maxOccurs="unbounded" minOccurs="1">
+                            <xs:complexType>
+                              <xs:simpleContent>
+                                <xs:extension base="xs:string">
+                                  <xs:attribute type="xs:unsignedInt" name="value" use="required" />
+                                  <xs:attribute type="xs:boolean" name="default" use="optional" />
+                                </xs:extension>
+                              </xs:simpleContent>
+                            </xs:complexType>
+                          </xs:element>
+                        </xs:sequence>
+                      </xs:complexType>
+                    </xs:element>
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+              <xs:element name="bus_arbitration">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="lcdc_dma_priority">
+                      <xs:complexType>
+                        <xs:simpleContent>
+                          <xs:extension base="xs:string">
+                            <xs:attribute type="xs:unsignedInt" name="max" use="required" />
+                            <xs:attribute type="xs:unsignedInt" name="default" use="optional" />
+                          </xs:extension>
+                        </xs:simpleContent>
+                      </xs:complexType>
+                    </xs:element>
+                    <xs:element name="gpu_dma_priority">
+                      <xs:complexType>
+                        <xs:simpleContent>
+                          <xs:extension base="xs:string">
+                            <xs:attribute type="xs:unsignedInt" name="max" use="required" />
+                            <xs:attribute type="xs:unsignedInt" name="default" use="optional" />
+                          </xs:extension>
+                        </xs:simpleContent>
+                      </xs:complexType>
+                    </xs:element>
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="calculation_constants">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="lcdc_extra_delay">
+                <xs:annotation>
+                  <xs:documentation>Fixed extra delay per LCDC burst16 transaction due to issues in the LCDC DMA of the AA version of Cobalt</xs:documentation>
+                </xs:annotation>
+                <xs:complexType>
+                  <xs:simpleContent>
+                    <xs:extension base="xs:string">
+                      <xs:attribute type="xs:integer" name="value" />
+                    </xs:extension>
+                  </xs:simpleContent>
+                </xs:complexType>
+              </xs:element>
+              <xs:element name="arb_delay">
+                <xs:annotation>
+                  <xs:documentation>Arbitration delay for the bus to change master</xs:documentation>
+                </xs:annotation>
+                <xs:complexType>
+                  <xs:simpleContent>
+                    <xs:extension base="xs:string">
+                      <xs:attribute type="xs:integer" name="value" />
+                    </xs:extension>
+                  </xs:simpleContent>
+                </xs:complexType>
+              </xs:element>
+              <xs:element name="sram_8beat_trans">
+                <xs:annotation>
+                  <xs:documentation>CC for read/write transaction (8beat) from/to SRAM</xs:documentation>
+                </xs:annotation>
+                <xs:complexType>
+                  <xs:simpleContent>
+                    <xs:extension base="xs:string">
+                      <xs:attribute type="xs:integer" name="value" />
+                    </xs:extension>
+                  </xs:simpleContent>
+                </xs:complexType>
+              </xs:element>
+			  <xs:element name="sram_16beat_trans">
+                <xs:annotation>
+                  <xs:documentation>CC for read/write transaction (16beat) from/to SRAM</xs:documentation>
+                </xs:annotation>
+                <xs:complexType>
+                  <xs:simpleContent>
+                    <xs:extension base="xs:string">
+                      <xs:attribute type="xs:integer" name="value" />
+                    </xs:extension>
+                  </xs:simpleContent>
+                </xs:complexType>
+              </xs:element>
+              <xs:element name="qspi_psram_8beat_trans">
+                <xs:annotation>
+                  <xs:documentation>spi CC for read/write transaction (8beat) from/to PSRAM (QSPI)</xs:documentation>
+                </xs:annotation>
+                <xs:complexType>
+                  <xs:simpleContent>
+                    <xs:extension base="xs:string">
+                      <xs:attribute type="xs:integer" name="value" />
+                    </xs:extension>
+                  </xs:simpleContent>
+                </xs:complexType>
+              </xs:element>
+              <xs:element name="qspi_psram_16beat_trans">
+                <xs:annotation>
+                  <xs:documentation>spi CC for read/write transaction (16beat) from/to PSRAM (QSPI)</xs:documentation>
+                </xs:annotation>
+                <xs:complexType>
+                  <xs:simpleContent>
+                    <xs:extension base="xs:string">
+                      <xs:attribute type="xs:integer" name="value" />
+                    </xs:extension>
+                  </xs:simpleContent>
+                </xs:complexType>
+              </xs:element>
+              <xs:element name="ospi_psram_8beat_trans">
+                <xs:annotation>
+                  <xs:documentation>spi CC for read/write transaction (8beat) from/to PSRAM (OSPI)</xs:documentation>
+                </xs:annotation>
+                <xs:complexType>
+                  <xs:simpleContent>
+                    <xs:extension base="xs:string">
+                      <xs:attribute type="xs:integer" name="value" />
+                    </xs:extension>
+                  </xs:simpleContent>
+                </xs:complexType>
+              </xs:element>
+              <xs:element name="ospi_psram_16beat_trans">
+                <xs:annotation>
+                  <xs:documentation>spi CC for read/write transaction (16beat) from/to PSRAM (OSPI)</xs:documentation>
+                </xs:annotation>
+                <xs:complexType>
+                  <xs:simpleContent>
+                    <xs:extension base="xs:string">
+                      <xs:attribute type="xs:integer" name="value" />
+                    </xs:extension>
+                  </xs:simpleContent>
+                </xs:complexType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

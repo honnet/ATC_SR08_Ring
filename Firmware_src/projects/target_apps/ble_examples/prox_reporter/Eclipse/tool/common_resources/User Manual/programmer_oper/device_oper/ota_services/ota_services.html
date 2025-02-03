@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html class="writer-html4" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>3.9. OTA Services (over the air services) &mdash; UM-B-083</title><link rel="stylesheet" href="../../../_static/css/lpc_cs_theme.css" type="text/css" />
+    <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/css/custom.css" type="text/css" /><link rel="shortcut icon" href="../../../_static/favicon.ico"/>
+  <!--[if lt IE 9]>
+    <script src="../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  <script id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../../../_static/jquery.js"></script>
+        <script type="text/javascript" src="../../../_static/underscore.js"></script>
+        <script type="text/javascript" src="../../../_static/doctools.js"></script>
+        <script type="text/javascript" src="../../../_static/language_data.js"></script>
+    <script src="../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+    <link rel="next" title="4. Estimator Operations" href="../../../estimator/index.html" />
+    <link rel="prev" title="3.8. Proprietary Header Programmer" href="../proprietary_header_prog/proprietary_header_prog.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../../../index.html"><img src="../../../_static/V-Reverse.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../../inst_guide/inst_guide.html">1. Installation Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../getting_started/getting_started.html">2. Getting Started</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../../index.html">3. Programmer Operations</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../../common_oper/flash_code/flash_code.html">3.1. Flash Code</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../common_oper/otp/otp.html">3.2. OTP</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../common_oper/ram/ram.html">3.3. RAM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../common_oper/flash_data/flash_data.html">3.4. Flash Data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../suota/suota.html">3.5. SUOTA</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../qspi_part_table/qspi_part_table.html">3.6. QSPI Partition Table</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../eeprom/eeprom.html">3.7. EEPROM Programmer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../proprietary_header_prog/proprietary_header_prog.html">3.8. Proprietary Header Programmer</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">3.9. OTA Services (over the air services)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#software-patch-over-the-air-spota">3.9.1. Software patch over the air (SPOTA)</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#patch-download-procedure">3.9.1.1. Patch Download Procedure</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#software-update-over-the-air-suota">3.9.2. Software update over the air (SUOTA)</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../estimator/index.html">4. Estimator Operations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../manager_oper/index.html">5. Manager Operations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../monitor_oper/index.html">6. Monitor Operations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../configurator/index.html">7. Configurator Operations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../cli/command_line_if.html">8. CLI implementation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../app_help/index.html">9. Application Help</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../troubleshooting/troubleshooting.html">10. Troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../appendices/index.html">11. Appendices</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../disclaimers_contact.html">12. Disclaimers &amp; Contact info</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">UM-B-083</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="../../index.html">3. Programmer Operations</a> &raquo;</li>
+      <li>3.9. OTA Services (over the air services)</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <div class="section" id="ota-services-over-the-air-services">
+<span id="ota-services"></span><h1>3.9. OTA Services (over the air services)<a class="headerlink" href="#ota-services-over-the-air-services" title="Permalink to this headline">¶</a></h1>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">This tool applies to DA14580/581/583 chip family only.</p>
+</div>
+<p>The user can select between two over the air services: SPOTA (Software Patch Over The Air) and SUOTA (Software Update Over The Air). By default SUOTA is selected.</p>
+<div class="section" id="software-patch-over-the-air-spota">
+<h2>3.9.1. Software patch over the air (SPOTA)<a class="headerlink" href="#software-patch-over-the-air-spota" title="Permalink to this headline">¶</a></h2>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">This tool applies to DA14580/581/583 chip family only.</p>
+</div>
+<p>Software patch over the air (SPOTA) service exposes a control point to allow a peer device initiate software patching over the air. The DA14580/581/583 chips are capable of executing SW patches that vary regarding the target device to be amended as well as the level of changes to be implemented. A patch can just change a single SW variable value in the code which resides in the SRAM. It can also change an instruction or data value read from the ROM used for the protocol realization. Furthermore, a patch can generate an exception and guide the Program Counter to a new function bypassing the existing one.</p>
+<p>SPOTA defines 2 roles:</p>
+<ol class="arabic simple">
+<li>The “SPOTA Initiator” is the endpoint which transmits the patch payload</li>
+<li>The “SPOTA Receiver” is the endpoint which receives and applies the patch payload</li>
+</ol>
+<p>Patching code is sent by the Initiator using the Bluetooth Smart link. Receiver stores the patch into the internal RAM or an external non-volatile memory and then applies the patch. SPOTA is instantiated as a Primary Service. There is only one instance of this service on a device.</p>
+<div class="figure align-center" id="id1">
+<span id="spota"></span><img alt="../../../_images/spota.png" src="../../../_images/spota.png" />
+<p class="caption"><span class="caption-number">Figure 53 </span><span class="caption-text">Software patch over the air (SPOTA)</span></p>
+</div>
+<div class="section" id="patch-download-procedure">
+<h3>3.9.1.1. Patch Download Procedure<a class="headerlink" href="#patch-download-procedure" title="Permalink to this headline">¶</a></h3>
+<ol class="arabic">
+<li><p class="first">Open SmartSnippets™ Studio and plug in the development board, which will act as receiver and the initiator, which could be a USB dongle. Write down which ports are assigned for each device. Let’s assume that development board has COM14, COM15 and the initiator occupies the COM31 port.</p>
+</li>
+<li><p class="first">Select the “SPOTA/SUOTA” group menu. Three tabs are now active “Booter”, “OTA” and “Log”</p>
+</li>
+<li><p class="first">On the “Booter” tab select an appropriate SPOTA firmware and press “download” to download it to the development board. Press reset if asked.</p>
+</li>
+<li><p class="first">On the “OTA” tab select “SPOTA” on “Over the Air Service”</p>
+</li>
+<li><p class="first">On “Establish connection” on “Port” select the initiator COM port and press “Connect”. The user can use the (Refresh) <img alt="refresh" src="../../../_images/ota_refresh.png" /> icon in order to refresh the respective drop down list.</p>
+</li>
+<li><p class="first">The “Emulator selection” window pops up.  Select the initiator JTAG number (<a class="reference internal" href="#spota-emulator-selection"><span class="std std-numref">Figure 54</span></a>). In case of dongle, this number is written on the dongle device.</p>
+<div class="figure align-center" id="id2">
+<span id="spota-emulator-selection"></span><img alt="../../../_images/spota_emulator_selection.png" src="../../../_images/spota_emulator_selection.png" />
+<p class="caption"><span class="caption-number">Figure 54 </span><span class="caption-text">SPOTA Emulator selection</span></p>
+</div>
+</li>
+<li><p class="first">The initiator is scanning for devices and it should find all the devices that run an advertising firmware. If the checkbox “Display only devices that advertise the SPOTA service” is selected only the devices which advertise a SPOTA service are shown. All these devices are listed in the “Devices” combobox. One of these devices is our development board mentioned above.</p>
+</li>
+<li><p class="first">On the “Devices” combobox select the development kit Bluetooth address and press “Establish Link”. If successful the “Establish Link” button is disabled and a message “Link with target device has been established.” is shown on the log.</p>
+</li>
+<li><p class="first">In “File” user selects the patch file to download.</p>
+</li>
+<li><p class="first">In “Memory Type” user selects where the patch should be written.</p>
+<ul>
+<li><p class="first">If selection is “SYSTEM_RAM” or “RETENSION_RAM” no further information is asked.</p>
+</li>
+<li><p class="first">If selection is “I2C” (EEPROM Memory) user should enter “Base Memory Address”, “I2C Device address”, “SCL” and “SDA” (<a class="reference internal" href="#spota-i2c-download"><span class="std std-numref">Figure 55</span></a>).</p>
+<div class="figure align-center" id="id3">
+<span id="spota-i2c-download"></span><img alt="../../../_images/spota_i2c_download.png" src="../../../_images/spota_i2c_download.png" />
+<p class="caption"><span class="caption-number">Figure 55 </span><span class="caption-text">SPOTA I2C options</span></p>
+</div>
+</li>
+</ul>
+<blockquote>
+<div><ul class="simple">
+<li>If selection is “SPI” (Flash Memory) user should enter “Base Memory Address”, “MISO”, “MOSI”, “CS” and “SCK” (<a class="reference internal" href="#spota-spi-download"><span class="std std-numref">Figure 56</span></a>).</li>
+</ul>
+<div class="figure align-center" id="id4">
+<span id="spota-spi-download"></span><img alt="../../../_images/spota_spi_download.png" src="../../../_images/spota_spi_download.png" />
+<p class="caption"><span class="caption-number">Figure 56 </span><span class="caption-text">SPOTA SPI options</span></p>
+</div>
+</div></blockquote>
+</li>
+<li><p class="first">User presses the “Download” button. The maximum transfer unit (MTU) over the Bluetooth Smart Link is 20 bytes, so the patch file is divided and transmitted in packets of size 20 bytes (maximum).</p>
+</li>
+<li><p class="first">When patch downloads successfully the message “Patch download completed successfully.” is shown in the log and the number of patches in memory increases (<a class="reference internal" href="#spota-success"><span class="std std-numref">Figure 57</span></a>)</p>
+<div class="figure align-center" id="id5">
+<span id="spota-success"></span><img alt="../../../_images/spota_success.png" src="../../../_images/spota_success.png" />
+<p class="caption"><span class="caption-number">Figure 57 </span><span class="caption-text">SPOTA Patch Download</span></p>
+</div>
+</li>
+<li><p class="first">At any point, user may terminate an established link between the initiator and the receiver, by pressing the “Terminate Link” button.</p>
+</li>
+<li><p class="first">The “Disconnect” button closes the port with the initiator.</p>
+</li>
+</ol>
+</div>
+</div>
+<div class="section" id="software-update-over-the-air-suota">
+<h2>3.9.2. Software update over the air (SUOTA)<a class="headerlink" href="#software-update-over-the-air-suota" title="Permalink to this headline">¶</a></h2>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">This tool applies to DA14580/581/583 chip family only.</p>
+</div>
+<p>Similarly to SPOTA, SUOTA refers to a software update that is distributed over&nbsp;Bluetooth Smart link. This functionality can be achieved by using the SUOTA service, which is based on the SPOTA service that has been already described. SUOTA also defines two roles:</p>
+<ol class="arabic">
+<li><p class="first">The “SUOTA Initiator” that transmits the new software image</p>
+</li>
+<li><p class="first">The “SUOTA Receiver” that is responsible for:</p>
+<blockquote>
+<div><ul class="simple">
+<li>Receiving a new software image that is sent by the Initiator over the Bluetooth Smart link.</li>
+<li>Validating the new image and send informative status updates to the Initiator.</li>
+<li>Storing the new image into an external non-volatile memory (FLASH/EEPROM device)</li>
+<li>Configuring the bootloader to run the new image.</li>
+</ul>
+</div></blockquote>
+</li>
+</ol>
+<div class="figure align-center" id="id6">
+<span id="suota"></span><img alt="../../../_images/suota-tool-gui.png" src="../../../_images/suota-tool-gui.png" />
+<p class="caption"><span class="caption-number">Figure 58 </span><span class="caption-text">Software update over the air (SUOTA)</span></p>
+</div>
+<p>Unlike SPOTA, SUOTA applies only to devices that have an external FLASH or EEPROM memory. Additionally, SUOTA transmits the image file in blocks. The user is able to specify the block size in bytes. Each block will in turn be divided in 20 byte packets, so the block size cannot be less than 20 bytes.
+Image bank field specifies where and which image file will be loaded. It accepts only 3 values: 0, 1 or 2</p>
+<p>0: Update external memory with the oldest image.
+1: Put image in bank no. 1, as specified in product header.
+2: Put image in bank no. 2, as specified in product header.</p>
+<div class="figure align-center" id="id7">
+<span id="suota-success"></span><img alt="../../../_images/suota_success.png" src="../../../_images/suota_success.png" />
+<p class="caption"><span class="caption-number">Figure 59 </span><span class="caption-text">SUOTA Image Update</span></p>
+</div>
+<p>After a successful image update, suota receiver reboots the target device and the connection to it is lost. User has to download again the suota receiver firmware via the <strong>Booter</strong> tool, and press the <strong>Connect</strong> button at the OTA services tool in order to discover again the device. If the user tries to download the same firmware file twice, an error like the following will appear:</p>
+<div class="figure align-center" id="id8">
+<span id="sameimageerror"></span><img alt="../../../_images/sameImageError.png" src="../../../_images/sameImageError.png" />
+<p class="caption"><span class="caption-number">Figure 60 </span><span class="caption-text">Error on downloading the same firmware file twice</span></p>
+</div>
+</div>
+</div>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="../proprietary_header_prog/proprietary_header_prog.html" class="btn btn-neutral float-left" title="3.8. Proprietary Header Programmer" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../../../estimator/index.html" class="btn btn-neutral float-right" title="4. Estimator Operations" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023, Renesas Electronics Corporation.</p>
+  </div>
+
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+    <!-- Theme Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-ZXND4SB7CL"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-ZXND4SB7CL', {
+          'anonymize_ip': false,
+      });
+    </script> 
+
+</body>
+</html>

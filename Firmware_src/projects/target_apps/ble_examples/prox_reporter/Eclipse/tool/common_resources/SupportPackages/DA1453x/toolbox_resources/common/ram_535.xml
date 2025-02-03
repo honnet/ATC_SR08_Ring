@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xml>
+	<family>DA1453x</family>
+	<version>1.0.1</version>
+	<devices>
+		<device>DA14535-00</device>
+		<device>DA14533-00</device>
+	</devices>
+	<memories>
+		<memory id="common">
+			<name>RAM</name>
+			<start>0x00000000</start>
+			<size>0x00010000</size>
+		</memory>
+	</memories>
+</xml>

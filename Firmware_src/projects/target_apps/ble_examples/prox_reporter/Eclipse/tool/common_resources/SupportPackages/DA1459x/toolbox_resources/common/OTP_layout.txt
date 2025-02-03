@@ -1,0 +1,10 @@
+Address	Size	Type	RW or RO	Shortname	Description	Group	Default	Number of options
+00000000	1024	String_Rev	RW	Customer Configuration Script	<html>Customer Configuration Script</html>	Customer Configuration Script
+00000400	1024	String	RW	Security Keys Pointers	<html>Keys for application cryptography or secure boot</html>	Security Keys Pointers
+00000800	1024	String	RW	User Application Expanded Encryption Keys	<html>User Application Expanded Encryption Keys</html>	User Application Expanded Encryption Keys
+00000C00	1024	String	RW	Signature Keys	<html>Signature Keys</html>	Signature Keys
+00002000	16384	String	RW	Customer Application Area	<html>Customer Application Area</html>	Customer Application Area
+00040000	1024	String	RO	Manufacturing Data	<html>Manufacturing Data</html>	Manufacturing Data
+00040400	1024	String_Rev	RO	Production Configuration Script	<html>Production Configuration Script</html>	Production Configuration Script
+<OTP_UNPROG>=0xFF
+<version>=1.0.0

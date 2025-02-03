@@ -1,0 +1,44 @@
+.. _prop_head_prog:
+
+=============================
+Proprietary Header Programmer
+=============================
+
+.. note::
+
+	This tool applies to DA14580/581/583, DA14585/6 and DA1453x chip family.
+
+This is considered as an advanced tool. Enable it from menu *Settings -> Advanced Settings*
+
+Proprietary Header Programmer is used for burning custom header or NVDS to EEPROM or SPI Flash Memory. 
+
+.. _header-nvds-programmer:
+.. figure:: images/header_nvds_programmer.png
+   :align: center
+   
+   Proprietary Header Programmer
+
+
+The user first has to select the header model file. This is a txt file of the following format: <number of bytes> \\t <Parameter_type> \\t <Parameter name> \\t <Parameter description>, where parameter type is "String" or "Integer" e.g.:
+
+.. _modelFormat:
+.. figure:: images/modelFormat.png
+   :align: center
+   
+   Header model format
+
+String parameters are patched with leading zeros, if their size is smaller than the number of bytes indicated by the 2nd column of the table shown above. Integer parameters are patched with trailing zeros.
+
+The selected model file and offset are saved to the project.sms file. The user can store a different model file and offset per memory type. Once a valid connection has been established and a valid model file has been loaded, the user will also be able to read / burn from / to the selected memory. 	
+
+* **Connect**: Special firmware is downloaded to the chip to allow the user interact with the selected memory. This is a mandatory step before enabling the other actions.
+* **Read**: The sum of bytes mentioned at the 'Size (bytes)' column of the table shown above are read from the selected memory, starting from the specified offset. This offset cannot be greater than the maximum EEPROM/SPI Flash Memory size.
+* **Burn**: Sector containing the selected memory offset is erased. Bytes at value column are burned to EEPROM/SPI Flash Memory at the selected memory offset.
+* **Update**: *Update* button is used in order to update an SPI Flash sector with input data provided by the user. The following actions are performed when this button is pressed:
+
+	#. The contents of the SPI Flash sector containing the input offset are read and stored in byte array in RAM. Each sector's size is 4KB (4096 bytes).
+	#. Bytes starting at input offset inside the sector contents byte array are replaced with the byte array created by parsing the value columns of the table shown above.
+	#. The byte array representing the updated sector data is burned at SPI Flash Memory at the sector starting address.
+
+* **Import**: User can import the data to burn to the selected memory by pressing the *Import* button. User is advised to import a file that has been exported using the *Export* button of the Memory Header/NVDS Programmer tool. When a .hex or .ihex file is imported, it is checked that the total number of parameters and the number of bytes per parameter match the custom model that has been loaded. If they do not match, user cannot import the selected file. When a .bin file is imported, if the size of the file in bytes exceeds the sum of the bytes of the custom model, the extra bytes are ignored. When the size of the file is smaller than the expected number of bytes, according to the loaded custom model, bytes with the default value 0x00 are added to the end of the file bytes.
+* **Export**: User can export the bytes shown at the *Value* column to a .bin,.ihex or .hex file.

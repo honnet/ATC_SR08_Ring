@@ -1,0 +1,385 @@
+.. include:: <isonum.txt>
+
+
+=============================================================================
+Appendix B - Battery Lifetime Estimator CLI sample input and parameters files
+=============================================================================
+
+
+Sample txt input file (used with -input argument)
+-------------------------------------------------
+   
+**DA14580/581/583 family input values**
+
+.. _Battery-Lifetime-Estimator-CLI-sample-input-for-DA14580-581-583-family:
+.. code-block:: python
+   :name: Battery Lifetime Estimator CLI sample input for DA14580/581/583 family
+   :caption: Battery Lifetime Estimator CLI sample input for DA14580/581/583 family
+   
+	#Application code storage medium. Accepts values FLASH, OTP
+	copyFrom	OTP
+	#Application code size. Accepts integer values
+	appCodeSize	20
+	#Application data size (to be retained). Accepts integer values
+	appDataSize	5
+	#Retain code in System RAM. Accepts boolean values (true, false)
+	retainCode	true
+	#Retention current SysRam 42KB. Accepts double values 
+	retentionSysRAM_42KB	0.8
+	#Retention current RetRam 8KB. Accepts double values 
+	retentionRetRAM_8KB	0.2
+	#Non connectable advertising mode. Accepts values OFF, 1, 2, 3. Values 1, 2, 3 indicate the number of channels
+	nonConnectableAdvMode	OFF
+	#Advertising percentage. Accepts integer values in the range 0-100
+	advPercentage	20
+	#Connection percentage. Accepts integer values in the range 0-100
+	conPercentage	80
+	#Advertising interval. Accepts double values
+	advInterval	20.0
+	#Connection interval. Accepts double values
+	conInterval	100.0
+	#Transmitted bytes on connection. Accepts integer values
+	txBytesPerConEvent	5
+	#SPI transmitted bytes every advertising event. Accepts integer values
+	SPIBytesPerAdvEvent	6
+	#I2C transmitted bytes every advertising event. Accepts integer values
+	I2CBytesPerAdvEvent	3
+	#SPI transmitted bytes every connection event. Accepts integer values
+	SPIBytesPerConEvent	5
+	#I2C transmitted bytes every connection event. Accepts integer values
+	I2CBytesPerConEvent	2
+	#SPI external component current. Accepts integer values
+	SPIExtConsumption	1
+	#I2C external component current. Accepts integer values
+	I2CExtConsumption	1
+	#CPU extra processing time every advertising interval. Accepts double values
+	CPUAdvExtraTime	0.2
+	#CPU extra processing time every connection interval. Accepts double values
+	CPUConExtraTime	0.5
+	#Battery capacity (coin cell). Accepts integer values
+	BatCapacity	30
+
+
+**DA14585/6 family input values** 
+
+.. _Battery-Lifetime-Estimator-CLI-sample-input-for-DA14585-6-family:
+.. code-block:: python
+   :name: Battery Lifetime Estimator CLI sample input for DA14585/6 family
+   :caption: Battery Lifetime Estimator CLI sample input for DA14585/6 family
+   
+	#Application code storage medium. Accepts values FLASH, OTP
+	copyFrom	FLASH
+	#Application code size. Accepts integer values
+	appCodeSize	20
+	#Application data size (to be retained). Accepts integer values
+	appDataSize	5
+	#Retain code in System RAM. Accepts boolean values (true, false)
+	retainCode	true
+	#Retention current SysRam1/4 32KB (DA14585_6 family) or SysRam 42KB (DA1458x family). Accepts double values 
+	retentionSysRAM_1_4_32KB	1.2
+	#Retention current SysRam2/3 16KB (DA14585_6 family) or RetRam 8KB (DA1458x family). Accepts double values 
+	retentionSysRAM_2_3_16KB	0.6
+	#Non connectable advertising mode. Accepts values OFF, 1, 2, 3. Values 1, 2, 3 indicate the number of channels
+	nonConnectableAdvMode	OFF
+	#Advertising percentage. Accepts integer values in the range 0-100
+	advPercentage	20
+	#Connection percentage. Accepts integer values in the range 0-100
+	conPercentage	80
+	#Advertising interval. Accepts double values
+	advInterval	20.0
+	#Connection interval. Accepts double values
+	conInterval	100.0
+	#Transmitted bytes on connection. Accepts integer values
+	txBytesPerConEvent	5
+	#SPI transmitted bytes every advertising event. Accepts integer values
+	SPIBytesPerAdvEvent	6
+	#I2C transmitted bytes every advertising event. Accepts integer values
+	I2CBytesPerAdvEvent	3
+	#SPI transmitted bytes every connection event. Accepts integer values
+	SPIBytesPerConEvent	5
+	#I2C transmitted bytes every connection event. Accepts integer values
+	I2CBytesPerConEvent	2
+	#SPI external component current. Accepts integer values
+	SPIExtConsumption	1
+	#I2C external component current. Accepts integer values
+	I2CExtConsumption	1
+	#CPU extra processing time every advertising interval. Accepts double values
+	CPUAdvExtraTime	0.2
+	#CPU extra processing time every connection interval. Accepts double values
+	CPUConExtraTime	0.5
+	#Battery capacity (coin cell). Accepts integer values
+	BatCapacity	30
+
+   
+**DA1453x family input values**   
+
+.. _Battery-Lifetime-Estimator-CLI-sample-input-for-DA1453x-family:
+.. code-block:: python
+   :name: Battery Lifetime Estimator CLI sample input for DA1453x family
+   :caption: Battery Lifetime Estimator CLI sample input for DA1453x family
+   
+	#Application code storage medium. Accepts values FLASH, OTP
+	copyFrom	OTP
+	#Application code size. Accepts integer values
+	appCodeSize	20
+	#Application data size (to be retained). Accepts integer values
+	appDataSize	5
+	#Retain code in System RAM. Accepts boolean values (true, false)
+	retainCode	true
+	#Operation mode: Buck or Boost
+	buckOrBoost buck
+	#Retention current SysRam3 20KB. Accepts double values 
+	retentionSysRAM_3_20KB	0.167
+	#Retention current SysRam2 16KB. Accepts double values 
+	retentionSysRAM_2_16KB	0.134
+	#Retention current SysRam1 12KB. Accepts double values 
+	retentionSysRAM_1_12KB	0.1
+	#Beacon only value. true or false
+	beacon	FALSE
+	#Advertising percentage. Accepts integer values in the range 0-100
+	advPercentage	80
+	#Connection percentage. Accepts integer values in the range 0-100
+	conPercentage	20
+	#Advertising interval. Accepts double values
+	advInterval	20.0
+	#Connection interval. Accepts double values
+	conInterval	100.0
+	#Transmitted bytes on advertising. Accepts integer values
+	txBytesPerAdvEvent	27
+	#Transmitted bytes on connection. Accepts integer values
+	txBytesPerConEvent	2
+	#SPI transmitted bytes every connection event. Accepts integer values
+	SPIBytesPerConEvent	0
+	#I2C transmitted bytes every connection event. Accepts integer values
+	I2CBytesPerConEvent	0
+	#SPI external component current. Accepts integer values
+	SPIExtConsumption	0
+	#I2C external component current. Accepts integer values
+	I2CExtConsumption	0
+	#CPU extra processing time every connection interval. Accepts double values
+	CPUConExtraTime	0
+	#Battery capacity (coin cell). Accepts integer values
+	BatCapacity	25
+	#Battery voltage for the selected operation mode
+	batteryVoltage 3.0
+	#DCDC Efficiency
+	dcdcEfficiency 80   
+   
+
+Sample txt params file (used with -params argument)
+---------------------------------------------------
+Note that the params file is optional and can be used in order to override the default values of the parameters that are used in the calculations.
+
+**DA14580/581/583 family defaults**
+
+.. _Battery-Lifetime-Estimator-DA14580-581-583-family-defaults:
+.. code-block:: python
+   :name: DA14580/581/583 family defaults
+   :caption: DA14580/581/583 family defaults
+
+   #Common
+   alwaysOnCurrent	0.4
+   stackSize	5.0
+   loadDurationRatioOTP	0.032
+   loadDurationRatioFlash	1.024
+   xtalSettlingDuration	3.5
+   maxCodeSize	50.0
+
+   #Advertising current (in mA)
+   advConsumption_dcdcCharge	5.5
+   advConsumption_flashMirror	2.0
+   advConsumption_otpMirror	3.33
+   advConsumption_xtal16Settling	0.5
+   advConsumption_sensorData	0.75
+   advConsumption_cpuProc	0.55
+   advConsumption_bleCoreTask	0.55
+   advConsumption_tx	4.1
+   advConsumption_rx	4.7
+   advConsumption_ifs	0.58
+   advConsumption_sleepPrep	0.65
+
+   #Connection current (in mA)
+   conConsumption_dcdcCharge	5.5
+   conConsumption_flashMirror	2.0
+   conConsumption_otpMirror	3.33
+   conConsumption_xtal16Settling	0.5
+   conConsumption_sensorData	0.75
+   conConsumption_cpuProc	0.55
+   conConsumption_bleCoreTask	0.55
+   conConsumption_tx	4.1
+   conConsumption_rx	4.7
+   conConsumption_ifs	0.85
+   conConsumption_sleepPrep	0.56
+
+   #Advertising duration (in ms)
+   advDuration_dcdcCharge	0.0
+   advDuration_bleCoreTask	2.3
+   advDuration_tx	0.4
+   advDuration_rx	0.12
+   advDuration_ifs	0.8
+   advDuration_sleepPrep	0.6
+
+   #Connection duration (in ms)
+   conDuration_dcdcCharge	0.0
+   conDuration_bleCoreTask	2.5
+   conDuration_ifs	0.15
+   conDuration_sleepPrep	0.6
+
+
+**DA14585/6 family defaults**   
+   
+.. _Battery-Lifetime-Estimator-DA14585-6-family-defaults:
+.. code-block:: python
+   :name: DA14585/6 family defaults
+   :caption: DA14585/6 family defaults
+
+   #Common
+   alwaysOnCurrent	0.51
+   stackSize	7.0
+   loadDurationRatioOTP	0.016
+   loadDurationRatioFlash	1.024
+   xtalSettlingDuration	3.5
+   maxCodeSize	96.0
+
+   #Advertising current (in mA)
+   advConsumption_dcdcCharge	5.5
+   advConsumption_flashMirror	2.0
+   advConsumption_otpMirror	3.0
+   advConsumption_xtal16Settling	0.48
+   advConsumption_sensorData	0.75
+   advConsumption_cpuProc	0.58
+   advConsumption_bleCoreTask	0.58
+   advConsumption_tx	4.4
+   advConsumption_rx	4.7
+   advConsumption_ifs	0.58
+   advConsumption_sleepPrep	0.65
+
+   #Connection current (in mA)
+   conConsumption_dcdcCharge	5.5
+   conConsumption_flashMirror	2.0
+   conConsumption_otpMirror	3.0
+   conConsumption_xtal16Settling	0.48
+   conConsumption_sensorData	0.75
+   conConsumption_cpuProc	0.55
+   conConsumption_bleCoreTask	0.58
+   conConsumption_tx	4.4
+   conConsumption_rx	4.7
+   conConsumption_ifs	0.85
+   conConsumption_sleepPrep	0.65
+
+   #Advertising duration (in ms)
+   advDuration_dcdcCharge	0.0
+   advDuration_bleCoreTask	2.3
+   advDuration_tx	0.4
+   advDuration_rx	0.12
+   advDuration_ifs	0.8
+   advDuration_sleepPrep	0.7
+
+   #Connection duration (in ms)
+   conDuration_dcdcCharge	0.0
+   conDuration_bleCoreTask	2.3
+   conDuration_ifs	0.15
+   conDuration_sleepPrep	0.7
+
+
+**DA1453x family defaults**   
+   
+**Operation mode buck** 
+  
+.. _Battery-Lifetime-Estimator-DA1453x-defaults-operation-mode-buck:
+.. code-block:: python
+   :name: DA1453x family defaults for operation mode buck
+   :caption: DA1453x family defaults for operation mode buck
+   
+	#Common
+	alwaysOnCurrentBuck      0.7
+	stackSize    7.0
+	loadDurationRatioOTP 0.016
+	loadDurationRatioFlash       0.512
+	xtalSettlingDuration 1
+	maxCodeSize  48.0
+	ivddr	0.6
+	ivdd2r	1.5
+	vdd	0.9
+	ldoDropVoltage	0.2
+	scaMaster	200
+	scaSlave	100
+	batteryVoltageBuck	3.0
+
+	#Advertising current (in mA)
+	advConsumption_dcdcCharge    5.5
+	advConsumption_flashMirror   6.0
+
+	#Connection current (in mA)
+	conConsumption_dcdcCharge    5.5
+	conConsumption_flashMirror   6.0
+	conConsumption_cpuProc       0.55
+
+	#Advertising duration (in ms)
+	advDuration_dcdcCharge       0.0
+	advDuration_xtal16Settling      1.0
+	advDuration_bleCoreTask       1.8
+	advDuration_ifs      1.15
+	advDuration_sleepPrep        0.7
+
+	#Connection duration (in ms)
+	conDuration_dcdcCharge       0.0
+	conDuration_xtal16Settling      1.0
+	conDuration_bleCoreTask      1.8
+	conDuration_ifs      0.15
+	conDuration_sleepPrep        0.7
+	
+	
+**Operation mode boost** 
+
+.. _Battery-Lifetime-Estimator-DA1453x-family-defaults-for-operation-mode-boost:
+.. code-block:: python
+   :name: DA1453x family defaults for operation mode boost
+   :caption: DA1453x family defaults for operation mode boost
+   
+	#Common
+	alwaysOnCurrentBoost      0.6
+	stackSize    7.0
+	loadDurationRatioOTP 0.016
+	loadDurationRatioFlash       0.512
+	xtalSettlingDuration 1
+	maxCodeSize  48.0
+	ivddr	0.6
+	ivdd2r	1.5
+	vdd	0.9
+	ldoDropVoltage	0.2
+	scaMaster	200
+	scaSlave	100
+	batteryVoltageBoost	1.5
+
+	#Advertising current (in mA)
+	advConsumption_flashMirror	6.0
+	advConsumption_xtal16Settling	0.65
+	advConsumption_bleCoreTask	0.74
+	advConsumption_tx	7.8
+	advConsumption_rx	4.6
+	advConsumption_ifs	0.74
+	advConsumption_sleepPrep	0.74
+
+	#Connection current (in mA)
+	conConsumption_flashMirror	6.0
+	conConsumption_xtal16Settling	0.65
+	conConsumption_bleCoreTask	0.74
+	conConsumption_tx	7.8
+	conConsumption_rx	4.6
+	conConsumption_ifs	0.74
+	conConsumption_sleepPrep	0.74
+
+	#Advertising duration (in ms)
+	advDuration_dcdcCharge       0.0
+	advDuration_xtal16Settling      1.0
+	advDuration_bleCoreTask       1.8
+	advDuration_ifs      1.15
+	advDuration_sleepPrep        0.7
+
+	#Connection duration (in ms)
+	conDuration_dcdcCharge       0.0
+	conDuration_xtal16Settling      1.0
+	conDuration_bleCoreTask      1.8
+	conDuration_ifs      0.15
+	conDuration_sleepPrep        0.7

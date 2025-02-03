@@ -1,0 +1,43 @@
+.. include:: <isonum.txt>
+
+.. _burn_binary_to_flash_69x_70x:
+
+Burn binary to flash for DA1469x, DA1470x and DA1459x
+=====================================================
+
+#. From **Programmer** menu select the FLash Code tool (:numref:`flash_code_initial_screen`)
+
+#. From Board menu select a UART or JTAG interface (:numref:`flash_code_if_selection`)	
+
+#. Press the **Connect** button on the bottom of the tool (:numref:`flash_code_connect`)
+
+#. Press the **Read** button to read the contents of the flash. The contents are presented on the left table named "Content Read" (:numref:`empty_flash`).
+   Verify that the flash is empty.
+
+#. Select the **Complete Flash** section and press the **Import from File** button and the "Prepare Code Image" dialog appears.
+
+   .. _flash_code_prepare_code_image:
+   .. figure:: images/flash_code_prepare_code_image.png
+      :align: center
+      :scale: 100%
+   
+      "Prepare Code Image" dialog
+      
+   On **DA1470x** and **DA1459x** a flash detection function is executed when connecting to the device and a message is shown. The detected flash is preselected.   
+
+#. Press the **Prepare Image** button and then **OK**. The "Content to Burn" table is populated with flash image data.
+
+   .. _flash_code_prepare_code_image_2:
+   .. figure:: images/flash_code_prepare_code_image_2.png
+      :align: center
+      :scale: 100%
+   
+      "Prepare Code Image" dialog after image preparation
+
+#. The start address to burn the data is estimated during the flash image preparation. Press the **Burn** button to burn the flash image at the [redefined address.
+
+#. After successful burn the "Content Read" table is updated. Press **RESET** button on the motherboard to start the application.
+      
+For full documentation of the Flash Code tool please refer to :ref:`flash_code`
+
+

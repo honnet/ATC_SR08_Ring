@@ -1,0 +1,186 @@
+.. include:: <isonum.txt>
+
+
+.. _support_packs:
+
+
+Support Packs
+=============
+
+Support Pack is a way of resource grouping and a packaging mechanism, that SmartSnippets\ |trade| Toolbox implements. 
+Furthermore, the group of resources and configuration files that SmartSnippets\ |trade| Toolbox requires per supported 
+device family will be referred from now on as "Support Pack" or "SP".  
+
+Support Packs traditionally are bundled with the Application Installers. Nevertheless, while toolbox evolves along the time, 
+a support pack can be found available for reference in one or more of the following locations:
+
+#. As part of Application's Installer - *Bundled SP*
+#. In a Studio injected or user provided SDK workspace - *SDK SP*
+#. Over a remote Support Package update, fetched from the Internet - *Remote SP*
+
+SmartSnippets\ |trade| Toolbox can be connected to an SDK and use its resources under the following scenarios:
+
+#. When launched from SmartSnippets\ |trade| Studio, it is considered *connected* to the same SDK that Studio is launched with.
+#. When launched as standalone application and user provides a custom SP via the 'Custom Support Pack' button.
+
+
+Support Pack Selection
+----------------------
+
+When SmartSnippets\ |trade| Toolbox is launched, it selects by default all *Bundled SPs*, while shortly after, SP 
+selection logic takes control. During that phase Toolbox will try to list and evaluate all available sources and decide based on given prevailing logic,
+which of the available support packs are going to be used.
+
+As previously mentioned, SmartSnippets\ |trade| Toolbox can get linked with Support Packs from multiple locations.
+ 
+In case that there is an SDK connection, list of devices and resources found in this specific SDK are going to be used. 
+
+.. note::
+	In case that configuration xml file of the selected SDK is not valid (e.g. resources missing), the respective remote/bundled SPs 
+	(matching the selected SDK family), are going to be used. As a common rule, the most recent SP for the SDK's family among remote SPs and bundled SPs will be used. 
+	 
+If launched from SmartSnippets\ |trade| Studio and remote SPs exist (for any of the SDK families), then the remote SPs are going to be used 
+instead of the SDK provided SPs.
+
+In different case (no SDK association), selection process will proceed with what is available with *Bundled Support Packs*.
+
+*Bundled Support Packs* can get always updated with *Remote Support Packs* in almost an automated way. Toolbox will always check for available 
+updates and every time that there is a newer remote support pack available, it will always prompt for permission to download and use it, instead of 
+the ones found already shipped with Toolbox's installer (or previously updated resources). 
+
+After that, application will search for any remote SPs already downloaded from a previous session and if so, it will try to validate & patch bundled 
+SPs with anything reported as more recent from the remote ones. 
+
+In case that SDK from SmartSnippets\ |trade| Studio is going to be used and there are more recent remote SPs available, remote SPs are going to be 
+used instead of SDK provided ones. Information about the release dates of the SDK’s SPs can be found written to info.xml file under the SDK's *config* 
+folder. If info.xml does not exist then remote SPs are always considered as more recent.
+
+.. note::
+	If a custom SDK/SP has been selected and the respective remote SP is newer, no remote SP will be used in this case. One exception in the above rule is the 
+	case that resources are missing from the provided Custom SP, and in such a case Toolbox will try to satisfy them by using the most recent resources found available. 
+
+Support Pack selection logic can be reviewed over the following diagram.
+
+.. _SP_workflow:
+.. figure:: images/sp_workflow.png
+   :align: center
+   
+   Support Pack Selection Logic
+
+
+Support Pack Validation
+-----------------------
+
+Support Pack Validation of any type (including any user-provided custom SDK/SP), goes through the following steps:
+
+#. Validate SDK/SP configuration xml file: Verifies that the file has a valid xml format and contains certain nodes, used to indicate the family, the supported devices, the resources to be used and configuration information.
+#. Validate SDK/SP resources: Checks against the respective bundled resources and verifies that there are existing references to all the resources required for this family pack.
+#. Validate existence of SDK/SP referenced resources: Verifies that the paths to the required resources are valid and that these resources exist.
+
+If validation fails in step 1, then there are two additional scenarios we need to examine:
+
+#. If the configuration xml file is corrupted and/or SP family cannot be extracted from it.
+#. If the SP family is recognized, but important entries are missing from the xml file (e.g. list of devices, entries in *<toolbox_config>* node, *<toolbox_resources>* node).
+
+In first case, application ignores the provided SDK/SP and uses all the bundled SPs per family, while validation procedure terminates with failover operation. 
+In second case it identifies the family (or families in case of multifamily SDK), but due to other unrecoverable errors, the selected SP cannot be used. In such a case the bundled SP/s for this family/s is going to be used instead. 
+
+.. note::
+	Validation never fully fails (except of the step 1,  that selected SDK/SP can get completely dropped). If validation succeeds in step 1 but fails on any of the following steps 2 and 3, then for any of the missing resources, the respective bundled resources will be used in order for the application to proceed. 
+	
+After validation gets completed with success, examined SDK/SP gets selected as the currently active SP.
+
+.. note::
+	If libprogrammer gets replaced with a bundled resource, then uartboot.bin is going to be replaced too, or vise versa.
+
+
+Custom Support Packs
+--------------------
+
+User can provide to SmartSnippets\ |trade| Toolbox a custom SDK/SP using 'Set Custom SP' menu option under the Board Menu.
+
+.. _configure_sdk:
+.. figure:: images/sp_configure_sdk.png
+   :align: center
+   
+   Support Pack Chooser
+
+The following folder structure is expected for an SDK SP or custom SP:
+
+.. _SP_structure:
+.. figure:: images/sp_structure.png
+   :align: center
+   
+   Support Pack Structure
+   
+SmartSnippets\ |trade| Toolbox looks for the Support Pack configuration xml file inside a folder named "config". In order to select an SDK, the user should select the root path of the SDK using the *Browse* button, where the *config* folder is located. If a custom SP has been provided as an archive or the user has created a custom SP, the same structure is expected: the user should select the custom Support Pack root folder, using the *Browse* button, which contains a *config* folder where the configuration xml file can be located. If the message *"SDK configuration xml file could not be found"* is presented, please make sure that the SDK/SP has the folder structure described here and that the SDK/SP root folder has been selected.
+
+Support Pack Chooser dialog provides the following options to the user:
+
+**Browse**: User can select a custom SP.
+
+**Clear selection**: Clears selection and sets as selected SPs the most recent SPs per family.
+
+**OK**: If pressed, then changes will take effect.
+
+**Cancel**: If pressed, then changes will be ignored.
+
+**Support Pack Locations**: User can view the paths of the currently selected SP per family. If visualization demonstrates unsaved changes, 
+a dedicated message will properly inform user for this incident.
+
+.. _sp_locations_info:
+.. figure:: images/sp_locations_info.png
+   :align: center
+   
+   Support Pack Location Info
+
+SDK/SP Validation takes place as described in previous topic, while if validation of the selected SDK/SP fails, 
+a dedicated message description will appear at the bottom of the window, to further explain the issue.
+
+The following image represents a case were the validation of the selected SDK just failed:
+
+.. _sdk_validation_failed:
+.. figure:: images/sp_sdk_validation_failed.png
+   :align: center
+
+   SDK validation failure
+
+.. note::
+   For user provided inputs or changes, to be considered as applied, OK button needs to be pressed first.
+
+
+Remote Support Pack Update
+---------------------------
+
+SmartSnippets\ |trade| Toolbox is enabled with a SP auto-updating mechanism to keep its resources up to date. Upon startup it will try to check
+if there are any newer Support Packages available on Remote Site. Once a device is selected (either manually by the user or after device detection or after loading a previous project which has a saved device) it will finally check if there are new SPs that are currently not installed (for the selected device). 
+If need be it will eventually prompt for User permission to download/update SP resources accordingly. User can check at any time for SP updates using the *Check Online for Updates* menu option under the Board menu. So even if the SP update is initially ignored, the user can install it at any moment in the future.
+
+.. _sp_updater:
+.. figure:: images/sp_updater.png
+   :align: center
+
+   Support Pack Updater
+
+**Update**: Updates SP for selected family.
+
+**Ignore**: Ignores update for this time only. If user ticks the 'Do not show again' checkbox, toolbox will never ask to update on this specific SP release.
+
+If user choose to update on found SP, then the remote SP will get downloaded, extracted, and validated. If validation succeeds, then application will update 
+existing SP Resources (for the selected Family) with resources from the newly fetched SP update accordingly. 
+
+For the Updating process to get completed, several minutes might be needed. If user choose to ignore such an update, then the next time that toolbox gets
+started and same device/family is selected, same popup will appear to request permission for updating over the same or newer SP found available. 
+
+Session can continue without any further inconvenience once this updating dialog gets completed.
+
+
+.. note::
+	If user decides to use a custom SDK/SP with Toolbox, then no SP Updates will be proposed on device selection and *Check Online for Updates* will inform the user that SP updates are not possible while a custom SDK is being used. 
+	
+
+.. _spUpdatesCustomSP:
+.. figure:: images/sp_updates_custom_sp.png
+   :align: center
+
+   SP Updates not available with custom SPs	

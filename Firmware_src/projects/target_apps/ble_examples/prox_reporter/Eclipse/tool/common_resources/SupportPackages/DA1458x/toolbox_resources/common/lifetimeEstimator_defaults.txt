@@ -1,0 +1,50 @@
+#Common
+alwaysOnCurrent      0.4
+stackSize    5.0
+loadDurationRatioOTP 0.032
+loadDurationRatioFlash       1.024
+xtalSettlingDuration 3.5
+maxCodeSize  50.0
+
+#Advertising current (in mA)
+advConsumption_dcdcCharge    5.5
+advConsumption_flashMirror   2.0
+advConsumption_otpMirror     3.33
+advConsumption_xtal16Settling        0.5
+advConsumption_sensorData    0.75
+advConsumption_cpuProc       0.55
+advConsumption_bleCoreTask   0.55
+advConsumption_tx    4.1
+advConsumption_rx    4.7
+advConsumption_ifs   0.58
+advConsumption_sleepPrep     0.65
+advConsumption_sensorData     0.75
+
+
+#Connection current (in mA)
+conConsumption_dcdcCharge    5.5
+conConsumption_flashMirror   2.0
+conConsumption_otpMirror     3.33
+conConsumption_xtal16Settling        0.5
+conConsumption_sensorData    0.75
+conConsumption_cpuProc       0.55
+conConsumption_bleCoreTask   0.55
+conConsumption_tx    4.1
+conConsumption_rx    4.7
+conConsumption_ifs   0.85
+conConsumption_sleepPrep     0.56
+
+#Advertising duration (in ms)
+advDuration_dcdcCharge       0.0
+advDuration_bleCoreTask      2.3
+advDuration_tx       0.4
+advDuration_rx       0.12
+advDuration_ifs      0.8
+advDuration_sleepPrep        0.6
+
+#Connection duration (in ms)
+conDuration_dcdcCharge       0.0
+conDuration_bleCoreTask      2.5
+conDuration_ifs      0.15
+conDuration_sleepPrep        0.6
+

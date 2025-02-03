@@ -1,0 +1,33 @@
+<xs:schema attributeFormDefault="unqualified" elementFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element name="families">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="family" maxOccurs="unbounded" minOccurs="0">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="supportPacks">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="supportPack" maxOccurs="unbounded" minOccurs="0">
+                      <xs:complexType>
+                        <xs:sequence>
+                          <xs:element type="xs:dateTime" name="timestamp"/>
+                          <xs:element type="xs:string" name="localPath"/>
+                          <xs:element type="xs:string" name="onlineURL"/>
+                          <xs:element type="xs:string" name="releaseNotes" maxOccurs="1" minOccurs="0"/>
+                        </xs:sequence>
+                        <xs:attribute type="xs:string" name="toolboxVersion" use="optional"/>
+                        <xs:attribute type="xs:string" name="otpParserVersion" use="optional"/>
+                      </xs:complexType>
+                    </xs:element>
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+            </xs:sequence>
+            <xs:attribute type="xs:string" name="id" use="required"/>
+          </xs:complexType>
+        </xs:element>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

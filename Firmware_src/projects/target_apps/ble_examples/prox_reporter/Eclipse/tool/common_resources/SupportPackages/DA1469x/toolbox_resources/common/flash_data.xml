@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xml>
+	<family>DA1469x</family>
+	<version>1.0.1</version>
+	<devices>
+		<device>DA1469x-00</device>
+	</devices>
+	<memories>
+		<memory id="common">
+			<name>Flash</name>
+			<start>0x00000000</start>
+			<size>0x00400000</size>
+		</memory>
+	</memories>
+</xml>

@@ -1,0 +1,47 @@
+---------------------
+Terms and definitions
+---------------------
+
+**ARM** Advanced RISC Machine
+
+**BLE** Bluetooth Low Energy
+
+**DK** Development Kit
+
+**DUT** Device under test
+
+**GNU** General Public License
+
+**JTAG** Joint Test Action Group
+
+**LE** Low Energy
+
+**Rx** Receiver
+
+**Tx** Transmitter
+
+**UART** Universal Asynchronous Receiver/Transmitter
+
+**URL** Uniform Resource Locator
+
+**SP** Support Pack
+
+**SUOTA** Software Update Over The Air
+
+**SPOTA** Software Patch Over The Air
+
+**OTP** One Time Programmable memory
+ 
+**NVDS** Non-Volatile Data Storage
+
+**SPI** Serial Peripheral Interface
+
+**EEPROM** Electrically Erasable Programmable Read-Only Memory
+
+**QSPI** Quad Serial Peripheral Interface 
+
+**AES CTR** Advanced Encryption Standard - Counter mode
+
+**CLI** Command Line Interface
+
+**SoC** System on Chip

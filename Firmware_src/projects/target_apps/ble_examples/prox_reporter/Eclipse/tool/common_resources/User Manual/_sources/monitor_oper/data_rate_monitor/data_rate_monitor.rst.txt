@@ -1,0 +1,75 @@
+.. include:: <isonum.txt>
+
+.. _data_rate_mon:
+
+=================
+Data Rate Monitor
+=================
+
+
+.. note::
+
+	This tool applies to DA14580/581/583 chip family.
+
+
+Data Rate Monitor is used to monitor the overall receive and transmit rate over Bluetooth.
+
+.. _dataRate1:
+.. figure:: images/dataRate1.png
+   :align: center
+   
+   Data Rate Monitor connection successful
+
+In order to use the Max Data Rate monitor tool, the user needs two DA14580/581/583 DKs connected via usb and two SmartSnippets\ |trade| Toolbox instances. The one DK will play the **Central** role and the other DK will play the **Peripheral** role. The central device can initiate a scan and send connect request to the peripheral device, while the peripheral device can start advertising and accept incoming connection requests. Supposing we have two DKs, *DK_central* and *DK_peripheral*, and two SmartSnippets\ |trade| Toolbox instances, *central_app* and *peripheral_app*, these steps have to be followed:
+
+
+1. **Firmware Download**
+
+	* User selects the firmware download method from the radio selection. In "DK" the firmware is downloaded through UART Port and on "JLink" through JTAG. 
+	* User starts SmartSnippets\ |trade| Toolbox *peripheral_app* and selects the ports/port in UART/SPI mode or UART mode that correspond to one of the DKs. From now on this will be referred as *DK_peripheral*. Selects Max Data Rate Monitor tool and presses the Start Peripheral button. Follows the instructions at the log in order to download the firmware.
+	* User starts *central_app* and selects the ports/port in UART/SPI mode or UART mode that correspond to the second DK, which will be *DK_central*. Selects Max Data Rate Monitor tool and presses the Start Central button. 
+
+2. **Scan**
+
+	* From *central_app*, user presses the Scan button and waits for the discovered devices to be listed and for the scanning process to complete.
+
+3. **Connect**
+
+	* User enters connection interval in millisecond as a multiple of 1.25 at *central_app*. If no value entered the default value 7.5 is used. User presses the Connect button. If the connection to *DK_peripheral* succeeds, connection status panel will be updated with the respective information. Once connected, the stats table will be continuously updated with data, indicating the following:
+
+		* Timestamp: Actual time when the packet was received
+		* Time span: Duration of the connection event
+		* Packets Tx: Transmitted packets
+		* Bytes Tx: Transmitted bytes
+		* Packets Rx: Received packets
+		* Bytes Rx:	Received bytes	
+		* Errors: Packet errors, including both packets that have been erroneously received and packets for which an acknowledgment has not been received.
+
+  
+		Counters at Control Panel will also be updated while the two devices are connected. Note that most of the counter values and the values at the stats table are *zero* at this point (no *Start* transmission pressed yet).
+
+4. **Start**
+
+	* By pressing the Start Transmission button from *central_app*, *DK_central* starts sending packets to *DK_peripheral*. Note that Packets Tx and Bytes Tx are now greater than zero at *central_app* while Packets Rx and Bytes Rx are greater than zero at *peripheral_app*. The opposite can be observed if the Start Transmission button is pressed from the *peripheral_app*.   
+
+.. _dataRate2:
+.. figure:: images/dataRate2.png
+   :align: center
+   
+   Data Rate Monitor - Start Transmission
+
+5. **Stop**
+
+	* This button stops the transmission from the one device to the other.
+
+
+6. **Disconnect**
+
+	* By pressing the Disconnect button the connection between the two devices closes.	
+
+7. **Stop Data Rate Monitor**
+
+	* This button initially tries to close the connection between the two devices, if not already closed via the Disconnect button. Then closes the port that listens for incoming messages from the other DK. This is necessary in order to use another tool with the same COM port, like the Booter or the OTP Programmer.
+	
+
+User has the option to reset the counters of the aggregated statistics by pressing the Reset counters button. Moreover, stats table can be cleared by pressing the Clear Stats button. Finally, stats table data can be exported to csv format by pressing the Export Stats button.

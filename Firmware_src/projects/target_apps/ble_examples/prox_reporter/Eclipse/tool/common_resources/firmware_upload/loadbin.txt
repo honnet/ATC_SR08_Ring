@@ -1,0 +1,8 @@
+r 
+w2 50000012, A6 
+W2 50003308, 2e 
+loadbin , 0 
+verifybin , 0 
+r 
+g 
+exit 

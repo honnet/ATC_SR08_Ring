@@ -1,0 +1,32 @@
+Programmer Operations
+=====================
+
+
+.. raw:: html
+
+   <h3 class="com-dev-oper">Common operations</h3>
+
+
+.. toctree::
+   :maxdepth: 1
+   
+   common_oper/flash_code/flash_code.rst
+   common_oper/otp/otp.rst
+   common_oper/ram/ram.rst
+   common_oper/flash_data/flash_data.rst
+
+
+.. raw:: html
+
+   <h3 class="com-dev-oper">Device operations</h3>
+
+
+.. toctree::
+   :maxdepth: 1
+   
+   device_oper/suota/suota.rst
+   device_oper/qspi_part_table/qspi_part_table.rst
+   device_oper/eeprom/eeprom.rst
+   device_oper/proprietary_header_prog/proprietary_header_prog.rst
+   device_oper/ota_services/ota_services.rst
+

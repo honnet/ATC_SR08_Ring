@@ -1,0 +1,371 @@
+.. include:: <isonum.txt>
+
+.. _otp_tool:
+
+===
+OTP
+===
+
+The tool allows programming the OTP memory. The tool allows programming the OTP memory either by configuring the fields of individual OTP sections or as a whole by importing data from files.
+
+.. _otp_da1469x:
+.. figure:: images/otp_da1469x.png
+   :align: center
+   
+   OTP tool for DA1469x family
+
+
+.. _otp_da1453x:
+.. figure:: images/otp_da1453x.png
+   :align: center
+   
+   OTP tool for DA1453x family
+   
+The available OTP sections, which differ per family, are presented on the top left of the tool. The first option is always *Raw OTP Memory Data*, which provides access to the whole OTP memory and presents the memory contents in address - value format. User can import data from a file in order to program OTP when *Raw OTP Memory Data* has been selected. The rest of the options represent the OTP memory sections. By selecting a section, the user can program each section field individually by setting values to be programmed in *Content to Burn* table and taking advantage of special dialogs that help the user create valid values for specific fields (e.g. Configuration Script). OTP tool provides the following actions to the user:
+
+* **Connect:** Establishes connection to the target device by initializing communication interface and downloading appropriate FW required for the communication to the target.
+
+* **Read:** Reads the selected OTP memory section and updates *Content Read* table. If *Raw OTP Memory Data* has been selected, reads 32 KB from OTP starting from *Start Address* and updates *Content Read* table.
+
+* **Burn:** Burns *Content to Burn* table to OTP memory at Start Address. Light red rows in *Content to Burn* table indicate the fields which will change in OTP memory with the burn action. After burn a OTP memory is read to refresh *Content Read* table.
+
+* **Import from file:** By pressing this button the user can load data from a file into *Content to Burn* table. If a section is selected and the size of the selected file is greater than the section size, only the file bytes fitting in the section will be loaded.
+
+* **Export to file:** Exports the contents of *Content Read* or *Content to Burn* table to a file.
+
+
+Note that for DA1458x family NVDS section is also available for advanced users. The section can be activated by selection OTP NVDS section under Settings > Advanced Settings menu.
+
+------------------
+Editing OTP fields
+------------------
+
+The user can edit OTP memory fields one by one by selecting a section other than *Raw OTP Memory Data*.
+Note that some fields are read-only; double-clicking on them has no effect.
+Editing is performed by choosing a value from the dropdown menu or by double-clicking and setting the desired value in the input field.
+
+Furthermore, some fields marked with |yellow-mark-header| are fields that user should not change their value or else there is great risk of destroying the chip. 
+The application will warn user if he is going to change the value of such fields.
+
+.. |yellow-mark-header| image:: ../../../_static/images/warning13x11.png
+
+.. _readOnly-fields-warning:
+.. figure:: images/readOnly_fields_warning.png
+   :align: center
+   
+   Warning popup when user tries to burn read only field.
+
+
+While addresses marked with |red-mark-header| are special addresses where the value is stored twice in each original and complement value, alternatively word by word.
+
+.. |red-mark-header| image:: images/attention13x13.png
+
+The values are hexadecimal values with size equal to the one shown at the 'Size (words)' column of the table.
+
+For fields with more complex configuration logic involved, a |edit_cell_icon| icon is displayed when mouse hovers them. When the user clicks on this icon a suitable interface
+pops up to edit the configuration. 
+
+.. |edit_cell_icon| image:: images/edit.png   
+
+Some examples of multivalued fields are:
+
+**Cache Architecture Settings on address 0x7F8EA28 of DA1468x devices:**
+
+.. _cache-architecture-680:
+.. figure:: images/cache_architecture_680.png
+   :align: center
+   
+   Cache Architecture Settings
+   
+
+**Serial Configuration Mapping on address 0x7F8EA30 of DA1468x family devices:**
+
+.. _serial-configuration-mapping-680:
+.. figure:: images/serial_configuration_mapping_680.png
+   :align: center
+   
+   Serial Configuration Mapping
+
+
+**Type of fields for DA14580/581/583 device family:**
+ 
+For DA14580/581/583 family devices there are two types of fields:
+
+#. 'Integer': field is treated as an integer, which means that if the user enters fewer hex values than expected according to field size the value is patched with leading zeroes before burning it to the OTP memory (e.g. '14580' becomes '00014580' for a 1-word field). For 'integer'-type fields, the least significant byte of a word is stored in the smallest address (little-endian). E.g. if a user types 0A0B0C0D for field 'DMA Length', 0x0A will be written at 0x47FFB and 0x0D will be written at 0x47FF8.
+#. 'String': field is treated as a string, which means that if the user enters fewer hex values than expected according to field size the value is patched with trailing zeroes before burning it to the OTP memory (e.g. '14580' becomes '14580000' for a 1-word field). For 'string'-type fields, the most significant (left-most) byte of a word is stored in the smallest address (big-endian). E.g. if a user types 0A0B0C0D for field 'Device Unique ID', 0x0A will be written at 0x47FD4 and 0x0D will be written at 0x47FD7.
+
+Most of the fields that contain combo boxes cannot be programmed more than once. For example if 'RC32KHz' (hex value 0xAA) has been burned as the 32KHz source, it is not allowed to overwrite it with the 'XTAL32KHz' value (hex value 0x00). In such a case, the combo boxes are disabled to avoid confusion.
+
+
+**Type of fields for the rest of the device families:**
+
+#. 'Integer': The same as for DA14580/581/583 devices. Integer fields are treated as little endian, meaning that they are reversed when burned to OTP memory and also that the value read to OTP memory is reversed and then presented to the OTP header table.
+#. 'String': The same as DA14580/581/583 devices. String fields are treated as big endian, meaning that a value is burned to the OTP memory exactly as it is presented in the OTP Header.
+#. 'Flag': Fields of type 'Flag' are represented as dropdown lists where the user selects the desired value.
+#. 'Protected': Only DA1468x header contains protected fields. There are two fields that are of type 'Protected' in DA1468x header, *Trim and calibration values (read-only)* and *ECC image length (writable)*.  These fields are treated as integers. From the 8 bytes of 'ECC Image Length' 4 bytes contain the value and the other 4 bytes contain the reverse value.  This is for security reasons. Each time value is read it is checked with the reverse value of the rest of the field to see that the value read match. In write, the reverse value is produced and stored with the real value. The other field 'Trim and calibration values' which is read-only consists of 384 bytes. These bytes are split in 8 bytes each of which consists of 4 byte value and  4 byte reverse value as it explained above. These bytes store the 'trim or calibration' address and its value next to it. You can see this table clicking on the |edit_cell_icon|. When user edits a 'protected' field it enters only the value part. That's why 'ECC image length' for example asks for 8 byte and not 16 byte value. The reverse of the user entered value is produced automatically and stored on the other 8 bytes of the field. 
+
+
+
+------------------
+Burning OTP memory
+------------------
+
+Before performing the actual burn action the following check is made for DA1468x, DA14585/6, DA1453x, DA1469x, DA1470x and DA1459x family devices. 
+SmartSnippets\ |trade| Toolbox checks if the memory segment the user is attempting to burn already contains data. 
+The check is performed on a word level. For DA1468x and DA14585/6 family devices, a word has 8 bytes length and contains 
+data when its value is different than 0x00 while for DA1469x, DA1453x, DA1470x and DA1459x family devices a word has 4 bytes length and contains 
+data when is value is different than 0xFFFFFFFF. There are three cases during OTP burn when comparing each one of the 
+words we are trying to burn with the respective words already written in OTP memory (described for DA1468x and DA14585/6 family devices for which zeroes is the empty value):
+
+#. The word we are trying to burn to OTP memory includes zeroes and the respective word in OTP memory is non-zero: No action is taken.
+#. The word we are trying to burn to OTP memory includes non-zeroes and the respective word in OTP memory is non-zero and the contents of the two words do not match. The word is replaced with zero and a warning shows up in log window. If addresses of the words that are replaced with zero are too many a file called 'not_written_words.txt' is created in settings file's directory or under 'Command_Line_Logs' in case of CLI. This file contains all the addresses that cannot be written.
+#. The word we are trying to burn to OTP memory includes non-zeroes and the respective word in OTP memory is non-zero and the contents of the two words are the same.Word is replaced with zero silently.
+
+For DA1469x, DA1453x, DA1470x and DA1459x family devices the same checks are performed with the difference that the empty value and the value with with which OTP words are replaced, if required, is 0xFFFFFFFF.
+
+.. _otp-not-written-warning:
+.. figure:: images/otp_not_written_warning.png
+   :align: center
+
+   Warning when writing zeroes on non-zero memory location 
+
+ 
+Note that for DA1468x-00 devices, burn action is by default disabled, unless "ENABLE_OTP_BURN_68xAD" property is set to true in properties file. When a DA14583-00 chip is selected, the user has the option to automatically burn "Advanced Bootloader Offset and Length" Header field with the offset and length of the custom bootloader burned in OTP in *Raw OTP Memory Data* section.
+A popup dialog requests for permission to burn the respective OTP Header fields:
+
+.. _da14583OtpImage:
+.. figure:: images/da14583OtpImage.png
+   :align: center
+
+   Request permission to burn the header fields
+   
+Burn action also checks if part of OTP Header will be written. If true then the following warning pops up:
+
+.. _otp-write-part-header:
+.. figure:: images/otp_write_part_header.png
+   :align: center
+
+   Proceed write OTP Header
+
+Before performing the burn action, a set of validation tests is executed in order to ensure the correctness of each header field. 
+The following image is an example of the messages printed to the log during the OTP Header validation tests for DA14580/581/583 devices.
+
+.. _otp-header-580-log:
+.. figure:: images/otp_header_580_log.png
+   :align: center
+   
+   DA14580/581/583 Header validation tests
+   
+When a validation test fails or the user is about to make an important change to the header contents, a popup dialog notifies the user accordingly. For each dialog, the user has the option to either stop the burning process or ignore it and continue with the validation checks. The following validation tests are currently performed for DA14580/581/583 OTP Header:
+
+#. Last burn validation: The existence of 'header_log.txt' file is checked. If found, a message informs the user when the memory was burned for the last time.
+#. DMA length validation: 'DMA length' value should always be smaller than 32768 bytes. It is automatically set to the maximum-allowed value if it is greater or equal to 32768 bytes and the user ignores the DMA length check popup dialog. Moreover, if a file has been loaded on OTP Image, it is checked that the DMA length is higher than the number of data bytes in that file.
+#. Remapping flag selection: Displays an informative message if the 'remapping flag' value has changed to 0.
+#. Customer Code Signature validation: If the 'signature algorithm' field has been set and a file has been selected for downloading to the OTP Image, it calculates a hash of the image file code. The calculated value should match to the value of the field Customer Code Signature.
+#. Trim values validation: The fields at addresses 0x47f7C to 0x47f90 are validated against the latest trim values provided by Renesas. The latest trim values are included in file 'trimValues.txt' located under the 'resources' folder of SmartSnippets\ |trade| Toolbox workspace. The file also includes a timestamp indicating the last time the trim values were updated. If the value entered by the user at a trim value field does not match the respective trim value at trimValues.txt file, the user is notified accordingly.
+#. Calibration flag validation: The 'calibration flag' should be in accordance with the trim values that have been set. The description field of the calibration flag indicates which bit corresponds to which trim value. If a trim value has been set and the corresponding bit of the calibration flag has not been set or vice versa, the user will be notified accordingly.
+#. 32KHz source selection: Displays a message informing the user about the selected 32KHz source.
+#. Package selection: Displays a message informing the user about the selected package.
+#. Header written already validation: Before performing the actual burn action, SmartSnippets\ |trade| Toolbox checks if the memory segment the user is attempting to burn already contains data and notifies the user accordingly; it is up to the user to decide whether to proceed with the burning or not. 
+
+
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Burn application flags for DA14585/6 and DA1453x families
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+To boot from OTP, user need to program the two applications flags (see :numref:`otp-header-burn-flag`) by putting them to YES instead of NO.  
+Booter decides whether the device is in Development or Normal mode by reading the two words indicated as 
+application flags in the OTP then the OTP image is copied into RAM.
+
+.. _otp-header-burn-flag:
+.. figure:: images/application_programmed_flag.png
+   :align: center
+   
+   Application programmed flag
+
+.. _label_of_csinotp:
+
+--------------------------------
+Configuration Script (CS) in OTP
+--------------------------------
+
+OTP Header of DA1469x, DA1453x, DA1470x and DA1459x family devices includes the "Configuration Script" field. 
+If the user presses the button that is visible on the value column of the table when user mouses 
+over the Configuration Script row, the configuration script value is parsed and the commands it 
+contains are presented in the following popup dialog (:numref:`csInOtp531`):
+
+
+.. _csInOtp:
+.. figure:: images/csInOtp.png
+   :align: center
+   
+   Manage Configuration Script dialog for DA1469x family
+   
+
+.. _csInOtp531:
+.. figure:: images/csInOtp531.png
+   :align: center
+   
+   Manage Configuration Script dialog for DA1453x family
+   
+   
+The user can append commands after the last CS command that has been read from the OTP memory, if the STOP command has not been added to the end of the CS. The commands that have been burned to the OTP memory are highlighted in light yellow color. The highlighted commands cannot be modified. Note that a valid CS should start with the Start command (0xA5A5A5A5). Each CS command consists of one or more words. The CMD number is the command identifier. Rows with the same CMD number belong to the same command. The 2nd column indicates the address of the command word and the 3rd column indicates the value of each command word. By looking at the 4th column, user can see the type and a small description of the command. 
+In order to add a new command, the user has to select the type of the command and where this command should be placed in the CS and press the *Add* button. By default a new command is added at the end of the CS commands' table. Available command types are: *Start*, *Stop*, *Register Configuration*, *Trim/Calibration*, *Booter value*, *Development Mode Disable* and *Uart STX timeout*. In order to delete a command, the user has to select the number of the command for deletion and press the *Delete* button. The CS is validated when the *Manage Configuration Script* dialog opens and when the OK button is pressed. Individual commands are validated before being added to the CS commands' table. Validation errors are shown on the top of the window. User can disable validations when the OK button is pressed, by selecting the *Ignore Configuration Script validation errors* checkbox.
+Below individual command types are presented:
+
+1. **Start:** Indicates a valid CS. It is always added at the beginning of the CS commands' table and has the value 0xA5A5A5A5.
+2. **Stop:** Indicates the end of the CS. It is always added at the end of the CS commands' table and  and has the value 0x00000000.
+3. **Register Configuration:** Consists of two 32-bit words, the first of which contains the address of an existing register and the second contains the data value of the register. These are always in pairs. When the user selects to add a *Register Configuration* command to the CS, a popup presenting the available registers grouped in a tree-like structure, is presented. The user can use the search box to search for specific registers or group of registers that contain the text entered in the search box. The names and the addresses of the available registers for the selected device are read from the registers' xml file specified in the support pack.
+
+.. _csRegisterConf:
+.. figure:: images/csRegisterConf.png
+   :align: center
+   
+   Register Configuration in CS for DA1469x family
+
+.. _csRegisterConf531:
+.. figure:: images/csRegisterConf531.png
+   :align: center
+   
+   Register selection in CS whose name contain 'time' for DA1453x family
+
+   
+4. **Trim/Calibration:** Consists of one 32-bit word which is equal to 0x9000YYXX and indicates that the following word(s) are not to be stored to registers but will be used by the SDK SW and YY words which represent the value of the command. XX indicates the TCS group of the command.  In order to add a Trim/Callibration command, the user has to first specify the number of the words (YY) and the TCS group (XX). When the number of the words is specified, one row per word is added to the table where the user can fill up the value of each word.
+
+.. _csTrimCalib:
+.. figure:: images/csTrimCalib.png
+   :align: center
+   
+   Trim/Callibration values in CS
+ 
+For DA1470x family devices **Trim/Calibration** command starts with 0xE900YYXX (where YY and XX are used as descibed above). The user depending on the type of the selected CS group can add either raw data or register address-data pairs: 
+   
+.. _csTrimCalib_DA1470x:
+.. figure:: images/csTrimCalib_DA1470x.png
+   :align: center
+   
+   Trim/Callibration values in CS for DA1470x family 
+   
+   
+5. **Booter value:** Consists of one 32-bit word which is equal to 0x6XXXXXXX indicating this is a value pointing to the Flash product header in flash at address 0xXXXXXXX.
+
+.. _csBooterVal:
+.. figure:: images/csBooterVal.png
+   :align: center
+   
+   Booter value in CS
+   
+For DA1470x family devices **Booter value** command consists of 2 words, the first of which is equal to 0xE6000000 and the second one is the address of the product header in flash. 
+   
+
+6. **Development Mode Disable:** Consists of one 32-bit word which is equal to 0x70000000 (0xE7000000 for DA1470x family), disabling the development mode. Development Mode is enabled by default at the initialization phase of the booter. The user's confirmation is required in order to add the disable development mode command to the CS.
+
+.. _csDevelDisable:
+.. figure:: images/csDevelDisable.png
+   :align: center
+   
+   Disabling development mode in CS
+  
+7. **Uart STX timeout:** Consists of One 32 bit word which is equal to 0x8XXXXXXX. The XXXXXXX is used to program the selected STX timeout in multiples of 100uS. So i.e. 0x80000040 is 40x100uS = 4mS.
+
+.. _csStxTimeout:
+.. figure:: images/csStxTimeout.png
+   :align: center
+   
+   Specifying Uart STX timeout in CS
+
+For DA1470x family devices **Uart STX timeout** command is equal to 0xE8YXXXXX where Y is the uart baudrate and XXXXX the STX timeout in multiples of 100uS.
+
+DA1470x family devices also support the following commands:
+
+8. **XTAL settling value**: Consists of one 32 bit word equal to 0xEAYXXXXX which is used to program the selected XTAL32M settling time in multiples of 100uS.
+
+.. _csXtalSettle:
+.. figure:: images/csXtalSettle.png
+   :align: center
+   
+   Specifying Xtal settling time in CS
+   
+9. **Minimum FW version**: Consists of two 32-bit words, the first of which is equal to 0xEB000000, indicating that the next entry holds a minimum FW version that the booter should accept. Minimum FW version command can be added even after the STOP command in CS.
+
+.. _csMinFwVersion:
+.. figure:: images/csMinFwVersion.png
+   :align: center
+   
+   Specifying minimum FW version in CS
+
+
+
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Configuration Script (CS) Filtering
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+CS section contents can be filtered by the following criteria (:numref:`csFilters`):
+
+.. _csFilters:
+.. figure:: images/csFilters.png
+   :align: center
+   
+   Available filters for CS section
+   
+.. note::
+
+	The same filters for CS are available for every tool which contains CS section in Flash or OTP memory.
+
+
+#. **CS group**: User selects, from a dropdown menu, one of the CS groups found in OTP. Contents of this CS group is presented on the table.
+#. **Register name**: User starts typing a register name. All registers match the input entered are shown on the table. Both register address-pair is shown. 
+#. **Bitfield name**: User starts typing a bitfield name. All registers that contain a bitfield that match the input entered, are shown on the table. Both register address-pair is shown.
+#. **CS Registers**: This button shows all the CS registers sorted by name in alphabetical order.
+#. **Reset**: Reset all filters.
+
+.. note::
+
+	Only one filter can be applied at a time.
+	
+Pressing the info icon (:numref:`bitFieldInfoIcon`) a popup window presents the bitfield information for this register (:numref:`csBitFieldPopUp`):
+
+.. _bitFieldInfoIcon:
+.. figure:: images/bitFieldInfoIcon.png
+   :align: center
+   
+   Info icon available on CS registers
+
+.. _csBitFieldPopUp:
+.. figure:: images/csBitFieldPopUp.png
+   :align: center
+   
+   Bitfield information for a CS register
+
+**Value (dec)** column shows the decimal value of the respected bitfield range, extracted from the register value. 
+If an enumeration is available for this decimal value, this info is presented on column **Value description** 
+
+
+
+--------
+OTP NVDS
+--------
+
+.. note::
+
+	This section applies to DA14580/581/583 device family. Enable section from menu *Settings -> Advanced Settings*.
+
+The functionality of OTP NVDS section is very similar to the functionality of any OTP section containing fields and allows the user to read and write the NVDS memory block. By editing the *Start Address* text field, the user can change the address at which a burn and a read operation will be performed. The user is advised to select an address between 0x40000 and 0x48000 (Before the start address of System Parameters section). Especially for burn operations, the address should be such so that the address where the last NVDS data byte will be written is smaller than the address where OTP header starts. 
+
+An example of the OTP NVDS tab is shown below:
+
+.. _otp-nvds-580-read-from-memory:
+.. figure:: images/otp_nvds_580_read_from_memory.png
+   :align: center
+   
+   OTP NVDS
+   
+When the burn button is pressed, it is validated that the length of parameters NVDS_TAG_APP_BLE_ADV_DATA, NVDS_TAG_APP_BLE_SCAN_RESP_DATA and NVDS_TAG_DEVICE_NAME is equal to the value indicated by parameters ADV_DATA_TAG_LEN, SCAN_RESP_DATA_TAG_LEN and DEVICE_NAME_TAG_LEN respectively. The user is notified if the validation test fails, and has the option to proceed with the burn action or cancel it. 
+Similar to OTP Header, there are integer-type and string-type fields. For OTP NVDS, the following fields are treated as strings:
+
+* NVDS_TAG_APP_BLE_ADV_DATA
+* NVDS_TAG_APP_BLE_SCAN_RESP_DATA
+* NVDS_TAG_DEVICE_NAME
+* NVDS_TAG_BD_ADDRESS
+
+

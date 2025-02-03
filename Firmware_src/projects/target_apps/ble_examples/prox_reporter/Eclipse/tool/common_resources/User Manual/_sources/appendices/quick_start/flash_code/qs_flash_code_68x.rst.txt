@@ -1,0 +1,34 @@
+.. include:: <isonum.txt>
+
+.. _burn_binary_to_flash_68x:
+
+Burn binary to flash for DA1468x chip
+=====================================
+
+#. From **Programmer** menu select the Flash Code tool (:numref:`flash_code_initial_screen`)
+
+#. From **Board menu** select a UART or JTAG interface (:numref:`flash_code_if_selection`)
+
+#. Press the **Connect** button on the bottom of the tool (:numref:`flash_code_connect`)
+  
+#. Press the **Read** button to read the contents of the flash. The contents are presented on the left table named "Content Read". 
+   Verify that the flash is empty (:numref:`empty_flash`)
+
+#. Press the **Import from File** button and the "Prepare Code Image" dialog appears.
+
+   .. _flash_code_import_68x:
+   .. figure:: images/flash_code_import_68x.png
+      :align: center
+      :scale: 100%
+   
+      Prepare Code Image dialog for DA1468x
+
+#. Select the application file, press **Apply** and the *Content to Burn* table is populated with the data to burn to flash.
+
+#. Check that the start address to burn the application is 0x0 and press the **Burn** button.
+
+#. After successful burn the "Content Read" table is updated. Press the **RESET** button on the motherboard to start application.
+      
+For full documentation of the Flash Code tool please refer to :ref:`flash_code`
+
+

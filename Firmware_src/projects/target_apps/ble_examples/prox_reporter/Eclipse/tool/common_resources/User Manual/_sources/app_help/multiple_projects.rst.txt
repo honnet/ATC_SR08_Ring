@@ -1,0 +1,14 @@
+------------------------------
+Working with multiple projects
+------------------------------
+
+.. include:: <isonum.txt>
+
+
+SmartSnippets\ |trade| Toolbox framework allows the user to work on multiple Development Kits on the same laptop or PC by opening multiple SmartSnippets\ |trade| Toolbox applications, one for each DK. The following assumptions are made:
+
+#. Each SmartSnippets\ |trade| Toolbox application instance should use a different project
+#. Each instance should be associated with a different DK board connected to the laptop or PC via its own Virtual COM port pair.
+
+
+

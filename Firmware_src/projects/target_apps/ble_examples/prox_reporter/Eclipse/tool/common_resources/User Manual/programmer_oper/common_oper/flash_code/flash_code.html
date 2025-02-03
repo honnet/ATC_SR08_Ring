@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html class="writer-html4" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>3.1. Flash Code &mdash; UM-B-083</title><link rel="stylesheet" href="../../../_static/css/lpc_cs_theme.css" type="text/css" />
+    <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/css/custom.css" type="text/css" /><link rel="shortcut icon" href="../../../_static/favicon.ico"/>
+  <!--[if lt IE 9]>
+    <script src="../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  <script id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../../../_static/jquery.js"></script>
+        <script type="text/javascript" src="../../../_static/underscore.js"></script>
+        <script type="text/javascript" src="../../../_static/doctools.js"></script>
+        <script type="text/javascript" src="../../../_static/language_data.js"></script>
+    <script src="../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+    <link rel="next" title="3.2. OTP" href="../otp/otp.html" />
+    <link rel="prev" title="3. Programmer Operations" href="../../index.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../../../index.html"><img src="../../../_static/V-Reverse.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../../inst_guide/inst_guide.html">1. Installation Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../getting_started/getting_started.html">2. Getting Started</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../../index.html">3. Programmer Operations</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">3.1. Flash Code</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#programming-flash-memory">3.1.1. Programming Flash memory</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#da1453x-in-bypass-mode">3.1.1.1. DA1453x in BYPASS mode</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#qspi-nvparams">3.1.2. QSPI NVPARAMS</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#configuration-script-cs-in-qspi">3.1.3. Configuration Script (CS) in QSPI</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#program-spi-eeprom">3.1.4. Program SPI/EEPROM</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../otp/otp.html">3.2. OTP</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ram/ram.html">3.3. RAM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../flash_data/flash_data.html">3.4. Flash Data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../device_oper/suota/suota.html">3.5. SUOTA</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../device_oper/qspi_part_table/qspi_part_table.html">3.6. QSPI Partition Table</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../device_oper/eeprom/eeprom.html">3.7. EEPROM Programmer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../device_oper/proprietary_header_prog/proprietary_header_prog.html">3.8. Proprietary Header Programmer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../device_oper/ota_services/ota_services.html">3.9. OTA Services (over the air services)</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../estimator/index.html">4. Estimator Operations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../manager_oper/index.html">5. Manager Operations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../monitor_oper/index.html">6. Monitor Operations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../configurator/index.html">7. Configurator Operations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../cli/command_line_if.html">8. CLI implementation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../app_help/index.html">9. Application Help</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../troubleshooting/troubleshooting.html">10. Troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../appendices/index.html">11. Appendices</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../disclaimers_contact.html">12. Disclaimers &amp; Contact info</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">UM-B-083</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="../../index.html">3. Programmer Operations</a> &raquo;</li>
+      <li>3.1. Flash Code</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <div class="section" id="flash-code">
+<span id="id1"></span><h1>3.1. Flash Code<a class="headerlink" href="#flash-code" title="Permalink to this headline">¶</a></h1>
+<p>Flash Code tool allows users to program the Flash and execute code from it.</p>
+<div class="figure align-center" id="id2">
+<span id="flashxip-69x-70x"></span><img alt="../../../_images/flashXiP1.png" src="../../../_images/flashXiP1.png" />
+<p class="caption"><span class="caption-number">Figure 5 </span><span class="caption-text">Flash Code tool for DA1469x, DA1470x and DA1459x family devices</span></p>
+</div>
+<p>On the top left of the tool user can see the available sections.</p>
+<p>For DA1469x, DA1470x and DA1459x device families the available sections are dynamic and depend on the Product Header contents, on FW images and CS presence. Start and End address indicate the start and end address of each section. For the rest of the families only <em>Complete Flash</em> is available.
+On the center of the tool two tables are presented: <em>Content Read</em> table is read only and presents the data read from Flash memory for this section. Content to Burn is editable and user can either edit the fields of a section or import the contents of a file at this table and then burn the respective section to Flash Memory.
+The following sections exist for DA1469x, DA1470x and DA1459x family devices:</p>
+<ul>
+<li><p class="first"><strong>Configuration Script (CS):</strong> Enable section from menu <em>Settings -&gt; Advanced Settings</em>.
+This section contains a script with a certain format which is used for programming
+registers with values that are defined during production testing, storing a trim value for the application software,
+and defining UART time-out time during booting. The booter will execute the script to prepare and initialize the system,
+before the CPU starts running application code from the Flash.</p>
+<p>CS, if present in Flash, should be programmed at the beginning of the flash (address 0x00000000).
+CS section start address cannot be changed by the user and its end address depends on the size of the CS.
+When the Configuration Script section is selected, a set of filters is activated on the left of the tool,
+which help the user locate specific entries if the CS. The user can filter the CS by CS group,
+register name or bit field name or filter only the commands programming values to registers.
+User can mouse over the Value column of the Configuration Script field in <em>Content to Burn</em> table in order to edit
+the CS by adding or removing commands from it using the <em>Manage Configuration Script</em> dialog.</p>
+</li>
+<li><p class="first"><strong>Product Header:</strong> Enable section from menu <em>Settings -&gt; Advanced Settings</em>. This section contains important information about the
+system and the flash type. Product Header is used by the device booter to detect if flash is programmed and boot FW images from flash.
+Product Header is the first section in Flash (at address 0x00000000) unless Configuration Script is programmed in Flash.
+In such a case and if Booter value is not programmed in Configuration Script, Product Header will start one sector after CS,
+namely at address 0x00001000. If Booter Value has been programmed in CS, then Product Header will be located at the address
+indicated by Booter Value. Note that start-end addresses of this section cannot be changed by the user, since
+Product Header should be located at predefined addresses, according to the cases described already, in order for the device booter to locate it.</p>
+</li>
+<li><p class="first"><strong>Product Header (Backup):</strong> Enable section from menu <em>Settings -&gt; Advanced Settings</em>. The backup Product Header is a read only copy of the primary Product Header. Each time primary Product Header is updated (new values burned or values erased), backup Product Header is also updated in order to contain a copy of the contents of the primary Product Header. Backup Product Header will always start one sector after the primary Product Header. So if the primary Product Header starts at 0x00000000, backup Product Header will start at 0x00001000. Similarly to primary Product Header, backup Product Header start-end addresses are not editable by the user.</p>
+</li>
+<li><p class="first"><strong>FW Image 1:</strong> Enable section from menu <em>Settings -&gt; Advanced Settings</em>. It contains the FW Image programmed at the <em>Active FW Image address</em>
+field of Product Header. Start address can not be edited by the user since it depends on <em>Active FW Image address</em> value and end address
+depends on the size of the FW Image.</p>
+</li>
+<li><p class="first"><strong>FW Image 2:</strong> Enable section from menu <em>Settings -&gt; Advanced Settings</em>. It contains the FW Image programmed at the <em>Upgrade FW Image address</em> field
+of Product Header. If active and upgrade FW Image addresses have the same value, only FW Image 1 section will be available.
+Similarly to FW Image 1 section, start and end address text fileds cannot be edited by the user.</p>
+</li>
+<li><p class="first"><strong>NVPARAMS:</strong> Enable section from menu <em>Settings -&gt; Advanced Settings</em>. This section allows the user program the NVPARAMS block on Flash memory.
+See <a class="reference internal" href="#label-of-nvparams"><span class="std std-ref">QSPI NVPARAMS</span></a> for more info on this section.</p>
+</li>
+</ul>
+<p>The <strong>Complete Flash</strong> button presents the contents of the complete Flash as raw data. Complete Flash view is available for all families. User can import a file on <em>Content to Burn</em> table using the <em>Import from File</em> button. The user can specify the address to burn the <em>Content to Burn</em> by editing the <em>Start Address</em> text field. <em>Content Read</em> table presents by default 32K of data. The user can change the start and end addresses to read the preferred memory segment.</p>
+<p>The sections are initially updated when the <em>Connect</em> button is pressed and after burn and erase actions, which change the contents of the memory.</p>
+<p>The tool provides the following buttons and options:</p>
+<ul class="simple">
+<li><strong>Connect:</strong> Establishes connection to the target device by initializing communication interface and downloading appropriate FW required for the communication to the target.</li>
+<li><strong>Read:</strong> Reads Flash region between start and end address and loads its contents into Content Read</li>
+<li><strong>Burn:</strong> Burns Content to Burn table to flash at the address indicated by start address. When fields are presented in Content to Burn table, light red rows indicate the fields which will change in Flash memory when the Burn button will be pressed.</li>
+<li><strong>Erase:</strong> Erases memory region between start and end address.</li>
+<li><strong>Add:</strong> Can be used to add sections that are not already present in memory. Such sections are Configuration Script and Firmware Image. When Configuration Script is selected, the <em>Manage Configuration Script</em> dialog is presented which allows the user to create the CS command by command. The CS contents are then loaded in <em>Content to Burn</em> table and are ready to the burned to the Flash. When the <em>Firmware Image</em> section is selected, the dialog to prepare the FW is presented and the FW Image contents are then loaded in <em>Content to Burn</em> table. Note that in both cases the Configuration Script or the FW Image are not automatically burned to the Flash. The user has to set the start address in order to indicate where the section should be burned and then press the <em>Burn</em> button.</li>
+<li><strong>Import from File:</strong> Can be used to import the selected section contents from a file. When Complete Flash is selected, the <em>Import from File</em> button can be used to import the contents of any section (e.g. Configuration Script, Product Header) or import a ready FW image or import a FW file that will later be prepared as a FW image.</li>
+<li><strong>Export to File</strong> Exports the contents of the region between start and end address to a file.</li>
+<li><strong>Check Flash size here:</strong> Shows the total Flash size attached to the target device. There is a default value per family but the user can change this value if a non default Flash is being used.</li>
+</ul>
+<div class="section" id="programming-flash-memory">
+<h2>3.1.1. Programming Flash memory<a class="headerlink" href="#programming-flash-memory" title="Permalink to this headline">¶</a></h2>
+<ol class="arabic">
+<li><p class="first"><strong>Programming a whole Flash Image</strong>:</p>
+<ol class="arabic">
+<li><p class="first">User first selects the <em>Complete Flash</em> section and then imports a file containing Product Header starting at address 0x00000000, followed by Backup Product Header and 1 FW Image starting at the address indicated by Active and Upgrade FW Image Address fields of Product Header or 2 FW Images starting the first at Active FW Image Address and the second at Upgrade FW Image Address. The file should be burned at the beginning of the Flash, if no Configuration Script is present in Flash, otherwise it should be burned at address 0x00001000.</p>
+</li>
+<li><p class="first">User first selects the <em>Complete Flash</em> section and then selects <em>Firmware Image</em> from the Add button popup menu (<a class="reference internal" href="#fxip-prepareimage"><span class="std std-numref">Figure 6</span></a>). If the user has already imported a file via the <em>Import</em> button, the binary file text field will be filled with the path of the file. Otherwise the user can select the following types of files:</p>
+<blockquote>
+<div><ul class="simple">
+<li>Simple firmware (FW) file: This file does not contain Product Headers or Image Header. The contents of the file will be first converted to a Firmware image and then will be used to create a whole Flash Image.</li>
+<li>Firmware Image file: This file is a ready FW image, containing Image Header. The contents of the file will be used to create a whole Flash Image.</li>
+<li>Whole Flash Image: This file contains Product Headers and Firmware Image(s). The contents of the file will not change, since Product Header is already included in the file contents.</li>
+</ul>
+<p>In the first two cases the Product Header will be created according to the flash configuration matching the selected flash type. This means that specific magic values will be inserted to the Product Header according to the selected flash type. Also the application will find an approproate address to burn the generated flash image, by checking CS (if present in Flash) and CS Booter value (if present in CS). The address at which the Product Header of the Flash Image will be burned also affects the Active and Upgrade FW address fields of Product Header.</p>
+<p>In the last case the application cannot change Product Header (magic values and Active/Upgrade address fields) that is already included in the Flash Image, therefore the user will have to specify the address at which Product Header should be burned. Default address is at the beginning of the Flash.</p>
+</div></blockquote>
+<div class="figure align-center" id="id3">
+<span id="fxip-prepareimage"></span><img alt="../../../_images/prepareImage.png" src="../../../_images/prepareImage.png" />
+<p class="caption"><span class="caption-number">Figure 6 </span><span class="caption-text">Preparing flash image for DA1469x family devices</span></p>
+</div>
+</li>
+</ol>
+</li>
+<li><p class="first"><strong>Programming separately the Product Header and the FW Image(s)</strong>:</p>
+<ol class="arabic simple">
+<li><strong>Programming the Product Header first</strong>: The user can select either <em>Complete Flash</em> or <em>Product Header</em> and import the product header from a file. Alternatively the user can select <em>Product Header</em> and edit the field values at <em>Content to Burn</em> table. Then the user can program the Product Header at the beginning of the Flash, if CS is not in Flash or at address 0x00001000 if CS is burned in Flash. If Booter Value has been specified in the CS, the user should burn the product header at the address indicated by the Booter Value command of the CS.</li>
+<li><strong>Programming a FW Image next</strong>. The user can select <em>Complete Flash</em> and import a ready FW Image (already contains the image header and data) and then set the address the FW Image should be burned to at the start address text field.</li>
+<li><strong>Programming a second FW Image</strong>: The user can select <em>Complete Flash</em> and import a ready FW Image, specify the address for the FW Image (a different address than the one used for <em>Firmware Image 1</em>) in the Start Address text field and burn the FW Image. Then the user can set the address that the second FW Image has been burned to <em>Upgrade FW Image Address</em> field of Product Header and then burn the Product Header.</li>
+</ol>
+</li>
+</ol>
+<div class="section" id="da1453x-in-bypass-mode">
+<h3>3.1.1.1. DA1453x in BYPASS mode<a class="headerlink" href="#da1453x-in-bypass-mode" title="Permalink to this headline">¶</a></h3>
+<p>Please note that currently SPI Flash for DA1453x family devices has been tested in BUCK mode at 3V and BOOST mode at 2.7V.</p>
+<p>For the Bypass mode the flash programmer binary needs to be updated.</p>
+<p>Please follow below steps to generate the new binary with bypass support:</p>
+<ol class="arabic simple">
+<li>Open the flash programmer KEIL project under <code class="docutils literal notranslate"><span class="pre">6.0.14.1114\utilities\flash_programmer</span></code> . See <a class="reference internal" href="#bypassmode531"><span class="std std-numref">Figure 7</span></a></li>
+<li>Enable the CFG_POWER_MODE_BYPASS flag in arch.h file</li>
+<li>Compile. jtag_programmer_531.bin is generated</li>
+<li>Rename jtag_programmer_531.bin to jtag_programmer.bin</li>
+<li>Under your SmartSnippets™ Toolbox directory installation: For example</li>
+</ol>
+<p><code class="docutils literal notranslate"><span class="pre">C:\Program</span> <span class="pre">Files</span> <span class="pre">(x86)\SmartSnippetsToolbox\SmartSnippetsToolbox5.0.18\common_resources\SupportPackages\DA1453x\toolbox_resources\common\jtag_programmer.bin</span></code></p>
+<p>or</p>
+<p><code class="docutils literal notranslate"><span class="pre">C:\DiaSemi\SmartSnippetsStudio2.0.18\Toolbox\common_resources\SupportPackages\DA1453x\toolbox_resources\common\jtag_programmer.bin</span></code>.</p>
+<p>Remove the jtag_programmer.bin and replace it by the new one.</p>
+<div class="figure align-center" id="id4">
+<span id="bypassmode531"></span><img alt="../../../_images/bypassmode531.jpg" src="../../../_images/bypassmode531.jpg" />
+<p class="caption"><span class="caption-number">Figure 7 </span><span class="caption-text">Generate flash programmer binary on KEIL to support bypass mode for DA14531</span></p>
+</div>
+</div>
+</div>
+<div class="section" id="qspi-nvparams">
+<span id="label-of-nvparams"></span><h2>3.1.2. QSPI NVPARAMS<a class="headerlink" href="#qspi-nvparams" title="Permalink to this headline">¶</a></h2>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">The tool is available for DA1468x, DA1469x, DA1470x and DA1459x family devices.</p>
+</div>
+<p>This is considered as an advanced tool. Enable it from menu <em>Settings -&gt; Advanced Settings</em>.</p>
+<p>This section allows the user to read and write NVPARAMS block on flash memory and is similar to OTP NVDS tool used for DA14580/581/583 chip family.</p>
+<p>The recommended address for NVPARAMS differs per family and is prefilled in the start address text field. In case a partition table is already programmed in QSPI, the application will try automatically to detect the start address of NVPARAMS section from the partition table and will recommend this address to the user.
+By editing the start address text field, user can change the address at which a burn and a read operation will be performed. The address (in bytes) should be a hex number smaller than the maximum address allowed by the QSPI size specified on <em>Device Settings</em>.
+For burn operations, the address should be such so that the address where the last NVPARAMS data byte will be written is smaller than the maximum QSPI address.</p>
+<p>An example of the NVPARAMS section is shown below:</p>
+<div class="figure align-center" id="id5">
+<span id="qspi-nvparams-0"></span><img alt="../../../_images/qspi_nvparams_0.png" src="../../../_images/qspi_nvparams_0.png" />
+<p class="caption"><span class="caption-number">Figure 8 </span><span class="caption-text">QSPI NVPARAMS Section</span></p>
+</div>
+<p>User selects or inserts the values of the corresponding parameter at column <strong>Value</strong>.
+Default values are shown on column <strong>Default Value</strong>.</p>
+<p>There is a second editable column called <strong>Enabled</strong> where the user
+defines that the parameter will be actually used. It is also called <strong>Validation Flag</strong>.
+When checked a byte with value 0x00 is added at the end of the parameter value in memory. When left unchecked
+a byte with value 0xFF is added to define that the parameter is not valid for that configuration.</p>
+<p>All values except <strong>TAG_BLE_PLATFORM_BLE_CA_MIN_RSSI</strong> are accepting unsigned values. Validation error messages are shown when user tries to
+export or burn invalid values. Value of <strong>TAG_BLE_PLATFORM_BLE_CA_NB_BAD_PKT</strong> is recommended to be half the value of <strong>TAG_BLE_PLATFORM_BLE_CA_NB_PKT</strong>.</p>
+</div>
+<div class="section" id="configuration-script-cs-in-qspi">
+<h2>3.1.3. Configuration Script (CS) in QSPI<a class="headerlink" href="#configuration-script-cs-in-qspi" title="Permalink to this headline">¶</a></h2>
+<p>A Configuration Script can be added to the QSPI memory by pressing the <em>Add</em> button and selecting <em>Configuration Script</em>. The <em>Manage Configuration Script</em> dialog pops up which will help the user build the CS by adding commands to it. In case a valid CS is already present in the QSPI, the same dialog can be shown by selecting the button that becomes visible when mousing over the value column of the Configuration Script field. Please refer to <a class="reference internal" href="../otp/otp.html#label-of-csinotp"><span class="std std-ref">Configuration Script (CS) in OTP</span></a> for more details about the Configuration Script and how to use the <em>Manage Configuration Script</em> dialog. Since the CS can be burned more than once to the QSPI memory, the user can alter the contents of the CS that is already burned in memory by deleting commands and adding new commands at any place in the CS.</p>
+</div>
+<div class="section" id="program-spi-eeprom">
+<span id="mkimage"></span><h2>3.1.4. Program SPI/EEPROM<a class="headerlink" href="#program-spi-eeprom" title="Permalink to this headline">¶</a></h2>
+<p>The Program SPI/EEPROM feature has a wizard like structure that guides users through all the necessary steps to program
+a .hex/.bin file to the SPI/EEPROM memory.</p>
+<p>In this page users select a .hex/.bin file to be programmed from the wizard. After selection users have 3 options on how to
+program the selected file.</p>
+<div class="figure align-center" id="id6">
+<span id="mkimage-intro"></span><img alt="../../../_images/mkImage_intro.png" src="../../../_images/mkImage_intro.png" />
+<p class="caption"><span class="caption-number">Figure 9 </span><span class="caption-text">Program SPI/EEPROM wizard: Intro page</span></p>
+</div>
+<ul class="simple">
+<li>Do not modify: Using this option no modifications are applied to the contents of the source file. Optionally, if the Bootable option is checked, a bootable header can be added to the contents of the input file.</li>
+<li>Make single image: If this option is selected then a single image of the file will be created. Users have the option to encrypt the final image.</li>
+<li>Make multi image: Users have the option to create an image containing two source files. Also, a secondary bootloader may be included.</li>
+</ul>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Options make single/multi image may change also the source file.</p>
+</div>
+<p>A work-flow of the wizard is presented below.</p>
+<div class="figure align-center" id="id7">
+<span id="mkimage-workflow"></span><img alt="../../../_images/mkImage_workflow.png" src="../../../_images/mkImage_workflow.png" />
+<p class="caption"><span class="caption-number">Figure 10 </span><span class="caption-text">Program SPI/EEPROM wizard: Work-flow</span></p>
+</div>
+<p>In this page users may select to encrypt the final image. Users may provide their own key and IV (Initial Value) or use the default ones.</p>
+<div class="figure align-center" id="id8">
+<span id="mkimage-encryption"></span><img alt="../../../_images/mkImage_encryption.png" src="../../../_images/mkImage_encryption.png" />
+<p class="caption"><span class="caption-number">Figure 11 </span><span class="caption-text">Program SPI/EEPROM wizard: Encryption page</span></p>
+</div>
+<p>In this page users provide the second image to be program on memory.</p>
+<div class="figure align-center" id="id9">
+<span id="mkimage-multi"></span><img alt="../../../_images/mkImage_multi.png" src="../../../_images/mkImage_multi.png" />
+<p class="caption"><span class="caption-number">Figure 12 </span><span class="caption-text">Program SPI/EEPROM wizard: Multi image page</span></p>
+</div>
+<p>In this page users may select to add secondary bootloader to the image. Users can ether use the default
+secondary bootloader just by clicking on the check box or they can provide their custom one by providing
+the path through the Browse button.</p>
+<div class="figure align-center" id="id10">
+<span id="mkimage-bootloader"></span><img alt="../../../_images/mkImage_bootloader.png" src="../../../_images/mkImage_bootloader.png" />
+<p class="caption"><span class="caption-number">Figure 13 </span><span class="caption-text">Program SPI/EEPROM wizard: Bootloader page</span></p>
+</div>
+<p>In this page users may configure the memory layout of the image.</p>
+<div class="figure align-center" id="id11">
+<span id="mkimage-offsets"></span><img alt="../../../_images/mkImage_offsets.png" src="../../../_images/mkImage_offsets.png" />
+<p class="caption"><span class="caption-number">Figure 14 </span><span class="caption-text">Program SPI/EEPROM wizard: Offsets page</span></p>
+</div>
+<p>On the final page of the wizard there is a summary of all the user choices regarding the creation of the image.</p>
+</div>
+</div>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="../../index.html" class="btn btn-neutral float-left" title="3. Programmer Operations" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../otp/otp.html" class="btn btn-neutral float-right" title="3.2. OTP" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023, Renesas Electronics Corporation.</p>
+  </div>
+
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+    <!-- Theme Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-ZXND4SB7CL"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-ZXND4SB7CL', {
+          'anonymize_ip': false,
+      });
+    </script> 
+
+</body>
+</html>

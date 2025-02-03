@@ -1,0 +1,25 @@
+<xs:schema attributeFormDefault="unqualified" elementFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element name="Scenario">
+    <xs:complexType>
+      <xs:sequence>
+      	<xs:element type="xs:integer" name="SysClockFreq"/>
+        <xs:element type="xs:integer" name="ActiveFrameBuffers"/>
+        <xs:element type="xs:string" name="ActiveFBs"/>
+        <xs:element type="xs:string" name="GraphicResources"/>
+        <xs:element type="xs:string" name="GraphicsSenario"/>
+        <xs:element type="xs:integer" name="LayerNumber"/>
+        <xs:element type="xs:string" name="Layer1"/>
+        <xs:element type="xs:string" name="Layer2" minOccurs="0"/>
+        <xs:element type="xs:string" name="DisplayInterface"/>
+        <xs:element type="xs:integer" name="InterfaceFrequency"/>
+        <xs:element type="xs:integer" name="DSILanes" minOccurs="0"/>
+        <xs:element type="xs:integer" name="Xpixels"/>
+        <xs:element type="xs:integer" name="Ypixels"/>
+        <xs:element type="xs:integer" name="IntColor"/>
+        <xs:element type="xs:integer" name="ExtColor"/>
+        <xs:element type="xs:integer" name="GPUPriority"/>
+        <xs:element type="xs:integer" name="DisplayPriority"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

@@ -1,0 +1,61 @@
+.. include:: <isonum.txt>
+
+Installation Guide
+##################
+
+Windows
+*******
+
+#. SmartSnippets\ |trade| Toolbox supports 64-bit environments. SmartSnippets\ |trade| Studio installer contains SmartSnippets\ |trade| Toolbox application.
+#. To use FTDI devices, the appropriate FTDI drivers need to be installed on the system. Just use the standard Windows ``New hardware has been found`` wizard to install them.
+#. To use a Bluetooth dongle, the appropriate JLINK drivers need to be installed on the system. The latest drivers can be found at http://www.segger.com/jlink-software.html. To download them, please click on the ``Download`` button under the ``J-Link software & documentation pack for Windows`` section. While installing these drivers, it is recommended that the Bluetooth dongle is NOT connected to the USB port.
+#. If an error occurs while using the SPotA tool and trying to connect to the Bluetooth dongle, please make sure that the ``Microsoft Visual C++ 2010 Redistributable Package`` libraries are installed at ``C:\\Windows\\System32`` folder. Otherwise, please download and install the latest Redistributable libraries for Visual Studio 2010 from http://support.microsoft.com/kb/2019667/.
+#. If the following error dialog appears, Java Simple Serial Connector library (JSSC), which is used by SmartSnippets\ |trade| Toolbox for serial communication, 
+   could not be loaded successfully. The reason is that none of the user home folder and user Temp folder is writable. 
+   JSSC library extracts to user home folder (or user Temp folder, if user home folder is not writable) the required DLLs for serial connection. 
+   The user can change the access rights of these folders or overwrite the default user folder location. In order to overwrite the default user 
+   home path, the user can use USER_HOME property. For example the user can set 
+   ``USER_HOME=C:/Users/_username_`` or ``USER_HOME=C:\\Users\\_username_`` at the properties file. 
+   File ``properties.txt`` is inside SmartSnippets\ |trade| Toolbox workspace folder. 
+
+.. _jssc-error:
+.. figure:: images/jssc_error.png
+   :align: center
+   
+   Example of error on loading a library
+
+.. |visual_studio_2010| raw:: html
+
+   <a href="http://support.microsoft.com/kb/2019667/" target="_blank">http://support.microsoft.com/kb/2019667/</a>
+
+.. |jlink_software| raw:: html
+
+   <a href="http://www.segger.com/jlink-software.html" target="_blank">http://www.segger.com/jlink-software.html</a>   
+
+
+Linux Support
+*************
+
+Changing device permissions
+===========================
+
+When user adds a development board on a Linux system, new devices are created automatically on the OS. These devices should have read and write permission for all users. To avoid setting appropriate permissions every time SmartSnippets\ |trade| Toolbox is used, a rules file is provided which changes permissions to every "known" FTDI device. The file, named  smartsnippets_studio_common_ftdi_devices.rules, contains a list of common vendor and product IDs and should be placed under /etc/udev/rules.d. If the user cannot find the VID-PID pair of the board used under this list, it is recommended that a new .rules file is created and copied to /etc/udev/rules.d folder.
+
+
+Setting VID-PID pairs for Power Profiler
+========================================
+
+Except from changing permissions of connected devices, as described in the previous section, the user should also add the VID-PID pairs to the SmartSnippets\ |trade| Toolbox properties file, in order to work with Power Profiler.
+Due to incompatibility with FTDI Linux kernel module, SmartSnippets\ |trade| Toolbox needs to know the Vendor and Product ID of the connected devices, in order to unload FTDI kernel module, before using ftd2xx library.
+Power Profiler works with a default VID-PID pair: VID= 0x0403 and PID=0x6010. User can add extra VID-PID pairs in properties.txt file in the following way:
+
+VID.1.0=0x0405
+   
+PID.1.0=0x6011
+
+VID.Dialog_1468xAD=0x0406
+   
+PID.Dialog_1468xAD=0x6012
+
+VID-PID pairs are created from properties starting with VID. (or vid.) and PID. (or pid.) and having common text after the first '.'.
+

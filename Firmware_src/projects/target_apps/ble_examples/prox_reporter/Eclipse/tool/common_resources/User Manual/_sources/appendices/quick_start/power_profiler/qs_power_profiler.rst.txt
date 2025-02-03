@@ -1,0 +1,46 @@
+Basic power profiler operations
+===============================
+
+#. Burn application to flash using the :ref:`flash_code` or :ref:`flash_data` tool and start it by pressing the hardware reset  button. Alternatively download a firmware to the ram memory using the  :ref:`ram_tool` tool.
+
+#. From **Monitor** menu select the **Power Profiler** tool. A new menu called "Power Profiler" appears presenting tool options
+
+   .. _power_profiler_ribbon_options:
+   .. figure:: images/power_profiler_ribbon_options.png
+      :align: center
+      :scale: 100%
+     
+      Power Profiler ribbon menu
+
+#. From **Board** menu select the Power Profiler port (:numref:`flash_code_if_selection`)
+
+#. Press the **Initialize** button. A warning may appear that the EEPROM memory cannot be read and that power measurement module v. 2.0 cannot be detected. This warning is expected for the chips having power measurement module v. 1.0.
+   The **Start** button is enabled.
+
+   .. _power_profiler_initialize:
+   .. figure:: images/power_profiler_initialize.png
+      :align: center
+      :scale: 50%
+     
+      Log messages after initialize process
+
+#. Press the **Start** button and then **Stop** when ready. Move mouse scroll wheel to zoom in and out on the graph. Right click on the graph to 
+   show time on X axis.
+  
+   .. _power_profiler_right_click:
+   .. figure:: images/power_profiler_right_click.png
+      :align: center
+      :scale: 80%
+     
+      Log messages after initialize process
+    
+#. From **Tools** tab select *Measure* to measure a part of the graph (red lines) or *Add Time Marker* to place a time marker (green line)  
+
+   .. _power_profiler_tools:
+   .. figure:: images/power_profiler_tools.png
+      :align: center
+      :scale: 80%
+     
+      Power Profiler tools tab
+
+For full documentation of the Power Profiler tool refer to :ref:`power_profiler`

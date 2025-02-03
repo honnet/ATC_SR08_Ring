@@ -1,0 +1,377 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<tcs_cfg product_id="DA1459x">
+
+    <version>v1.0.0.0</version>
+	
+    <tcs_group>
+		<tcs_group_id>
+			<idx>0</idx>
+			<name>RESERVED</name>
+			<length>0</length>
+			<type>no_type</type>
+		</tcs_group_id>
+		
+		<tcs_group_id>
+			<idx>1</idx>
+			<name>PD_SYS</name>
+			<length>0</length>
+			<type>AddressDataPair</type>
+		</tcs_group_id>
+		
+		<tcs_group_id>
+			<idx>2</idx>
+			<name>PD_COM</name>
+			<length>0</length>
+			<type>AddressDataPair</type>
+		</tcs_group_id>
+		
+		<tcs_group_id>
+			<idx>3</idx>
+			<name>PD_MEM</name>
+			<length>0</length>
+			<type>AddressDataPair</type>
+		</tcs_group_id>
+		
+		<tcs_group_id>
+			<idx>4</idx>
+			<name>PD_TMR</name>
+			<length>0</length>
+			<type>AddressDataPair</type>
+		</tcs_group_id>
+		
+		<tcs_group_id>
+			<idx>5</idx>
+			<name>PD_PER</name>
+			<length>0</length>
+			<type>AddressDataPair</type>
+		</tcs_group_id>
+		
+		<tcs_group_id>
+			<idx>6</idx>
+			<name>PD_RAD</name>
+			<length>0</length>
+			<type>AddressDataPair</type>
+		</tcs_group_id>
+		
+		<tcs_group_id>
+			<idx>7</idx>
+			<name>PD_SYNTH</name>
+			<length>0</length>
+			<type>AddressDataPair</type>
+		</tcs_group_id>
+		
+		<tcs_group_id>
+			<idx>8</idx>
+			<name>PD_AUD</name>
+			<length>0</length>
+			<type>AddressDataPair</type>
+		</tcs_group_id>
+		
+		<tcs_group_id>
+			<idx>11</idx>
+			<name>BD_ADDR</name>
+			<length>2</length>
+			<type>RawData</type>
+		</tcs_group_id>
+		
+		<tcs_group_id>
+			<idx>12</idx>
+			<name>PROD_INFO</name>
+			<length>2</length>
+			<type>RawData</type>	
+		</tcs_group_id>
+		
+		<tcs_group_id>
+			<idx>13</idx>
+			<name>CHIP_ID</name>
+			<length>1</length>
+			<type>RawData</type>
+		</tcs_group_id>
+		
+		<tcs_group_id>
+			<idx>14</idx>
+			<name>PROD_WAFER</name>
+			<length>1</length>
+			<type>RawData</type>
+		</tcs_group_id>
+		
+		<tcs_group_id>
+			<idx>15</idx>
+			<name>TESTPROGRAM_VERSION</name>
+			<length>1</length>
+			<type>RawData</type>
+		</tcs_group_id>
+		
+		<tcs_group_id>
+			<idx>16</idx>
+			<name>SD_ADC_SINGLE_MODE</name>
+			<length>4</length>
+			<type>AddressDataPair</type>
+		</tcs_group_id>
+		
+		<tcs_group_id>
+			<idx>17</idx>
+			<name>SD_ADC_DIFF_MODE</name>
+			<length>4</length>
+			<type>AddressDataPair</type>
+		</tcs_group_id>
+		
+		<tcs_group_id>
+			<idx>18</idx>
+			<name>GP_ADC_SINGLE_MODE</name>
+			<length>2</length>
+			<type>RawData</type>
+		</tcs_group_id>
+		
+		<tcs_group_id>
+			<idx>19</idx>
+			<name>GP_ADC_DIFF_MODE</name>
+			<length>2</length>
+			<type>RawData</type>
+		</tcs_group_id>
+		
+		<tcs_group_id>
+			<idx>20</idx>
+			<name>TEMP_SENS_25C</name>
+			<length>1</length>
+			<type>RawData</type>
+		</tcs_group_id>
+		
+		<tcs_group_id>
+			<idx>21</idx>
+			<name>PD_RAD_CCOEFF_LP</name>
+			<length>0</length>
+			<type>RawData</type>
+		</tcs_group_id>
+		
+		<tcs_group_id>
+			<idx>22</idx>
+			<name>PD_RAD_CCOEFF_HP</name>
+			<length>0</length>
+			<type>RawData</type>
+		</tcs_group_id>
+		
+		<tcs_group_id>
+			<idx>23</idx>
+			<name>RAD_MODE_LP</name>
+			<length>0</length>
+			<type>RawData</type>
+		</tcs_group_id>
+		
+		<tcs_group_id>
+			<idx>24</idx>
+			<name>PD_SYNTH_MODE_LP</name>
+			<length>0</length>
+			<type>RawData</type>
+		</tcs_group_id>
+		
+		<tcs_group_id>
+			<idx>25</idx>
+			<name>PD_RAD_MODE_HP</name>
+			<length>0</length>
+			<type>RawData</type>
+		</tcs_group_id>
+		
+		<tcs_group_id>
+			<idx>26</idx>
+			<name>PD_SYNTH_MODE_HP</name>
+			<length>0</length>
+			<type>RawData</type>
+		</tcs_group_id>
+		
+		<tcs_group_id>
+			<idx>27</idx>
+			<name>PD_RAD_MODE_LP_0DBM</name>
+			<length>0</length>
+			<type>RawData</type>
+		</tcs_group_id>
+		
+		<tcs_group_id>
+			<idx>28</idx>
+			<name>PD_RAD_MODE_LP_6DBM</name>
+			<length>0</length>
+			<type>RawData</type>
+		</tcs_group_id>
+		
+		<tcs_group_id>
+			<idx>29</idx>
+			<name>PD_RAD_MODE_HP_0DBM</name>
+			<length>0</length>
+			<type>RawData</type>
+		</tcs_group_id>
+		
+		<tcs_group_id>
+			<idx>30</idx>
+			<name>PD_RAD_MODE_HP_6DBM</name>
+			<length>0</length>
+			<type>RawData</type>
+		</tcs_group_id>
+		
+		<tcs_group_id>
+			<idx>31</idx>
+			<name>PD_SYNTH_MODE_LP_105C</name>
+			<length>0</length>
+			<type>RawData</type>
+		</tcs_group_id>
+		
+		<tcs_group_id>
+			<idx>32</idx>
+			<name>PD_SYNTH_MODE_LP_N40C</name>
+			<length>0</length>
+			<type>RawData</type>
+		</tcs_group_id>
+		
+		<tcs_group_id>
+			<idx>33</idx>
+			<name>PD_SYNTH_MODE_HP_105C</name>
+			<length>0</length>
+			<type>RawData</type>
+		</tcs_group_id>
+		
+		<tcs_group_id>
+			<idx>34</idx>
+			<name>PD_SYNTH_MODE_HP_N40C</name>
+			<length>0</length>
+			<type>RawData</type>
+		</tcs_group_id>
+		
+		<tcs_group_id>
+			<idx>35</idx>
+			<name>TEMP_SENS_105C</name>
+			<length>1</length>
+			<type>RawData</type>
+		</tcs_group_id>
+		
+		<tcs_group_id>
+			<idx>36</idx>
+			<name>TEMP_SENS_N40C</name>
+			<length>1</length>
+			<type>RawData</type>
+		</tcs_group_id>
+		
+	</tcs_group>
+	
+	<cs_commands>
+	
+		<cs_command>
+			<type>START</type>
+			<name>Start</name>
+			<description>Indicates that a valid CS is in place</description>
+			<identifier>
+				<value>A5A5A5A5</value>
+				<comparator>equals</comparator>
+			</identifier>
+			<size>1</size> <!--in words-->
+		</cs_command>
+		
+		<cs_command>
+			<type>REGS</type>
+			<name>Register Configuration</name>
+			<description>_registerName_#_registerName_ value</description>
+			<identifier> <!--Dynamic identifier, a valid register address-->
+				<value></value>
+				<comparator></comparator>
+			</identifier>
+			<size>2</size> <!--in words-->
+		</cs_command>
+		
+		<cs_command>
+			<type>TRIM_CALIB</type>  <!--SDK section cmd is described as Trim/Calib values for other devices. Use TRIM_CALIB type for backwards compatibility purposes-->
+			<name>SDK Section</name>
+			<description>_groupName_, _num_ values</description>
+			<identifier> 
+				<value>9000</value>
+				<comparator>startsWith</comparator>
+			</identifier>
+			<size>0</size> <!--variable size, set to 0-->
+		</cs_command>
+		
+		<cs_command>
+			<type>BOOTER</type>
+			<name>Booter Value</name>
+			<description>Address of the product header in flash is _PHaddress_</description>
+			<identifier>
+				<value>6</value>
+				<comparator>startsWith</comparator>
+			</identifier>
+			<size>1</size> <!--in words-->
+		</cs_command>
+		
+		<cs_command>
+			<type>DEVEL_MODE</type>
+			<name>Development Mode disable</name>
+			<description>Disable development mode</description>
+			<identifier>
+				<value>70000000</value>
+				<comparator>equals</comparator>
+			</identifier>
+			<size>1</size> <!--in words-->
+		</cs_command>
+		
+		<cs_command>
+			<type>UART_STX</type>
+			<name>Uart STX timeout</name>
+			<description>STX timeout value of _stxTimeout_</description>
+			<identifier>
+				<value>8</value>
+				<comparator>startsWith</comparator>
+			</identifier>
+			<size>1</size> <!--in words-->
+		</cs_command>
+		
+		<cs_command>
+			<type>XTAL_SETTLE</type>
+			<name>Xtal Settling</name>
+			<description>. XTAL32M settling time is _xtalSettling_.</description>
+			<identifier>
+				<value>A</value>
+				<comparator>startsWith</comparator>
+			</identifier>
+			<xtal_options>
+				<option>
+					<value>1</value>
+					<text>Ignore XTAL32M settling time and just continue</text>
+				</option>
+				<option>
+					<value>2</value>
+					<text>Use XTAL32M as the default booter clock instead of the RCHS</text>
+				</option>
+			</xtal_options>
+			<size>1</size> <!--in words-->
+		</cs_command>
+		
+		<cs_command>
+			<type>MIN_FW_VERSION</type>
+			<name>Minimunm FW version</name>
+			<description>Minimum FW version</description>
+			<identifier>
+				<value>B</value>
+				<comparator>startsWith</comparator>
+			</identifier>
+			<size>1</size> <!--in words-->
+		</cs_command>
+		
+		<cs_command>
+			<type>STICKY_BITS_CONFIG</type>
+			<name>Sticky bits configuration</name>
+			<description>Sticky bits configuration</description>
+			<identifier>
+				<value>C000</value>
+				<comparator>startsWith</comparator>
+			</identifier>
+			<size>1</size> <!--in words-->
+		</cs_command>
+		
+		<cs_command>
+			<type>STOP</type>
+			<name>Stop</name>
+			<description>Indicates that the configuration script has reached the end and execution should be terminated</description>
+			<identifier>
+				<value>00000000</value>
+				<comparator>equals</comparator>
+			</identifier>
+			<size>1</size> <!--in words-->
+		</cs_command>
+		
+	</cs_commands>
+</tcs_cfg>

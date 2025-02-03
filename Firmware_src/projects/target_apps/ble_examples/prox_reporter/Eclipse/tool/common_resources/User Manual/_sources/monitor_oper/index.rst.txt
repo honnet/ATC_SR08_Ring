@@ -1,0 +1,9 @@
+Monitor Operations
+==================
+
+.. toctree::
+   :maxdepth: 1
+   
+   data_rate_monitor/data_rate_monitor.rst
+   power_profiler/power_profiler.rst
+   log/log.rst

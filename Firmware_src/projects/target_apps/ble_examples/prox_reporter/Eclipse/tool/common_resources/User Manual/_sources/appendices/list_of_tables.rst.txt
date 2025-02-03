@@ -1,0 +1,33 @@
+==============
+List of Tables 
+==============
+
+:numref:`availability_of_functions_per_board` - :ref:`availability_of_functions_per_board`
+
+:numref:`power_profiler_buttons` - :ref:`power_profiler_buttons`
+
+:numref:`power_profiler_pmm1_buttons` - :ref:`power_profiler_pmm1_buttons`
+
+:numref:`power_profiler_pmm2_buttons` - :ref:`power_profiler_pmm2_buttons`
+
+:numref:`multiplication_factor_for_da1468x` - :ref:`multiplication_factor_for_da1468x`
+
+:numref:`cli_option_description` - :ref:`cli_option_description`
+
+:numref:`revision_history` - :ref:`revision_history`
+
+:numref:`view_group_buttons` - :ref:`view_group_buttons`
+
+:numref:`programmer_group_tools` - :ref:`programmer_group_tools`
+
+:numref:`manager_group_tools` - :ref:`manager_group_tools`
+
+:numref:`configurator_group_tools` - :ref:`configurator_group_tools`
+
+:numref:`monitor_group_tools` - :ref:`monitor_group_tools`
+
+:numref:`estimator_group_tools` - :ref:`estimator_group_tools`
+
+:numref:`board_menu` - :ref:`board_menu`
+
+:numref:`settings_menu` - :ref:`settings_menu`

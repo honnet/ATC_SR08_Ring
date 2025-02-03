@@ -1,0 +1,65 @@
+Address	Size	Type	RW or RO	Shortname	Description	Group	Default	Number of options
+47F00	4	Flag_rev	RW	Application Flag 1	<html>0x00000000: Empty OTP, 0x1234A5A5: Application is in OTP</html>	Main group	0	2	0	No	0x1234A5A5	Yes
+47F04	4	Flag_rev	RW	Application Flag 2	<html>0x00000000: Empty OTP, 0xA5A51234: Application is in OTP</html>	Main group	0	2	0	No	0xA5A51234	Yes
+47F08	4	Integer	RO	RF_Trim	<html>Bits[31:16]=RF_TRIM1 ,Bits[15:0]=RF_TRIM2</html>	Main group
+47F0C	4	Integer	RO	CRC	<html>CRC16 of the calibration data (fields: 0x47F08, 0x47F78, 0x47F7C, 0x47F84, 0x47F88, 0x47F90)</html>	Main group
+47F10	4	Integer	RW	Advanced Bootloader Offset and Length	<html>Byte[3] = length MSB, Byte[2] = length LSB, Byte[1] = offset MSB, Byte[0] = offset LSB</html>	Main group
+47F14	4	Integer	RW	Reserved	<html>Free for future use</html>	Main group
+47F18	4	Integer	RW	Reserved	<html>Free for future use</html>	Main group
+47F1C	4	Integer	RW	Reserved	<html>Free for future use</html>	Main group
+47F20	4	Integer	RW	Reserved	<html>Free for future use</html>	Main group
+47F24	4	Integer	RW	Reserved	<html>Free for future use</html>	Main group
+47F28	4	Integer	RW	Reserved	<html>Free for future use</html>	Main group
+47F2C	4	Integer	RW	Reserved	<html>Free for future use</html>	Main group
+47F30	4	Integer	RW	Reserved	<html>Free for future use</html>	Main group
+47F34	4	Integer	RW	Reserved	<html>Free for future use</html>	Main group
+47F38	4	Integer	RW	Reserved	<html>Free for future use</html>	Main group
+47F3C	4	Integer	RW	Reserved	<html>Free for future use</html>	Main group
+47F40	4	Integer	RW	Reserved	<html>Free for future use</html>	Main group
+47F44	4	Integer	RW	Custom Fields	<html>Custom Fields</html>	Main group
+47F48	4	Integer	RW	Custom Fields	<html>Custom Fields</html>	Main group
+47F4C	4	Integer	RW	Custom Fields	<html>Custom Fields</html>	Main group
+47F50	4	Integer	RW	Custom Fields	<html>Custom Fields</html>	Main group
+47F54	4	Integer	RW	Custom Fields	<html>Custom Fields</html>	Main group
+47F58	4	Integer	RW	Custom Fields	<html>Custom Fields</html>	Main group
+47F5C	4	Integer	RW	Custom Fields	<html>Custom Fields</html>	Main group
+47F60	4	Integer	RW	Custom Fields	<html>Custom Fields</html>	Main group
+47F64	4	Integer	RO	TimeStamp	<html>Byte3, Byte2, Byte1, Byte0</html>	Main group
+47F68	4	Integer	RO	Tester	<html>Bits[7:2]=Tester_ID, Bits[1:0]=Tester_Site</html>	Main group
+47F6C	4	Integer	RW	Position	<html>Byte3: LOT, Byte2: Wafer, Byte1: Y coord, Byte0: X coord</html>	Main group
+47F70	4	Flag_rev	RO	Package Used	<html>0x00 = WLCSP34, 0xAA = QFN40, 0x55 = QFN48, 0x99=KGD, 0x11= QFN40 0.5mm pitch, 0x22=QFN40 + flash (DA14583), 0x33=QFN56 + SC14439 (DA14582)</html>	Main group	0	7	0	WLCSP34	0x000000AA	QFN40	0x00000055	QFN48	0x00000099	KGD	0x00000011	QFN40 0.5mm pitch	0x00000022	QFN40 + flash (DA14583-00)	0x00000033	QFN56 + SC14439 (DA14582)
+47F74	4	Flag_rev	RW	32KHz source selection	<html>0x00: XTAL32KHz, 0xAA: RC32KHz</html>	Main group	0	2	0	XTAL32KHz	0xAAAAAAAA	RC32KHz
+47F78	4	Integer	RW	Calibration Flag	<html>Bit[31:16]: 0xA5A5, Bit5: Trim_VCO_Cal, Bit4: Trim_XTAL16_Cal, Bit3: Trim_RC16_Cal, Bit2: Trim_Bandgap_Cal, Bit1: Trim_RFIO_Cal, Bit0: Trim_LNA_Cal</html>	Main group
+47F7C	4	Integer	RO	LNA Trim Values	<html>LNA Trim Values</html>	Main group
+47F80	4	Integer	RO	RFIO capacitance Trim Values	<html>RFIO capacitance Trim Values</html>	Main group
+47F84	4	Integer	RO	BandGap Trim Values	<html>BandGap Trim Values</html>	Main group
+47F88	4	Integer	RO	RC16MHz Trim Values	<html>RC16MHz Trim Values</html>	Main group
+47F8C	4	Integer	RW	XTAL16MHz Trim Values	<html>XTAL16MHz Trim Values</html>	Main group
+47F90	4	Integer	RO	VCO Trim Values	<html>VCO Trim Values</html>	Main group
+47F94	4	Integer	RW	Customer Code Signature	<html>Hash Signature of Code</html>	Main group
+47F98	4	Integer	RW	Customer Code Signature	<html>Hash Signature of Code</html>	Main group
+47F9C	4	Integer	RW	Customer Code Signature	<html>Hash Signature of Code</html>	Main group
+47FA0	4	Integer	RW	Customer Code Signature	<html>Hash Signature of Code</html>	Main group
+47FA4	4	Integer	RW	Customer Code Signature	<html>Hash Signature of Code</html>	Main group
+47FA8	4	Integer	RW	Customer Code Signature	<html>Hash Signature of Code</html>	Main group
+47FAC	4	Integer	RW	Customer Code Signature	<html>Hash Signature of Code</html>	Main group
+47FB0	4	Integer	RW	Customer Code Signature	<html>Hash Signature of Code</html>	Main group
+47FB4	4	Integer	RW	Customer Code Signature	<html>Hash Signature of Code</html>	Main group
+47FB8	4	Integer	RW	Customer Code Signature	<html>Hash Signature of Code</html>	Main group
+47FBC	4	Integer	RW	Customer Code Signature	<html>Hash Signature of Code</html>	Main group
+47FC0	4	Integer	RW	Customer Code Signature	<html>Hash Signature of Code</html>	Main group
+47FC4	4	Integer	RW	Customer Code Signature	<html>Hash Signature of Code</html>	Main group
+47FC8	4	Integer	RW	Customer Code Signature	<html>Hash Signature of Code</html>	Main group
+47FCC	4	Integer	RW	Customer Code Signature	<html>Hash Signature of Code</html>	Main group
+47FD0	4	Flag_rev	RW	Signature Algorithm	<html>0x00 : None, 0xAA: MD5, 0x55: SHA-1, 0xFF: CRC32</html>	Main group	0	4	0	None	0xAAAAAAAA	MD5	0x55555555	SHA-1	0xFFFFFFFF	CRC32
+47FD4	4	String	RW	Device unique ID	<html>Device number (written as a string of bytes, i.e. left-most byte will be burned at 0x7FD4)</html>	Main group
+47FD8	4	String	RW	Device unique ID	<html>Device number (written as a string of bytes, i.e. left-most byte will be burned at 0x7FD8)</html>	Main group
+47FDC	4	Integer	RW	Custom Fields	<html>Custom Fields</html>	Main group
+47FE0	4	Integer	RW	Custom Fields	<html>Custom Fields</html>	Main group
+47FE4	4	Integer	RW	Custom Fields	<html>Custom Fields</html>	Main group
+47FE8	4	Integer	RW	Custom Fields	<html>Custom Fields</html>	Main group
+47FEC	4	Integer	RW	Custom Fields	<html>Custom Fields</html>	Main group
+47FF0	4	Integer	RW	Custom Fields	<html>Custom Fields</html>	Main group
+47FF4	4	Flag_rev	RW	Remapping Flag	<html>0x00: SRAM remapped to 0, 0xAA: OTP remapped to 0</html>	Main group	0	2	0	SRAM remapped to 0	0xAAAAAAAA	OTP remapped to 0
+47FF8	4	Integer	RW	DMA Length	<html>Number of 32-bit words. < 0x2000 words.</html>	Main group
+47FFC	4	Flag_rev	RW	JTAG enable flag	<html>0x0: Enable, 0xAA: Disable</html>	Main group	0	2	0	Enable	0xAAAAAAAA	Disable

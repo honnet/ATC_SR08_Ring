@@ -1,0 +1,56 @@
+.. _sleep_mode_adv:
+
+==================
+Sleep Mode Advisor
+==================
+
+.. include:: <isonum.txt>
+
+.. note::
+
+	This tool is available for DA14580/581/583 chip family.
+
+The purpose of this tool is to help users understand how much power their application dissipates in Deep Sleep and Extended Sleep modes and what is its impact in battery lifetime duration.  
+Sleep Mode Advisor depends on the samples collected through the Power Profiler in order to estimate parameters like the consumed charge and the battery life time. If no data samples have been collected in Power Profiler, the Sleep Mode Advisor cannot be used. The user can configure parameters that affect the estimations, such as the battery size, the OTP program size mode, etc., according to the exact use case. The following picture illustrates an example configuration for Sleep Mode Advisor:
+
+.. _sleep_mode_advisor:
+.. figure:: images/sleep_mode_advisor.png
+   :align: center
+   
+   Sleep Mode Advisor
+   
+In this example configuration, we can see that Extended Sleep mode is preferred, since the battery lasts for 24.2 days, compared to the 20.5 days that have been estimated for the Deep Sleep mode.
+
+The power breakdown chart illustrates the percentage of power that has been consumed in each one of the following groups:
+
+#. Analog/XTAL
+#. CPU/BLE Stack
+#. RX/TX Radio
+#. OTP Mirror
+#. Sleep
+
+Each field of Sleep Mode Advisor is explained in the following section:
+
+.. note::
+
+	Numeric values shown here are for DA14580/581/583 family chips.
+
+
+
+**Connection Interval Charge (Active & Sleep, uC)**: Average charge per connection interval.  Each time Power Profiler is executed and collects a number of samples, this value is recalculated in Power Profiler and updated in Sleep Mode Advisor.
+
+**Connection Interval**: The average duration between two connection events. This value is also estimated each time Power Profiler is executed. 
+
+**OTP program size (in Kbytes)**: This parameter specifies the size in Kbytes of the program downloaded to the chip through the OTP Image tab. If parameter DMA length has been specified in OTP Header, OTP program size will contain the DMA length equivalent value in bytes. The user can also edit the 'OTP program size' text field in order to overwrite its value. Accepted values are decimal numbers between 0.00 and 32.00.
+
+**Transmitted Data (in bytes)**: The number of bytes transmitted. Can be an integer number in the between 1 and 23.
+
+**Battery size**: User can select from the drop down list the size of the battery used by the Development Kit. The user may also add additional battery sizes in the following way: first he should click with the mouse in the battery size text field, then insert an integer number which indicates the battery's energy storage capacity in mAh and finally click somewhere else in the GUI. SmartSnippets\ |trade| Toolbox adds the new battery size in the drop-down list and recalculates the battery life time over deep and extended sleep modes according to the new battery size.  
+
+**Include battery discharge model**: If this checkbox is selected, battery discharge will be taken into account in the calculations. If the maximum battery life time (as estimated by the battery discharge specifications for CR2032) is shorter than the calculated battery life time (as estimated taking into account the selected battery size and power consumption), the maximum life time (instead of the calculated value) will be shown in the power consumption table.
+
+**Deep Sleep discharge voltage**: Determines the voltage threshold at which the battery is completely discharged when the chip is operating in deep sleep mode. Default value is 2.35V.
+
+**Extended Sleep discharge voltage**: Determines the voltage threshold at which the battery is completely discharged when the chip is operating in extended sleep mode. Default value is 2.00V.
+
+**Power Profiler Sleep Mode**: It is used for letting the user know whether the samples collected in Power Profiler have been collected while in Deep Sleep mode or Extended Sleep mode.

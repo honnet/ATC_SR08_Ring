@@ -1,0 +1,33 @@
+.. _log_tool:
+
+====
+Log
+====
+
+Log Tool logs messages from every tool.
+
+Each log message has the following attributes:
+
+#. **Message Type**: each message belongs to one of the following types: INFO, ACTION, WARNING and ERROR.
+#. **Tool**: the name of the tool, this message comes from or 'General' if no tool has been selected yet (e.g. the message has been generated from Settings and Virtual COM port / JTAG selection).
+#. **Timestamp**: in YY-MM-DD format 
+#. **Description**: the actual info, action, warning or error message
+
+.. _log1:
+.. figure:: images/log1.png
+   :align: center
+   
+   Log apply filter menu
+
+The user can clear the log by selecting the 'Clear Log' option from the actions at the top right of the panel.
+The user can also filter the messages by selecting the 'Apply Filters' option from the drop down menu at the top right of the panel. At :numref:`log2`, log messages have been filtered by Source = 'Flash Code' and Type = 'Info'
+
+.. _log2:
+.. figure:: images/log2.png
+   :align: center
+   
+   Log apply filter system messages
+
+In order to reset all the filters, the user can select the 'Reset Filters' option from the drop down menu at the top right of the panel. Selecting the top option, which is empty, from Source or Type is equivalent to resetting the respective filter.
+
+For each settings file, there is also a 'log.txt' file located under the settings file's working directory (i.e. under ``C:\\Users\\some_user\\SmartSnippetsToolbox\\Projects\\<settings file name>`` folder in windows or ``/home/some_user/SmartSnippetsToolbox/Projects/<settings file name>`` in linux). All log messages that refer to this settings file are stored in this file, together with a short description of the tool that generated each message.

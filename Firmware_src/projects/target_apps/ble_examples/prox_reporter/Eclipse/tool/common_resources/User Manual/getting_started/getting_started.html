@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html class="writer-html4" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>2. Getting Started &mdash; UM-B-083</title><link rel="stylesheet" href="../_static/css/lpc_cs_theme.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/custom.css" type="text/css" /><link rel="shortcut icon" href="../_static/favicon.ico"/>
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+        <script type="text/javascript" src="../_static/language_data.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="3. Programmer Operations" href="../programmer_oper/index.html" />
+    <link rel="prev" title="1. Installation Guide" href="../inst_guide/inst_guide.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../index.html"><img src="../_static/V-Reverse.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../inst_guide/inst_guide.html">1. Installation Guide</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">2. Getting Started</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#scope">2.1. Scope</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#work-flow">2.2. Work Flow</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#device-selection">2.3. Device Selection</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#uart-port-configuration">2.4. UART Port Configuration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#availability-of-functions-per-board">2.5. Availability of functions per board</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../programmer_oper/index.html">3. Programmer Operations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../estimator/index.html">4. Estimator Operations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../manager_oper/index.html">5. Manager Operations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../monitor_oper/index.html">6. Monitor Operations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../configurator/index.html">7. Configurator Operations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../cli/command_line_if.html">8. CLI implementation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../app_help/index.html">9. Application Help</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../troubleshooting/troubleshooting.html">10. Troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../appendices/index.html">11. Appendices</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../disclaimers_contact.html">12. Disclaimers &amp; Contact info</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">UM-B-083</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+      <li>2. Getting Started</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <div class="section" id="getting-started">
+<h1>2. Getting Started<a class="headerlink" href="#getting-started" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="scope">
+<h2>2.1. Scope<a class="headerlink" href="#scope" title="Permalink to this headline">¶</a></h2>
+<p>SmartSnippets™ Toolbox is provided with the Development Kit of Renesas’s Bluetooth chipset.
+It is targeting the main activities of programming and optimizing code for best power performance. It enables:</p>
+<ol class="arabic simple">
+<li>programming the OTP and Flash memories with the actual application compiled image</li>
+<li>accurate examination of the power profile and how it is affected by application software</li>
+<li>downloading a SW image to SRAM and execute</li>
+</ol>
+<p>The SmartSnippets™ Toolbox makes maximum use of the available features on the motherboard and
+thus allowing developers of Bluetooth smart applications to work without expensive and bulky equipment.
+The tool will provide full visibility on the chip activity, which is crucial in developing ultra low power wireless applications.</p>
+</div>
+<div class="section" id="work-flow">
+<h2>2.2. Work Flow<a class="headerlink" href="#work-flow" title="Permalink to this headline">¶</a></h2>
+<p>This section is providing a guide to start using the SmartSnippets™ Toolbox, a proposed way of working with the
+tools available for the basic tasks during development.
+The following figure illustrates the basic flow to run a program from OTP on a DA1453x and DA14585/6 family chip.</p>
+<div class="figure align-center" id="id3">
+<span id="basicflow"></span><img alt="../_images/basicFlow.png" src="../_images/basicFlow.png" />
+<p class="caption"><span class="caption-number">Figure 2 </span><span class="caption-text">Develop and run a program from OTP for DA1453x, DA14585/6</span></p>
+</div>
+<p><em>[1] Renesas’s Development Board needs no configuration</em></p>
+<p><em>[2] From this point on, application development and debugging is done, and OTP will be programmed</em></p>
+<p>The user might experiment with the Power Profiler for optimizing the code as much as possible.
+This can take several iterations since the user can insert SW cursors (see <a class="reference internal" href="../monitor_oper/power_profiler/power_profiler.html#cursors"><span class="std std-ref">Power Profiler software cursors</span></a> ) to
+identify the code executions translated into current dissipation. As soon as it is completed,
+the programming of the code into the OTP might start so that the system is self-sustained.
+Upon OTP burning, the system can operate on a battery and realize complete power cycles
+e.g. active and sleep intervals. Please refer to <a class="reference internal" href="../monitor_oper/power_profiler/power_profiler.html#power-profiler"><span class="std std-ref">Power Profiler</span></a> about a detailed description of Power Profiler.</p>
+</div>
+<div class="section" id="device-selection">
+<h2>2.3. Device Selection<a class="headerlink" href="#device-selection" title="Permalink to this headline">¶</a></h2>
+<p>The first time SmartSnippets™ Toolbox is launched on a clean workspace the user will see the following:</p>
+<div class="figure align-center" id="id4">
+<span id="targetselection"></span><img alt="../_images/targetSelection.png" src="../_images/targetSelection.png" />
+<p class="caption"><span class="caption-number">Figure 3 </span><span class="caption-text">Application window when device is unknown</span></p>
+</div>
+<p>At this point the target device is still unknown. No tools will be available until a device is selected or detected.
+The application has been launched with a default project (named ‘Default’) at which user settings will be saved.
+User can either use this default project or create a new project using the <em>Project</em> menu.
+Then the user is advised to either select <em>Detect Device</em> from the <em>Board Menu</em> or to manually select the device
+and the interfaces to be used from the <em>Board Menu</em>.  Once a device is detected or manually selected the groups of
+tools supported for this device will be loaded at the ribbon.</p>
+<p>SmartSnippets™ Toolbox saves user configurations (selected device, communication interfaces, tool specific settings)
+at the active project. If there any unsaved changes on application exit or when user switches to another project the user
+will be asked to save these changes. SmartSnippets™ Toolbox remembers the project that has been used in
+the last session and it will load by default the same project the next time the application is launched.</p>
+</div>
+<div class="section" id="uart-port-configuration">
+<h2>2.4. UART Port Configuration<a class="headerlink" href="#uart-port-configuration" title="Permalink to this headline">¶</a></h2>
+<p>If the connection between SmartSnippets™ and the board over the UART link is unstable try to change the
+latency time of the FTDI cable and set to some value below 10ms. User can configure the latency from the Device Manager.
+To open the Device Manager in Windows 10, the user can press the Windows button and type <em>Device Manager</em> in the search box.
+From the Device Manager expand Ports (COM &amp; LPT). Right click on preferred port, click properties, select tab
+Port Settings and then advanced. In windows 8 COM &amp; LPT is hidden. Go to View and select Show hidden devices.
+At <a class="reference internal" href="#advanced-com-settings"><span class="std std-numref">Figure 4</span></a> you can see a screenshot of example settings.</p>
+<blockquote>
+<div><div class="figure align-center" id="id5">
+<span id="advanced-com-settings"></span><img alt="../_images/advanced_com_settings.png" src="../_images/advanced_com_settings.png" />
+<p class="caption"><span class="caption-number">Figure 4 </span><span class="caption-text">Advanced settings for COM port</span></p>
+</div>
+</div></blockquote>
+</div>
+<div class="section" id="availability-of-functions-per-board">
+<h2>2.5. Availability of functions per board<a class="headerlink" href="#availability-of-functions-per-board" title="Permalink to this headline">¶</a></h2>
+<span id="id1"></span><table border="1" class="docutils" id="id2">
+<caption><span class="caption-number">Table 1 </span><span class="caption-text">Availability of functions per board</span><a class="headerlink" href="#id2" title="Permalink to this table">¶</a></caption>
+<colgroup>
+<col width="19%" />
+<col width="14%" />
+<col width="11%" />
+<col width="11%" />
+<col width="11%" />
+<col width="11%" />
+<col width="11%" />
+<col width="11%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Function</th>
+<th class="head">DA14580/581/583</th>
+<th class="head">DA14585/6</th>
+<th class="head">DA1453x</th>
+<th class="head">DA1459x</th>
+<th class="head">DA1468x</th>
+<th class="head">DA1469x</th>
+<th class="head">DA1470x</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td><a class="reference internal" href="../programmer_oper/common_oper/flash_code/flash_code.html#flash-code"><span class="std std-ref">Flash Code</span></a></td>
+<td>Available</td>
+<td>Available</td>
+<td>Available</td>
+<td>Available</td>
+<td>Available</td>
+<td>Available</td>
+<td>Available</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="../programmer_oper/common_oper/otp/otp.html#otp-tool"><span class="std std-ref">OTP</span></a></td>
+<td>Available</td>
+<td>Available</td>
+<td>Available</td>
+<td>Available</td>
+<td>Available</td>
+<td>Available</td>
+<td>Available</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="../programmer_oper/common_oper/ram/ram.html#ram-tool"><span class="std std-ref">RAM</span></a></td>
+<td>Available</td>
+<td>Available</td>
+<td>Available</td>
+<td>Available</td>
+<td>Available</td>
+<td>Available</td>
+<td>Available</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="../programmer_oper/common_oper/flash_data/flash_data.html#flash-data"><span class="std std-ref">Flash Data</span></a></td>
+<td>Available</td>
+<td>Available</td>
+<td>Available</td>
+<td>Available</td>
+<td>Available</td>
+<td>Available</td>
+<td>Available</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="../programmer_oper/device_oper/suota/suota.html#suota-tool"><span class="std std-ref">SUOTA</span></a></td>
+<td>N/A</td>
+<td>N/A</td>
+<td>N/A</td>
+<td>Available</td>
+<td>N/A</td>
+<td>Available</td>
+<td>Available</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="../programmer_oper/device_oper/eeprom/eeprom.html#eeprom-prog"><span class="std std-ref">EEPROM Programmer</span></a></td>
+<td>Available</td>
+<td>Available</td>
+<td>Available</td>
+<td>N/A</td>
+<td>N/A</td>
+<td>N/A</td>
+<td>N/A</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="../programmer_oper/device_oper/qspi_part_table/qspi_part_table.html#qspi-part-tabl"><span class="std std-ref">QSPI Partition Table</span></a></td>
+<td>N/A</td>
+<td>N/A</td>
+<td>N/A</td>
+<td>Available</td>
+<td>Available</td>
+<td>Available</td>
+<td>Available</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="../programmer_oper/device_oper/proprietary_header_prog/proprietary_header_prog.html#prop-head-prog"><span class="std std-ref">Proprietary Header Programmer</span></a></td>
+<td>Available</td>
+<td>Available</td>
+<td>Available</td>
+<td>N/A</td>
+<td>N/A</td>
+<td>N/A</td>
+<td>N/A</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="../manager_oper/common_oper/rf_master/rf_master.html#rf-master"><span class="std std-ref">RF Master</span></a></td>
+<td>Available</td>
+<td>Available</td>
+<td>Available</td>
+<td>Available</td>
+<td>Available</td>
+<td>Available</td>
+<td>Available</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="../manager_oper/common_oper/xtal_manager/xtal_manager.html#xtal-manager"><span class="std std-ref">XTAL Manager</span></a></td>
+<td>Available</td>
+<td>Available</td>
+<td>Available</td>
+<td>Available</td>
+<td>Available</td>
+<td>Available</td>
+<td>Available</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="../manager_oper/device_oper/register_access/register_access.html#register-acc"><span class="std std-ref">Registers Access</span></a></td>
+<td>N/A</td>
+<td>N/A</td>
+<td>N/A</td>
+<td>Available</td>
+<td>N/A</td>
+<td>Available</td>
+<td>Available</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="../manager_oper/device_oper/io_manager/io_manager.html#io-manager"><span class="std std-ref">IO Manager</span></a></td>
+<td>N/A</td>
+<td>N/A</td>
+<td>N/A</td>
+<td>Available</td>
+<td>N/A</td>
+<td>Available</td>
+<td>Available</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="../manager_oper/device_oper/uart_terminal/uart_terminal.html#uart-terminal"><span class="std std-ref">UART Terminal</span></a></td>
+<td>Available</td>
+<td>Available</td>
+<td>Available</td>
+<td>Available</td>
+<td>Available</td>
+<td>Available</td>
+<td>Available</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="../manager_oper/device_oper/terminal_scripting/terminal_scripting.html#term-script"><span class="std std-ref">Terminal Scripting</span></a></td>
+<td>Available</td>
+<td>Available</td>
+<td>Available</td>
+<td>Available</td>
+<td>Available</td>
+<td>Available</td>
+<td>Available</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="../estimator/graphics_fps_estimator/graphics_fps_estimator.html#graph-fps-est"><span class="std std-ref">Graphics FPS Estimator</span></a></td>
+<td>N/A</td>
+<td>N/A</td>
+<td>N/A</td>
+<td>N/A</td>
+<td>N/A</td>
+<td>N/A</td>
+<td>Available</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="../estimator/sleep_mode_advisor/sleep_mode_advisor.html#sleep-mode-adv"><span class="std std-ref">Sleep Mode Advisor</span></a></td>
+<td>Available</td>
+<td>N/A</td>
+<td>N/A</td>
+<td>N/A</td>
+<td>N/A</td>
+<td>N/A</td>
+<td>N/A</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="../programmer_oper/device_oper/ota_services/ota_services.html#ota-services"><span class="std std-ref">OTA Services (over the air services)</span></a></td>
+<td>Only for
+DA14580</td>
+<td>N/A</td>
+<td>N/A</td>
+<td>N/A</td>
+<td>N/A</td>
+<td>N/A</td>
+<td>N/A</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="../monitor_oper/data_rate_monitor/data_rate_monitor.html#data-rate-mon"><span class="std std-ref">Data Rate Monitor</span></a></td>
+<td>Available</td>
+<td>N/A</td>
+<td>N/A</td>
+<td>N/A</td>
+<td>N/A</td>
+<td>N/A</td>
+<td>N/A</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="../monitor_oper/power_profiler/power_profiler.html#power-profiler"><span class="std std-ref">Power Profiler</span></a></td>
+<td>Available</td>
+<td>Available</td>
+<td>Available</td>
+<td>Available</td>
+<td>Available</td>
+<td>Available</td>
+<td>Available</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="../monitor_oper/log/log.html#log-tool"><span class="std std-ref">Log</span></a></td>
+<td>Available</td>
+<td>Available</td>
+<td>Available</td>
+<td>Available</td>
+<td>Available</td>
+<td>Available</td>
+<td>Available</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="../estimator/lifetime_estimator/lifetime_estimator.html#bat-life-est"><span class="std std-ref">Battery Lifetime Estimator</span></a></td>
+<td>Available</td>
+<td>Available</td>
+<td>Available</td>
+<td>N/A</td>
+<td>N/A</td>
+<td>N/A</td>
+<td>N/A</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="../configurator/board_setup/board_setup.html#board-setup"><span class="std std-ref">Board Setup Configurator</span></a></td>
+<td>Available</td>
+<td>Available</td>
+<td>Available</td>
+<td>N/A</td>
+<td>N/A</td>
+<td>N/A</td>
+<td>N/A</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="../inst_guide/inst_guide.html" class="btn btn-neutral float-left" title="1. Installation Guide" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../programmer_oper/index.html" class="btn btn-neutral float-right" title="3. Programmer Operations" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023, Renesas Electronics Corporation.</p>
+  </div>
+
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+    <!-- Theme Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-ZXND4SB7CL"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-ZXND4SB7CL', {
+          'anonymize_ip': false,
+      });
+    </script> 
+
+</body>
+</html>

@@ -1,0 +1,149 @@
+.. _suota_tool:
+
+=====
+SUOTA 
+=====
+
+.. note::
+
+	The SUOTA (Software Update Over The Air) tool applies to DA1469x, DA1470x and DA1459x chip family. It requires a DA1469x-family chip (dongle or DK) 
+	to be connected to the host system, in order to properly function.
+
+SUOTA Update Manager is a tool bundled with SmartSnippents Toolbox that enables users to remotely update SUOTA-ready devices with a 
+selected F/W Image, by additionally using a separate DA1469x device to act as the proxy Agent.
+
+Remote eligible devices act as servers by exposing SUOTA related services, while it is not required by any means to be 
+physically connected with the host system or the tool. Usually is acceptable if they can operate in vicinity to the proxy area.
+
+DA1469x Agent device needs to get connected to the host system/tool either through JTAG or UART usb connection, 
+to properly receive control commands and the F/W image that will have to transmit later to the selected/eligible remote targets. 
+
+Proxy Agent is acting as the client to the remote SUOTA related services over Bluetooth, 
+while it can scan and get serially connected to each and every one of them to request information or to 
+transfer a firmware update. On successfully transmitted updates the remote target gets restarted 
+automatically in order to apply and execute the newly received firmware.
+
+Steps to update one or more remote targets at once:
+
+#. Connect a DA1469x device to your host system.
+#. Start Toolbox and select to work with a DA1469x profile.
+#. Start the SUOTA tool.
+#. Select a SUOTA image to be transmitted to the remote/targeted device.
+#. Press "Prepare Device" button to properly initialize the connected DA1469x device.
+#. Select a UART port to establish connection with the connected DA1469x device (in case that more than one UART devices found connected to the host system).
+#. Select the remote targets from the "found devices" list and transfer them to the "selected targets" list to the right.
+#. Complete the procedure by pressing the "Update" button and wait for the progress report.
+
+.. _SUOTA69x:
+.. figure:: images/SUOTA69x.png
+   :align: center
+
+   Preview of SUOTA tool.
+
+----------------------------------
+SUOTA Image and Agent Preparation
+----------------------------------
+
+To properly configure the connected to your host system DA1469x device (Dongle or Development Kit), upon toolbox's startup users will have to select the appropriate device profile and type of interface that they would like to get connected with.
+
+You can choose one of the two available setup options:
+
+#. Connect a DA1469x chip via JTAG interface.
+#. Connect a DA1469x chip via UART interface.
+
+.. note::
+	This interface selection is used to initially load/configure the DA1469x associated chip with required for such a case firmware, that will eventually enable it to act as a "proxy" agent device.
+	
+Once the SUOTA tool gets successfully started, next step is to select the SUOTA firmware image that SUOTA tool will be using as the firmware update that will be transmitted to all selected remote devices afterwards. To complete the preparation, you will have to click on the "Browse" button, select an appropriate SUOTA image file and then click on the "Prepare Device" button.
+
+.. note::
+	In case that a UART interface was selected in the previous step, it will be additionally required a manual hardware reset from the Reset pin found on the DA1469x Dongle or DK board.
+	
+.. note::
+	Make sure that the selected image file is properly compiled with "SUOTA support" enabled, and that you have selected the correct platform and chip for the targeted devices that you would like to transfer the F/W update.
+
+Further to the Agent preparation and once the "Prepare Device" button get pressed, the tool will process in the background the following actions:
+
+#. Connect to a DA1469x chip via one of the provided interfaces (UART, JTAG)
+#. Burn partition table on address 0x3FF000
+#. Verify that partition table is properly defined
+#. Burn provided SUOTA image on NVMS_BIN_PART partition
+#. Burn all necessary header configurations
+#. Burn a "ble_suota_client" firmware on NVMS_FIRMWARE_PART partition, to make it behave as the "proxy" agent
+
+After that and once all background actions get successfully completed, SUOTA tool will connect to the DA1469x chip in order to establish the control channel communication. The communication over the Control channel is getting established using the UART/COM ports that "ble_suota_client" firmware is exposing. 
+In our case if more that one COM devices found connected to the host system, the tool will kindly ask for users to select which one to be used. 
+
+Finally, after communication over the control channel gets successfully established, users will have to press for one last time the Reset pin found on the DA1469x Dongle or DK boards, in order to properly initialize the "proxy" agent. 
+
+Upon a proper "proxy" agent startup, you will be able to review through GUI, some information regarding the loaded SUOTA FW image and "Proxy" agent details:
+
+#. Proxy - Dongle F/W 
+#. SUOTA - F/W Image Size
+#. SUOTA - Code Size
+#. SUOTA - Version
+#. SUOTA - Timestamp
+#. SUOTA - CRC check
+
+----------------------------------
+Search & Select for Remote Targets
+----------------------------------
+After a successful Agent preparation, SUOTA tool will automatically scan for detected Remote Devices and the ones found are going to be listed under the "Found Devices" list. Users can select to transfer devices from that list and move them to the "Selected Targets to be Updated" on the right and vice versa. The selection and transferring from "Found Devices" to the "Selected Targets to be Updated" and back, can happen by selecting one write at a time and use the adequate arrows to move them accordingly. Additionally, you can select multiple writes by using the "CTRL-A" key combination and then use the arrow keys to complete the transfer.
+
+In case that the "Support for SUOTA" option is selected, then only SUOTA eligible remote targets will be listed under the "Found Devices" list, while in different case all detected devices will be listed. 
+
+Users can always select to clear any of the detected devices by selecting the "Clear list" button. This will affect only the list with the found devices while if needed users will have to select and remove any entries from the "selected Targets to be updated" manually. Background scanning operation will not get interrupted from the "Clear List" actions.
+
+Further to that functionality, users can always add manually any custom/hidden address that they would like to use as a remote MAC address. To do so you will have to click on the "Add Manually" button and type a valid BLE MAC address and an optional name that you would like to use. In case that we select a device that is already listed, then the new alias name (if provided) will replace the old one. 
+
+.. _SUOTAaddMAC:
+.. figure:: images/addMAC.png
+   :align: center
+
+   Add manually a new or hidden device.
+
+Users can request extra information on "Selected Targets to be updated", by executing a double-click on any such device found listed. The revealed dialog will display any information that can be retrieved from the connected remote target, but in order to get this operation properly completed, remote targets should be enabled with a SUOTA eligible firmware. 
+
+Once this operations gets started, the SUOTA tool will go through the following steps:
+
+#. Try to connect to the selected remote target.
+#. Upon successful connection establishment, it will request for extra information.  
+#. Collect information and display them appropriately.
+
+In different case it will retry for two more times and if still not with success, it will state that the remote target possibly do not support SUOTA operations.
+
+.. _SUOTAinfoSUTA:
+.. figure:: images/infoSUTA.png
+   :align: center
+
+   Request and review information on connected remote targets
+
+--------------
+Update Devices
+--------------
+Users can update at once all selected devices listed under the "Selected Targets to be Updated" list, by just pressing the "Update" button. The Update process will take place serially on one device after another(top to bottom), while any abort request will get queued and served only after some safety-related tasks got properly completed.
+
+Updating Steps:
+
+#. Connect to target with known MAC address
+#. Transmit firmware Update
+#. Restart Target
+#. Connect to the next target 
+#. Follow steps in the loop till all targets get processed
+
+.. _updatingSUOTA:
+.. figure:: images/updatingSUOTA.png
+   :align: center
+
+   Updating selected remote targets
+
+If any of the above steps fail, update process will proceed with the next device found in the list while it will mark the device's update status accordingly. Once update operation gets properly completed, the status report will remain open while a new scan operation will start automatically in the background.
+
+.. note::
+	If the delivered firmware prescribes a fixed virtual mac to each and every one of the remote targets, then after a successful deployment to more than one remote targets, only one of them will remain visible (since only one device can get assigned per single mac address).
+
+-----------------------
+Releasing Communication
+-----------------------
+Once the Agent preparation phase gets completed, SUOTA Tool will try to allocate required resources and it will try to connect with the associated DA1469x device through any available communication interface. When you are done using this tool and before deciding to exit or switch to a different tool, you are kindly requested to release any allocated resources by pressing the "Release Communication" button.
+

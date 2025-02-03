@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html class="writer-html4" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>1. Installation Guide &mdash; UM-B-083</title><link rel="stylesheet" href="../_static/css/lpc_cs_theme.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/custom.css" type="text/css" /><link rel="shortcut icon" href="../_static/favicon.ico"/>
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+        <script type="text/javascript" src="../_static/language_data.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="2. Getting Started" href="../getting_started/getting_started.html" />
+    <link rel="prev" title="UM-B-083 SmartSnippets™ Toolbox" href="../index.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../index.html"><img src="../_static/V-Reverse.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">1. Installation Guide</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#windows">1.1. Windows</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#linux-support">1.2. Linux Support</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#changing-device-permissions">1.2.1. Changing device permissions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#setting-vid-pid-pairs-for-power-profiler">1.2.2. Setting VID-PID pairs for Power Profiler</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../getting_started/getting_started.html">2. Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../programmer_oper/index.html">3. Programmer Operations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../estimator/index.html">4. Estimator Operations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../manager_oper/index.html">5. Manager Operations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../monitor_oper/index.html">6. Monitor Operations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../configurator/index.html">7. Configurator Operations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../cli/command_line_if.html">8. CLI implementation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../app_help/index.html">9. Application Help</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../troubleshooting/troubleshooting.html">10. Troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../appendices/index.html">11. Appendices</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../disclaimers_contact.html">12. Disclaimers &amp; Contact info</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">UM-B-083</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+      <li>1. Installation Guide</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <div class="section" id="installation-guide">
+<h1>1. Installation Guide<a class="headerlink" href="#installation-guide" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="windows">
+<h2>1.1. Windows<a class="headerlink" href="#windows" title="Permalink to this headline">¶</a></h2>
+<ol class="arabic simple">
+<li>SmartSnippets™ Toolbox supports 64-bit environments. SmartSnippets™ Studio installer contains SmartSnippets™ Toolbox application.</li>
+<li>To use FTDI devices, the appropriate FTDI drivers need to be installed on the system. Just use the standard Windows <code class="docutils literal notranslate"><span class="pre">New</span> <span class="pre">hardware</span> <span class="pre">has</span> <span class="pre">been</span> <span class="pre">found</span></code> wizard to install them.</li>
+<li>To use a Bluetooth dongle, the appropriate JLINK drivers need to be installed on the system. The latest drivers can be found at <a class="reference external" href="http://www.segger.com/jlink-software.html">http://www.segger.com/jlink-software.html</a>. To download them, please click on the <code class="docutils literal notranslate"><span class="pre">Download</span></code> button under the <code class="docutils literal notranslate"><span class="pre">J-Link</span> <span class="pre">software</span> <span class="pre">&amp;</span> <span class="pre">documentation</span> <span class="pre">pack</span> <span class="pre">for</span> <span class="pre">Windows</span></code> section. While installing these drivers, it is recommended that the Bluetooth dongle is NOT connected to the USB port.</li>
+<li>If an error occurs while using the SPotA tool and trying to connect to the Bluetooth dongle, please make sure that the <code class="docutils literal notranslate"><span class="pre">Microsoft</span> <span class="pre">Visual</span> <span class="pre">C++</span> <span class="pre">2010</span> <span class="pre">Redistributable</span> <span class="pre">Package</span></code> libraries are installed at <code class="docutils literal notranslate"><span class="pre">C:\\Windows\\System32</span></code> folder. Otherwise, please download and install the latest Redistributable libraries for Visual Studio 2010 from <a class="reference external" href="http://support.microsoft.com/kb/2019667/">http://support.microsoft.com/kb/2019667/</a>.</li>
+<li>If the following error dialog appears, Java Simple Serial Connector library (JSSC), which is used by SmartSnippets™ Toolbox for serial communication,
+could not be loaded successfully. The reason is that none of the user home folder and user Temp folder is writable.
+JSSC library extracts to user home folder (or user Temp folder, if user home folder is not writable) the required DLLs for serial connection.
+The user can change the access rights of these folders or overwrite the default user folder location. In order to overwrite the default user
+home path, the user can use USER_HOME property. For example the user can set
+<code class="docutils literal notranslate"><span class="pre">USER_HOME=C:/Users/_username_</span></code> or <code class="docutils literal notranslate"><span class="pre">USER_HOME=C:\\Users\\_username_</span></code> at the properties file.
+File <code class="docutils literal notranslate"><span class="pre">properties.txt</span></code> is inside SmartSnippets™ Toolbox workspace folder.</li>
+</ol>
+<div class="figure align-center" id="id1">
+<span id="jssc-error"></span><img alt="../_images/jssc_error.png" src="../_images/jssc_error.png" />
+<p class="caption"><span class="caption-number">Figure 1 </span><span class="caption-text">Example of error on loading a library</span></p>
+</div>
+</div>
+<div class="section" id="linux-support">
+<h2>1.2. Linux Support<a class="headerlink" href="#linux-support" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="changing-device-permissions">
+<h3>1.2.1. Changing device permissions<a class="headerlink" href="#changing-device-permissions" title="Permalink to this headline">¶</a></h3>
+<p>When user adds a development board on a Linux system, new devices are created automatically on the OS. These devices should have read and write permission for all users. To avoid setting appropriate permissions every time SmartSnippets™ Toolbox is used, a rules file is provided which changes permissions to every “known” FTDI device. The file, named  smartsnippets_studio_common_ftdi_devices.rules, contains a list of common vendor and product IDs and should be placed under /etc/udev/rules.d. If the user cannot find the VID-PID pair of the board used under this list, it is recommended that a new .rules file is created and copied to /etc/udev/rules.d folder.</p>
+</div>
+<div class="section" id="setting-vid-pid-pairs-for-power-profiler">
+<h3>1.2.2. Setting VID-PID pairs for Power Profiler<a class="headerlink" href="#setting-vid-pid-pairs-for-power-profiler" title="Permalink to this headline">¶</a></h3>
+<p>Except from changing permissions of connected devices, as described in the previous section, the user should also add the VID-PID pairs to the SmartSnippets™ Toolbox properties file, in order to work with Power Profiler.
+Due to incompatibility with FTDI Linux kernel module, SmartSnippets™ Toolbox needs to know the Vendor and Product ID of the connected devices, in order to unload FTDI kernel module, before using ftd2xx library.
+Power Profiler works with a default VID-PID pair: VID= 0x0403 and PID=0x6010. User can add extra VID-PID pairs in properties.txt file in the following way:</p>
+<p>VID.1.0=0x0405</p>
+<p>PID.1.0=0x6011</p>
+<p>VID.Dialog_1468xAD=0x0406</p>
+<p>PID.Dialog_1468xAD=0x6012</p>
+<p>VID-PID pairs are created from properties starting with VID. (or vid.) and PID. (or pid.) and having common text after the first ‘.’.</p>
+</div>
+</div>
+</div>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="../index.html" class="btn btn-neutral float-left" title="UM-B-083 SmartSnippets™ Toolbox" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../getting_started/getting_started.html" class="btn btn-neutral float-right" title="2. Getting Started" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023, Renesas Electronics Corporation.</p>
+  </div>
+
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+    <!-- Theme Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-ZXND4SB7CL"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-ZXND4SB7CL', {
+          'anonymize_ip': false,
+      });
+    </script> 
+
+</body>
+</html>

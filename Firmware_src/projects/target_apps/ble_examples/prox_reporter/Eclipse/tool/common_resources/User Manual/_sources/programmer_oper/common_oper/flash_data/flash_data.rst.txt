@@ -1,0 +1,23 @@
+.. _flash_data:
+
+==========
+Flash Data
+==========
+
+The tool allows programming the complete FLASH memory.
+
+.. _flashData:
+.. figure:: images/flashDataGui.png
+   :align: center
+   
+   Flash Data tool
+
+The user can select the FLASH memory to work with from the drop down list on the left. The start and end addresses are updated according to the selected memory start address and its size. The user can specify the address to read from or to burn to by editing the start address. The user can specify the memory region to be erased by editing the start and end addresses. *Content to Burn* table presents the data of the file that is going to be burned to the memory. *Content Read* table presents the memory contents. The tool provides the following options to the user:
+ 
+* **Connect:** Establishes connection to the target device by initializing communication interface and downloading appropriate FW required for the communication to the target.                        
+* **Import from File:** Imports data from .hex or .bin file into *Content to Burn* table. 
+* **Export to File:** Exports contents of *Contents Read* or *Content to Burn* table to .hex or .bin file.
+* **Read:** Reads 32 Kb of data from memory starting from start address and presents them in *Content Read* table.     
+* **Burn:** Burns data of *Content to Burn* table at start address. Then reads memory at start address and refreshes *Content Read* table.      
+* **Erase:** Erases memory region between start address and end address. Then reads memory at start address and refreshes *Content Read* table.
+* **Verify Erase:** If checked, after erase it is verified that all the bytes of the memory segment between start and end address are empty. 

@@ -1,0 +1,23 @@
+---------------------------
+Working with multiple tools
+---------------------------
+
+.. include:: <isonum.txt>
+
+SmartSnippets\ |trade| Toolbox has been designed to help user achieve maximum productivity by allowing multiple tools be displayed on the screen at the same time. When working with multiple tools, user can:
+
+#. Modify the size of each tool frame
+#. Determine the exact location of each tool frame, by dragging the tool frame title bar and placing it at the upper, lower, left or right side of another tool frame
+#. Stack and un-stack tool frames, by dragging the tool frame title bar and placing it at the center of another tool frame
+#. Minimize a tool frame. User can make it visible again by clicking on the corresponding left-hand side toolbox button
+#. Maximize a tool frame and restore it to its previous size and location
+
+.. note::
+
+	 The tools provided by the framework depend on chip version selection.
+
+  
+Every time the user closes the application, all view layout-related data is stored and restored next time the application starts. To restore view layout to default, user can press the |layout| button located under the *Workspace* group of the ribbon toolbar.
+
+.. |layout| image:: images/loadDefault.png
+ 

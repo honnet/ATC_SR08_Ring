@@ -1,0 +1,48 @@
+#Common
+alwaysOnCurrentBoost      0.6
+stackSize    7.0
+loadDurationRatioOTP 0.016
+loadDurationRatioFlash       0.512
+xtalSettlingDuration 1
+maxCodeSize  48.0
+ivddr	0.6
+ivdd2r	1.5
+vdd	0.9
+ldoDropVoltage	0.2
+scaMaster	200
+scaSlave	100
+batteryVoltageBoost	1.5
+
+
+#Advertising current (in mA)
+advConsumption_flashMirror	6.0
+advConsumption_xtal16Settling	0.65
+advConsumption_bleCoreTask	0.74
+advConsumption_tx	7.8
+advConsumption_rx	4.6
+advConsumption_ifs	0.74
+advConsumption_sleepPrep	0.74
+
+
+#Connection current (in mA)
+conConsumption_flashMirror	6.0
+conConsumption_xtal16Settling	0.65
+conConsumption_bleCoreTask	0.74
+conConsumption_tx	7.8
+conConsumption_rx	4.6
+conConsumption_ifs	0.74
+conConsumption_sleepPrep	0.74
+
+#Advertising duration (in ms)
+advDuration_dcdcCharge       0.0
+advDuration_xtal16Settling      1.0
+advDuration_bleCoreTask       1.8
+advDuration_ifs      1.15
+advDuration_sleepPrep        0.7
+
+#Connection duration (in ms)
+conDuration_dcdcCharge       0.0
+conDuration_xtal16Settling      1.0
+conDuration_bleCoreTask      1.8
+conDuration_ifs      0.15
+conDuration_sleepPrep        0.7

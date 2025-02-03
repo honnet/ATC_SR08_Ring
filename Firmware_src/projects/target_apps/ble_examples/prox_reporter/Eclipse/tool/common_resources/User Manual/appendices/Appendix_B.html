@@ -1,0 +1,491 @@
+<!DOCTYPE html>
+<html class="writer-html4" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>11.7. Appendix B - Battery Lifetime Estimator CLI sample input and parameters files &mdash; UM-B-083</title><link rel="stylesheet" href="../_static/css/lpc_cs_theme.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/custom.css" type="text/css" /><link rel="shortcut icon" href="../_static/favicon.ico"/>
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+        <script type="text/javascript" src="../_static/language_data.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="12. Disclaimers &amp; Contact info" href="../disclaimers_contact.html" />
+    <link rel="prev" title="11.6. Appendix A - RF Master firmware" href="Appendix_A.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../index.html"><img src="../_static/V-Reverse.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../inst_guide/inst_guide.html">1. Installation Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../getting_started/getting_started.html">2. Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../programmer_oper/index.html">3. Programmer Operations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../estimator/index.html">4. Estimator Operations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../manager_oper/index.html">5. Manager Operations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../monitor_oper/index.html">6. Monitor Operations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../configurator/index.html">7. Configurator Operations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../cli/command_line_if.html">8. CLI implementation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../app_help/index.html">9. Application Help</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../troubleshooting/troubleshooting.html">10. Troubleshooting</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">11. Appendices</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="detailed_interface.html">11.1. User interface</a></li>
+<li class="toctree-l2"><a class="reference internal" href="quick_start/index.html">11.2. Quick Start Guide</a></li>
+<li class="toctree-l2"><a class="reference internal" href="list_of_figures.html">11.3. List of Figures</a></li>
+<li class="toctree-l2"><a class="reference internal" href="list_of_tables.html">11.4. List of Tables</a></li>
+<li class="toctree-l2"><a class="reference internal" href="list_of_codes.html">11.5. List of Codes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Appendix_A.html">11.6. Appendix A - RF Master firmware</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">11.7. Appendix B - Battery Lifetime Estimator CLI sample input and parameters files</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#sample-txt-input-file-used-with-input-argument">11.7.1. Sample txt input file (used with -input argument)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#sample-txt-params-file-used-with-params-argument">11.7.2. Sample txt params file (used with -params argument)</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../disclaimers_contact.html">12. Disclaimers &amp; Contact info</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">UM-B-083</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="index.html">11. Appendices</a> &raquo;</li>
+      <li>11.7. Appendix B - Battery Lifetime Estimator CLI sample input and parameters files</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <div class="section" id="appendix-b-battery-lifetime-estimator-cli-sample-input-and-parameters-files">
+<h1>11.7. Appendix B - Battery Lifetime Estimator CLI sample input and parameters files<a class="headerlink" href="#appendix-b-battery-lifetime-estimator-cli-sample-input-and-parameters-files" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="sample-txt-input-file-used-with-input-argument">
+<h2>11.7.1. Sample txt input file (used with -input argument)<a class="headerlink" href="#sample-txt-input-file-used-with-input-argument" title="Permalink to this headline">¶</a></h2>
+<p><strong>DA14580/581/583 family input values</strong></p>
+<div class="literal-block-wrapper docutils container" id="id1">
+<span id="battery-lifetime-estimator-cli-sample-input-for-da14580-581-583-family"></span><div class="code-block-caption"><span class="caption-number">Code 6 </span><span class="caption-text">Battery Lifetime Estimator CLI sample input for DA14580/581/583 family</span><a class="headerlink" href="#id1" title="Permalink to this code">¶</a></div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>     <span class="c1">#Application code storage medium. Accepts values FLASH, OTP</span>
+     <span class="n">copyFrom</span>        <span class="n">OTP</span>
+     <span class="c1">#Application code size. Accepts integer values</span>
+     <span class="n">appCodeSize</span>     <span class="mi">20</span>
+     <span class="c1">#Application data size (to be retained). Accepts integer values</span>
+     <span class="n">appDataSize</span>     <span class="mi">5</span>
+     <span class="c1">#Retain code in System RAM. Accepts boolean values (true, false)</span>
+     <span class="n">retainCode</span>      <span class="n">true</span>
+     <span class="c1">#Retention current SysRam 42KB. Accepts double values</span>
+     <span class="n">retentionSysRAM_42KB</span>    <span class="mf">0.8</span>
+     <span class="c1">#Retention current RetRam 8KB. Accepts double values</span>
+     <span class="n">retentionRetRAM_8KB</span>     <span class="mf">0.2</span>
+     <span class="c1">#Non connectable advertising mode. Accepts values OFF, 1, 2, 3. Values 1, 2, 3 indicate the number of channels</span>
+     <span class="n">nonConnectableAdvMode</span>   <span class="n">OFF</span>
+     <span class="c1">#Advertising percentage. Accepts integer values in the range 0-100</span>
+     <span class="n">advPercentage</span>   <span class="mi">20</span>
+     <span class="c1">#Connection percentage. Accepts integer values in the range 0-100</span>
+     <span class="n">conPercentage</span>   <span class="mi">80</span>
+     <span class="c1">#Advertising interval. Accepts double values</span>
+     <span class="n">advInterval</span>     <span class="mf">20.0</span>
+     <span class="c1">#Connection interval. Accepts double values</span>
+     <span class="n">conInterval</span>     <span class="mf">100.0</span>
+     <span class="c1">#Transmitted bytes on connection. Accepts integer values</span>
+     <span class="n">txBytesPerConEvent</span>      <span class="mi">5</span>
+     <span class="c1">#SPI transmitted bytes every advertising event. Accepts integer values</span>
+     <span class="n">SPIBytesPerAdvEvent</span>     <span class="mi">6</span>
+     <span class="c1">#I2C transmitted bytes every advertising event. Accepts integer values</span>
+     <span class="n">I2CBytesPerAdvEvent</span>     <span class="mi">3</span>
+     <span class="c1">#SPI transmitted bytes every connection event. Accepts integer values</span>
+     <span class="n">SPIBytesPerConEvent</span>     <span class="mi">5</span>
+     <span class="c1">#I2C transmitted bytes every connection event. Accepts integer values</span>
+     <span class="n">I2CBytesPerConEvent</span>     <span class="mi">2</span>
+     <span class="c1">#SPI external component current. Accepts integer values</span>
+     <span class="n">SPIExtConsumption</span>       <span class="mi">1</span>
+     <span class="c1">#I2C external component current. Accepts integer values</span>
+     <span class="n">I2CExtConsumption</span>       <span class="mi">1</span>
+     <span class="c1">#CPU extra processing time every advertising interval. Accepts double values</span>
+     <span class="n">CPUAdvExtraTime</span> <span class="mf">0.2</span>
+     <span class="c1">#CPU extra processing time every connection interval. Accepts double values</span>
+     <span class="n">CPUConExtraTime</span> <span class="mf">0.5</span>
+     <span class="c1">#Battery capacity (coin cell). Accepts integer values</span>
+     <span class="n">BatCapacity</span>     <span class="mi">30</span>
+</pre></div>
+</div>
+</div>
+<p><strong>DA14585/6 family input values</strong></p>
+<div class="literal-block-wrapper docutils container" id="id2">
+<span id="battery-lifetime-estimator-cli-sample-input-for-da14585-6-family"></span><div class="code-block-caption"><span class="caption-number">Code 7 </span><span class="caption-text">Battery Lifetime Estimator CLI sample input for DA14585/6 family</span><a class="headerlink" href="#id2" title="Permalink to this code">¶</a></div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>     <span class="c1">#Application code storage medium. Accepts values FLASH, OTP</span>
+     <span class="n">copyFrom</span>        <span class="n">FLASH</span>
+     <span class="c1">#Application code size. Accepts integer values</span>
+     <span class="n">appCodeSize</span>     <span class="mi">20</span>
+     <span class="c1">#Application data size (to be retained). Accepts integer values</span>
+     <span class="n">appDataSize</span>     <span class="mi">5</span>
+     <span class="c1">#Retain code in System RAM. Accepts boolean values (true, false)</span>
+     <span class="n">retainCode</span>      <span class="n">true</span>
+     <span class="c1">#Retention current SysRam1/4 32KB (DA14585_6 family) or SysRam 42KB (DA1458x family). Accepts double values</span>
+     <span class="n">retentionSysRAM_1_4_32KB</span>        <span class="mf">1.2</span>
+     <span class="c1">#Retention current SysRam2/3 16KB (DA14585_6 family) or RetRam 8KB (DA1458x family). Accepts double values</span>
+     <span class="n">retentionSysRAM_2_3_16KB</span>        <span class="mf">0.6</span>
+     <span class="c1">#Non connectable advertising mode. Accepts values OFF, 1, 2, 3. Values 1, 2, 3 indicate the number of channels</span>
+     <span class="n">nonConnectableAdvMode</span>   <span class="n">OFF</span>
+     <span class="c1">#Advertising percentage. Accepts integer values in the range 0-100</span>
+     <span class="n">advPercentage</span>   <span class="mi">20</span>
+     <span class="c1">#Connection percentage. Accepts integer values in the range 0-100</span>
+     <span class="n">conPercentage</span>   <span class="mi">80</span>
+     <span class="c1">#Advertising interval. Accepts double values</span>
+     <span class="n">advInterval</span>     <span class="mf">20.0</span>
+     <span class="c1">#Connection interval. Accepts double values</span>
+     <span class="n">conInterval</span>     <span class="mf">100.0</span>
+     <span class="c1">#Transmitted bytes on connection. Accepts integer values</span>
+     <span class="n">txBytesPerConEvent</span>      <span class="mi">5</span>
+     <span class="c1">#SPI transmitted bytes every advertising event. Accepts integer values</span>
+     <span class="n">SPIBytesPerAdvEvent</span>     <span class="mi">6</span>
+     <span class="c1">#I2C transmitted bytes every advertising event. Accepts integer values</span>
+     <span class="n">I2CBytesPerAdvEvent</span>     <span class="mi">3</span>
+     <span class="c1">#SPI transmitted bytes every connection event. Accepts integer values</span>
+     <span class="n">SPIBytesPerConEvent</span>     <span class="mi">5</span>
+     <span class="c1">#I2C transmitted bytes every connection event. Accepts integer values</span>
+     <span class="n">I2CBytesPerConEvent</span>     <span class="mi">2</span>
+     <span class="c1">#SPI external component current. Accepts integer values</span>
+     <span class="n">SPIExtConsumption</span>       <span class="mi">1</span>
+     <span class="c1">#I2C external component current. Accepts integer values</span>
+     <span class="n">I2CExtConsumption</span>       <span class="mi">1</span>
+     <span class="c1">#CPU extra processing time every advertising interval. Accepts double values</span>
+     <span class="n">CPUAdvExtraTime</span> <span class="mf">0.2</span>
+     <span class="c1">#CPU extra processing time every connection interval. Accepts double values</span>
+     <span class="n">CPUConExtraTime</span> <span class="mf">0.5</span>
+     <span class="c1">#Battery capacity (coin cell). Accepts integer values</span>
+     <span class="n">BatCapacity</span>     <span class="mi">30</span>
+</pre></div>
+</div>
+</div>
+<p><strong>DA1453x family input values</strong></p>
+<div class="literal-block-wrapper docutils container" id="id3">
+<span id="battery-lifetime-estimator-cli-sample-input-for-da1453x-family"></span><div class="code-block-caption"><span class="caption-number">Code 8 </span><span class="caption-text">Battery Lifetime Estimator CLI sample input for DA1453x family</span><a class="headerlink" href="#id3" title="Permalink to this code">¶</a></div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>     <span class="c1">#Application code storage medium. Accepts values FLASH, OTP</span>
+     <span class="n">copyFrom</span>        <span class="n">OTP</span>
+     <span class="c1">#Application code size. Accepts integer values</span>
+     <span class="n">appCodeSize</span>     <span class="mi">20</span>
+     <span class="c1">#Application data size (to be retained). Accepts integer values</span>
+     <span class="n">appDataSize</span>     <span class="mi">5</span>
+     <span class="c1">#Retain code in System RAM. Accepts boolean values (true, false)</span>
+     <span class="n">retainCode</span>      <span class="n">true</span>
+     <span class="c1">#Operation mode: Buck or Boost</span>
+     <span class="n">buckOrBoost</span> <span class="n">buck</span>
+     <span class="c1">#Retention current SysRam3 20KB. Accepts double values</span>
+     <span class="n">retentionSysRAM_3_20KB</span>  <span class="mf">0.167</span>
+     <span class="c1">#Retention current SysRam2 16KB. Accepts double values</span>
+     <span class="n">retentionSysRAM_2_16KB</span>  <span class="mf">0.134</span>
+     <span class="c1">#Retention current SysRam1 12KB. Accepts double values</span>
+     <span class="n">retentionSysRAM_1_12KB</span>  <span class="mf">0.1</span>
+     <span class="c1">#Beacon only value. true or false</span>
+     <span class="n">beacon</span>  <span class="n">FALSE</span>
+     <span class="c1">#Advertising percentage. Accepts integer values in the range 0-100</span>
+     <span class="n">advPercentage</span>   <span class="mi">80</span>
+     <span class="c1">#Connection percentage. Accepts integer values in the range 0-100</span>
+     <span class="n">conPercentage</span>   <span class="mi">20</span>
+     <span class="c1">#Advertising interval. Accepts double values</span>
+     <span class="n">advInterval</span>     <span class="mf">20.0</span>
+     <span class="c1">#Connection interval. Accepts double values</span>
+     <span class="n">conInterval</span>     <span class="mf">100.0</span>
+     <span class="c1">#Transmitted bytes on advertising. Accepts integer values</span>
+     <span class="n">txBytesPerAdvEvent</span>      <span class="mi">27</span>
+     <span class="c1">#Transmitted bytes on connection. Accepts integer values</span>
+     <span class="n">txBytesPerConEvent</span>      <span class="mi">2</span>
+     <span class="c1">#SPI transmitted bytes every connection event. Accepts integer values</span>
+     <span class="n">SPIBytesPerConEvent</span>     <span class="mi">0</span>
+     <span class="c1">#I2C transmitted bytes every connection event. Accepts integer values</span>
+     <span class="n">I2CBytesPerConEvent</span>     <span class="mi">0</span>
+     <span class="c1">#SPI external component current. Accepts integer values</span>
+     <span class="n">SPIExtConsumption</span>       <span class="mi">0</span>
+     <span class="c1">#I2C external component current. Accepts integer values</span>
+     <span class="n">I2CExtConsumption</span>       <span class="mi">0</span>
+     <span class="c1">#CPU extra processing time every connection interval. Accepts double values</span>
+     <span class="n">CPUConExtraTime</span> <span class="mi">0</span>
+     <span class="c1">#Battery capacity (coin cell). Accepts integer values</span>
+     <span class="n">BatCapacity</span>     <span class="mi">25</span>
+     <span class="c1">#Battery voltage for the selected operation mode</span>
+     <span class="n">batteryVoltage</span> <span class="mf">3.0</span>
+     <span class="c1">#DCDC Efficiency</span>
+     <span class="n">dcdcEfficiency</span> <span class="mi">80</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="sample-txt-params-file-used-with-params-argument">
+<h2>11.7.2. Sample txt params file (used with -params argument)<a class="headerlink" href="#sample-txt-params-file-used-with-params-argument" title="Permalink to this headline">¶</a></h2>
+<p>Note that the params file is optional and can be used in order to override the default values of the parameters that are used in the calculations.</p>
+<p><strong>DA14580/581/583 family defaults</strong></p>
+<div class="literal-block-wrapper docutils container" id="da14580-581-583-family-defaults">
+<span id="battery-lifetime-estimator-da14580-581-583-family-defaults"></span><div class="code-block-caption"><span class="caption-number">Code 9 </span><span class="caption-text">DA14580/581/583 family defaults</span><a class="headerlink" href="#da14580-581-583-family-defaults" title="Permalink to this code">¶</a></div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1">#Common</span>
+<span class="n">alwaysOnCurrent</span>      <span class="mf">0.4</span>
+<span class="n">stackSize</span>    <span class="mf">5.0</span>
+<span class="n">loadDurationRatioOTP</span> <span class="mf">0.032</span>
+<span class="n">loadDurationRatioFlash</span>       <span class="mf">1.024</span>
+<span class="n">xtalSettlingDuration</span> <span class="mf">3.5</span>
+<span class="n">maxCodeSize</span>  <span class="mf">50.0</span>
+
+<span class="c1">#Advertising current (in mA)</span>
+<span class="n">advConsumption_dcdcCharge</span>    <span class="mf">5.5</span>
+<span class="n">advConsumption_flashMirror</span>   <span class="mf">2.0</span>
+<span class="n">advConsumption_otpMirror</span>     <span class="mf">3.33</span>
+<span class="n">advConsumption_xtal16Settling</span>        <span class="mf">0.5</span>
+<span class="n">advConsumption_sensorData</span>    <span class="mf">0.75</span>
+<span class="n">advConsumption_cpuProc</span>       <span class="mf">0.55</span>
+<span class="n">advConsumption_bleCoreTask</span>   <span class="mf">0.55</span>
+<span class="n">advConsumption_tx</span>    <span class="mf">4.1</span>
+<span class="n">advConsumption_rx</span>    <span class="mf">4.7</span>
+<span class="n">advConsumption_ifs</span>   <span class="mf">0.58</span>
+<span class="n">advConsumption_sleepPrep</span>     <span class="mf">0.65</span>
+
+<span class="c1">#Connection current (in mA)</span>
+<span class="n">conConsumption_dcdcCharge</span>    <span class="mf">5.5</span>
+<span class="n">conConsumption_flashMirror</span>   <span class="mf">2.0</span>
+<span class="n">conConsumption_otpMirror</span>     <span class="mf">3.33</span>
+<span class="n">conConsumption_xtal16Settling</span>        <span class="mf">0.5</span>
+<span class="n">conConsumption_sensorData</span>    <span class="mf">0.75</span>
+<span class="n">conConsumption_cpuProc</span>       <span class="mf">0.55</span>
+<span class="n">conConsumption_bleCoreTask</span>   <span class="mf">0.55</span>
+<span class="n">conConsumption_tx</span>    <span class="mf">4.1</span>
+<span class="n">conConsumption_rx</span>    <span class="mf">4.7</span>
+<span class="n">conConsumption_ifs</span>   <span class="mf">0.85</span>
+<span class="n">conConsumption_sleepPrep</span>     <span class="mf">0.56</span>
+
+<span class="c1">#Advertising duration (in ms)</span>
+<span class="n">advDuration_dcdcCharge</span>       <span class="mf">0.0</span>
+<span class="n">advDuration_bleCoreTask</span>      <span class="mf">2.3</span>
+<span class="n">advDuration_tx</span>       <span class="mf">0.4</span>
+<span class="n">advDuration_rx</span>       <span class="mf">0.12</span>
+<span class="n">advDuration_ifs</span>      <span class="mf">0.8</span>
+<span class="n">advDuration_sleepPrep</span>        <span class="mf">0.6</span>
+
+<span class="c1">#Connection duration (in ms)</span>
+<span class="n">conDuration_dcdcCharge</span>       <span class="mf">0.0</span>
+<span class="n">conDuration_bleCoreTask</span>      <span class="mf">2.5</span>
+<span class="n">conDuration_ifs</span>      <span class="mf">0.15</span>
+<span class="n">conDuration_sleepPrep</span>        <span class="mf">0.6</span>
+</pre></div>
+</div>
+</div>
+<p><strong>DA14585/6 family defaults</strong></p>
+<div class="literal-block-wrapper docutils container" id="da14585-6-family-defaults">
+<span id="battery-lifetime-estimator-da14585-6-family-defaults"></span><div class="code-block-caption"><span class="caption-number">Code 10 </span><span class="caption-text">DA14585/6 family defaults</span><a class="headerlink" href="#da14585-6-family-defaults" title="Permalink to this code">¶</a></div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1">#Common</span>
+<span class="n">alwaysOnCurrent</span>      <span class="mf">0.51</span>
+<span class="n">stackSize</span>    <span class="mf">7.0</span>
+<span class="n">loadDurationRatioOTP</span> <span class="mf">0.016</span>
+<span class="n">loadDurationRatioFlash</span>       <span class="mf">1.024</span>
+<span class="n">xtalSettlingDuration</span> <span class="mf">3.5</span>
+<span class="n">maxCodeSize</span>  <span class="mf">96.0</span>
+
+<span class="c1">#Advertising current (in mA)</span>
+<span class="n">advConsumption_dcdcCharge</span>    <span class="mf">5.5</span>
+<span class="n">advConsumption_flashMirror</span>   <span class="mf">2.0</span>
+<span class="n">advConsumption_otpMirror</span>     <span class="mf">3.0</span>
+<span class="n">advConsumption_xtal16Settling</span>        <span class="mf">0.48</span>
+<span class="n">advConsumption_sensorData</span>    <span class="mf">0.75</span>
+<span class="n">advConsumption_cpuProc</span>       <span class="mf">0.58</span>
+<span class="n">advConsumption_bleCoreTask</span>   <span class="mf">0.58</span>
+<span class="n">advConsumption_tx</span>    <span class="mf">4.4</span>
+<span class="n">advConsumption_rx</span>    <span class="mf">4.7</span>
+<span class="n">advConsumption_ifs</span>   <span class="mf">0.58</span>
+<span class="n">advConsumption_sleepPrep</span>     <span class="mf">0.65</span>
+
+<span class="c1">#Connection current (in mA)</span>
+<span class="n">conConsumption_dcdcCharge</span>    <span class="mf">5.5</span>
+<span class="n">conConsumption_flashMirror</span>   <span class="mf">2.0</span>
+<span class="n">conConsumption_otpMirror</span>     <span class="mf">3.0</span>
+<span class="n">conConsumption_xtal16Settling</span>        <span class="mf">0.48</span>
+<span class="n">conConsumption_sensorData</span>    <span class="mf">0.75</span>
+<span class="n">conConsumption_cpuProc</span>       <span class="mf">0.55</span>
+<span class="n">conConsumption_bleCoreTask</span>   <span class="mf">0.58</span>
+<span class="n">conConsumption_tx</span>    <span class="mf">4.4</span>
+<span class="n">conConsumption_rx</span>    <span class="mf">4.7</span>
+<span class="n">conConsumption_ifs</span>   <span class="mf">0.85</span>
+<span class="n">conConsumption_sleepPrep</span>     <span class="mf">0.65</span>
+
+<span class="c1">#Advertising duration (in ms)</span>
+<span class="n">advDuration_dcdcCharge</span>       <span class="mf">0.0</span>
+<span class="n">advDuration_bleCoreTask</span>      <span class="mf">2.3</span>
+<span class="n">advDuration_tx</span>       <span class="mf">0.4</span>
+<span class="n">advDuration_rx</span>       <span class="mf">0.12</span>
+<span class="n">advDuration_ifs</span>      <span class="mf">0.8</span>
+<span class="n">advDuration_sleepPrep</span>        <span class="mf">0.7</span>
+
+<span class="c1">#Connection duration (in ms)</span>
+<span class="n">conDuration_dcdcCharge</span>       <span class="mf">0.0</span>
+<span class="n">conDuration_bleCoreTask</span>      <span class="mf">2.3</span>
+<span class="n">conDuration_ifs</span>      <span class="mf">0.15</span>
+<span class="n">conDuration_sleepPrep</span>        <span class="mf">0.7</span>
+</pre></div>
+</div>
+</div>
+<p><strong>DA1453x family defaults</strong></p>
+<p><strong>Operation mode buck</strong></p>
+<div class="literal-block-wrapper docutils container" id="da1453x-family-defaults-for-operation-mode-buck">
+<span id="battery-lifetime-estimator-da1453x-defaults-operation-mode-buck"></span><div class="code-block-caption"><span class="caption-number">Code 11 </span><span class="caption-text">DA1453x family defaults for operation mode buck</span><a class="headerlink" href="#da1453x-family-defaults-for-operation-mode-buck" title="Permalink to this code">¶</a></div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>     <span class="c1">#Common</span>
+     <span class="n">alwaysOnCurrentBuck</span>      <span class="mf">0.7</span>
+     <span class="n">stackSize</span>    <span class="mf">7.0</span>
+     <span class="n">loadDurationRatioOTP</span> <span class="mf">0.016</span>
+     <span class="n">loadDurationRatioFlash</span>       <span class="mf">0.512</span>
+     <span class="n">xtalSettlingDuration</span> <span class="mi">1</span>
+     <span class="n">maxCodeSize</span>  <span class="mf">48.0</span>
+     <span class="n">ivddr</span>   <span class="mf">0.6</span>
+     <span class="n">ivdd2r</span>  <span class="mf">1.5</span>
+     <span class="n">vdd</span>     <span class="mf">0.9</span>
+     <span class="n">ldoDropVoltage</span>  <span class="mf">0.2</span>
+     <span class="n">scaMaster</span>       <span class="mi">200</span>
+     <span class="n">scaSlave</span>        <span class="mi">100</span>
+     <span class="n">batteryVoltageBuck</span>      <span class="mf">3.0</span>
+
+     <span class="c1">#Advertising current (in mA)</span>
+     <span class="n">advConsumption_dcdcCharge</span>    <span class="mf">5.5</span>
+     <span class="n">advConsumption_flashMirror</span>   <span class="mf">6.0</span>
+
+     <span class="c1">#Connection current (in mA)</span>
+     <span class="n">conConsumption_dcdcCharge</span>    <span class="mf">5.5</span>
+     <span class="n">conConsumption_flashMirror</span>   <span class="mf">6.0</span>
+     <span class="n">conConsumption_cpuProc</span>       <span class="mf">0.55</span>
+
+     <span class="c1">#Advertising duration (in ms)</span>
+     <span class="n">advDuration_dcdcCharge</span>       <span class="mf">0.0</span>
+     <span class="n">advDuration_xtal16Settling</span>      <span class="mf">1.0</span>
+     <span class="n">advDuration_bleCoreTask</span>       <span class="mf">1.8</span>
+     <span class="n">advDuration_ifs</span>      <span class="mf">1.15</span>
+     <span class="n">advDuration_sleepPrep</span>        <span class="mf">0.7</span>
+
+     <span class="c1">#Connection duration (in ms)</span>
+     <span class="n">conDuration_dcdcCharge</span>       <span class="mf">0.0</span>
+     <span class="n">conDuration_xtal16Settling</span>      <span class="mf">1.0</span>
+     <span class="n">conDuration_bleCoreTask</span>      <span class="mf">1.8</span>
+     <span class="n">conDuration_ifs</span>      <span class="mf">0.15</span>
+     <span class="n">conDuration_sleepPrep</span>        <span class="mf">0.7</span>
+</pre></div>
+</div>
+</div>
+<p><strong>Operation mode boost</strong></p>
+<div class="literal-block-wrapper docutils container" id="da1453x-family-defaults-for-operation-mode-boost">
+<span id="battery-lifetime-estimator-da1453x-family-defaults-for-operation-mode-boost"></span><div class="code-block-caption"><span class="caption-number">Code 12 </span><span class="caption-text">DA1453x family defaults for operation mode boost</span><a class="headerlink" href="#da1453x-family-defaults-for-operation-mode-boost" title="Permalink to this code">¶</a></div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>     <span class="c1">#Common</span>
+     <span class="n">alwaysOnCurrentBoost</span>      <span class="mf">0.6</span>
+     <span class="n">stackSize</span>    <span class="mf">7.0</span>
+     <span class="n">loadDurationRatioOTP</span> <span class="mf">0.016</span>
+     <span class="n">loadDurationRatioFlash</span>       <span class="mf">0.512</span>
+     <span class="n">xtalSettlingDuration</span> <span class="mi">1</span>
+     <span class="n">maxCodeSize</span>  <span class="mf">48.0</span>
+     <span class="n">ivddr</span>   <span class="mf">0.6</span>
+     <span class="n">ivdd2r</span>  <span class="mf">1.5</span>
+     <span class="n">vdd</span>     <span class="mf">0.9</span>
+     <span class="n">ldoDropVoltage</span>  <span class="mf">0.2</span>
+     <span class="n">scaMaster</span>       <span class="mi">200</span>
+     <span class="n">scaSlave</span>        <span class="mi">100</span>
+     <span class="n">batteryVoltageBoost</span>     <span class="mf">1.5</span>
+
+     <span class="c1">#Advertising current (in mA)</span>
+     <span class="n">advConsumption_flashMirror</span>      <span class="mf">6.0</span>
+     <span class="n">advConsumption_xtal16Settling</span>   <span class="mf">0.65</span>
+     <span class="n">advConsumption_bleCoreTask</span>      <span class="mf">0.74</span>
+     <span class="n">advConsumption_tx</span>       <span class="mf">7.8</span>
+     <span class="n">advConsumption_rx</span>       <span class="mf">4.6</span>
+     <span class="n">advConsumption_ifs</span>      <span class="mf">0.74</span>
+     <span class="n">advConsumption_sleepPrep</span>        <span class="mf">0.74</span>
+
+     <span class="c1">#Connection current (in mA)</span>
+     <span class="n">conConsumption_flashMirror</span>      <span class="mf">6.0</span>
+     <span class="n">conConsumption_xtal16Settling</span>   <span class="mf">0.65</span>
+     <span class="n">conConsumption_bleCoreTask</span>      <span class="mf">0.74</span>
+     <span class="n">conConsumption_tx</span>       <span class="mf">7.8</span>
+     <span class="n">conConsumption_rx</span>       <span class="mf">4.6</span>
+     <span class="n">conConsumption_ifs</span>      <span class="mf">0.74</span>
+     <span class="n">conConsumption_sleepPrep</span>        <span class="mf">0.74</span>
+
+     <span class="c1">#Advertising duration (in ms)</span>
+     <span class="n">advDuration_dcdcCharge</span>       <span class="mf">0.0</span>
+     <span class="n">advDuration_xtal16Settling</span>      <span class="mf">1.0</span>
+     <span class="n">advDuration_bleCoreTask</span>       <span class="mf">1.8</span>
+     <span class="n">advDuration_ifs</span>      <span class="mf">1.15</span>
+     <span class="n">advDuration_sleepPrep</span>        <span class="mf">0.7</span>
+
+     <span class="c1">#Connection duration (in ms)</span>
+     <span class="n">conDuration_dcdcCharge</span>       <span class="mf">0.0</span>
+     <span class="n">conDuration_xtal16Settling</span>      <span class="mf">1.0</span>
+     <span class="n">conDuration_bleCoreTask</span>      <span class="mf">1.8</span>
+     <span class="n">conDuration_ifs</span>      <span class="mf">0.15</span>
+     <span class="n">conDuration_sleepPrep</span>        <span class="mf">0.7</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="Appendix_A.html" class="btn btn-neutral float-left" title="11.6. Appendix A - RF Master firmware" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../disclaimers_contact.html" class="btn btn-neutral float-right" title="12. Disclaimers &amp; Contact info" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023, Renesas Electronics Corporation.</p>
+  </div>
+
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+    <!-- Theme Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-ZXND4SB7CL"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-ZXND4SB7CL', {
+          'anonymize_ip': false,
+      });
+    </script> 
+
+</body>
+</html>

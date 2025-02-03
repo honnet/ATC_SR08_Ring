@@ -1,0 +1,72 @@
+.. include:: <isonum.txt>
+
+.. _ram_tool:
+
+===
+RAM
+===
+
+
+
+
+This is tool allows the user to program the system RAM and execute code images from there. For certain families it also allows the programming of data images at custom RAM addresses selected by the user. 
+
+.. note::
+	Programming data images at user specified RAM addresses is available only for DA1468x, DA1469x, DA1470x and DA1459x families. For the rest of the families RAM tool can be used to download code images only. 
+	
+
+.. _ram_6xx:
+.. figure:: images/ram_6xx.png
+   :align: center
+   
+   RAM tool with support for code and data image download (DA1468x, DA1469x, DA1470x and DA1459x families)
+  
+
+.. _ram_5xx:
+.. figure:: images/ram_5xx.png
+   :align: center
+   
+   RAM tool with support for code image download (DA1458x, DA1453x and DA14585/586 families)
+   
+
+The tool provides a graphical representation of the RAM contents for the current SmartSnippets\ |trade| Toolbox session. This allows the user to monitor RAM memory utilization so that data image files do not overlap with each other and with the code image file. The tool provides the following options to the user:
+
+* **Browse:** Select code image and data image files.
+* **Data Base Address:** Specify the RAM address where the data image will be downloaded. If left empty, data image will be downloaded at address 0x00
+* **RAM size:** The total size of the RAM. Depends on the selected device family.
+* **Code Image Range:** User can inspect the memory addresses range that a code image will occupy before downloading it to the RAM.
+* **Data Image Range:** User can inspect the memory addresses range that a data image will occupy before downloading it to the RAM. The range starts at the Data Base Address. 
+* **Download Code Image:** Download code image to the RAM. If the code image overlaps with any of the data images (according to the RAM memory utilization presented on the right) the user will be notified and the download will be performed only if the user selects to proceed.
+* **Download Code Image:** Download data image to the RAM at the specified data base address. If the data image overlaps with any of the data images or with the code image, the user will be notified and the download will be performed only if the user selects to proceed. If the the data image file combined with the data base address does not fit into RAM memory the user will be notified with a log message and the download will not be performed. The user will have to select a smaller base address in that case.
+* **Reset:** Clears the RAM memory utilization map on the right of the tool. The same happens when the connection to the target device is lost.
+* **Close Debug Session:** This option applies to JTAG interface only and closes the connection to the debugger after the download.
+* **Options**: The options button can be used to specify the values for System Control Register and General Purpose Control Register for DA1458x, DA1453x and DA14585/586 families, when JTAG interface is used.
+  
+	
+*JTAG Options:*
+
+.. note::
+
+	GP_CONTROL_REG is available only for DA14580/581/583 devices.
+
+	
+.. _580-jtag-options:
+.. figure:: images/580_jtag_options.png
+   :align: center
+	
+   DA14580/581/583 device JTAG options
+   
+-----------------------
+Downloading Image files
+-----------------------
+
+By pressing the *Browse* buttons, the user is presented with a file browser to select the .hex, .ihex or .bin file to download. 
+When a connection over UART has been selected, after pressing the *Download Code Image* or *Download Data Image* button, the user is prompted to press the reset button of the device via a message at the Log. The application waits for 15 seconds for the reset to be pressed. If reset button is not pressed for 15 seconds, the user will have to press again the button and repeat the process. 
+
+When downloading a data image file to a DA1468x, DA1469x, DA1470x or DA1459x family device, the second stage bootloader is first downloaded to the target and then the data image the user has selected is downloaded at the user specified address.
+
+
+If a 'CRC does not match' error shows up at the log, please press the *Download Code Image* or *Download Data Image* button again and then the hardware reset button on the board to restart the download process. If a message 'Error: file is too big' shows up at the log, the file cannot be downloaded using the UART interface and the user is advised to configure and use the JTAG interface for the download.
+
+
+When JTAG connection is used, the file is automatically downloaded, without the need to press the reset button. The next time the *Download Code Image* or *Download Data Image* button is pressed, it is checked whether the JTAG connection is active or not, and it is reestablished, if needed. 

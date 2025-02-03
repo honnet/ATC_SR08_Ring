@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html class="writer-html4" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>4.1. Graphics FPS Estimator &mdash; UM-B-083</title><link rel="stylesheet" href="../../_static/css/lpc_cs_theme.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/css/custom.css" type="text/css" /><link rel="shortcut icon" href="../../_static/favicon.ico"/>
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  <script id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../../_static/jquery.js"></script>
+        <script type="text/javascript" src="../../_static/underscore.js"></script>
+        <script type="text/javascript" src="../../_static/doctools.js"></script>
+        <script type="text/javascript" src="../../_static/language_data.js"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="4.2. Battery Lifetime Estimator" href="../lifetime_estimator/lifetime_estimator.html" />
+    <link rel="prev" title="4. Estimator Operations" href="../index.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../../index.html"><img src="../../_static/V-Reverse.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../inst_guide/inst_guide.html">1. Installation Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../getting_started/getting_started.html">2. Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../programmer_oper/index.html">3. Programmer Operations</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">4. Estimator Operations</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">4.1. Graphics FPS Estimator</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../lifetime_estimator/lifetime_estimator.html">4.2. Battery Lifetime Estimator</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../sleep_mode_advisor/sleep_mode_advisor.html">4.3. Sleep Mode Advisor</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../manager_oper/index.html">5. Manager Operations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../monitor_oper/index.html">6. Monitor Operations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../configurator/index.html">7. Configurator Operations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../cli/command_line_if.html">8. CLI implementation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../app_help/index.html">9. Application Help</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../troubleshooting/troubleshooting.html">10. Troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../appendices/index.html">11. Appendices</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../disclaimers_contact.html">12. Disclaimers &amp; Contact info</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">UM-B-083</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="../index.html">4. Estimator Operations</a> &raquo;</li>
+      <li>4.1. Graphics FPS Estimator</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <div class="section" id="graphics-fps-estimator">
+<span id="graph-fps-est"></span><h1>4.1. Graphics FPS Estimator<a class="headerlink" href="#graphics-fps-estimator" title="Permalink to this headline">¶</a></h1>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">This tool applies to DA1470x chip family.</p>
+</div>
+<p>This is considered as an advanced tool. Enable it from menu <em>Settings -&gt; Advanced Settings</em>.</p>
+<p>Graphics FPS Estimator allows user to estimate the typically and maximum achievable frame rate (frames/second) for updating a display based on a number of parameters the user controls as well as taking into consideration the internal architectural constraints and overheads of each SoC. The tool is available for DA1470x family devices.</p>
+<div class="figure align-center" id="id1">
+<span id="gfxfps"></span><img alt="../../_images/gfxFps.png" src="../../_images/gfxFps.png" />
+<p class="caption"><span class="caption-number">Figure 61 </span><span class="caption-text">Graphics FPS Estimator</span></p>
+</div>
+<p>The tool uses an xml file, containing available GUI options, default values and accepted value ranges, to populate the GUI. The xml file is family specific. The GUI allows the user to configure the following parameters:</p>
+<p><strong>System Clock Frequency</strong>: The user is able to select the clock frequency from a list of available frequencies.</p>
+<p><strong>Graphics Processing Unit</strong>: The user can configure the frame buffers that are actively manipulated by the GPU and specify the memory where the graphics resources will be stored.
+Furthermore the user can select from a list of available graphics scenarios the one that will be used for the calculation.
+The scenario configures calculation parameters such as overdraw factors for GPU and graphics resources objects, percentage of bus conflicts e.t.c.</p>
+<p><strong>Display Controller</strong>: The user can specify the number of layers that the display controller is supporting and configure the memory used as a storage for each layer. Available options are 1 or 2 layers.
+The first layer will always be the active one, namely a frame buffer which the GPU is manipulating, while the second one will be static icons or even background images which the display controller is blending on top of the actual frame buffer prepared by the GPU.
+Note that for devices that support both Quad SPI PSRAM and Octa SPI PSRAM only one of them (Quad or Octa) can be selected in the fields under Graphics Processing Unit section or Display Controller section.</p>
+<p><strong>Display Interface</strong>: The user is able to select the actual physical interface that connects to the external display among a list of available interfaces.
+The user can also configure the interface frequency and in case of MIPI DSI the number of available DSI lanes.</p>
+<p><strong>Display Resolution</strong>: The user can specify the display resolution in terms of x and y pixels and also the internal and the external color depth.
+Note that the internal color depth should always be greater or equal to the external color depth.</p>
+<p><strong>Bus Arbitration</strong>: The user can specify the priorities of the GPU DMA and the LCDC DMA in the DMA bus, with 1 being the highest priority.
+Note that both priorities cannot have the same value.</p>
+<p>The tool calculates the typically achievable frames per second, taking all overheads into consideration, and the maximum achievable frames per second, assuming an ideal configuration. The calculation is triggered automatically when the user updates any of the UI components.
+The tool buttons provide the following options to the user:</p>
+<ul class="simple">
+<li><strong>Clear</strong>: Resets all GUI components to their default value. The default values are read from the xml file used by the tool.</li>
+<li><strong>Save Estimation Scenario</strong>: Saves user selections and values in the GUI to an xml file.</li>
+<li><strong>Open Estimation Scenario</strong>: Loads a previously saved scenario, updates the GUI with the user selections and values and runs the calculation logic.</li>
+</ul>
+</div>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="../index.html" class="btn btn-neutral float-left" title="4. Estimator Operations" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../lifetime_estimator/lifetime_estimator.html" class="btn btn-neutral float-right" title="4.2. Battery Lifetime Estimator" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023, Renesas Electronics Corporation.</p>
+  </div>
+
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+    <!-- Theme Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-ZXND4SB7CL"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-ZXND4SB7CL', {
+          'anonymize_ip': false,
+      });
+    </script> 
+
+</body>
+</html>

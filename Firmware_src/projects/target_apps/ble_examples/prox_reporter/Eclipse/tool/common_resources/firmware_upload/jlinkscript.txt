@@ -1,0 +1,11 @@
+ECHO ist ausgeschaltet (OFF).
+r 
+h 
+mem8  0x50003200, 3 		rem DA1458x, DA14585, DA1468x
+mem32 0x50003200, 4 		rem DA14531
+mem32 0x50050200, 4  	rem DA1459x
+mem32 0x50040200, 4 		rem DA1469x
+mem32 0x50040000, 4 		rem DA1470x
+mem32 0x50000012, 1 		rem DA145xx SYS_CTRL_REG
+mem32 0x50000024, 1 		rem DA146xx/DA147xx SYS_CTRL_REG
+qc 

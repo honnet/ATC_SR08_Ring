@@ -1,0 +1,509 @@
+<!DOCTYPE html>
+<html class="writer-html4" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>5.1. RF Master &mdash; UM-B-083</title><link rel="stylesheet" href="../../../_static/css/lpc_cs_theme.css" type="text/css" />
+    <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/css/custom.css" type="text/css" /><link rel="shortcut icon" href="../../../_static/favicon.ico"/>
+  <!--[if lt IE 9]>
+    <script src="../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  <script id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../../../_static/jquery.js"></script>
+        <script type="text/javascript" src="../../../_static/underscore.js"></script>
+        <script type="text/javascript" src="../../../_static/doctools.js"></script>
+        <script type="text/javascript" src="../../../_static/language_data.js"></script>
+    <script src="../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+    <link rel="next" title="5.2. XTAL Manager" href="../xtal_manager/xtal_manager.html" />
+    <link rel="prev" title="5. Manager Operations" href="../../index.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../../../index.html"><img src="../../../_static/V-Reverse.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../../inst_guide/inst_guide.html">1. Installation Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../getting_started/getting_started.html">2. Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../programmer_oper/index.html">3. Programmer Operations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../estimator/index.html">4. Estimator Operations</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../../index.html">5. Manager Operations</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">5.1. RF Master</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#common-rf-master-tests">5.1.1. Common RF Master Tests</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#le-tx-rx">5.1.1.1. LE Tx/Rx</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#continuous-tx">5.1.1.2. Continuous Tx</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#unmodulated-tx-rx">5.1.1.3. Unmodulated Tx/Rx</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#sleep">5.1.1.4. Sleep</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#da1469x-da1470x-and-da1459x-family-rf-master-tests">5.1.2. DA1469x, DA1470x and DA1459x family RF Master Tests</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#enhanced-le-tx-rx">5.1.2.1. Enhanced LE Tx/Rx</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#continuous-tx-rx">5.1.2.2. Continuous Tx/Rx</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#otp">5.1.2.3. OTP</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#miscellaneous">5.1.2.4. Miscellaneous</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#custom-action">5.1.2.5. Custom Action</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#tx-power-configuration">5.1.2.6. Tx Power Configuration</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#rf-calibration">5.1.2.7. RF Calibration</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../xtal_manager/xtal_manager.html">5.2. XTAL Manager</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../device_oper/io_manager/io_manager.html">5.3. IO Manager</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../device_oper/register_access/register_access.html">5.4. Registers Access</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../device_oper/terminal_scripting/terminal_scripting.html">5.5. Terminal Scripting</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../device_oper/uart_terminal/uart_terminal.html">5.6. UART Terminal</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../monitor_oper/index.html">6. Monitor Operations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../configurator/index.html">7. Configurator Operations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../cli/command_line_if.html">8. CLI implementation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../app_help/index.html">9. Application Help</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../troubleshooting/troubleshooting.html">10. Troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../appendices/index.html">11. Appendices</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../disclaimers_contact.html">12. Disclaimers &amp; Contact info</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">UM-B-083</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="../../index.html">5. Manager Operations</a> &raquo;</li>
+      <li>5.1. RF Master</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <div class="section" id="rf-master">
+<span id="id1"></span><h1>5.1. RF Master<a class="headerlink" href="#rf-master" title="Permalink to this headline">¶</a></h1>
+<p>RF master is an implementation of Bluetooth SIG standardized receiver and transmitter HCI commands and additional custom test HCI commands.</p>
+<p>User can access RF Master by selecting RF Master tool under the Manager group of the ribbon menu. <a class="reference internal" href="#id2"><span class="std std-numref">Figure 66</span></a> presents the Rf Master UI that is common for most of the device families. Some families support extra RF Master commands, which will be presented in a different subsection.</p>
+<div class="figure align-center" id="id8">
+<span id="id2"></span><img alt="../../../_images/rfMasterTxRxSleep.png" src="../../../_images/rfMasterTxRxSleep.png" />
+<p class="caption"><span class="caption-number">Figure 66 </span><span class="caption-text">RF Master tests</span></p>
+</div>
+<p>When RF Master is opened, an extra tab is added to the ribbon, containing RF Master related buttons only.</p>
+<div class="figure align-center" id="id9">
+<span id="rf-master-ribbon"></span><img alt="../../../_images/RF_Master_Ribbon.png" src="../../../_images/RF_Master_Ribbon.png" />
+<p class="caption"><span class="caption-number">Figure 67 </span><span class="caption-text">RF Master’s Ribbon</span></p>
+</div>
+<ul class="simple">
+<li><strong>Download Firmware:</strong> Downloads FW supporting RF Master tests to the target. The selected interface under the Board menu is used for the download and if both UART and JTAG have been selected, JTAG is preferred.</li>
+<li><strong>Reset:</strong> Runs the Bluetooth SIG standardized HCI_Reset command.</li>
+<li><strong>Release UART:</strong> When the ‘Release UART’ button is clicked the allocated UART port used for communication is freed and can be used from other tools such as <a class="reference internal" href="../../device_oper/terminal_scripting/terminal_scripting.html#term-script"><span class="std std-ref">Terminal Scripting</span></a>.</li>
+</ul>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last"><strong>Appendix A</strong> shows how to produce binary firmware for each chip family.</p>
+</div>
+<p>RF Master tests are distributed in a tree like structure, where user can expand only the test(s) being currently used and collapse the rest. User can expand or collapse all tests at once using the <img alt="expand_collapse" src="../../../_images/collapse_expand.png" /> button found at the top of the tab.
+In order to run RF Master tests, a firmware supporting RF Master tests should be running at the target. User can select the <em>Download Firmware</em> button from the RF Master toolbar on the ribbon in order to download a firmware. Before running any RF Master test, it is checked that a suitable FW is running to the target. So even if a FW has not been downloaded yet to the target, the user will be asked to do so in order to be able to execute any of the RF Master tests. RF Master tests run over UART, so user will be asked to select a COM port that will be used for the tests, if UART interface has not been configured under the Board menu.</p>
+<div class="section" id="common-rf-master-tests">
+<h2>5.1.1. Common RF Master Tests<a class="headerlink" href="#common-rf-master-tests" title="Permalink to this headline">¶</a></h2>
+<p>The following RF Master tests are common for most of the device families:</p>
+<ol class="arabic simple">
+<li>LE Tx/Rx</li>
+<li>Continuous Tx</li>
+<li>Unmodulated Tx/Rx</li>
+<li>Sleep</li>
+</ol>
+<div class="section" id="le-tx-rx">
+<h3>5.1.1.1. LE Tx/Rx<a class="headerlink" href="#le-tx-rx" title="Permalink to this headline">¶</a></h3>
+<p>LE Receiver Transmitter tool sends Bluetooth LE test commands. Two instances are needed for the test, one operating as a transmitter and the other as a receiver.</p>
+<div class="section" id="transmitter">
+<h4>5.1.1.1.1. Transmitter<a class="headerlink" href="#transmitter" title="Permalink to this headline">¶</a></h4>
+<div class="figure align-center" id="id10">
+<span id="le-transmitter"></span><img alt="../../../_images/leTx.png" src="../../../_images/leTx.png" />
+<p class="caption"><span class="caption-number">Figure 68 </span><span class="caption-text">Le Transmitter</span></p>
+</div>
+<p>User first selects the frequency, the payload type of the packets and their length in bytes. Then on the mode of the test, user has the following options:</p>
+<p>1. <strong>Continuous Tx:</strong>
+When this mode is selected the Bluetooth SIG standardized <strong>HCI_LE_Transmitter_Test</strong> command is send. At this test the DUT sends test reference packets at a fixed interval, until the Bluetooth SIG standardized <strong>HCI_LE_Test_End</strong> command is executed. The user has to first stop the continuous packet transmission, before being able to run a new LE Tx test command.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last"><strong># packets Tx</strong> option is not supported for DA1469x family devices.</p>
+</div>
+<p>2. <strong># packets Tx:</strong>
+This mode is also based on the Bluetooth SIG standardized <strong>HCI_LE_Transmitter_Test</strong> command, with the difference that the user can specify the number of  packets to be send at the test. Maximum number of packets that can be send in one test, is 65535 (two bytes). When Start button is pressed, the DUT generates a specified number of test reference packets at a fixed interval.</p>
+<p><strong>Start Button:</strong> Starts the selected LE transmitter test. Note that start is disabled until either the test finishes (specified number of packets has been sent) or the user presses the stop button, because it is not possible to start a second LE Transmitter Test, while another LE Transmitter Test is already running.</p>
+<p><strong>Stop Button:</strong>  Sends the Bluetooth SIG standardized <strong>HCI_LE_Test_End</strong> command. Can be used to stop the continuous transmission or the transmission with specified number of packets, before the transmission completes. Note that if a transmission with specified number of packets completes, Stop button is disabled again automatically.</p>
+<p><em>Sample Log output:</em></p>
+<div class="figure align-center" id="id11">
+<span id="letxpktlog"></span><img alt="../../../_images/leTxPktLog.png" src="../../../_images/leTxPktLog.png" />
+<p class="caption"><span class="caption-number">Figure 69 </span><span class="caption-text">Sample log output for LE Tx Command</span></p>
+</div>
+<p>The messages in blue color, marked with <em>====&gt; [date] Tx &lt;===</em> describe the commands that host sends to target. The messages in green, marked with <em>====&gt; [date] Rx &lt;===</em> describe the target’s response.
+At <a class="reference internal" href="#letxpktlog"><span class="std std-numref">Figure 69</span></a> we can see that the command with opcode 0xFC90 <em>(DA1468x family)</em> is send and the firmware responds with an event, that contains the opcode 0xFC90 in its parameters. When the packet transmission is completed, an info message notifies the user about the completion and the firmware sends an event with event code 0x0E, which contains the opcode 0xFC90 in its parameters too. Not receiving an event from the target after sending a LE Tx command, indicates a problem. User is advised to press the Reset button from the horizontal toolbar and, if the problem persists, to download the firmware again to the target.</p>
+</div>
+<div class="section" id="receiver">
+<h4>5.1.1.1.2. Receiver<a class="headerlink" href="#receiver" title="Permalink to this headline">¶</a></h4>
+<div class="figure align-center" id="id12">
+<span id="le-receiver"></span><img alt="../../../_images/leRx.png" src="../../../_images/leRx.png" />
+<p class="caption"><span class="caption-number">Figure 70 </span><span class="caption-text">Le Receiver</span></p>
+</div>
+<p>User selects the frequency and if extra RF statistics info are required for the test. At this test the Bluetooth SIG standardized <strong>HCI_LE_Receiver_Test</strong> test is executed. During the test the DUT receives test reference packets at a fixed interval, until the Stop button is pressed. The test results are received when the Stop button is pressed. The user can see on the log the number of packets that have been successfully received. If extra statistics have been requested, the user can also see on the log the number of packets that have been received with SYNC error and the number of packets that have been received with CRC error.</p>
+<p><strong>Start Button:</strong> Starts the selected LE receiver test. If on the transmitter side a test with specific number of packets has been selected, the user should start the receiver test first in order to receive the packets.</p>
+<p><strong>Stop Button:</strong>  Sends the Bluetooth SIG standardized <strong>HCI_LE_Test_End</strong> command. The results of the test are displayed on the log.</p>
+<p><em>Sample Log output:</em></p>
+<div class="figure align-center" id="id13">
+<span id="lerxstatslog"></span><img alt="../../../_images/leRxStatsLog.png" src="../../../_images/leRxStatsLog.png" />
+<p class="caption"><span class="caption-number">Figure 71 </span><span class="caption-text">Sample log output for LE Rx Command</span></p>
+</div>
+<p>At <a class="reference internal" href="#lerxstatslog"><span class="std std-numref">Figure 71</span></a>, the first pair of Tx and Rx messages are generated when the Start button is pressed and the second one when the Stop button is pressed. When the host sends the command with opcode 0xFC81 <em>(DA1468x family)</em> in order to start the reception with extra RF stats info, the firmware responds with an event, containing also 0xFC81 in its parameters. When the command with opcode 0xFC82 <em>(DA1468x family)</em> is send in order to stop the reception, the firmware responds with an event packet, which contains info about the number of packets that have been received correctly, the number of packets that have been received with SYNC error and the number of packets that have been received with CRC error. We observe that 14247 packets have been received by the LE Receiver and that 96 packets have been received with CRC error. Not receiving an event from the target after sending a LE Rx command, indicates a problem. User is advised to press the Reset button from the horizontal toolbar and, if the problem persists, to download the firmware again to the target.</p>
+</div>
+</div>
+<div class="section" id="continuous-tx">
+<h3>5.1.1.2. Continuous Tx<a class="headerlink" href="#continuous-tx" title="Permalink to this headline">¶</a></h3>
+<p>This tool is used to enable a modulated carrier with specified payload data in a continuous stream. When Start button is pressed, a modulated signal is continuously transmitted, until the Stop button is pressed. In order to see the results of this test, a spectrum analyzer has to be connected to the target.</p>
+<div class="figure align-center" id="id14">
+<span id="continuoustx"></span><img alt="../../../_images/continuousTx.png" src="../../../_images/continuousTx.png" />
+<p class="caption"><span class="caption-number">Figure 72 </span><span class="caption-text">Continuous Tx</span></p>
+</div>
+<p><em>Sample log output:</em></p>
+<div class="figure align-center" id="id15">
+<span id="continuoustxstart"></span><img alt="../../../_images/continuousTxStart.png" src="../../../_images/continuousTxStart.png" />
+<p class="caption"><span class="caption-number">Figure 73 </span><span class="caption-text">Sample log output for Continuous Tx Start command</span></p>
+</div>
+<p>When the continuous modulated transmission starts, host sends a command with opcode 0xFC84 <em>(DA1468x family)</em> and target responds with an event (<a class="reference internal" href="#continuoustxstart"><span class="std std-numref">Figure 73</span></a>).</p>
+<div class="figure align-center" id="id16">
+<span id="continuoustxstop"></span><img alt="../../../_images/continuousTxStop.png" src="../../../_images/continuousTxStop.png" />
+<p class="caption"><span class="caption-number">Figure 74 </span><span class="caption-text">Sample log output for Continuous Tx Stop command</span></p>
+</div>
+<p>When the continuous modulated transmission stops, host sends a command with opcode 0xFC85 <em>(DA1468x family)</em> and target responds with an event (<a class="reference internal" href="#continuoustxstop"><span class="std std-numref">Figure 74</span></a>).</p>
+<p>Not receiving an event from the target after sending a continuous Tx start or stop command, indicates a problem. User is advised to press the Reset button from the horizontal toolbar and, if the problem persists, to download the firmware again to the target.</p>
+</div>
+<div class="section" id="unmodulated-tx-rx">
+<h3>5.1.1.3. Unmodulated Tx/Rx<a class="headerlink" href="#unmodulated-tx-rx" title="Permalink to this headline">¶</a></h3>
+<p>This tool is used to perform Unmodulated Tx/Rx tests. Mode can be Tx or Rx. When Tx mode is selected and Start button is pressed, an unmodulated Tx test starts. When Rx mode is selected and Start button is pressed, an unmodulated Rx test starts. When Stop button is pressed, unmodulated Rx or Tx test stops. In order to see the results of this test, a spectrum analyzer has to be connected to the target.</p>
+<div class="figure align-center" id="id17">
+<span id="unmodulatedtx"></span><img alt="../../../_images/unmodulated.png" src="../../../_images/unmodulated.png" />
+<p class="caption"><span class="caption-number">Figure 75 </span><span class="caption-text">Unmodulated Tx/Rx</span></p>
+</div>
+<p><em>Sample log output:</em></p>
+<div class="figure align-center" id="id18">
+<span id="unmodulatedtxstart"></span><img alt="../../../_images/unmodulatedTxStart.png" src="../../../_images/unmodulatedTxStart.png" />
+<p class="caption"><span class="caption-number">Figure 76 </span><span class="caption-text">Sample log output for unmodulated Tx Start command</span></p>
+</div>
+<p>When the unmodulated transmission starts, host sends a command with opcode 0xFC83 <em>(DA1468x family)</em> and mode 0x54 and target responds with an event (<a class="reference internal" href="#unmodulatedtxstart"><span class="std std-numref">Figure 76</span></a>).</p>
+<div class="figure align-center" id="id19">
+<span id="unmodulatedrxstart"></span><img alt="../../../_images/unmodulatedRxStart.png" src="../../../_images/unmodulatedRxStart.png" />
+<p class="caption"><span class="caption-number">Figure 77 </span><span class="caption-text">Sample log output for unmodulated Rx Start command</span></p>
+</div>
+<p>When the unmodulated reception starts, host sends a command with opcode 0xFC83 and mode 0x52 and target responds with an event (<a class="reference internal" href="#unmodulatedrxstart"><span class="std std-numref">Figure 77</span></a>).</p>
+<div class="figure align-center" id="id20">
+<span id="unmodulatedtxstop"></span><img alt="../../../_images/unmodulatedTxStop.png" src="../../../_images/unmodulatedTxStop.png" />
+<p class="caption"><span class="caption-number">Figure 78 </span><span class="caption-text">Sample log output for unmodulated Stop command</span></p>
+</div>
+<p>When the unmodulated transmission or reception stops, host sends a command with opcode 0xFC83 and mode 0x4f and target responds with an event (<a class="reference internal" href="#unmodulatedtxstop"><span class="std std-numref">Figure 78</span></a>).</p>
+<p>Not receiving an event from the target after sending an unmodulated Tx, Rx or stop command, indicates a problem. User is advised to press the Reset button from the horizontal toolbar and, if the problem persists, to download the firmware again to the target.</p>
+</div>
+<div class="section" id="sleep">
+<h3>5.1.1.4. Sleep<a class="headerlink" href="#sleep" title="Permalink to this headline">¶</a></h3>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last"><strong>Sleep</strong> test is not supported for DA1468x family devices.</p>
+</div>
+<p>This tool contains a set of commands that put the target to sleep for specified number of minutes and seconds.</p>
+<div class="figure align-center" id="id21">
+<span id="id3"></span><img alt="../../../_images/sleep.png" src="../../../_images/sleep.png" />
+<p class="caption"><span class="caption-number">Figure 79 </span><span class="caption-text">Sleep Test</span></p>
+</div>
+<p>There are 3 different sleep modes supported:</p>
+<ol class="arabic simple">
+<li>None: Active mode</li>
+<li>Extended Sleep Mode</li>
+<li>Deep Sleep Mode</li>
+</ol>
+<p>Minutes and seconds are integer numbers between 0 and 255. If both minutes and seconds are set to zero then the device sleeps forever.</p>
+<p><em>Sample log output:</em></p>
+<div class="figure align-center" id="id22">
+<span id="sleeplog"></span><img alt="../../../_images/sleepLog.png" src="../../../_images/sleepLog.png" />
+<p class="caption"><span class="caption-number">Figure 80 </span><span class="caption-text">Sample log output for Sleep command</span></p>
+</div>
+<p>Known limitations:</p>
+<ol class="arabic simple">
+<li>UART communication is lost when the device wakes up from extended sleep mode.</li>
+<li>The device will not wake up from deep sleep mode.</li>
+</ol>
+</div>
+</div>
+<div class="section" id="da1469x-da1470x-and-da1459x-family-rf-master-tests">
+<h2>5.1.2. DA1469x, DA1470x and DA1459x family RF Master Tests<a class="headerlink" href="#da1469x-da1470x-and-da1459x-family-rf-master-tests" title="Permalink to this headline">¶</a></h2>
+<p>This section presents extra tests that are supported only for DA1469x family devices and some tests that are common for all families but their support is different for DA1469x family. The DA1469x family specific tests are organized as follows:</p>
+<ol class="arabic simple">
+<li>Enhanced LE Tx/Rx</li>
+<li>Continuous Tx/Rx</li>
+<li>OTP</li>
+<li>Miscellaneous</li>
+<li>Custom Action</li>
+<li>Tx Power Configuration</li>
+<li>RF Calibration</li>
+</ol>
+<div class="section" id="enhanced-le-tx-rx">
+<h3>5.1.2.1. Enhanced LE Tx/Rx<a class="headerlink" href="#enhanced-le-tx-rx" title="Permalink to this headline">¶</a></h3>
+<p>This panel adds support for the Bluetooth SIG <em>HCI_LE_Enhanced_Transmitter_Test</em> &amp; <em>HCI_LE_Enhanced_Receiver_Test</em> commands, described in Bluetooth Core Specification v5.0/Vol.2/Part E sections 7.8.50 &amp; 7.8.51. The commands can be used to start continuous transmission and reception at 1 or 2 MBps. Two instances are required for the test, one operating as the transmitter and one as the receiver.</p>
+<div class="section" id="id4">
+<h4>5.1.2.1.1. Transmitter<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h4>
+<div class="figure align-center" id="id23">
+<span id="enhancedletx"></span><img alt="../../../_images/enhancedLeTx.png" src="../../../_images/enhancedLeTx.png" />
+<p class="caption"><span class="caption-number">Figure 81 </span><span class="caption-text">Enhanced LE Tx</span></p>
+</div>
+<p>The user can select the frequency, payload, packet length and PHY and press the start button in order to start the transmission.</p>
+<p><em>Sample log output:</em></p>
+<div class="figure align-center" id="id24">
+<span id="enhancedletxlog"></span><img alt="../../../_images/enhancedLeTxLog.png" src="../../../_images/enhancedLeTxLog.png" />
+<p class="caption"><span class="caption-number">Figure 82 </span><span class="caption-text">Sample log output for Enhanced LE Tx command</span></p>
+</div>
+</div>
+<div class="section" id="id5">
+<h4>5.1.2.1.2. Receiver<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h4>
+<div class="figure align-center" id="id25">
+<span id="enhancedlerx"></span><img alt="../../../_images/enhancedLeRx.png" src="../../../_images/enhancedLeRx.png" />
+<p class="caption"><span class="caption-number">Figure 83 </span><span class="caption-text">Enhanced LE Rx</span></p>
+</div>
+<p>The user has to select the same frequency and PHY as the ones selected on the transmitter’s side in order to be able to receive data. The modulation index parameter is currently ignored.</p>
+<p><em>Sample log output:</em></p>
+<div class="figure align-center" id="id26">
+<span id="enhancedlerxlog"></span><img alt="../../../_images/enhancedLeRxLog.png" src="../../../_images/enhancedLeRxLog.png" />
+<p class="caption"><span class="caption-number">Figure 84 </span><span class="caption-text">Sample log output for Enhanced LE Rx command</span></p>
+</div>
+<p>If <em>With RF Stats</em> is set to Yes, extra RF stats will be presented at the log when the reception is stopped by the user.</p>
+<p><em>Sample log output:</em></p>
+<div class="figure align-center" id="id27">
+<span id="enhancedlerxstoprfstats"></span><img alt="../../../_images/enhancedLeRxStopRfStats.png" src="../../../_images/enhancedLeRxStopRfStats.png" />
+<p class="caption"><span class="caption-number">Figure 85 </span><span class="caption-text">Sample log output for Enhanced LE Rx test with RF Stats selected</span></p>
+</div>
+</div>
+</div>
+<div class="section" id="continuous-tx-rx">
+<h3>5.1.2.2. Continuous Tx/Rx<a class="headerlink" href="#continuous-tx-rx" title="Permalink to this headline">¶</a></h3>
+<p>This panel is used to start continuous Transmission and Reception at 1 or 2 Mbps and can send a burst of N packets. The tests at this panel are an extension of Enhanced Le Tx/Rx tests. Tests have been extended to support more parameters and different Tx test types. Two Toolbox instances can be used, one acting as the transmitter and the other acting as the receiver.</p>
+<div class="section" id="id6">
+<h4>5.1.2.2.1. Transmitter<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h4>
+<p>4 types of tests are supported:</p>
+<ol class="arabic simple">
+<li><strong>Modulated infinite packetized test</strong>. Can be useful for debugging the TX or a peer RX at a higher communication level.</li>
+<li><strong>Modulated infinite non-packetized test</strong>. Can be used for type approval testing (ETSI, FCC, …).</li>
+<li><strong>Modulated finite packetized test</strong>. Can be useful for more accurate board-to-board PER measurements.</li>
+<li><strong>Unmodulated infinite non-packetized test</strong>. Simple test at the RF level (e.g. debug soldering issues). In order to see the results of this test, a spectrum analyzer has to be connected to the target.</li>
+</ol>
+<p>Each test type uses different set of the input parameters. Also the previous test should be stopped first in order to start another test. Some of the rules that apply per test are the following:</p>
+<ul class="simple">
+<li><em>Modulated infinite packetized test</em>: IFS should be grater than 150 us. Number of packets parameter is ignored in this test.</li>
+<li><em>Modulated infinite non-packetized test</em>: Packet length, IFS and number of packets parameters are ignored in this type of test.</li>
+<li><em>Modulated finite packetized test</em>: Number of packets should be greater than 1.</li>
+<li><em>Unmodulated infinite non-packetized test</em>: Only frequency is used in this type of test.</li>
+</ul>
+<div class="figure align-center" id="id28">
+<span id="da1469xcnttx"></span><img alt="../../../_images/da1469xCntTx.png" src="../../../_images/da1469xCntTx.png" />
+<p class="caption"><span class="caption-number">Figure 86 </span><span class="caption-text">Continuous Tx</span></p>
+</div>
+<p><em>Sample log output:</em></p>
+<div class="figure align-center" id="id29">
+<span id="da1469xcnttxlog"></span><img alt="../../../_images/da1469xCntTxLog.png" src="../../../_images/da1469xCntTxLog.png" />
+<p class="caption"><span class="caption-number">Figure 87 </span><span class="caption-text">Sample log output for Continuous Tx command</span></p>
+</div>
+</div>
+<div class="section" id="id7">
+<h4>5.1.2.2.2. Receiver<a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h4>
+<p>The receiver can be used to receive packets transmitted from a modulated infinite packetized test, a modulated infinite non-packetized test or a modulated finite packetized test.</p>
+<div class="figure align-center" id="id30">
+<span id="da1469xcntrx"></span><img alt="../../../_images/da1469xCntRx.png" src="../../../_images/da1469xCntRx.png" />
+<p class="caption"><span class="caption-number">Figure 88 </span><span class="caption-text">Continuous Rx</span></p>
+</div>
+<p>Selected frequency, packet length, PHY and IFS on the receiver’s side should match the ones selected on the transmitter’s side. The following hold for the Receiver’s parameters:</p>
+<ul class="simple">
+<li>IFS can be either 0 (not used on the Tx side) or grater than 150 us.</li>
+<li>First window size accepts values in the range 1-65535.</li>
+<li>Window size (or normal window size) accepts values in the range 1-8171</li>
+<li>Packet Length accepts values in the range 0-251</li>
+<li>The (normal) window size  is in usec or slots and is 14-bits wide.</li>
+<li>The actual Rx window will open for 2*Normal Window Size + SYNC_WORD_duration (16382 usec maximum).</li>
+<li>The First window size is in 625 usec slots and is 14-bits wide.</li>
+<li>The actual Rx window in this case opens for First window size duration.</li>
+<li>In case of a SYNC error, the Rx window will not be increased.</li>
+</ul>
+<p><em>Sample log output:</em></p>
+<div class="figure align-center" id="id31">
+<span id="da1469xcntrxlog"></span><img alt="../../../_images/da1469xCntRxLog.png" src="../../../_images/da1469xCntRxLog.png" />
+<p class="caption"><span class="caption-number">Figure 89 </span><span class="caption-text">Sample log output for Continuous Rx command</span></p>
+</div>
+</div>
+</div>
+<div class="section" id="otp">
+<h3>5.1.2.3. OTP<a class="headerlink" href="#otp" title="Permalink to this headline">¶</a></h3>
+<p>The OTP panel allows the user to write/read the OTP memory. The user can enter the word offset and the number of words to read from the OTP and press the <em>Read</em> button to read from OTP memory. The user can set the OTP word contents by double clicking on the <em>Value (Hex)</em> column and burn them to OTP memory by pressing the <em>Write</em> button.</p>
+<div class="figure align-center" id="id32">
+<span id="da1469xotp"></span><img alt="../../../_images/da1469xOtp.png" src="../../../_images/da1469xOtp.png" />
+<p class="caption"><span class="caption-number">Figure 90 </span><span class="caption-text">Reading 10 words from OTP</span></p>
+</div>
+<p>Note that if the OTP word is already written and the user tries to write a different value, the resulting word value is unpredicted, since only 0 bits can turn to 1 in OTP. The maximum number of words that can been read or written at once is 60. The maximum word offset can be 1023, with which the user can read 1 word from OTP address 0x10080FFC, which is the last OTP memory word address. In case the combination of word offset and number of words to read exceeds the OTP memory size, the command will return the following error: <em>Error: Unsupported feature or parameter value (0x11).</em></p>
+<p><em>Sample log output:</em></p>
+<div class="figure align-center" id="id33">
+<span id="da1469xotplog"></span><img alt="../../../_images/da1469xOtpLog.png" src="../../../_images/da1469xOtpLog.png" />
+<p class="caption"><span class="caption-number">Figure 91 </span><span class="caption-text">Sample log output for OTP read</span></p>
+</div>
+</div>
+<div class="section" id="miscellaneous">
+<h3>5.1.2.4. Miscellaneous<a class="headerlink" href="#miscellaneous" title="Permalink to this headline">¶</a></h3>
+<p>This panel contains various RF Master commands that cannot be grouped under any of the other DA1469x family specific RF Master panels. The following actions / tests can be performed via Miscellaneous panel:</p>
+<ol class="arabic simple">
+<li><strong>Firmware Version</strong>: Get the Bluetooth controller version and the PLT FW version.</li>
+<li><strong>Read ADC</strong>: Read value from analog input (battery voltage).</li>
+<li><strong>Uart Loop</strong>: Echo back the received message.</li>
+<li><strong>Set Baudrate</strong>: Sets the baudrate to one of the following values: 9600, 19200, 57600, 115200, 1000000.</li>
+<li><strong>External Clock test</strong>: Checks that external 32Khz clock is connected by performing clock calibration.</li>
+<li><strong>Read Temperature</strong>: Reads die temperature via GPADC</li>
+<li><strong>Sensor Action</strong>: Perform sensor test</li>
+</ol>
+<div class="figure align-center" id="id34">
+<span id="da1469xmisc"></span><img alt="../../../_images/da1469xMisc.png" src="../../../_images/da1469xMisc.png" />
+<p class="caption"><span class="caption-number">Figure 92 </span><span class="caption-text">Miscellaneous panel</span></p>
+</div>
+<p><em>Sample log outputs:</em></p>
+<div class="figure align-center" id="id35">
+<span id="da1469xmiscfwversionlog"></span><img alt="../../../_images/da1469xMiscFwVersionLog.png" src="../../../_images/da1469xMiscFwVersionLog.png" />
+<p class="caption"><span class="caption-number">Figure 93 </span><span class="caption-text">Sample log output for FW get version command</span></p>
+</div>
+<div class="figure align-center" id="id36">
+<span id="da1469xmiscreadadclog"></span><img alt="../../../_images/da1469xMiscReadAdcLog.png" src="../../../_images/da1469xMiscReadAdcLog.png" />
+<p class="caption"><span class="caption-number">Figure 94 </span><span class="caption-text">Sample log output for read ADC command</span></p>
+</div>
+<div class="figure align-center" id="id37">
+<span id="da1469xmiscuartlooplog"></span><img alt="../../../_images/da1469xMiscUartLoopLog.png" src="../../../_images/da1469xMiscUartLoopLog.png" />
+<p class="caption"><span class="caption-number">Figure 95 </span><span class="caption-text">Sample log output for uart loop command with input value 0x123456789ABCDEF</span></p>
+</div>
+<div class="figure align-center" id="id38">
+<span id="da1469xmiscsensoractionreadlog"></span><img alt="../../../_images/da1469xMiscSensorActionReadLog.png" src="../../../_images/da1469xMiscSensorActionReadLog.png" />
+<p class="caption"><span class="caption-number">Figure 96 </span><span class="caption-text">Sample log output for sensor action read command</span></p>
+</div>
+</div>
+<div class="section" id="custom-action">
+<h3>5.1.2.5. Custom Action<a class="headerlink" href="#custom-action" title="Permalink to this headline">¶</a></h3>
+<p>This panel provides the following command:</p>
+<ul class="simple">
+<li><strong>Custom Action</strong>: Echo back the custom action.</li>
+</ul>
+<div class="figure align-center" id="id39">
+<span id="da1469xmisccustomaction"></span><img alt="../../../_images/da1469xCustomAction.png" src="../../../_images/da1469xCustomAction.png" />
+<p class="caption"><span class="caption-number">Figure 97 </span><span class="caption-text">Custom Action panel</span></p>
+</div>
+<div class="figure align-center" id="id40">
+<span id="da1469xmisccustomactionlog"></span><img alt="../../../_images/da1469xCustomActionLog.png" src="../../../_images/da1469xCustomActionLog.png" />
+<p class="caption"><span class="caption-number">Figure 98 </span><span class="caption-text">Sample log output for custom action command with input value 0xBB</span></p>
+</div>
+</div>
+<div class="section" id="tx-power-configuration">
+<h3>5.1.2.6. Tx Power Configuration<a class="headerlink" href="#tx-power-configuration" title="Permalink to this headline">¶</a></h3>
+<p>This panel contains a set of commands to set the Transmission (Tx) Power. Two modes are available: configuration of the Tx Power in test mode and configuration of the Tx Power in normal mode.</p>
+<p><strong>Tx Power configuration in test mode</strong></p>
+<div class="figure align-center" id="id41">
+<span id="da1469xtxpowersettm"></span><img alt="../../../_images/da1469xTxPowerSetTM.png" src="../../../_images/da1469xTxPowerSetTM.png" />
+<p class="caption"><span class="caption-number">Figure 99 </span><span class="caption-text">Tx Power configuration in test mode</span></p>
+</div>
+<ul class="simple">
+<li><strong>Power index</strong>: the power index to set, accepts values in the range 0 - 15</li>
+<li><strong>Coarse attenuation</strong>: Accepts values in the range 0 - 255 (1 byte size). When the selected power index is equal to 1, coarse attenuation can be only 0, 1 or 2.</li>
+<li><strong>FEM fine attenuation</strong>: Accepts values in the range 0 - 6</li>
+</ul>
+<p><em>Sample log output:</em></p>
+<div class="figure align-center" id="id42">
+<span id="da1469xtxpowersettmlog"></span><img alt="../../../_images/da1469xTxPowerSetTMLog.png" src="../../../_images/da1469xTxPowerSetTMLog.png" />
+<p class="caption"><span class="caption-number">Figure 100 </span><span class="caption-text">Sample log output for Tx Power configuration in test mode (power index: 4, coarse attenuation: 40, FEM fine attenuation: 2)</span></p>
+</div>
+<p><strong>Tx Power configuration in normal mode</strong></p>
+<div class="figure align-center" id="id43">
+<span id="da1469xtxpowersetnm"></span><img alt="../../../_images/da1469xTxPowerSetNM.png" src="../../../_images/da1469xTxPowerSetNM.png" />
+<p class="caption"><span class="caption-number">Figure 101 </span><span class="caption-text">Tx Power configuration in normal mode</span></p>
+</div>
+<p>The user can set the power for each one of the following air operation types: Advertising, Scanning, Initiation and RF Test. Power index accepts values in the range 0-17.</p>
+<p><em>Sample log output:</em></p>
+<div class="figure align-center" id="id44">
+<span id="da1469xtxpowersetnmlog"></span><img alt="../../../_images/da1469xTxPowerSetNMLog.png" src="../../../_images/da1469xTxPowerSetNMLog.png" />
+<p class="caption"><span class="caption-number">Figure 102 </span><span class="caption-text">Sample log output for Tx Power configuration in normal mode (power index: 17, air operation: Advertising)</span></p>
+</div>
+</div>
+<div class="section" id="rf-calibration">
+<h3>5.1.2.7. RF Calibration<a class="headerlink" href="#rf-calibration" title="Permalink to this headline">¶</a></h3>
+<p>This panel is used to calibrate the RF. The user can select one of the calibration types and press the <em>Calibrate</em> button to start the RF calibration. The button <em>Get Results</em> returns the calibration results in the log.</p>
+<div class="figure align-center" id="id45">
+<span id="da1469xrfcalib"></span><img alt="../../../_images/da1469xRfCalib.png" src="../../../_images/da1469xRfCalib.png" />
+<p class="caption"><span class="caption-number">Figure 103 </span><span class="caption-text">RF Calibration</span></p>
+</div>
+<p><em>Sample log output:</em></p>
+<div class="figure align-center" id="id46">
+<span id="da1469xrfcaliblog"></span><img alt="../../../_images/da1469xRfCalibLog.png" src="../../../_images/da1469xRfCalibLog.png" />
+<p class="caption"><span class="caption-number">Figure 104 </span><span class="caption-text">Sample log output with RF Calibration results</span></p>
+</div>
+</div>
+</div>
+</div>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="../../index.html" class="btn btn-neutral float-left" title="5. Manager Operations" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../xtal_manager/xtal_manager.html" class="btn btn-neutral float-right" title="5.2. XTAL Manager" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023, Renesas Electronics Corporation.</p>
+  </div>
+
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+    <!-- Theme Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-ZXND4SB7CL"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-ZXND4SB7CL', {
+          'anonymize_ip': false,
+      });
+    </script> 
+
+</body>
+</html>

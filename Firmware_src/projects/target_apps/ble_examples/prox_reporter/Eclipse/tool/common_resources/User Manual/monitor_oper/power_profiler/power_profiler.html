@@ -1,0 +1,618 @@
+<!DOCTYPE html>
+<html class="writer-html4" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>6.2. Power Profiler &mdash; UM-B-083</title><link rel="stylesheet" href="../../_static/css/lpc_cs_theme.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/css/custom.css" type="text/css" /><link rel="shortcut icon" href="../../_static/favicon.ico"/>
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  <script id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../../_static/jquery.js"></script>
+        <script type="text/javascript" src="../../_static/underscore.js"></script>
+        <script type="text/javascript" src="../../_static/doctools.js"></script>
+        <script type="text/javascript" src="../../_static/language_data.js"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="6.3. Log" href="../log/log.html" />
+    <link rel="prev" title="6.1. Data Rate Monitor" href="../data_rate_monitor/data_rate_monitor.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../../index.html"><img src="../../_static/V-Reverse.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../inst_guide/inst_guide.html">1. Installation Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../getting_started/getting_started.html">2. Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../programmer_oper/index.html">3. Programmer Operations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../estimator/index.html">4. Estimator Operations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../manager_oper/index.html">5. Manager Operations</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">6. Monitor Operations</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../data_rate_monitor/data_rate_monitor.html">6.1. Data Rate Monitor</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">6.2. Power Profiler</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#power-profiler-ribbon-group">6.2.1. Power Profiler Ribbon group</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#chart-controls-and-menus">6.2.2. Chart controls and menus</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#power-profile-basic-usage">6.2.3. Power Profile basic usage</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#power-profiler-software-cursors">6.2.4. Power Profiler software cursors</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#power-profiler-control-panel">6.2.5. Power Profiler control panel</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#power-profiler-chart-controls">6.2.6. Power Profiler Chart Controls</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#chart-management-via-mouse">6.2.7. Chart management via mouse</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#chart-management-via-keyboard">6.2.8. Chart management via keyboard</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#power-profiler-configuration">6.2.9. Power Profiler configuration</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#h-w-settings">6.2.9.1. H/W Settings</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#chart-settings">6.2.9.2. Chart Settings</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#trigger-functions">6.2.9.3. Trigger Functions</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#calibration-procedure">6.2.10. Calibration Procedure</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#pmm1-calibration-procedure">6.2.10.1. PMM1 Calibration Procedure</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#pmm2-calibration-procedure">6.2.10.2. PMM2 Calibration Procedure</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#power-profiler-special-properties">6.2.11. Power Profiler special properties</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../log/log.html">6.3. Log</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../configurator/index.html">7. Configurator Operations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../cli/command_line_if.html">8. CLI implementation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../app_help/index.html">9. Application Help</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../troubleshooting/troubleshooting.html">10. Troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../appendices/index.html">11. Appendices</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../disclaimers_contact.html">12. Disclaimers &amp; Contact info</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">UM-B-083</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="../index.html">6. Monitor Operations</a> &raquo;</li>
+      <li>6.2. Power Profiler</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <div class="section" id="power-profiler">
+<span id="id1"></span><h1>6.2. Power Profiler<a class="headerlink" href="#power-profiler" title="Permalink to this headline">¶</a></h1>
+<p>The purpose of the ‘Power Profiler’ is to plot the current (and associated charge) drawn by the battery on the chip in real time over USB.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">The default view shown is Current(1)/Charge</p>
+</div>
+<div class="figure align-center" id="id6">
+<span id="profiler"></span><a class="reference internal image-reference" href="../../_images/profiler.png"><img alt="../../_images/profiler.png" src="../../_images/profiler.png" style="width: 948.0px; height: 538.0px;" /></a>
+<p class="caption"><span class="caption-number">Figure 125 </span><span class="caption-text">Power Profiler run snapshot</span></p>
+</div>
+<div class="section" id="power-profiler-ribbon-group">
+<h2>6.2.1. Power Profiler Ribbon group<a class="headerlink" href="#power-profiler-ribbon-group" title="Permalink to this headline">¶</a></h2>
+<p>Power profiler is of the most important Toolbox tools. SmartSnippets™ Toolbox provides a special group of functions on ribbon for this tool. The Power Profiler ribbon group opens automatically when Power Profiler tool is selected.</p>
+<span id="power-profiler-buttons"></span><table border="1" class="docutils" id="id2">
+<caption><span class="caption-number">Table 2 </span><span class="caption-text">Power profiler buttons</span><a class="headerlink" href="#id2" title="Permalink to this table">¶</a></caption>
+<colgroup>
+<col width="23%" />
+<col width="77%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Icon</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td><img alt="pexporttocsvfil" src="../../_images/exportCsv.png" /></td>
+<td>Exports Power Profiler data to CSV format</td>
+</tr>
+<tr class="row-odd"><td><img alt="pimportfromcsvf" src="../../_images/importCsv.png" /></td>
+<td>Imports data on Power Profiler from CSV file</td>
+</tr>
+<tr class="row-even"><td><img alt="pclearsecondary" src="../../_images/icons-small-clear-data.png" /></td>
+<td>Clears the secondary current data and hides it from the chart
+view</td>
+</tr>
+<tr class="row-odd"><td><img alt="pclearprimarycu" src="../../_images/icons-small-clear-data.png" /></td>
+<td>Clears the primary current data and hides it from the chart
+view</td>
+</tr>
+<tr class="row-even"><td><img alt="psnapshotchartw" src="../../_images/snapshot.png" /></td>
+<td>Takes an image snapshot of the Power Profiler chart window in
+.png format</td>
+</tr>
+<tr class="row-odd"><td><img alt="pconfig" src="../../_images/config.png" /></td>
+<td>Opens configuration dialog</td>
+</tr>
+<tr class="row-even"><td><img alt="pcalibrate" src="../../_images/calibrate.png" /></td>
+<td>Calibrates offset(s) and updates the offset value(s) used in the
+Current calculations.</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Data export / import for Power Measurement Module version 2 (PMM2):</strong></p>
+<p>In case of PMM2 user has the option to export data from multiple charts at once. When export is selected the list of charts that contain data captured the last time the
+start button was pressed is presented (doesn’t matter if the charts are currently visible) and user can select the data of which charts to be exported.
+Charge chart data are not exported since the charge values are estimated from the respective Ch1/Ch2 Current values.
+The data are saved in a different csv file per chart and all of them are zipped and saved to the zip file name user has provided. During import user can select
+either a single csv file to import data at a specific chart or a zip file that has been previously exported from Power Profiler or a folder containing csv files,
+that has been created by unzipping a zip file exported by Power Profiler tool. The data are loaded in the respective charts and and if the chart is not visible at
+the moment it becomes visible to present the loaded data.</p>
+<p>Power Profiler ribbon for Power Measurement Module version 1 (PMM1) includes also the following buttons under Chart View group:</p>
+<span id="power-profiler-pmm1-buttons"></span><table border="1" class="docutils" id="id3">
+<caption><span class="caption-number">Table 3 </span><span class="caption-text">Power profiler PMM1 buttons</span><a class="headerlink" href="#id3" title="Permalink to this table">¶</a></caption>
+<colgroup>
+<col width="23%" />
+<col width="77%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Icon</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td><img alt="pcurrent1charge" src="../../_images/CurrentAutoScaleAndCharge.png" /></td>
+<td>Shows View (Current 1 / Charge)</td>
+</tr>
+<tr class="row-odd"><td><img alt="pcurrent1curre2" src="../../_images/CurrentAutoScaleAndCurrentCustomScale.png" /></td>
+<td>Shows View (Current 1 / Current 2)</td>
+</tr>
+<tr class="row-even"><td><img alt="pcurrent2charge" src="../../_images/CurrentCustomScaleAndCharge.png" /></td>
+<td>Shows View (Current 2 / Charge)</td>
+</tr>
+</tbody>
+</table>
+<p>Every chart window supports the following plot types:</p>
+<p><strong>Current auto scale</strong>: On the chart are plotted the current data following the scale which is determined by the minimum and the maximum values of the current.</p>
+<p><strong>Current custom scale</strong>: On the chart are plotted the current data following the scale which is determined by user defined minimum and maximum values in the configuration dialog under the ‘Custom Scaling of Current Axis’.</p>
+<p><strong>Charge</strong>: On the chart are plotted the calculated charge values.</p>
+<p>If a PMM1 is detected, user can switch between the available view modes by pressing the corresponding toolbar buttons.</p>
+<p>Note that charts Current 1 and Current 2 plot the same data but may present them in a different scale. This can be achieved by selecting different axis minimum &amp; maximum values in Config Dialog &gt; Chart Settings &gt; Axis.</p>
+<p>Power Profiler ribbon for PMM2 includes also the following buttons:</p>
+<span id="power-profiler-pmm2-buttons"></span><table border="1" class="docutils" id="id4">
+<caption><span class="caption-number">Table 4 </span><span class="caption-text">Power profiler PMM2 buttons</span><a class="headerlink" href="#id4" title="Permalink to this table">¶</a></caption>
+<colgroup>
+<col width="23%" />
+<col width="77%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Icon</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td><img alt="presetLayout" src="../../_images/resetLayout.png" /></td>
+<td>Resets the docking frames layout of the charts (position, size,
+visible charts) to the default.</td>
+</tr>
+</tbody>
+</table>
+<p>PMM2 ribbon includes also the following ribbon groups:</p>
+<ul class="simple">
+<li><strong>Operation Mode</strong>: User can switch to <strong>Hibernation Mode</strong> in order to measure hibernation current. Hibernation mode measures Ch1 (Low) Current. A low pass filter can be applied to the measured values to reduce the noise. The low pass filter can be used only on hibernation mode. When user switches to hibernation mode, a popup will prompt user to automatically calibrate the offset first. This step is optional: If user has already calibrated the offset, calibration can be skipped. The same combo box can be used to exit the hibernation mode, by selecting the <strong>Normal</strong> mode.</li>
+<li><strong>Chart View</strong>: User can control the set of visible charts by clicking or unclicking the respective check boxes. For inputs 2 and 3, which represent channels 2 and 3 respectively, user can enable either the Current or the Voltage graph. By clicking the first check box next to <strong>CH2</strong> / <strong>CH3</strong> user can enable the Current chart and by clicking the second check box user can enable the Voltage chart. The first combo box includes the input signals for the Current chart while the second combo box includes the input signals for the Voltage chart. The set of visible charts and the input signals for channels 2 and 3 are saved in the project file and loaded again the next time the same project is used.</li>
+<li><strong>Digital Signals</strong>: User can control here the set of digital signals that are visible in the digital chart. Also by clicking on the signal name user can change its name. The new name should be unique. Both the set of the visible signals and their names are saved in the project file and loaded again the next time the same project is used. The <img alt="presetLayout" src="../../_images/resetLayout.png" /> button resets the signal names to the default signal names per family.</li>
+</ul>
+</div>
+<div class="section" id="chart-controls-and-menus">
+<h2>6.2.2. Chart controls and menus<a class="headerlink" href="#chart-controls-and-menus" title="Permalink to this headline">¶</a></h2>
+<p>By right clicking on a Power Profiler chart, a popup menu is presented with the following options:</p>
+<ul class="simple">
+<li><strong>Copy</strong>: Copies the chart as a picture. It can be then pasted in a document or Windows tools such as Paint.</li>
+<li><strong>Save as</strong>: Saves the chart as a picture at the location and with the name and format selected by the user.</li>
+<li><strong>Show domain axis</strong>: Shows the domain (Time) axis at the chart, if not already visible. Otherwise it hides it.</li>
+<li><strong>Change plot color</strong>: Presents a color chooser to select a new color for the plot.</li>
+<li><strong>Focus on detached graph</strong>: Applies to PMM2 only and only to graphs/charts that have been externalized (See <a class="reference internal" href="#externalize"><span class="std std-ref">next paragraph</span></a>). This menu presents a list of all the externalized graphs and user can select which graph to focus on.</li>
+</ul>
+<p id="externalize">For PMM2 devices, charts are presented as docking frames. This allows user to close them by pressing the x button, drag them vertically to change their position or size and drag them outside the Toolbox tool to externalize them. External charts can be maximized to take advantage of the full screen size. User may also use the <img alt="pexternalize" src="../../_images/externalize.png" /> button on the left of the chart to externalize it and the <img alt="pinternalize" src="../../_images/internalize.png" /> button to bring it back in the Power Profiler tool.</p>
+</div>
+<div class="section" id="power-profile-basic-usage">
+<h2>6.2.3. Power Profile basic usage<a class="headerlink" href="#power-profile-basic-usage" title="Permalink to this headline">¶</a></h2>
+<p>User can initiate the data capturing process using the buttons under the <strong>Control</strong> tab located on the right side of the Power Profiler tool. The following steps can be followed:</p>
+<ul class="simple">
+<li>Make sure an application is already running so that meaningful data instead of noise if captured by Power Profiler.</li>
+<li>Switch to the Power Profiler tool by clicking toolbar’s Power Profiler tool under the Monitor group.</li>
+<li>Press the <strong>Initialize</strong> button and then the <strong>Start</strong> button from the Power Profiler Control tab in order to start the data capturing process.</li>
+</ul>
+<p>The Power Profiler should have now started capturing data and should be looking similar to the following picture:</p>
+<div class="figure align-center" id="id7">
+<span id="pp-capturing-data"></span><a class="reference internal image-reference" href="../../_images/pp_capturing_data.png"><img alt="../../_images/pp_capturing_data.png" src="../../_images/pp_capturing_data.png" style="width: 1200px; height: 400px;" /></a>
+<p class="caption"><span class="caption-number">Figure 126 </span><span class="caption-text">Power Profiler while capturing data</span></p>
+</div>
+<p>While capturing data:</p>
+<ul class="simple">
+<li>The ‘Peak Current (mA)’, the ‘Average Current (mA)’ and the ‘Charge (uC)’ values of the info panel are updated. In case of PMM2 the average low and high currents are also updated.</li>
+<li>The info panel also shows the ‘Sleep Mode’ of the current measurement: it can be either in ‘Deep Sleep’ or in ‘Extended Sleep’ mode (the mode is configurable through the configuration page, see below). While in sleep mode, Power Profiler still calculates the power dissipation during this period of inactivity by assuming a 550nA consumption while in Deep Sleep and a 1.2uA consumption while in Extended Sleep mode. This significantly improves the ‘Average Current (mA)’ measurement since it takes into account the power consumption for the entire period of time.</li>
+<li>The plot area is updated as new data is captured.</li>
+<li>It is recommended to use the zoom in/zoom out controls (and the other controls mentioned below) to adjust the plot viewport in a way that helps user understand what the running application is doing and identify the different patterns. Depending on how the application works, and after applying the proper zooming, user should be able to identify the mode that the application is on such as idle, sleep, receiving, transmitting, advertising etc. The following figure shows the same signal as before but after having zoomed in appropriately:</li>
+</ul>
+<div class="figure align-center" id="id8">
+<span id="pp-capturing-data-zoomed"></span><a class="reference internal image-reference" href="../../_images/pp_capturing_data_zoomed.png"><img alt="../../_images/pp_capturing_data_zoomed.png" src="../../_images/pp_capturing_data_zoomed.png" style="width: 1200px; height: 400px;" /></a>
+<p class="caption"><span class="caption-number">Figure 127 </span><span class="caption-text">Capturing data with proper zooming</span></p>
+</div>
+<p>To stop capturing measurements with the Power Profiler:</p>
+<ul class="simple">
+<li>If auto stop mode is disabled, the process will run indefinitely.</li>
+<li>If auto stop mode is enabled, after collecting a specific number of data samples, the data capturing process is terminated.</li>
+<li>By pressing the <strong>Stop</strong> button from the Power Profiler Control tab, user can terminate the process at any given time.</li>
+</ul>
+</div>
+<div class="section" id="power-profiler-software-cursors">
+<span id="cursors"></span><h2>6.2.4. Power Profiler software cursors<a class="headerlink" href="#power-profiler-software-cursors" title="Permalink to this headline">¶</a></h2>
+<p>User has the ability to insert a vertical cursor in the Power Profiler display (SW cursor) by toggling a specific GPIO in the SW running on the ARM Cortex M0 CPU. Instructions on how to implement this are described in detail in the document <a class="reference external" href="https://www.renesas.com/eu/en/document/apn/b-055-da14585-interfacing-external-memory">AN-B-055</a>, Renesas.</p>
+<p>The SW cursor provides an accurate correlation between the SW and the Power profile of the system in real time. The vertical line is not movable on the display window.</p>
+<div class="figure align-center" id="id9">
+<span id="ppcursor"></span><a class="reference internal image-reference" href="../../_images/ppCursor.png"><img alt="../../_images/ppCursor.png" src="../../_images/ppCursor.png" style="width: 1200px; height: 400px;" /></a>
+<p class="caption"><span class="caption-number">Figure 128 </span><span class="caption-text">Software cursors</span></p>
+</div>
+</div>
+<div class="section" id="power-profiler-control-panel">
+<h2>6.2.5. Power Profiler control panel<a class="headerlink" href="#power-profiler-control-panel" title="Permalink to this headline">¶</a></h2>
+<p><strong>Threshold (mA)</strong>: If ‘Auto Trigger’ is checked and start button is pressed, the data capturing process starts when signal exceeds the threshold value.</p>
+<p><strong>Time Interval (ms)</strong>: If ‘Auto Stop’ is checked and data capturing is in progress, the process stops automatically after ‘Time Interval’ ms.</p>
+</div>
+<div class="section" id="power-profiler-chart-controls">
+<h2>6.2.6. Power Profiler Chart Controls<a class="headerlink" href="#power-profiler-chart-controls" title="Permalink to this headline">¶</a></h2>
+<p>The <strong>Tools</strong> tab, that is located on the right side of the Power Profiler tool, provides tools to control the charts. User can work in any of the following tool modes under Tools tab:</p>
+<p><img alt="pselectmovetime" src="../../_images/select.png" /> <strong>Select/Move</strong>: Selection mode (standard). In this mode a cursor allows selecting ‘Time Marker’ objects in the chart. If Del key is pressed the selected ‘Time Marker’ gets deleted.</p>
+<p><img alt="pmeasuredifinte" src="../../_images/measure.png" /> <strong>Measure</strong>: In this mode a cursor allows showing distances of time, current and charge between two points of the chart window. While in this mode, if user presses any mouse button and moves the cursor, a line connecting these two points is drawn. The distance between the points is highlighted to the right of the second point of the line. It looks like ‘dt: [distance of time between two points] ms / dI: [distance of current between two points] mA’. If left mouse is pressed for a second time, the cursor is free to start a new measurement. Cursor can be switched to Select mode by pressing the Esc button.</p>
+<p><img alt="paddtimemarkett" src="../../_images/timeMarker.png" /> <strong>Add Time Marker</strong>: In this mode a cursor allows adding a new Timemarker when any mouse button is pressed.</p>
+</div>
+<div class="section" id="chart-management-via-mouse">
+<h2>6.2.7. Chart management via mouse<a class="headerlink" href="#chart-management-via-mouse" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li>Timemarker scrolling: while in <strong>Select</strong> mode, by clicking on any point of a Timemarker with the left mouse, holding the button pressed and then horizontally moving the cursor</li>
+<li>Chart scrolling: while in <strong>Select</strong> mode, by clicking on any point in the chart window, holding the button pressed and then horizontally moving the cursor</li>
+<li>Zoom In/Out: while in any mode, by moving the mouse wheel over the chart window</li>
+<li>Moving imported data: while in <strong>Select</strong> mode, user may select the secondary (imported) data by left clicking on the respective plot line and drag them on the horizontal axis. The plot line can be dragged when the <img alt="crossArrows" src="../../_images/crossArrows.png" /> cursor appears on it. This may be helpful in order to synchronize secondary with primary data and compare patterns that appear in both plots.</li>
+</ul>
+</div>
+<div class="section" id="chart-management-via-keyboard">
+<h2>6.2.8. Chart management via keyboard<a class="headerlink" href="#chart-management-via-keyboard" title="Permalink to this headline">¶</a></h2>
+<p>The user can manage the Power Profiler via the keyboard. To do so, the cursor should be above the Power Profiler graphs.</p>
+<ul class="simple">
+<li>Plus(+): zoom in</li>
+<li>Minus(-): zoom out</li>
+<li>Home: shift chart till the last bar</li>
+<li>End: shift chart till the first bar</li>
+<li>Page Up: shift chart in time axis by size of one window backwards</li>
+<li>Page Down: shift chart in time axis by size of one window forward</li>
+<li>Left Cursor: shift chart in time axis by size of 5% window backwards</li>
+<li>Right Cursor: shift chart in time axis by size of 5% window forward</li>
+<li>Del: Delete the selected Time Marker</li>
+<li>F12: Takes an image snapshot of chart window in png format. The path where snapshots are saved can be specified in the Config dialog &gt; Chart Settings &gt; Snapshot File Path.</li>
+</ul>
+</div>
+<div class="section" id="power-profiler-configuration">
+<h2>6.2.9. Power Profiler configuration<a class="headerlink" href="#power-profiler-configuration" title="Permalink to this headline">¶</a></h2>
+<p>By pressing the ‘Config’ button from the Power Profiler ribbon group, the Power Profiler configuration dialog shows up:</p>
+<div class="figure align-center" id="id10">
+<span id="power-profiler-conf-dialog-hw-settings"></span><a class="reference internal image-reference" href="../../_images/power_profiler_conf_dialog_hw_settings.png"><img alt="../../_images/power_profiler_conf_dialog_hw_settings.png" src="../../_images/power_profiler_conf_dialog_hw_settings.png" style="width: 761.0px; height: 506.0px;" /></a>
+<p class="caption"><span class="caption-number">Figure 129 </span><span class="caption-text">Configuration HW Settings</span></p>
+</div>
+<div class="section" id="h-w-settings">
+<h3>6.2.9.1. H/W Settings<a class="headerlink" href="#h-w-settings" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><strong>Voltage (V)</strong>:The voltage to be used for the charge and energy calculations. Possible range is 1.8 to 4.3V. The default setting is 3.0V</li>
+<li><strong>Calibration offset (mA)</strong>:Determines the offset value while converting captured values to current (in mA) values. See below the ‘Calibration Procedure’ section for more details. If a PMM2 has been detected, calibration offsets for both channel 1 and channel 2 will be presented at this tab.</li>
+<li><strong>Multiplication factor</strong>: Determines the multiplier value while converting captured values to current (in mA) values. Default value is 100. For DA1468x chips consult the following <a class="reference internal" href="#id5"><span class="std std-numref">Table 5</span></a></li>
+</ul>
+<span id="multiplication-factor-for-da1468x"></span><table border="1" class="docutils" id="id5">
+<caption><span class="caption-number">Table 5 </span><span class="caption-text">Multiplication factor for DA1468x</span><a class="headerlink" href="#id5" title="Permalink to this table">¶</a></caption>
+<colgroup>
+<col width="57%" />
+<col width="43%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">DA1468x motherboard revision</th>
+<th class="head">Multiplication factor</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>revC</td>
+<td>50</td>
+</tr>
+<tr class="row-odd"><td>revD</td>
+<td>100</td>
+</tr>
+<tr class="row-even"><td>revE</td>
+<td>100</td>
+</tr>
+</tbody>
+</table>
+<ul class="simple">
+<li><strong>Samples for SW cursor</strong>: How many zero samples to collect before adding a S/W cursor to the chart.</li>
+<li><strong>SW Cursor tolerance (uA)</strong>: The upper threshold under which samples are considered to be equal to zero. Related to S/W cursors and the fact that although we expect to measure 0uA during a S/W cursor, in reality we measure values that are usually lower than 5uA.</li>
+<li><strong>SW Cursors to Stop</strong>: How many SW cursors to add to the chart before stopping data capture. Data capture is stopped with a time offset of 100 ms.</li>
+<li><strong>Time offset of SW Cursor (ms)</strong>: Correction time offset of SW cursors.</li>
+<li><strong>Auto trigger threshold (mA)</strong>: Determines the initial value of ‘Threshold’ textbox on control panel</li>
+<li><strong>Auto stop sampling time (ms)</strong>: Determines the initial value of ‘Time Interval’ textbox on control panel</li>
+<li><strong>Pre trigger sampling time (ms)</strong>: The amount of captured data (in ms), just before the start of data capturing process</li>
+<li><strong>Max allowed sampling time (ms)</strong>: The maximum allowed sampling time during the data capturing process</li>
+<li><strong>Sample Rate</strong>: The number of data samples collected from the board.</li>
+<li><strong>Sleep Mode</strong>: Determines whether the measurement is done while in Extended or Deep sleep mode</li>
+<li><strong>Sleep Mode Threshold (uA)</strong>: The upper threshold under which measured values are considered equal to the standard current dissipation for that mode (1.2uA if in ‘Extended Sleep’ and 0.55uA if in ‘Deep Sleep’ mode)</li>
+<li><strong>Sleep Mode Extended (uA)</strong>: Current dissipation taking count when Sleep Mode Extended selected.</li>
+<li><strong>Sleep Mode Deep (uA)</strong>: Current dissipation taking count when Sleep Mode Deep selected.</li>
+<li><strong>CSV File path</strong>: Export/Import destination for csv files</li>
+<li><strong>Enable UART protocol parser</strong>: Open UART and wait for commands. This feature is not yet fully implemented.</li>
+</ul>
+<div class="figure align-center" id="id11">
+<span id="power-profiler-configuration2"></span><a class="reference internal image-reference" href="../../_images/power_profiler_configuration2.png"><img alt="../../_images/power_profiler_configuration2.png" src="../../_images/power_profiler_configuration2.png" style="width: 761.0px; height: 506.0px;" /></a>
+<p class="caption"><span class="caption-number">Figure 130 </span><span class="caption-text">Configuration Chart Settings</span></p>
+</div>
+</div>
+<div class="section" id="chart-settings">
+<h3>6.2.9.2. Chart Settings<a class="headerlink" href="#chart-settings" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><strong>Show current value when mouse on graph</strong>: If checked, a tooltip shows the time and current value when the mouse is over the waveform</li>
+<li><strong>Create event markers on max sample values</strong>: If checked, a marker is created on maximum current value</li>
+<li><strong>Enable Level Of Detail process (LOD)</strong>: If checked, Power Profiler will compute a multilevel approximation of waveform.</li>
+<li><strong>Max Number of Samples To Draw</strong>: it allows to control the plot quality by determining the maximum number of samples to draw during downsampling</li>
+<li><strong>Snapshot File Path</strong>: Save destination folder for snapshot .png files.</li>
+<li><strong>Custom scaling of Current Axis</strong>:  User defined current axis range to be used by the corresponding plot type.</li>
+</ul>
+</div>
+<div class="section" id="trigger-functions">
+<h3>6.2.9.3. Trigger Functions<a class="headerlink" href="#trigger-functions" title="Permalink to this headline">¶</a></h3>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Trigger Functions tab is available only for PMM2.</p>
+</div>
+<div class="figure align-center" id="id12">
+<span id="start-trigger-func"></span><a class="reference internal image-reference" href="../../_images/start_trigger_func.png"><img alt="../../_images/start_trigger_func.png" src="../../_images/start_trigger_func.png" style="width: 919.8px; height: 594.9px;" /></a>
+<p class="caption"><span class="caption-number">Figure 131 </span><span class="caption-text">Trigger Function with single trigger that starts data capture</span></p>
+</div>
+<div class="figure align-center" id="id13">
+<span id="single-trigger-func"></span><a class="reference internal image-reference" href="../../_images/single_trigger_func.png"><img alt="../../_images/single_trigger_func.png" src="../../_images/single_trigger_func.png" style="width: 919.8px; height: 594.9px;" /></a>
+<p class="caption"><span class="caption-number">Figure 132 </span><span class="caption-text">Trigger Function with single trigger that stops data capture</span></p>
+</div>
+<div class="figure align-center" id="id14">
+<span id="comb-trigger-func"></span><a class="reference internal image-reference" href="../../_images/comb_trigger_func.png"><img alt="../../_images/comb_trigger_func.png" src="../../_images/comb_trigger_func.png" style="width: 919.8px; height: 594.9px;" /></a>
+<p class="caption"><span class="caption-number">Figure 133 </span><span class="caption-text">Trigger Functions with combination of triggers that stop data capture</span></p>
+</div>
+<p>The Trigger functions tab  may be used to specify conditions under which data capturing will be started or stopped.
+The conditions refer to changes on specific triggers that are presented on the digital chart.
+Two types of conditions are available: A trigger rises x times or a trigger falls x times.
+On the top of the dialog, as indicated in <a class="reference internal" href="#start-trigger-func"><span class="std std-numref">Figure 131</span></a>, <a class="reference internal" href="#single-trigger-func"><span class="std std-numref">Figure 132</span></a> and <a class="reference internal" href="#comb-trigger-func"><span class="std std-numref">Figure 133</span></a>, user is able to create a new rule to be added to the
+table of rules / trigger functions.
+The trigger function can either start the data capture when satisfied or stop it.</p>
+<div class="figure align-center" id="id15">
+<span id="start-trigger-chart"></span><a class="reference internal image-reference" href="../../_images/start_trigger_chart.png"><img alt="../../_images/start_trigger_chart.png" src="../../_images/start_trigger_chart.png" style="width: 707.0px; height: 475.0px;" /></a>
+<p class="caption"><span class="caption-number">Figure 134 </span><span class="caption-text">Chart that fulfills trigger function of figure <a class="reference internal" href="#start-trigger-func"><span class="std std-numref">Figure 131</span></a></span></p>
+</div>
+<div class="figure align-center" id="id16">
+<span id="start-trigger-log"></span><a class="reference internal image-reference" href="../../_images/start_trigger_log.png"><img alt="../../_images/start_trigger_log.png" src="../../_images/start_trigger_log.png" style="width: 445.0px; height: 91.0px;" /></a>
+<p class="caption"><span class="caption-number">Figure 135 </span><span class="caption-text">Log message when function of figure <a class="reference internal" href="#start-trigger-func"><span class="std std-numref">Figure 131</span></a> is triggered.</span></p>
+</div>
+<ul class="simple">
+<li><strong>Start Trigger Function</strong>: When one or more start trigger functions have been added to the triggers’ table, no data is presented on the charts until one of the start trigger functions is executed.
+In the meanwhile stop trigger rules are not checked. The first start trigger rule to be satisfied triggers data collection, presentation and a time marker to be added on the chart.
+The rest of the start rules are ingored at this point and only stop trigger rules, if any, are checked. Note that there is another way to conditionally trigger data capture start.
+User may check the <em>Auto Trigger</em> checkbox in the Control panel of Power Profiler tool and specify a threshold current above which values will be collected. When <em>Auto Trigger</em> has
+been selected and also start trigger functions have been specified, start trigger functions are the ones that are checked in order to start data capture. In order to use the <em>Auto Trigger</em>
+functionality, the user should not define any start trigger functions.</li>
+<li><strong>Stop Trigger Function</strong>: The first stop rule / trigger function that will be satisfied among them will cause data capture to be stopped and a cursor to be added to the chart which indicates the
+time at which the rule was satisfied. As mentioned before, when start trigger functions have also been satisfied, first a start trigger function may be executed and then Toolbox starts
+checking the stop trigger functions.</li>
+</ul>
+<p>There are two types of trigger functions that can be created for both start and stop trigger functions:</p>
+<ul class="simple">
+<li><strong>Single Trigger Function</strong>:
+Select whether the trigger function should start or stop the data capture when it is satisfied from the respective radio buttons on the top of the dialog.
+Then Select from the triggers combo box the name of the trigger for this
+rule and from the state combo box either the Rises or the Falls state.
+In the <em>times</em> field the number of times that this trigger is expected to rise or fall is added.
+In the last combo box the dash (-) is selected to indicate that this is a single trigger rule.
+In case a stop trigger function has been specified, the user may also optionally add a delay after which data capturing will stop once the rule is satisfied.
+By pressing the <strong>Add</strong> button the rule is added to the table.
+See on figure <a class="reference internal" href="#single-trigger-chart"><span class="std std-numref">Figure 136</span></a> the result of trigger function of figure <a class="reference internal" href="#single-trigger-func"><span class="std std-numref">Figure 132</span></a>. <a class="reference internal" href="#single-trigger-log-message"><span class="std std-numref">Figure 137</span></a> indicates the log message when the
+trigger function is executed.</li>
+</ul>
+<div class="figure align-center" id="id17">
+<span id="single-trigger-chart"></span><a class="reference internal image-reference" href="../../_images/single_trigger_chart.png"><img alt="../../_images/single_trigger_chart.png" src="../../_images/single_trigger_chart.png" style="width: 628.0px; height: 478.0px;" /></a>
+<p class="caption"><span class="caption-number">Figure 136 </span><span class="caption-text">Chart that fulfills trigger function of figure <a class="reference internal" href="#single-trigger-func"><span class="std std-numref">Figure 132</span></a></span></p>
+</div>
+<div class="figure align-center" id="id18">
+<span id="single-trigger-log-message"></span><a class="reference internal image-reference" href="../../_images/single_trigger_log_message.png"><img alt="../../_images/single_trigger_log_message.png" src="../../_images/single_trigger_log_message.png" style="width: 510.0px; height: 71.0px;" /></a>
+<p class="caption"><span class="caption-number">Figure 137 </span><span class="caption-text">Log message when function of figure <a class="reference internal" href="#single-trigger-func"><span class="std std-numref">Figure 132</span></a> is triggered.</span></p>
+</div>
+<ul class="simple">
+<li><strong>Trigger Combination Function</strong>:
+When user selects AND at the last combo box of a single trigger rule, a second line is added and is able to combine
+another trigger with the first one. The rule is satisfied when both parts of the rule are satisfied. A rule combining
+two triggers may be either <strong>Asynchronous</strong> or <strong>Synchronous</strong>. Asynchronous means that the first part and the second
+part of the rule can be satisfied at any time, e.g. the first part at the beginning of the data capture and the second part 2000 ms later.
+Synchronous means that both parts should be satisfied <em>almost</em> at the same time.
+For example let’s suppose we have a rule stating that when TRIG0 rises 2 times and TRIG1 rises 3 times data capture should
+stop after 10 ms. When TRIG0 rises for the second time TRIG1 should also rise for the third time in order
+for the rule to be satisfied. Since we are capturing thousands of data per millisecond it is very difficult for
+both parts of the rule to be satisfied on exactly the same time. That’s why the <strong>Detection Window</strong> has been introduced.
+Enter a value in milliseconds to the detection window during which, if both parts of the rule are satisfied,
+the synchronous rule is also satisfied. Default value is 10 ms. The detection window starts the count down when either
+part of the rule is satisfied and when it is over we consider the rule as failed if the other part has not been satisfied yet.
+The following images indicate what happens when the combined trigger function of figure <a class="reference internal" href="#comb-trigger-func"><span class="std std-numref">Figure 133</span></a> is executed:</li>
+</ul>
+<div class="figure align-center" id="id19">
+<span id="comb-trigger-chart"></span><a class="reference internal image-reference" href="../../_images/comb_trigger_chart.png"><img alt="../../_images/comb_trigger_chart.png" src="../../_images/comb_trigger_chart.png" style="width: 670.0px; height: 474.0px;" /></a>
+<p class="caption"><span class="caption-number">Figure 138 </span><span class="caption-text">Chart that fulfills combination triggers of figure <a class="reference internal" href="#comb-trigger-func"><span class="std std-numref">Figure 133</span></a></span></p>
+</div>
+<div class="figure align-center" id="id20">
+<span id="comb-trigger-log-message"></span><a class="reference internal image-reference" href="../../_images/comb_trigger_log_message.png"><img alt="../../_images/comb_trigger_log_message.png" src="../../_images/comb_trigger_log_message.png" style="width: 582.0px; height: 74.0px;" /></a>
+<p class="caption"><span class="caption-number">Figure 139 </span><span class="caption-text">Log message when function of figure <a class="reference internal" href="#comb-trigger-func"><span class="std std-numref">Figure 133</span></a> is triggered.</span></p>
+</div>
+<ul class="simple">
+<li>A time marker is added at the time where the trigger rule was satisfied. At the example presented here the time marker has been added at the moment TRIG1 rises for the 2rd time, where the second part
+of the trigger rule is also satisfied (the first part was already satisfied).</li>
+<li>The description of the trigger rule which caused data capturing to stop is added to the log in green font.</li>
+<li>Data capturing stops after the delay time, if any, that has been specified in the rule. Even if this delay is 0, we will see some more data after the trigger execution time marker because
+the buffered data we have already read from the device will be presented.</li>
+</ul>
+<p>User may select select one or more table rows by pressing the left Ctrl button and clicking on the rows of interest and delete them by pressing the <strong>Delete Selected</strong> button.
+By pressing the <strong>Delete All</strong> button the whole table is cleared. In order for the rules to be saved, applied on the next data capture and loaded again the next time the
+configuration dialog opens, press the <strong>Apply</strong> button. The trigger functions are also saved to the project file when the application exits and will be available again
+the next time Toolbox is launched using the same project.</p>
+</div>
+</div>
+<div class="section" id="calibration-procedure">
+<h2>6.2.10. Calibration Procedure<a class="headerlink" href="#calibration-procedure" title="Permalink to this headline">¶</a></h2>
+<p>In order to find the appropriate value for the <strong>Calibration Offset (mA)</strong> configuration setting in case of PMM1 or the <strong>CH1 Calibration Offset (A)</strong> and <strong>CH2 Calibration Offset (A)</strong>
+in case of PMM2, the following procedure can be followed:</p>
+<div class="section" id="pmm1-calibration-procedure">
+<h3>6.2.10.1. PMM1 Calibration Procedure<a class="headerlink" href="#pmm1-calibration-procedure" title="Permalink to this headline">¶</a></h3>
+<p>By default, Power Profiler prefills the <strong>Calibration offset (mA)</strong> configuration setting with value -0.01724mA for PMM1, which is a good approximation for the default 3.0V supply voltage.</p>
+<p>If the supply voltage is different, or more accurate measurements are required, the following steps can be followed in order to remove any added load introduced by the main board (motherboard):</p>
+<ul class="simple">
+<li>Connect the motherboard to the PC.</li>
+<li>Remove the daughter board so that it does not dissipate any power. Alternatively, if applicable, power off the daughterboard via the daughterboard power switch
+(the motherboard should still be powered on).</li>
+<li>Press the <strong>initialize</strong> button from the <em>Control</em> toolbar of Power Profiler tool in order to detect the PMM version.</li>
+<li>Press the <strong>Offset Calibration</strong> button from the <em>Controls</em> group of the ribbon. Data will be collected for about 10 seconds and then data capturing will automatically stop.</li>
+<li>Check the value displayed on the <strong>Avg Current (mA)</strong> field. This is the current introduced by the motherboard that we would like to subtract from subsequent measurements.</li>
+<li><strong>Avg Current (mA)</strong> value is multiplied with -1 and then set to the <strong>Calibration offset (mA)</strong> field of the Power Profiler configuration dialog after the calibration procedure. Since for PMM1 we are adding the offset to the received current value, a negative offset is expected and therefore we multiply the average current by -1.</li>
+<li>Connect (or alternatively switch on) the daughter board and follow the normal procedure for taking measurements.</li>
+<li>The value set in the configuration dialog for the offset will be saved in the project so that user does not have to follow the same procedure next time Toolbox is used with the same project.</li>
+</ul>
+<p>The following image explain the procedure described above:</p>
+<div class="figure align-center" id="id21">
+<span id="power-profiler-pp-calibration-after-stop"></span><a class="reference internal image-reference" href="../../_images/pp_calibration_after_stop.png"><img alt="../../_images/pp_calibration_after_stop.png" src="../../_images/pp_calibration_after_stop.png" style="width: 1200px; height: 400px;" /></a>
+<p class="caption"><span class="caption-number">Figure 140 </span><span class="caption-text">Note the ‘Avg Current (mA)’ value</span></p>
+</div>
+<div class="figure align-center" id="id22">
+<span id="power-profiler-pp-calibration-config-after"></span><a class="reference internal image-reference" href="../../_images/pp_calibration_config_after.png"><img alt="../../_images/pp_calibration_config_after.png" src="../../_images/pp_calibration_config_after.png" style="width: 766.0px; height: 506.0px;" /></a>
+<p class="caption"><span class="caption-number">Figure 141 </span><span class="caption-text">Calibration offset value updated after the calibration procedure</span></p>
+</div>
+<p>When the daughter board is removed from the DA14531 PRO motherboard during calibration the power to the SPI
+flash must also be disconnected by removing the jumper connecting pins 1 and 2 on J1.
+If this is not done then the calibration current is about 1.5-2mA
+(the flash must be drawing this as its CS pin is left floating due to the daughter board being disconnected).</p>
+</div>
+<div class="section" id="pmm2-calibration-procedure">
+<h3>6.2.10.2. PMM2 Calibration Procedure<a class="headerlink" href="#pmm2-calibration-procedure" title="Permalink to this headline">¶</a></h3>
+<p>By default, Power Profiler prefills the <strong>CH1 Calibration Offset (A)</strong> configuration setting with value 0.0000189 Ampere and the <strong>CH2 Calibration Offset (A)</strong> configuration setting with
+value -0.0005 Ampere, which is a good approximation for the default 3.0V supply voltage.
+CH1 Calibration Offset represents the offset used in the calculation of the Low Current, originating from channel 1 and CH2 Calibration Offset represents the offset used in the calculation
+of the High Current, originating from channel 2.</p>
+<p>If the supply voltage is different, or more accurate measurements are required, the following steps can be followed in order to remove any added load introduced by the main board (motherboard):</p>
+<ul class="simple">
+<li>Connect the motherboard to the PC.</li>
+<li>Remove the daughter board so that it does not dissipate any power. Alternatively, if applicable, power off the daughterboard via the daughterboard power switch
+(the motherboard should still be powered on).</li>
+<li>Press the <strong>initialize</strong> button from the <em>Control</em> toolbar of Power Profiler tool in order to detect the PMM2.</li>
+<li>Press the <strong>Offset Calibration</strong> button from the <em>Controls</em> group of the ribbon. Data will be collected for about 10 seconds and then data capturing will automatically stop.</li>
+<li>Check the values displayed on the <strong>Avg CH1 (Low) Current (A)</strong> and <strong>Avg CH2 (High) Current (A)</strong> fields. These are the current values introduced by the motherboard on each of the channels,
+that we would like to subtract from subsequent measurements.</li>
+<li><strong>Avg CH1 (Low) Current (A)</strong> value is automatically set to the <strong>CH1 Calibration offset (A)</strong> field and <strong>Avg CH2 (High) Current (A)</strong> value is automatically set to
+the <strong>CH2 Calibration offset (A)</strong> of the Power Profiler configuration dialog. Note that for PMM2 the offset values are subsrtacted from the measurements while data are captured, so there is no need to multiply the values by -1 like we do for PMM1.</li>
+<li>Connect (or alternatively switch on) the daughter board and follow the normal procedure for taking measurements.</li>
+<li>Values set in the configuration dialog for Channel 1 and Channel 2 offsets will be saved in the project so that user does not have to follow the same procedure next time Toolbox is
+used with the same project.</li>
+</ul>
+<div class="figure align-center" id="id23">
+<span id="power-profiler-pp-calibration-after-stop-pmm2"></span><a class="reference internal image-reference" href="../../_images/pp_calibration_after_stop_PMM2.png"><img alt="../../_images/pp_calibration_after_stop_PMM2.png" src="../../_images/pp_calibration_after_stop_PMM2.png" style="width: 1200px; height: 400px;" /></a>
+<p class="caption"><span class="caption-number">Figure 142 </span><span class="caption-text">Note the ‘CH1 Avg Current (A)’ and ‘CH2 Avg Current (A)’ values</span></p>
+</div>
+<div class="figure align-center" id="id24">
+<span id="power-profiler-pp-calibration-config-after-pmm2"></span><a class="reference internal image-reference" href="../../_images/pp_calibration_config_after_PMM2.png"><img alt="../../_images/pp_calibration_config_after_PMM2.png" src="../../_images/pp_calibration_config_after_PMM2.png" style="width: 772.0px; height: 544.0px;" /></a>
+<p class="caption"><span class="caption-number">Figure 143 </span><span class="caption-text">Calibration offset values for Channel 1 and Channel 2 are updated after the calibration procedure</span></p>
+</div>
+</div>
+</div>
+<div class="section" id="power-profiler-special-properties">
+<h2>6.2.11. Power Profiler special properties<a class="headerlink" href="#power-profiler-special-properties" title="Permalink to this headline">¶</a></h2>
+<ol class="arabic">
+<li><p class="first">Power Profiler Transfer Size property:
+User can change the transfer size for USB IN and OUT requests. Transfer size is especially critical when running
+SmartSnippets™ Toolbox on Linux OS over a virtual machine environment.
+The default size used is 16000 bytes and acceptable values are multiples of 64 bytes between 64 bytes and 64k bytes.
+In order to override the default value, set the <em>POWER_PROFILER_TRANSFER_SIZE</em> property in properties.txt file.</p>
+<div class="literal-block-wrapper docutils container" id="code-defining-the-power-profiler-transfer-size-property">
+<span id="defining-the-power-profiler-transfer-size-property"></span><div class="code-block-caption"><span class="caption-number">Code 1 </span><span class="caption-text">Code defining the POWER_PROFILER_TRANSFER_SIZE property</span><a class="headerlink" href="#code-defining-the-power-profiler-transfer-size-property" title="Permalink to this code">¶</a></div>
+<div class="highlight-properties notranslate"><div class="highlight"><pre><span></span><span class="na">POWER_PROFILER_TRANSFER_SIZE</span><span class="o">=</span><span class="s">65536</span>
+</pre></div>
+</div>
+</div>
+<p>Location of <em>properties.txt</em> file is in user’s home directory under SmartSnippetsToolbox folder. e.g.</p>
+<p><code class="docutils literal notranslate"><span class="pre">C:\Users\&lt;user&gt;\SmartSnippetsToolbox\properties.txt</span></code></p>
+<p>The default value has been tested and proved to be the maximum transfer size that ensures stable performance of Power Profile
+when running on Linux OS over a virtual machine environment.</p>
+</li>
+<li><p class="first">Use of older motherboard for DA14585-6, DA14531.
+When using older motherboards marked as P_VC the following property should be set in the forementioned <em>properties.txt</em> file
+to get more accurate results from Power Profiler tool.</p>
+<div class="literal-block-wrapper docutils container" id="code-defining-the-use-pv-c-board-property">
+<span id="defining-the-use-pv-c-board-property"></span><div class="code-block-caption"><span class="caption-number">Code 2 </span><span class="caption-text">Code defining the USE_PV_C_BOARD property</span><a class="headerlink" href="#code-defining-the-use-pv-c-board-property" title="Permalink to this code">¶</a></div>
+<div class="highlight-properties notranslate"><div class="highlight"><pre><span></span><span class="na">USE_PV_C_BOARD</span><span class="o">=</span><span class="s">true</span>
+</pre></div>
+</div>
+</div>
+</li>
+</ol>
+</div>
+</div>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="../data_rate_monitor/data_rate_monitor.html" class="btn btn-neutral float-left" title="6.1. Data Rate Monitor" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../log/log.html" class="btn btn-neutral float-right" title="6.3. Log" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023, Renesas Electronics Corporation.</p>
+  </div>
+
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+    <!-- Theme Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-ZXND4SB7CL"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-ZXND4SB7CL', {
+          'anonymize_ip': false,
+      });
+    </script> 
+
+</body>
+</html>

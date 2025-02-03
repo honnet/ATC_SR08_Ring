@@ -1,0 +1,11 @@
+Estimator Operations
+====================
+
+.. toctree::
+   :maxdepth: 1
+   
+   graphics_fps_estimator/graphics_fps_estimator.rst
+   lifetime_estimator/lifetime_estimator.rst
+   sleep_mode_advisor/sleep_mode_advisor.rst
+   
+

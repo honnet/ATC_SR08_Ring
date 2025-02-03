@@ -1,0 +1,28 @@
+Manager Operations
+==================
+
+
+.. raw:: html
+
+   <h3 class="com-dev-oper">Common operations</h3>
+
+
+.. toctree::
+   :maxdepth: 1
+   
+   common_oper/rf_master/rf_master.rst
+   common_oper/xtal_manager/xtal_manager.rst
+
+.. raw:: html
+
+   <h3 class="com-dev-oper">Device operations</h3>
+
+
+.. toctree::
+   :maxdepth: 1
+   
+   device_oper/io_manager/io_manager.rst
+   device_oper/register_access/register_access.rst
+   device_oper/terminal_scripting/terminal_scripting.rst
+   device_oper/uart_terminal/uart_terminal.rst
+

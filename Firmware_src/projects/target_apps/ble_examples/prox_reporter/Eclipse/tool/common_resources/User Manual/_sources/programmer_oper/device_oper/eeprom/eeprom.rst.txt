@@ -1,0 +1,51 @@
+.. include:: <isonum.txt>
+
+.. _eeprom_prog:
+
+=================
+EEPROM Programmer
+=================
+
+
+.. note::
+
+	This tool applies to DA14580/581/583, DA14585/6 and DA1453x family devices.
+
+EEPROM Programmer is used for downloading an image file to the EEPROM Memory.
+
+.. _eepromProgrammer:
+.. figure:: images/eepromProgrammer.png
+   :align: center
+   
+   EEPROM Programmer
+
+The user can select a .hex or binary image file in order to program it (see :ref:`mkImage`) and burn it to the EEPROM Memory. The following actions are available:
+
+* **Connect**: Special firmware is downloaded to the chip to allow the user interact with the EEPROM memory. This is a mandatory step before enabling the other actions. Please note that this firmware is different from the firmware downloaded when pressing the 'Connect' button on the OTP Image tab. If a 'CRC does not match' shows up, please press the 'Connect' button again and then the hardware reset button on the board to restart the download process.
+* **Read 32KB**: The EEPROM memory is always read in 32KByte blocks starting from the specified offset. This offset cannot be greater than the maximum EEPROM Memory size. Since the application does not know the EEPROM memory size, the user can specify it by filling the 'EEPROM Memory size (HEX, in bytes)' field. If the user does not know the size of the EEPROM memory, a default value of 128KB is used.
+* **Erase with 1**: The whole EEPROM memory is erased with value 0xFF. The erase process can take a lot of time, depending on the memory size.
+* **Erase with 0**: The whole EEPROM memory is erased with value 0x00. 
+* **Burn**: Data is written starting at the selected offset.
+* **Burn & Verify**: Adds a verification step after the burn process. After burning data to EEPROM memory, it is verified that the contents of the memory are the same with the contents of the file that has been burned.
+* **Save**: By pressing the Save button, the user has ability to save EEPROM memory contents to a file. A dialog will popup, in order to select the output file, the offset and the number of EEPROM memory bytes to save. 
+
+.. _saveToFile-eeprom:
+.. figure:: images/saveToFile.png
+   :align: center
+   
+   EEPROM save memory to file
+
+.. note::
+    On **Burn** and **Burn & Verify** user cannot write more than 0xFFFF bytes at a time on DA14585 and DA14586 chips.
+
+The following memory types are currently supported: 
+
+* I2C EEPROM M24M01-R
+
+More information is given in document AN-B-055_ (for DA14585/6), Renesas. 
+If someone wants to support other EEPROM flash types, he/she has to modify the flash programmer application included in 
+Renesas's SmartSnippets\ |trade| DA14585/6 SDK ``DA145xx_SDK\\6.0.14.1114\\utilities\\flash_programmer`` 
+and replace flash_programmer.bin file in folder ``resources\\SupportPackages\\DA14585-586\\toolbox_resources\\common`` under Toolbox installation directory.
+
+.. _AN-B-055: https://www.renesas.com/eu/en/document/apn/b-055-da14585-interfacing-external-memory?language=en
+

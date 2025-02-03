@@ -1,0 +1,47 @@
+.. include:: <isonum.txt>
+
+Connect and detect the device
+-----------------------------
+
+#. Plug in the motherboard with the attached device on the computer and wait for the *new device found* windows wizard to complete.
+ 
+#. Open SmartSnippets\ |trade| Toolbox and select from the menu **Board -> Detect Device**
+
+   .. _board_detect_device:
+   .. figure:: images/board_detect_device.png
+      :align: center
+      :scale: 100%
+   
+      Board -> Detect Device menu item
+
+#. Wait for the detection process to compete.
+
+   .. _detection_process:
+   .. figure:: images/detection_process.png
+      :align: center
+      :scale: 100%
+   
+      Detection process
+
+#. Check Log window for any actions asked from the user (for example user may be asked to press the RESET button on the motherboard).
+
+   .. _log_window_action:
+   .. figure:: images/log_window_action.png
+      :align: center
+      :scale: 100%
+      
+      Log window action
+
+#. When the process is finished a window like the following appears:
+
+   .. _detection_result:
+   .. figure:: images/detection_result.png
+      :align: center
+      :scale: 100%
+      
+      Detection results
+
+#. Press **OK**. The menu items **Board->UART**, **Board->Power Profiler** and **Board->JTAG** are updated 
+   with ports and jtag serial numbers found on the attached device.
+
+

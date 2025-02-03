@@ -1,0 +1,587 @@
+<!DOCTYPE html>
+<html class="writer-html4" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>11.1. User interface &mdash; UM-B-083</title><link rel="stylesheet" href="../_static/css/lpc_cs_theme.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/custom.css" type="text/css" /><link rel="shortcut icon" href="../_static/favicon.ico"/>
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+        <script type="text/javascript" src="../_static/language_data.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="11.2. Quick Start Guide" href="quick_start/index.html" />
+    <link rel="prev" title="11. Appendices" href="index.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../index.html"><img src="../_static/V-Reverse.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../inst_guide/inst_guide.html">1. Installation Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../getting_started/getting_started.html">2. Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../programmer_oper/index.html">3. Programmer Operations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../estimator/index.html">4. Estimator Operations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../manager_oper/index.html">5. Manager Operations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../monitor_oper/index.html">6. Monitor Operations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../configurator/index.html">7. Configurator Operations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../cli/command_line_if.html">8. CLI implementation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../app_help/index.html">9. Application Help</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../troubleshooting/troubleshooting.html">10. Troubleshooting</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">11. Appendices</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">11.1. User interface</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#the-ribbon-menu">11.1.1. The ribbon menu</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#group-view">11.1.2. Group <em>View</em></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#group-programmer">11.1.3. Group <em>Programmer</em></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#group-manager">11.1.4. Group <em>Manager</em></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#group-configurator">11.1.5. Group <em>Configurator</em></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#group-monitor">11.1.6. Group <em>Monitor</em></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#group-estimator">11.1.7. Group <em>Estimator</em></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#tool-specific-groups">11.1.8. Tool specific groups</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#ribbon-menus">11.1.9. Ribbon Menus</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#project-menu">11.1.10. Project Menu</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#board-menu">11.1.11. Board Menu</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#settings-menu">11.1.12. Settings Menu</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#help-menu">11.1.13. Help Menu</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="quick_start/index.html">11.2. Quick Start Guide</a></li>
+<li class="toctree-l2"><a class="reference internal" href="list_of_figures.html">11.3. List of Figures</a></li>
+<li class="toctree-l2"><a class="reference internal" href="list_of_tables.html">11.4. List of Tables</a></li>
+<li class="toctree-l2"><a class="reference internal" href="list_of_codes.html">11.5. List of Codes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Appendix_A.html">11.6. Appendix A - RF Master firmware</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Appendix_B.html">11.7. Appendix B - Battery Lifetime Estimator CLI sample input and parameters files</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../disclaimers_contact.html">12. Disclaimers &amp; Contact info</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">UM-B-083</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="index.html">11. Appendices</a> &raquo;</li>
+      <li>11.1. User interface</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <div class="section" id="user-interface">
+<h1>11.1. User interface<a class="headerlink" href="#user-interface" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="the-ribbon-menu">
+<h2>11.1.1. The ribbon menu<a class="headerlink" href="#the-ribbon-menu" title="Permalink to this headline">¶</a></h2>
+<p>From version 4.7 SmartSnippets™ Toolbox introduces ribbon menu to access its tools and functions. Tools are grouped under 5 categories for easy access: Programmer, Manager, Configurator, Monitor and Estimator. The tools under each group and the set of available groups depend on the selected device: different toolset is available per device family.
+SmartSnippets™ Toolbox even allows for creating custom layouts with the tools of interest for faster and accurate access.</p>
+<div class="figure align-center" id="id11">
+<span id="main-ribbon-menu"></span><img alt="../_images/main_ribbon_menu.png" src="../_images/main_ribbon_menu.png" />
+<p class="caption"><span class="caption-number">Figure 161 </span><span class="caption-text">SmartSnippets™ Toolbox ribbon menu</span></p>
+</div>
+<p>The following sections introduces the tools available under each ribbon group. Only a brief description of each tool is presented in the following section. Please refer to the left side menu for full tool presentation.
+Note that some of the groups are not available for all families. For example Configurator group is not available for DA1468x, DA1469x, DA1470x and DA1459x families and Estimator group is not available for DA1468x and DA1469x families.
+Each tool under a group is accessible through a dedicated button. By clicking on a button, the corresponding window becomes visible and takes focus.
+Moving the mouse over the button will provide a small description of each SmartSnippets™ Toolbox tool.</p>
+</div>
+<div class="section" id="group-view">
+<h2>11.1.2. Group <em>View</em><a class="headerlink" href="#group-view" title="Permalink to this headline">¶</a></h2>
+<p>This group contains buttons that help user to organize the application view layout. User can load the default or last saved view layout for this family,
+create new or delete a previously created view layout.</p>
+<div class="figure align-center" id="id12">
+<span id="workspacegroup"></span><img alt="../_images/workspaceGroup.png" src="../_images/workspaceGroup.png" />
+<p class="caption"><span class="caption-number">Figure 162 </span><span class="caption-text">View ribbon group</span></p>
+</div>
+<span id="view-group-buttons"></span><table border="1" class="docutils" id="id1">
+<caption><span class="caption-number">Table 8 </span><span class="caption-text">View group buttons</span><a class="headerlink" href="#id1" title="Permalink to this table">¶</a></caption>
+<colgroup>
+<col width="13%" />
+<col width="87%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Icon</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td><img alt="llate" src="../_images/latestUserSpecified.png" /></td>
+<td>Previous user specified view layout is the latest layout that has
+been saved for each board family. Latest view layout is saved
+when user changes family or when user exits Toolbox</td>
+</tr>
+<tr class="row-odd"><td><img alt="ldefa" src="../_images/loadDefault1.png" /></td>
+<td>Load default view layout which includes Power Profiler tool and
+some Estimator group tools available only for certain families.</td>
+</tr>
+<tr class="row-even"><td><img alt="lcrea" src="../_images/save-layout.png" /></td>
+<td>Save new custom view layout will save the locations and sizes of
+all currently opened tools</td>
+</tr>
+<tr class="row-odd"><td><img alt="lload" src="../_images/loadLayout.png" /></td>
+<td>Load custom view layout</td>
+</tr>
+<tr class="row-even"><td><img alt="ldele" src="../_images/deleteLayout.png" /></td>
+<td>Delete custom view layout</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="group-programmer">
+<h2>11.1.3. Group <em>Programmer</em><a class="headerlink" href="#group-programmer" title="Permalink to this headline">¶</a></h2>
+<p>Programmer group contains all the tools needed to program any memory resource available on the DK as well as the SOC such as OTP, external or embedded FLASH for code, external FLASH or EEPROM for data etc.</p>
+<div class="figure align-center" id="id13">
+<span id="programmergroupda1453x"></span><img alt="../_images/programmerGroupDA1453x.png" src="../_images/programmerGroupDA1453x.png" />
+<p class="caption"><span class="caption-number">Figure 163 </span><span class="caption-text">Programmer ribbon group for DA1453x family</span></p>
+</div>
+<div class="figure align-center" id="id14">
+<span id="programmergroupda1469x"></span><img alt="../_images/programmerGroupDA1469x.png" src="../_images/programmerGroupDA1469x.png" />
+<p class="caption"><span class="caption-number">Figure 164 </span><span class="caption-text">Programmer ribbon group for DA1469x family</span></p>
+</div>
+<p>This group contains the following tools:</p>
+<span id="programmer-group-tools"></span><table border="1" class="tools-table docutils" id="id2">
+<caption><span class="caption-number">Table 9 </span><span class="caption-text">Programmer group tools</span><a class="headerlink" href="#id2" title="Permalink to this table">¶</a></caption>
+<colgroup>
+<col width="28%" />
+<col width="72%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Icon</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td><img alt="otp" src="../_images/otp.png" /> <br />
+OTP</td>
+<td>Program OTP Memory (Reloaded version of OTP Programmer tools)</td>
+</tr>
+<tr class="row-odd"><td><img alt="eepromProg" src="../_images/eeprom.png" /> <br />
+EEPROM <br />
+Programmer</td>
+<td>Download image file to EEPROM</td>
+</tr>
+<tr class="row-even"><td><img alt="propHeader" src="../_images/proprietaryHeaderProgrammer.png" /> <br />
+Proprietary Header <br />
+Programmer</td>
+<td>Burn header or NVDS to EEPROM or SPI flash memory</td>
+</tr>
+<tr class="row-odd"><td><img alt="qspiPartTable" src="../_images/qspiPartTable.png" /> <br />
+QSPI Partition <br />
+Table</td>
+<td>Manage QSPI Flash partitions</td>
+</tr>
+<tr class="row-even"><td><img alt="flashCode" src="../_images/flashCodeData.png" /> <br />
+Flash <br /> Code</td>
+<td>Program the part of the Flash that contains executable code</td>
+</tr>
+<tr class="row-odd"><td><img alt="flashData" src="../_images/flashCodeData.png" /> <br />
+Flash <br /> Data</td>
+<td>Program the Flash</td>
+</tr>
+<tr class="row-even"><td><img alt="ram" src="../_images/ram.png" /> <br />
+RAM</td>
+<td>Program the System RAM</td>
+</tr>
+<tr class="row-odd"><td><img alt="otaServices" src="../_images/ota-services.png" /> <br />
+OTA <br /> Services</td>
+<td>Software patching and firmware download over the air</td>
+</tr>
+<tr class="row-even"><td><img alt="suota" src="../_images/ota-services.png" /> <br />
+SUOTA</td>
+<td>Software update over the air</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="group-manager">
+<h2>11.1.4. Group <em>Manager</em><a class="headerlink" href="#group-manager" title="Permalink to this headline">¶</a></h2>
+<p>Manager groups contains all the tools used for setting the SOC into predefined states for monitoring or testing real-time.</p>
+<div class="figure align-center" id="id15">
+<span id="managergroupda1453x"></span><img alt="../_images/managerGroupDA1453x.png" src="../_images/managerGroupDA1453x.png" />
+<p class="caption"><span class="caption-number">Figure 165 </span><span class="caption-text">Manager ribbon group for DA1453x family</span></p>
+</div>
+<div class="figure align-center" id="id16">
+<span id="managergroupda1469x"></span><img alt="../_images/managerGroupDA1469x.png" src="../_images/managerGroupDA1469x.png" />
+<p class="caption"><span class="caption-number">Figure 166 </span><span class="caption-text">Manager ribbon group for DA1469x family</span></p>
+</div>
+<p>This group contains the following tools:</p>
+<span id="manager-group-tools"></span><table border="1" class="tools-table docutils" id="id3">
+<caption><span class="caption-number">Table 10 </span><span class="caption-text">Manager group tools</span><a class="headerlink" href="#id3" title="Permalink to this table">¶</a></caption>
+<colgroup>
+<col width="29%" />
+<col width="71%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Icon</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td><img alt="rfMaster" src="../_images/rfMaster.png" /> <br />
+RF Master</td>
+<td>RF Master tests</td>
+</tr>
+<tr class="row-odd"><td><img alt="xtalManager" src="../_images/rfMaster.png" /> <br />
+XTAL <br /> Manager</td>
+<td>XTAL configuration</td>
+</tr>
+<tr class="row-even"><td><img alt="ioManager" src="../_images/rfMaster.png" /> <br />
+IO <br /> Manager</td>
+<td>GPIO configuration</td>
+</tr>
+<tr class="row-odd"><td><img alt="registerAccess" src="../_images/rfMaster.png" /> <br />
+Registers <br /> Access</td>
+<td>Registers’ configuration</td>
+</tr>
+<tr class="row-even"><td><img alt="terminal" src="../_images/terminal.png" /> <br />
+Terminal</td>
+<td>UART Terminal, available only when connection is over UART</td>
+</tr>
+<tr class="row-odd"><td><img alt="terminalScripting" src="../_images/terminalScripting.png" /> <br />
+Terminal <br /> Scripting</td>
+<td>Terminal Scripting</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="group-configurator">
+<h2>11.1.5. Group <em>Configurator</em><a class="headerlink" href="#group-configurator" title="Permalink to this headline">¶</a></h2>
+<p>The Configurator Group tools help in defining certain states of the SoC during the actual application. The output of these group’s tools shall be structures that are natively supported by the SDK.</p>
+<div class="figure align-center" id="id17">
+<span id="configuratorgroupda1453x"></span><img alt="../_images/configuratorGroupDA1453x.png" src="../_images/configuratorGroupDA1453x.png" />
+<p class="caption"><span class="caption-number">Figure 167 </span><span class="caption-text">Configurator ribbon group for DA1453x family</span></p>
+</div>
+<p>This group contains the following tools:</p>
+<span id="configurator-group-tools"></span><table border="1" class="tools-table docutils" id="id4">
+<caption><span class="caption-number">Table 11 </span><span class="caption-text">Configurator group tools</span><a class="headerlink" href="#id4" title="Permalink to this table">¶</a></caption>
+<colgroup>
+<col width="25%" />
+<col width="75%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Icon</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td><img alt="boardSetup" src="../_images/boardSetup.png" /> <br />
+Board <br /> Setup</td>
+<td>Manage communication with the chip</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="group-monitor">
+<h2>11.1.6. Group <em>Monitor</em><a class="headerlink" href="#group-monitor" title="Permalink to this headline">¶</a></h2>
+<p>This group of tools contains important monitoring applications that are of interest to a developer on Renesas’s DK and SDK. While some of these applications are passively printing values coming from a hardware-based measuring circuitry (Power Profiler), others need certain, code images to be downloaded so that they can display the required data.</p>
+<div class="figure align-center" id="id18">
+<span id="monitorgroupda1458x"></span><img alt="../_images/monitorGroupDA1458x.png" src="../_images/monitorGroupDA1458x.png" />
+<p class="caption"><span class="caption-number">Figure 168 </span><span class="caption-text">Monitor ribbon group for DA1458x family</span></p>
+</div>
+<p>This group contains the following tools:</p>
+<span id="monitor-group-tools"></span><table border="1" class="tools-table docutils" id="id5">
+<caption><span class="caption-number">Table 12 </span><span class="caption-text">Monitor group tools</span><a class="headerlink" href="#id5" title="Permalink to this table">¶</a></caption>
+<colgroup>
+<col width="28%" />
+<col width="72%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Icon</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td><img alt="log" src="../_images/log.png" /> <br />
+Log</td>
+<td>Log messages from all tools</td>
+</tr>
+<tr class="row-odd"><td><img alt="powerProfiler" src="../_images/powerProfiler.png" /> <br />
+Power <br /> Profiler</td>
+<td>Plot the current drawn by the chip’s battery</td>
+</tr>
+<tr class="row-even"><td><img alt="Data Rate Monitor" src="../_images/dataRate.png" /> <br />
+Data Rate <br /> Monitor</td>
+<td>Monitors the overall receive and transmit rate over Bluetooth</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="group-estimator">
+<h2>11.1.7. Group <em>Estimator</em><a class="headerlink" href="#group-estimator" title="Permalink to this headline">¶</a></h2>
+<p>Estimator group contains tools that allow the user to estimate various chip specific metrics by testing various usage scenarios.</p>
+<div class="figure align-center" id="id19">
+<span id="estimatorgroupda1458x"></span><img alt="../_images/estimatorGroupDA1458x.png" src="../_images/estimatorGroupDA1458x.png" />
+<p class="caption"><span class="caption-number">Figure 169 </span><span class="caption-text">Estimator ribbon group for DA1458x family</span></p>
+</div>
+<div class="figure align-center" id="id20">
+<span id="estimatorgroupda1470x"></span><img alt="../_images/estimatorGroupDA1470x.png" src="../_images/estimatorGroupDA1470x.png" />
+<p class="caption"><span class="caption-number">Figure 170 </span><span class="caption-text">Estimator ribbon group for DA1470x family</span></p>
+</div>
+<p>This group contains the following tools:</p>
+<span id="estimator-group-tools"></span><table border="1" class="tools-table docutils" id="id6">
+<caption><span class="caption-number">Table 13 </span><span class="caption-text">Estimator group tools</span><a class="headerlink" href="#id6" title="Permalink to this table">¶</a></caption>
+<colgroup>
+<col width="29%" />
+<col width="71%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Icon</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td><img alt="ble" src="../_images/ble.png" /> <br />
+Battery Lifetime <br />
+Estimator</td>
+<td>Estimate battery lifetime for the selected device family</td>
+</tr>
+<tr class="row-odd"><td><img alt="sleepModeAdv" src="../_images/sleep-mode-advisor.png" /> <br />
+Sleep Mode <br />
+Advisor</td>
+<td>Analyze power consumption for target application</td>
+</tr>
+<tr class="row-even"><td><img alt="gfx" src="../_images/gfx.png" /> <br />
+Graphics FPS <br />
+Estimator</td>
+<td>Estimate the typically and maximum achievable frame rate</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="tool-specific-groups">
+<h2>11.1.8. Tool specific groups<a class="headerlink" href="#tool-specific-groups" title="Permalink to this headline">¶</a></h2>
+<p>Apart from the groups mentioned above SmartSnippets™ Toolbox provides two ribbon groups / toolbars containing tool specific utilities that are activated when certain tools are selected:</p>
+<ol class="arabic simple">
+<li><strong>Power Profiler</strong>: is activated when the respective tool is selected and is hidden once the respective tool is closed. The functionality of this toolbar is described under Power Profiler section.</li>
+<li><strong>RF Master</strong>: is activated when RF Master, XTAL Manger, Register Access or IO Manager tools are selected and hidden if none of these tools are open. The functionality of this toolbar is described under RF Master section.</li>
+</ol>
+</div>
+<div class="section" id="ribbon-menus">
+<h2>11.1.9. Ribbon Menus<a class="headerlink" href="#ribbon-menus" title="Permalink to this headline">¶</a></h2>
+<p>SmartSnippets™ Toolbox provides four menus that help the users, among others, manage their projects,
+configure connected device(s) and select communication interfaces, download and install application and Support Packs updates.</p>
+</div>
+<div class="section" id="project-menu">
+<h2>11.1.10. Project Menu<a class="headerlink" href="#project-menu" title="Permalink to this headline">¶</a></h2>
+<p>Project menu provides the following options:</p>
+<ul class="simple">
+<li><strong>New</strong>: Creates a new project. User has to provide the project name and the location to save the new project. A new folder is created with the user provided project name at the location that the user has indicated. The project folder contains the project.sms file where various user configurations across different tools are saved and loaded again the next time the same project is selected. After creating the new project the application will automatically load it, in which case a popup may appear asking to save the previous project that was being used.</li>
+<li><strong>Open</strong>: Opens a SmartSnippets™ Toolbox project. The user has to navigate to a folder containing the project.sms file of an existing project.</li>
+<li><strong>Open Recent</strong>: Application remembers recent projects. The user can load a recent project by selecting its name from a list. The user has the options to clear the list of recent projects, in which case the application will start keeping track of recent projects from scratch after the Clear button is pressed.</li>
+<li><strong>Save</strong>: Saves current project in the default location which is in &lt;user_home&gt;/SmartSnippetsToolbox/Projects.</li>
+<li><strong>Save As</strong>: Saves current project in the user specified location with a name of the user’s choice.</li>
+<li><strong>Info</strong>: Shows basic project info such as its name, location and description.</li>
+<li><strong>Exit</strong>: Exits the application.</li>
+</ul>
+</div>
+<div class="section" id="board-menu">
+<h2>11.1.11. Board Menu<a class="headerlink" href="#board-menu" title="Permalink to this headline">¶</a></h2>
+<p>This menu can be used to configure the connected device(s) and manage the Support Pack.</p>
+<ul class="simple">
+<li><strong>Device:</strong> (<a class="reference internal" href="#boardmenudevices"><span class="std std-numref">Figure 171</span></a>) User can select from the list the device name that matches the connected device.
+In case the connected device is detected, the device is automatically selected.</li>
+<li><strong>UART:</strong> (<a class="reference internal" href="#boardmenuuart"><span class="std std-numref">Figure 172</span></a>) User can select from the list the UART port of the connected device.
+In case the connected device is detected, the UART port is automatically selected.
+Unchecking the UART checkbox indicates that the user doesn’t want UART interface to be used for communication with the device.
+If an alternative interface has been configured (e.g. JTAG) certain tools that can use either of the two interfaces will still be
+functional and use the alternative interface instead. Tools that require UART interface to communicate with the device will have buttons
+that depend on communication over UART disabled until the UART interface is configured.</li>
+<li><strong>Power Profiler:</strong> User can select from the list the Power Profiler port of the connected device.
+In case the connected device is detected, the Power Profiler port is automatically selected.
+Unchecking the Power Profiler checkbox indicates that the user doesn’t want to communicate with the device over the Power Profiler port.
+This means that if no Power Profiler port is selected or the Power Profiler checkbox is unchecked, the user will not be able to
+use the Power Profiler tool.</li>
+<li><strong>JTAG:</strong> (<a class="reference internal" href="#boardmenujtag"><span class="std std-numref">Figure 173</span></a>) User can select from the list the JTAG serial of the connected device.
+In case the connected device is detected, the JTAG serial is automatically selected.
+Unchecking the UART checkbox indicates that the user doesn’t want JTAG interface to be used for communication with the device.
+If UART interface has been configured this will be used instead in that case. If both JTAG and UART interfaces have been configured,
+JTAG interface will be used which is faster than UART.</li>
+<li><strong>Close Debug Session:</strong> Applies to JTAG interface. Terminates the communication with the debugger.</li>
+<li><strong>Cannot See my Board:</strong> Help message that informs the user on what can be done in order for the application to identify the connected device(s).</li>
+<li><strong>Support Pack Info:</strong> (<a class="reference internal" href="#boardmenuspinfo"><span class="std std-numref">Figure 174</span></a>) Provides information about the used Support Pack: Its type (bundled or custom or online resource),
+its location, the devices it supports e.t.c..</li>
+<li><strong>Check Online for Updates:</strong> Checks for Support Packs updates for the selected device.</li>
+<li><strong>Device Info:</strong> (<a class="reference internal" href="#boardmenudeviceinfo"><span class="std std-numref">Figure 175</span></a>) Provides info of the connected device once it has been detected.
+Info includes the device core ID, its family and name and its interfaces. <em>Refresh</em> button on Device Info dialog triggers again the detection logic.
+<em>JTAG Info</em> button reads device info over JTAG interface.</li>
+<li><strong>Detect Device:</strong> (<a class="reference internal" href="#boardmenudetect"><span class="std std-numref">Figure 176</span></a>) Detects connected device(s). Note that the user may have to press the hardware reset button
+in order for the device detection firmware to be downloaded over UART to the device. A message prompting the user to press the HW reset button
+will be added to the Log in that case. In case a single device is detected, when the user presses OK on the device detection dialog, the device
+type, UART, JTAG and SPI interfaces will be automatically selected under the Board menu. If more than one devices are detected, the user will be
+asked to select with which device the application should work with. Once the user selects one of the detected devices the entries under the
+Board menu regarding device name, UART, JTAG and SPI interface will be automatically selected.</li>
+</ul>
+<span id="id7"></span><table border="1" class="docutils" id="id8">
+<caption><span class="caption-number">Table 14 </span><span class="caption-text">Board Menu</span><a class="headerlink" href="#id8" title="Permalink to this table">¶</a></caption>
+<colgroup>
+<col width="33%" />
+<col width="33%" />
+<col width="33%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td>&#160;</td>
+<td>&#160;</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-even"><td><div class="first last figure align-center" id="id21">
+<span id="boardmenudevices"></span><img alt="../_images/devices.png" src="../_images/devices.png" />
+<p class="caption"><span class="caption-number">Figure 171 </span><span class="caption-text">Devices Menu</span></p>
+</div>
+</td>
+<td><div class="first last figure align-center" id="id22">
+<span id="boardmenuuart"></span><img alt="../_images/uart.png" src="../_images/uart.png" />
+<p class="caption"><span class="caption-number">Figure 172 </span><span class="caption-text">UART Menu</span></p>
+</div>
+</td>
+<td><div class="first last figure align-center" id="id23">
+<span id="boardmenujtag"></span><img alt="../_images/jtag.png" src="../_images/jtag.png" />
+<p class="caption"><span class="caption-number">Figure 173 </span><span class="caption-text">JTAG Menu</span></p>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td colspan="3">&#160;</td>
+</tr>
+<tr class="row-even"><td colspan="3"><div class="first last figure align-center" id="id24">
+<span id="boardmenuspinfo"></span><img alt="../_images/spInfo.png" src="../_images/spInfo.png" />
+<p class="caption"><span class="caption-number">Figure 174 </span><span class="caption-text">SP Info Menu</span></p>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td colspan="3">&#160;</td>
+</tr>
+<tr class="row-even"><td colspan="3"><div class="first last figure align-center" id="id25">
+<span id="boardmenudeviceinfo"></span><img alt="../_images/deviceInfo.png" src="../_images/deviceInfo.png" />
+<p class="caption"><span class="caption-number">Figure 175 </span><span class="caption-text">Device Info</span></p>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td colspan="3">&#160;</td>
+</tr>
+<tr class="row-even"><td colspan="3"><div class="first last figure align-center" id="id26">
+<span id="boardmenudetect"></span><img alt="../_images/detect.png" src="../_images/detect.png" />
+<p class="caption"><span class="caption-number">Figure 176 </span><span class="caption-text">Device Detection Results</span></p>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="settings-menu">
+<h2>11.1.12. Settings Menu<a class="headerlink" href="#settings-menu" title="Permalink to this headline">¶</a></h2>
+<p>This menu can be used to configure device and application parameters.</p>
+<ul class="simple">
+<li><strong>Advanced Settings:</strong> (<a class="reference internal" href="#settingsmenuadvancedsettings"><span class="std std-numref">Figure 177</span></a>) Advanced users can select from a list the visible tools and memory sections in tools.
+Non advanced users will be able to see only the default set of the tools. Note that some tools are only available for certain device families.
+These tools cannot be activated from the advanced settings menu if the selected device is not a member of the family for which the tool is available.</li>
+<li><strong>Device Settings:</strong> (<a class="reference internal" href="#settingsmenudevicesettings"><span class="std std-numref">Figure 178</span></a>) User can specify the size of the Flash attached to the device that is being currently used.
+The menu popup dialog initially indicates the default Flash size for the selected device.
+The user can change this value in case a non default flash is being used.
+Flash size value is saved and will be used again for the same device family in subsequent SmartSnippets™ Toolbox sessions.</li>
+</ul>
+<span id="id9"></span><table border="1" class="docutils" id="id10">
+<caption><span class="caption-number">Table 15 </span><span class="caption-text">Settings Menu</span><a class="headerlink" href="#id10" title="Permalink to this table">¶</a></caption>
+<colgroup>
+<col width="50%" />
+<col width="50%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td>&#160;</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-even"><td><div class="first last figure align-center" id="id27">
+<span id="settingsmenuadvancedsettings"></span><img alt="../_images/advancedSettings.png" src="../_images/advancedSettings.png" />
+<p class="caption"><span class="caption-number">Figure 177 </span><span class="caption-text">Advanced Settings Menu</span></p>
+</div>
+</td>
+<td><div class="first last figure align-center" id="id28">
+<span id="settingsmenudevicesettings"></span><img alt="../_images/deviceSettings.png" src="../_images/deviceSettings.png" />
+<p class="caption"><span class="caption-number">Figure 178 </span><span class="caption-text">Device Settings Menu</span></p>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="help-menu">
+<h2>11.1.13. Help Menu<a class="headerlink" href="#help-menu" title="Permalink to this headline">¶</a></h2>
+<p>User can access via this menu application documents and update the application, if updates are available.</p>
+<ul class="simple">
+<li><strong>User Guide (html):</strong> Opens this User Manual.</li>
+<li><strong>License Info:</strong> Opens the license document.</li>
+<li><strong>Release Notes:</strong> Opens the Release Notes document.</li>
+<li><strong>Feedback:</strong> Opens a URL at Renesas portal to provide feedback for the application.</li>
+<li><strong>About:</strong> Application information.</li>
+<li><strong>Check for Updates:</strong> Checks for application updates. More info on <a class="reference internal" href="../app_help/application_updates.html#app-updates"><span class="std std-ref">Application Updates</span></a> section.</li>
+</ul>
+</div>
+</div>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="index.html" class="btn btn-neutral float-left" title="11. Appendices" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="quick_start/index.html" class="btn btn-neutral float-right" title="11.2. Quick Start Guide" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023, Renesas Electronics Corporation.</p>
+  </div>
+
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+    <!-- Theme Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-ZXND4SB7CL"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-ZXND4SB7CL', {
+          'anonymize_ip': false,
+      });
+    </script> 
+
+</body>
+</html>

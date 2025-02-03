@@ -1,0 +1,42 @@
+.. SmartSnippets Toolbox User Guide documentation master file, created by
+   sphinx-quickstart on Tue Mar  4 15:41:18 2014.
+   You can adapt this file completely to your liking, but it should at least
+   contain the root `toctree` directive.
+   
+.. Include section starts here
+.. include:: firstpage.rst
+.. Include section stops here
+
+Contents
+--------
+
+
+.. toctree::
+   :maxdepth: 3
+   :numbered:
+      
+   inst_guide/inst_guide
+   getting_started/getting_started.rst
+   programmer_oper/index.rst
+   estimator/index.rst
+   manager_oper/index.rst
+   monitor_oper/index.rst
+   configurator/index.rst
+   cli/command_line_if.rst
+   app_help/index.rst
+   troubleshooting/troubleshooting.rst
+   appendices/index.rst
+   disclaimers_contact.rst
+   
+
+.. Search
+.. ======
+
+.. * :ref:`search`
+
+
+
+..
+	* :ref:`genindex`
+	* :ref:`modindex`
+	

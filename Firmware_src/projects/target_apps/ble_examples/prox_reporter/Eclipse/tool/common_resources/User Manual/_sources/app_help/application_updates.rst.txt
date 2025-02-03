@@ -1,0 +1,43 @@
+.. include:: <isonum.txt>
+
+.. _app_updates:
+
+-------------------
+Application Updates
+-------------------
+
+SmartSnippets\ |trade| Toolbox checks on startup for available application updates. Application is updated by downloading and installing a new SmartSnippets\ |trade| Toolbox version. All SmartSnippets\ |trade| Toolbox versions on the web server that are greater than the current version are update candidates. The latest version is selected by default when more than one updates are available but the user is free to select and install the preferred version.
+
+.. _app_update:
+.. figure:: images/app_update.png
+   :align: center
+   
+   Application update dialog
+   
+The user can review the list of changes included in the SmartSnippets\ |trade| Toolbox to be downloaded before pressing the *Download* button. Pressing the *Download* button starts the download from the server. A progress bar indicates the download progress. 
+The user can stop the download at any time by pressing the *Cancel* button. The user can ignore the available updates by closing the Application Updates dialog either by pressing the *Cancel* button or the X button on the top right corner of the dialog, while no download it taking place. 
+If the user checks the *Ignore forever* next to the available update, SmartSnippets\ |trade| Toolbox will remember this user decision the next time it will be launched and will never propose this version as an update on startup.
+Even if *Ignore forever* has been checked, the user can still trigger an update by selecting the *Check for Updates* menu option under the *Help* menu. When the update is manually triggered all the available versions are presented, even the ones for which user has checked the *Ignore forever* option.
+
+.. _app_update_download:
+.. figure:: images/app_update_download.png
+   :align: center
+   
+   Application update download
+   
+Once the update is downloaded and validated against a unique hash, the user can press the *Install* button to launch the installer which will install the selected SmartSnippets\ |trade| Toolbox version. The application is exited at this point and all unsaved changes, if any, are automatically saved to the active project.
+
+.. _app_update_install:
+.. figure:: images/app_update_install.png
+   :align: center
+   
+   Application update installation
+   
+SmartSnippets\ |trade| Toolbox installer will detect previous installed versions of the application and ask the user if he / she wants to uninstall any of them. In windows platforms many versions of SmartSnippets\ |trade| Toolbox can coexist, as long as the first 3 digits of the version differ. When a version that differs only in the 4th digit compared to the current version is being installed, the latest version will upgrade the current version and only the latest version will be available after the installation. In other words only one version of e.g. SmartSnippets\ |trade| Toolbox 5.0.17 can be installed in windows. In linux platforms, as many versions of SmartSnippets\ |trade| Toolbox can be installed as long as a different installation folder is selected every time. Namely in linux environments multiple versions of e.g. SmartSnippets\ |trade| Toolbox 5.0.17 can coexist in different installation folders.
+When the installation finishes, the updated SmartSnippets\ |trade| Toolbox version will be automatically launched.
+
+.. _app_update_uninstall_previous:
+.. figure:: images/app_update_uninstall_previous.png
+   :align: center
+   
+   Application update uninstallation of older versions

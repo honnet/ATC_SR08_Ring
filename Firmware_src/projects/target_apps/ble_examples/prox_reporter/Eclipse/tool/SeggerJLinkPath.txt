@@ -1,0 +1,1 @@
+JLINKPATH=C\:\\Program Files (x86)\\SEGGER\\JLink_V722b\\JLinkGDBServerCL.exe

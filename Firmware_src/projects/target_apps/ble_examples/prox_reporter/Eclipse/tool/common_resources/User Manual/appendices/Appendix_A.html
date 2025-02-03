@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html class="writer-html4" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>11.6. Appendix A - RF Master firmware &mdash; UM-B-083</title><link rel="stylesheet" href="../_static/css/lpc_cs_theme.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/custom.css" type="text/css" /><link rel="shortcut icon" href="../_static/favicon.ico"/>
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+        <script type="text/javascript" src="../_static/language_data.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="11.7. Appendix B - Battery Lifetime Estimator CLI sample input and parameters files" href="Appendix_B.html" />
+    <link rel="prev" title="11.5. List of Codes" href="list_of_codes.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../index.html"><img src="../_static/V-Reverse.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../inst_guide/inst_guide.html">1. Installation Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../getting_started/getting_started.html">2. Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../programmer_oper/index.html">3. Programmer Operations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../estimator/index.html">4. Estimator Operations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../manager_oper/index.html">5. Manager Operations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../monitor_oper/index.html">6. Monitor Operations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../configurator/index.html">7. Configurator Operations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../cli/command_line_if.html">8. CLI implementation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../app_help/index.html">9. Application Help</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../troubleshooting/troubleshooting.html">10. Troubleshooting</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">11. Appendices</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="detailed_interface.html">11.1. User interface</a></li>
+<li class="toctree-l2"><a class="reference internal" href="quick_start/index.html">11.2. Quick Start Guide</a></li>
+<li class="toctree-l2"><a class="reference internal" href="list_of_figures.html">11.3. List of Figures</a></li>
+<li class="toctree-l2"><a class="reference internal" href="list_of_tables.html">11.4. List of Tables</a></li>
+<li class="toctree-l2"><a class="reference internal" href="list_of_codes.html">11.5. List of Codes</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">11.6. Appendix A - RF Master firmware</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#rf-master-firmware-for-da1468x-and-da1469x-family">11.6.1. RF Master firmware for DA1468x and DA1469x family</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#rf-master-firmware-for-da14580-581-583-da1453x-and-da14585-6-family">11.6.2. RF Master firmware for DA14580/581/583, DA1453x and DA14585/6 family</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="Appendix_B.html">11.7. Appendix B - Battery Lifetime Estimator CLI sample input and parameters files</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../disclaimers_contact.html">12. Disclaimers &amp; Contact info</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">UM-B-083</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="index.html">11. Appendices</a> &raquo;</li>
+      <li>11.6. Appendix A - RF Master firmware</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <div class="section" id="appendix-a-rf-master-firmware">
+<h1>11.6. Appendix A - RF Master firmware<a class="headerlink" href="#appendix-a-rf-master-firmware" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="rf-master-firmware-for-da1468x-and-da1469x-family">
+<h2>11.6.1. RF Master firmware for DA1468x and DA1469x family<a class="headerlink" href="#rf-master-firmware-for-da1468x-and-da1469x-family" title="Permalink to this headline">¶</a></h2>
+<p>This section explains how to compile and get binaries for the RF Master tool for the
+DA1469x and DA1468x family chips: DA1469x-00, DA14681-01, DA14682-00, DA14683-00, DA15000-00, DA15001-00, DA15100-00 and DA15101-00.</p>
+<ul class="simple">
+<li>Open SmartSnippets™ Studio and on <em>select workspace</em> pop up press <em>browse</em> and select the root of the chip SDK.</li>
+</ul>
+<div class="figure align-center" id="id1">
+<span id="appendix-a-select-sdk-as-workspace"></span><img alt="../_images/appendix_a_select_sdk_as_workspace.png" src="../_images/appendix_a_select_sdk_as_workspace.png" />
+<p class="caption"><span class="caption-number">Figure 201 </span><span class="caption-text">Select SDK root as workspace</span></p>
+</div>
+<ul class="simple">
+<li>If the <em>SDK tools wizard</em> pop up showing that some tools are required check that at least required version found for <em>GNU Tools for ARM Embedded processors</em>. If found, then close the wizard and proceed. If not, press <em>Next</em> and the installer will guide through the installation of the compiler.</li>
+</ul>
+<div class="figure align-center" id="id2">
+<span id="appendix-a-sdk-tools-wizard"></span><img alt="../_images/appendix_a_sdk_tools_wizard.png" src="../_images/appendix_a_sdk_tools_wizard.png" />
+<p class="caption"><span class="caption-number">Figure 202 </span><span class="caption-text">SDK tools wizard</span></p>
+</div>
+<ul class="simple">
+<li>After successful compiler set up, switch to the C/C++ perspective</li>
+<li>Right click on the <em>Project Explorer</em> view and select <em>Import…</em>. Select <em>General -&gt; Existing projects into workspace</em> and press <em>Next</em></li>
+<li>On <em>Import projects</em> pop up click <em>browse</em> and select the <em>plt_fw</em> project</li>
+</ul>
+<div class="figure align-center" id="id3">
+<span id="appendix-a-browse-for-plt-fw"></span><img alt="../_images/appendix_a_browse_for_plt_fw.png" src="../_images/appendix_a_browse_for_plt_fw.png" />
+<p class="caption"><span class="caption-number">Figure 203 </span><span class="caption-text">Browse for plt_fw project location inside SDK</span></p>
+</div>
+<ul class="simple">
+<li>Once project recognized press <em>Finish</em></li>
+</ul>
+<div class="figure align-center" id="id4">
+<span id="appendix-a-import-projects-plt-fw"></span><img alt="../_images/appendix_a_import_projects_plt_fw.png" src="../_images/appendix_a_import_projects_plt_fw.png" />
+<p class="caption"><span class="caption-number">Figure 204 </span><span class="caption-text">Import plt_fw project</span></p>
+</div>
+<ul class="simple">
+<li>Select project and expand the build icon. Click on a <em>Release_RAM</em> build configuration based on the chip.</li>
+</ul>
+<div class="figure align-center" id="id5">
+<span id="appendix-a-build-project"></span><img alt="../_images/appendix_a_build_project.png" src="../_images/appendix_a_build_project.png" />
+<p class="caption"><span class="caption-number">Figure 205 </span><span class="caption-text">Build plt_fw project</span></p>
+</div>
+<ul class="simple">
+<li>Wait for the project to compile. This may take some minutes. Check <em>console</em> view for any errors.</li>
+<li>After successful compilation plt_fw binary resides into projects’ build folder</li>
+</ul>
+<div class="figure align-center" id="id6">
+<span id="appendix-a-plt-fw-location"></span><img alt="../_images/appendix_a_plt_fw_location.png" src="../_images/appendix_a_plt_fw_location.png" />
+<p class="caption"><span class="caption-number">Figure 206 </span><span class="caption-text">Browse for plt_fw binary</span></p>
+</div>
+<ul class="simple">
+<li>For more information on handling SDK projects consult <em>User manual UM-B-057</em> on SmartSnippets™ Studio installation.</li>
+</ul>
+</div>
+<div class="section" id="rf-master-firmware-for-da14580-581-583-da1453x-and-da14585-6-family">
+<h2>11.6.2. RF Master firmware for DA14580/581/583, DA1453x and DA14585/6 family<a class="headerlink" href="#rf-master-firmware-for-da14580-581-583-da1453x-and-da14585-6-family" title="Permalink to this headline">¶</a></h2>
+<p>This section explains how to compile and get binaries for the RF Master tool for the
+DA14580/581/583 and DA14585/6 family chips: DA14580-01, DA14581-00, DA14583-01, DA14585-00, DA14586-00, DA14531.</p>
+<p>For 580/581/583 chips:</p>
+<ul class="simple">
+<li>Open Keil IDE and from Main Menu go to <em>File -&gt; Open</em> . On filter combobox select <em>All Files</em></li>
+<li>Extract DA14580/581/583 SDK and point to <code class="docutils literal notranslate"><span class="pre">SDK</span> <span class="pre">5.0.4\DA14580/581/583_SDK\5.0.4\projects\target_apps\prod_test\prod_test\Keil_5</span></code>. Select <em>prod_test.uvprojx</em>.</li>
+<li>Press <em>Open</em> and the <em>prod_test</em> project is loaded into Keil workspace.</li>
+<li>Select prod_test_580, prod_test_581 or prod_test_583 from the combobox (1.) and press the build icon (2.)</li>
+</ul>
+<div class="figure align-center" id="id7">
+<span id="appendix-a-keil-load-prod-test"></span><img alt="../_images/appendix_a_keil_load_prod_test.png" src="../_images/appendix_a_keil_load_prod_test.png" />
+<p class="caption"><span class="caption-number">Figure 207 </span><span class="caption-text">Keil workspace after <em>prod_test</em> project load</span></p>
+</div>
+<ul class="simple">
+<li>Wait for the project to compile. Check <em>build_output</em> view for successful compilation.</li>
+</ul>
+<div class="figure align-center" id="id8">
+<span id="appendix-a-keil-prod-test-location"></span><img alt="../_images/appendix_a_keil_prod_test_location.png" src="../_images/appendix_a_keil_prod_test_location.png" />
+<p class="caption"><span class="caption-number">Figure 208 </span><span class="caption-text">Compilation messages</span></p>
+</div>
+<ul class="simple">
+<li>On success, binary location is <code class="docutils literal notranslate"><span class="pre">SDK</span> <span class="pre">5.0.4\DA14580/581/583_SDK\5.0.4\projects\target_apps\prod_test\prod_test\Keil_5\out_580\prod_test_580.bin</span></code></li>
+<li>For 585/6 and 531 chips the process is the same as above. Keil project location on the DA14585/6 SDK is <code class="docutils literal notranslate"><span class="pre">DA145xx_SDK\6.0.14.1114\projects\target_apps\prod_test\prod_test\Keil_5</span></code></li>
+</ul>
+</div>
+</div>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="list_of_codes.html" class="btn btn-neutral float-left" title="11.5. List of Codes" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="Appendix_B.html" class="btn btn-neutral float-right" title="11.7. Appendix B - Battery Lifetime Estimator CLI sample input and parameters files" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023, Renesas Electronics Corporation.</p>
+  </div>
+
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+    <!-- Theme Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-ZXND4SB7CL"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-ZXND4SB7CL', {
+          'anonymize_ip': false,
+      });
+    </script> 
+
+</body>
+</html>
