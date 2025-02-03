@@ -1,0 +1,48 @@
+SR08 Pinout by @ATC1441
+Pinout:
+
+40 pin DA14585
+
+1  P0_0				SPI_FLASH_CLK
+2  P0_1				ADC_INPUT
+3  P0_2				LED_13
+4  P0_3				SPI_FLASH_CS
+5  P3_0				
+6  P0_4				UART_TX
+7  P0_5				SPI_FLASH_MOSI
+8  P2_1				LED_7
+9  P0_6				SPI_FLASH_MISO
+10 P0_7				INPUT Is Charging LOW=Charging
+
+11 XTAL32 xxxx
+12 XTAL32 xxxx
+13 P2_2				LED_5
+14 VBAT xxxx
+15 VBAT xxxx
+16 GND xxxx
+17 RST xxxx
+18 P2_3				I2C_SCL
+19 VDCD xxxx
+20 P2_4				I2C_SDA
+
+21 SWITCH xxxx
+22 P1_0				LED_11
+23 VBAT xxxx
+24 P1_1				LED_12
+25 SDIO = P1_5		Touch input to low = touched
+26 SWCLK = P1_4 
+27 P1_2				LED_10
+28 P1_3				LED_8
+29 XTAL16 xxxx
+30 XTAL16 xxxx
+
+31 VDCV xxxx
+32 P2_5				LED_4
+33 P2_6				LED_3
+34 RF xxxx
+35 RF xxxx
+36 P2_7				LED_2
+37 P2_8             LED_1
+38 VDD xxxx
+39 P2_9				LED_6
+40 P2_0				LED_9
