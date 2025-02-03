@@ -1,8 +1,13 @@
 # ATC_SR08_Ring Custom firmware demo for the SR08 Smart Ring
 
+Affiliate Link to the Ring:
+
+https://s.click.aliexpress.com/e/_op8fMC1
 
 Use this Android tool to upload the firmware to the Smart BLE Ring:
+
 https://play.google.com/store/apps/details?id=com.dialog.suota&hl=en
+
 Settings as in the OTA_Settings_for_apk.jpg image
 
 
