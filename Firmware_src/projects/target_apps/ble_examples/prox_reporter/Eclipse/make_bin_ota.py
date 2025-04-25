@@ -1,8 +1,6 @@
 #By ATC1441 tool to create custom OTA Header image for the SR08 Smart Ring
 import struct
 import time
-import struct
-import time
 
 def calculate_crc32(data):
     crc = 0xFFFFFFFF
@@ -20,9 +18,9 @@ def calculate_xor_checksum(data):
     for byte in data:
         checksum ^= byte
     return checksum
-    
+
 def create_header(image_id=0xAA, valid_flag=0xFF, code_size=0, all_size=0, crc_in=0, version="1.900", encryption_flag=0x00):
-    signature = struct.pack("BB", 0x70, 0x51) 
+    signature = struct.pack("BB", 0x70, 0x51)
     valid_flag = struct.pack("B", valid_flag)
     image_id = struct.pack("B", image_id)
     all_size_placeholder = struct.pack("I", all_size)
@@ -36,21 +34,21 @@ def create_header(image_id=0xAA, valid_flag=0xFF, code_size=0, all_size=0, crc_i
     header = (
         signature + image_id + valid_flag + all_size_placeholder +
         crc_placeholder + version_bytes + timestamp + encryption_flag + code_size_placeholder + custom_infos_placeholder + reserved
-    )    
+    )
     if len(header) != 64:
-        raise ValueError("Der Header muss genau 64 Bytes lang sein.")    
+        raise ValueError("The header must be exactly 64 bytes long.")
     return header
 
 def add_header_to_file(input_file, output_file):
     with open(input_file, "rb") as f:
-        file_content = f.read()    
-    code_size = len(file_content)        
-    crc32 = calculate_crc32(file_content)    
+        file_content = f.read()
+    code_size = len(file_content)
+    crc32 = calculate_crc32(file_content)
     padding_length = (240 - ((len(file_content)+64)% 240)) % 240
     if(((len(file_content)+64)% 240) == 0):
         padding_length = 240
     padding = b"\xFF" * padding_length
-    file_content += padding    
+    file_content += padding
     all_size = len(file_content)
     header = create_header(code_size=code_size, all_size=all_size, crc_in=crc32)
     combined_content = header + file_content
@@ -59,4 +57,5 @@ def add_header_to_file(input_file, output_file):
     with open(output_file, "wb") as f:
         f.write(combined_content)
 
-add_header_to_file("prox_reporter.bin", "..\output.bin")
+add_header_to_file("prox_reporter.bin", "../output.bin")
+print("done.")

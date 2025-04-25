@@ -31,6 +31,8 @@
  ****************************************************************************************
  */
 
+void start_refresh_timer();
+
 #if DEVELOPMENT_DEBUG
 
 void GPIO_reservations(void)
